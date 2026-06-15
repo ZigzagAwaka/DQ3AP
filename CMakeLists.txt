@@ -9,6 +9,7 @@ add_library(DQ3AP SHARED
     src/Logger.cpp
     src/APClient.cpp
     src/Commands.cpp
+    src/WorldData.cpp
 )
 
 # Include directories and link APCpp
