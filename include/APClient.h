@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Logger.h"
+#include "WorldData.h"
 
 #include <string>
 #include <filesystem>
@@ -23,8 +24,20 @@ public:
     /// @param password Server password (optional)
     void Connect(const std::string& host, const std::string& player, const std::string& password = "");
         
-    /// @brief Update the client (is called periodically)
+    /// @brief Update the client (is called periodically) to process any new AP messages
+    /// and recently checked ingame locations
     void Update();
+
+    /// @brief Receive a location from Archipelago (not checked ingame, but forced checked by the server)
+    /// @param locationId The Id of the received location
+    void ReceiveCheckedLocation(int64_t locationId);
+
+    /// @brief Receive an item from Archipelago
+    /// @param itemId The Id of the received item
+    void ReceiveItem(int64_t itemId);
+
+    /// @brief Clear and reset AP data files
+    void ClearData();
 
     /// @brief Disconnect from Archipelago
     void Disconnect();

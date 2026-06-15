@@ -125,7 +125,7 @@ static DWORD WINAPI MainThread(LPVOID)
     }
     catch (const std::exception& e)
     {
-        logger.LogError(e.what());
+        logger.LogError(std::string("Runtime exception: ") + e.what());
     }
     
     return 0;

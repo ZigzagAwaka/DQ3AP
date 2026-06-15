@@ -1,5 +1,7 @@
 #include "WorldData.h"
 
+std::unordered_map<int, std::string> WorldData::rev_locations = {};
+
 const std::unordered_map<std::string, int> WorldData::locations =
 {
     // ----- Aliahan -----
