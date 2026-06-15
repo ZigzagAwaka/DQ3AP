@@ -5,18 +5,16 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
-#include <winsock2.h>
-#include <ws2tcpip.h>
 
 
 /// @brief Archipelago client wrapper using APCpp
 class APClient
 {
 public:
-    /// @brief Create APClient with logger reference
+    /// @brief Create APClient with logger reference, and AP data paths
     /// @param logger Logger instance
-    /// @param itemPath
-    /// @param locationPath
+    /// @param itemPath Path to AP items data file, will be created if it doesn't exist
+    /// @param locationPath Path to AP locations data file, will be created if it doesn't exist
     APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath);
 
     /// @brief Connect to Archipelago
@@ -29,34 +27,17 @@ public:
     void Update();
 
     /// @brief Disconnect from Archipelago
-    /// @param shouldCloseSocket Also close AP socket
-    void Disconnect(bool shouldCloseSocket = false);
+    void Disconnect();
 
     /// @brief Check if client is connected
     /// @return True if connected
     bool IsConnected();
 
 private:
-    /*std::string ap_host;
-    std::string ap_game;
-    std::string ap_player;
-    std::string ap_password;*/
     Logger& logger;
 
-    const std::string itemPath;
-    const std::string locationPath;
-    std::ofstream itemFile;
+    const std::string itemDataPath;
+    const std::string locationDataPath;
+    //std::ofstream itemFile;
     //std::ifstream locationFile;
-
-    SOCKET socketServer;
-    SOCKET socketClient;
-
-    /// @brief Initialize local socket
-    void InitSocket();
-
-    /// @brief Check if there is new data available from the local socket
-    void CheckSocket();
-
-    /// @brief Close local socket
-    void CloseSocket();
 };

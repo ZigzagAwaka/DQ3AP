@@ -11,12 +11,21 @@ public:
     /// @param logPath Path to log file, will be created if it doesn't exist
     Logger(const std::string& logPath);
 
-    /// @brief Log a message to console and file is specified
+    /// @brief Log a message to console and file
     /// @param message Message to log
-    /// @param inFile Also log the message in the log file
-    void Log(const std::string& message, bool inFile = true);
+    void Log(const std::string& message);
 
+    /// @brief Log an error message to console and file
+    /// @param message Error message to log
     void LogError(const std::string& message);
+
+    /// @brief Log a message to the console only
+    /// @param message Message to log
+    void LogInConsole(const std::string& message);
+
+    /// @brief Log a message to the file only
+    /// @param message Message to log
+    void LogInFile(const std::string& message);
 
     /// @brief Close the logger file
     void Close();

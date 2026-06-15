@@ -2,15 +2,16 @@
 #include "Archipelago.h"
 
 
-APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath) : logger(logger), itemPath(itemPath), locationPath(locationPath)
+APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath) : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath)
 {
-    itemFile.open(itemPath, std::ios::app);
-
-    if (!std::filesystem::exists(locationPath))
+    if (!std::filesystem::exists(itemDataPath))
     {
-        std::ofstream(locationPath).close();
+        std::ofstream(itemDataPath).close();
     }
-    //InitSocket();
+    if (!std::filesystem::exists(locationDataPath))
+    {
+        std::ofstream(locationDataPath).close();
+    }
 }
 
 
@@ -59,9 +60,8 @@ void APClient::Update()
         logger.Log(message->text);
         AP_ClearLatestMessage();
     }
-    //CheckSocket();
 
-    std::ifstream file(locationPath);
+    std::ifstream file(locationDataPath);
     std::string line;
     bool hasContent = false;
 
@@ -76,110 +76,20 @@ void APClient::Update()
 
     if (hasContent)
     {
-        std::ofstream clearFile(locationPath, std::ios::trunc);
+        std::ofstream clearFile(locationDataPath, std::ios::trunc);
         clearFile.close();
     }
 }
 
 
-void APClient::Disconnect(bool shouldCloseSocket)
+void APClient::Disconnect()
 {
     AP_Shutdown();
     logger.Log("Disconnected from Archipelago");
-
-    if (shouldCloseSocket)
-    {
-        //CloseSocket();
-        if (itemFile.is_open())
-        {
-            itemFile.close();
-        }
-    }
 }
 
 
 bool APClient::IsConnected()
 {
     return AP_GetConnectionStatus() == AP_ConnectionStatus::Authenticated;
-}
-
-
-void APClient::InitSocket()
-{
-    WSADATA wsa;
-    WSAStartup(MAKEWORD(2, 2), &wsa);
-
-    socketServer = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-    u_long mode = 1;
-    ioctlsocket(socketServer, FIONBIO, &mode); // set server to non blocking
-
-    sockaddr_in address{};
-    address.sin_family = AF_INET;
-    address.sin_port = htons(38281);
-    address.sin_addr.s_addr = inet_addr("127.0.0.1");
-
-    bind(socketServer, (sockaddr*)&address, sizeof(address));
-    listen(socketServer, 1);
-}
-
-
-void APClient::CheckSocket()
-{
-    if (socketClient == INVALID_SOCKET)
-    {
-        socketClient = accept(socketServer, nullptr, nullptr); // search for valid client
-
-        if (socketClient != INVALID_SOCKET)
-        {
-            u_long mode = 1;
-            ioctlsocket(socketClient, FIONBIO, &mode); // set recv to non blocking
-        }
-        else
-        {
-            int err = WSAGetLastError();
-
-            if (err != WSAEWOULDBLOCK)
-            {
-                logger.LogError(std::string("Socket client accept error. Code: ") + std::to_string(err));
-            }
-        }
-    }
-    else
-    {
-        char buffer[1024];
-        int read_bytes = recv(socketClient, buffer, sizeof(buffer) - 1, 0); // check for new message from client
-
-        if (read_bytes > 0)
-        {
-            buffer[read_bytes] = '\0';
-            logger.Log("RECEIVE LOCATION: " + std::string(buffer));
-        }
-        else if (read_bytes == SOCKET_ERROR)
-        {
-            int err = WSAGetLastError();
-
-            if (err != WSAEWOULDBLOCK)
-            {
-                logger.LogError(std::string("Socket client recv error. Code: ") + std::to_string(err));
-            }
-        }
-    }
-}
-
-
-void APClient::CloseSocket()
-{
-    if (socketClient != INVALID_SOCKET)
-    {
-        shutdown(socketClient, SD_BOTH);
-        closesocket(socketClient);
-        socketClient = INVALID_SOCKET;
-    }
-    if (socketServer != INVALID_SOCKET)
-    {
-        closesocket(socketServer);
-        socketServer = INVALID_SOCKET;
-    }
-    WSACleanup();
 }

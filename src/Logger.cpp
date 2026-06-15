@@ -17,22 +17,30 @@ Logger::Logger(const std::string& logPath)
     }*/
 }
 
-void Logger::Log(const std::string& message, bool inFile)
+void Logger::Log(const std::string& message)
 {
-    std::string line = message + "\n";
-    printf(line.c_str());
-
-    if (inFile && logFile.is_open())
-    {
-        logFile << GetTimestamp() << line;
-        logFile.flush();
-    }
+    LogInConsole(message);
+    LogInFile(message);
     // printf("%s%s\n", GetTimestamp().c_str(), message.c_str());
 }
 
 void Logger::LogError(const std::string& message)
 {
     Log("[ERROR] " + message);
+}
+
+void Logger::LogInConsole(const std::string& message)
+{
+    printf("%s\n", message.c_str());
+}
+
+void Logger::LogInFile(const std::string& message)
+{
+    if (logFile.is_open())
+    {
+        logFile << GetTimestamp() << message << '\n';
+        logFile.flush();
+    }
 }
 
 void Logger::Close()

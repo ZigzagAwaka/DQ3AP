@@ -27,12 +27,6 @@ target_link_libraries(DQ3AP PRIVATE
     libAPCpp
 )
 
-# Include ws2_32
-
-target_link_libraries(DQ3AP PRIVATE
-    ws2_32
-)
-
 # Output name and extension
 
 set_target_properties(DQ3AP PROPERTIES

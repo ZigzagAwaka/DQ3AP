@@ -95,7 +95,7 @@ static DWORD WINAPI MainThread(LPVOID)
     HANDLE inputThreadHandle = CreateThread(nullptr, 0, InputThread, nullptr, 0, nullptr);
 
     logger.Log("DQ3AP loaded!");
-    logger.Log("Type '/help' for available commands", false);
+    logger.LogInConsole("Type '/help' for available commands");
 
     try
     {
@@ -117,17 +117,16 @@ static DWORD WINAPI MainThread(LPVOID)
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
 
-        // Cleanup after at max 2 seconds
-        apClient.Disconnect(true);
-        WaitForSingleObject(inputThreadHandle, 2000);
+        // Cleanup and close files/thread
+        apClient.Disconnect();
+        logger.Close();
+        WaitForSingleObject(inputThreadHandle, 100);
         CloseHandle(inputThreadHandle);
     }
     catch (const std::exception& e)
     {
         logger.LogError(e.what());
     }
-
-    logger.Close();
     
     return 0;
 }

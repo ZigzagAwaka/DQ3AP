@@ -33,6 +33,7 @@ void Commands::ProcessQueue()
 
 void Commands::Process(const std::string& command)
 {
+    loggerPtr->LogInFile(command);
     if (command == "/help")
     {
         PrintHelp();
@@ -81,11 +82,11 @@ bool Commands::HasPendingCommands()
 
 void Commands::PrintHelp()
 {
-    loggerPtr->Log("--------------------------------------------- Available Commands ---------------------------------------------");
-    loggerPtr->Log(" /connect <host> <player> [password] - Connect to Archipelago (example: /connect archipelago.gg:67676 Player1)");
-    loggerPtr->Log(" /disconnect                         - Disconnect from Archipelago");
-    loggerPtr->Log(" /status                             - Show Archipelago connection status");
-    loggerPtr->Log(" /help                               - Show this message");
-    loggerPtr->Log(" /clear                              - Clear console");
-    loggerPtr->Log("--------------------------------------------------------------------------------------------------------------");
+    loggerPtr->LogInConsole("--------------------------------------------- Available Commands ---------------------------------------------");
+    loggerPtr->LogInConsole(" /connect <host> <player> [password] - Connect to Archipelago (example: /connect archipelago.gg:67676 Player1)");
+    loggerPtr->LogInConsole(" /disconnect                         - Disconnect from Archipelago");
+    loggerPtr->LogInConsole(" /status                             - Show Archipelago connection status");
+    loggerPtr->LogInConsole(" /help                               - Show this message");
+    loggerPtr->LogInConsole(" /clear                              - Clear console");
+    loggerPtr->LogInConsole("--------------------------------------------------------------------------------------------------------------");
 }

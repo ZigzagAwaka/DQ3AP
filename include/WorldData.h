@@ -12,14 +12,22 @@ public:
     WorldData() = delete;
 
     /// @brief Returns the corresponding location id from the given location name
-    /// @param locationName
-    /// @return Location id
-    static int GetLocationId(const std::string& locationName);
+    /// @param locationName Name of the searched location
+    /// @return Location id, or -1 if not found
+    static int GetLocationId(const std::string& locationName)
+    {
+        auto it = locations.find(locationName);
+        return it != locations.end() ? it->second : -1;
+    }
 
     /// @brief Returns the corresponding item name from the given item id
-    /// @param itemId
-    /// @return Item name
-    static std::string GetItemName(int itemId);
+    /// @param itemId Id of the searched item
+    /// @return Item name, or empty string if not found
+    static std::string GetItemName(int itemId)
+    {
+         auto it = items.find(itemId);
+        return it != items.end() ? it->second : std::string();
+    }
 
 private:
     /// @brief Associate ingame locations names to their AP specific unique ID
