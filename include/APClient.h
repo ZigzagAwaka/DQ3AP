@@ -28,7 +28,7 @@ public:
     /// and recently checked ingame locations
     void Update();
 
-    /// @brief Receive a location from Archipelago (not checked ingame, but forced checked by the server)
+    /// @brief Receive a location from Archipelago
     /// @param locationId The Id of the received location
     void ReceiveCheckedLocation(int64_t locationId);
 

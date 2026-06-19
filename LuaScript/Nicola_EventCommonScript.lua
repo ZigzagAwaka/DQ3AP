@@ -1,8 +1,9 @@
 print("Load Script Nicola_EventCommonScript")
 
--- AP utilities
+-- AP functions
 
-function LogData(text)
+-- log some text in log file
+function Log(text)
   local time = os.time()
   local file = io.open("Archipelago/LuaAP.log", "a")
   if file then
@@ -11,6 +12,7 @@ function LogData(text)
   end
 end
 
+-- mark the given treasure as checked
 function CheckLocation(TreasureId)
   local file = io.open("Archipelago/locations.data", "a")
   if file then
@@ -19,13 +21,26 @@ function CheckLocation(TreasureId)
   end
 end
 
--- AP utilities end
+-- AP functions end
 
 function SearchObject_ShowMessage(ObjectId, TreasureId, ItemId, ItemCount, Gold)
   local receptor = 0
   local result = 0
-  LogData("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", ItemCount: " .. tostring(ItemCount) .. ", Gold: " .. tostring(Gold))
+  -- AP
+  Log("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", ItemCount: " .. tostring(ItemCount) .. ", Gold: " .. tostring(Gold))
   CheckLocation(TreasureId)
+  ItemId = "ITEM_ARCHIPELAGO"
+  Gold = 0
+  AddItem(ItemId)
+  SetTagItemId(ItemId)
+  CmdLoadItemIcon(ItemId)
+  CmdPlayItemGetNoWait(ObjectId, TreasureId)
+  PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+  CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+  if ItemId == "ITEM_ARCHIPELAGO" then
+    return result
+  end
+  -- AP end
   if 1 <= Gold then
     AddGold(Gold)
     SetTagValue(Gold)

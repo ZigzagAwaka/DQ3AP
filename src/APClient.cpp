@@ -85,7 +85,7 @@ void APClient::Update()
 
 void APClient::ReceiveCheckedLocation(int64_t locationId)
 {
-    std::string locationName = WorldData::GetLocationName(locationId);
+    /*std::string locationName = WorldData::GetLocationName(locationId);
     if (!locationName.empty())
     {
         logger.Log("Location checked by server: " + locationName);
@@ -93,7 +93,7 @@ void APClient::ReceiveCheckedLocation(int64_t locationId)
     else
     {
         logger.LogError("Unknown location Id: " + locationId);
-    }
+    }*/
 }
 
 
