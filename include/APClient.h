@@ -51,6 +51,15 @@ private:
 
     const std::string itemDataPath;
     const std::string locationDataPath;
+
+    std::filesystem::file_time_type locationDataLastCheckTime;
+
     //std::ofstream itemFile;
     //std::ifstream locationFile;
+
+    /// @brief Create the specified AP data file if it doesn't exist,
+    /// or clear it completely if it already exist
+    /// @param filePath Path to the AP data file
+    /// @param clearOnly Set to true to ignore file existing check and only clear the file, default to false
+    void CreateOrClearFile(const std::string& filePath, bool clearOnly = false);
 };

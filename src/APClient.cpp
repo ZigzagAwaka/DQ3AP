@@ -2,9 +2,10 @@
 #include "Archipelago.h"
 
 
-APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath) : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath)
+APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath)
+    : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath)
 {
-    ClearData(); // maybe not needed?
+    ClearData();
 }
 
 
@@ -54,31 +55,37 @@ void APClient::Update()
         AP_ClearLatestMessage();
     }
 
-    std::ifstream file(locationDataPath);
-    std::string line;
-    bool hasContent = false;
+    std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath);
 
-    while (std::getline(file, line))
+    if (lastCheck > locationDataLastCheckTime)
     {
-        if (line.empty()) continue;
-        hasContent = true;
-        int locationId = WorldData::GetLocationId(line);
-        if (locationId != -1)
-        {
-            logger.Log("Location checked: " + line);
-            AP_SendItem(locationId);
-        }
-        else
-        {
-            logger.LogError("Unknown location: " + line);
-        }
-    }
-    file.close();
+        locationDataLastCheckTime = lastCheck;
 
-    if (hasContent)
-    {
-        std::ofstream clearFile(locationDataPath, std::ios::trunc);
-        clearFile.close();
+        std::ifstream file(locationDataPath);
+        std::string line;
+        bool hasContent = false;
+
+        while (std::getline(file, line))
+        {
+            if (line.empty()) continue;
+            hasContent = true;
+            int locationId = WorldData::GetLocationId(line);
+            if (locationId != -1)
+            {
+                logger.LogInFile("Location checked: " + line);
+                AP_SendItem(locationId);
+            }
+            else
+            {
+                logger.LogError("Unknown location: " + line);
+            }
+        }
+        file.close();
+
+        if (hasContent)
+        {
+            CreateOrClearFile(locationDataPath, true);
+        }
     }
 }
 
@@ -102,7 +109,12 @@ void APClient::ReceiveItem(int64_t itemId)
     std::string itemName = WorldData::GetItemName(itemId);
     if (!itemName.empty())
     {
-        logger.Log("Item received: " + itemName);
+        std::ofstream file;
+        file.open(itemDataPath, std::ios::app);
+        file << itemName << '\n';
+        file.flush();
+        file.close();
+        logger.LogInFile("Item received: " + itemName);
     }
     else
     {
@@ -113,22 +125,21 @@ void APClient::ReceiveItem(int64_t itemId)
 
 void APClient::ClearData()
 {
-    if (!std::filesystem::exists(itemDataPath))
+    CreateOrClearFile(itemDataPath);
+    CreateOrClearFile(locationDataPath);
+    locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
+}
+
+
+void APClient::CreateOrClearFile(const std::string& filePath, bool clearOnly)
+{
+    if (!clearOnly && !std::filesystem::exists(filePath))
     {
-        std::ofstream(itemDataPath).close();
+        std::ofstream(filePath).close();
     }
     else
     {
-        std::ofstream clearFile(itemDataPath, std::ios::trunc);
-        clearFile.close();
-    }
-    if (!std::filesystem::exists(locationDataPath))
-    {
-        std::ofstream(locationDataPath).close();
-    }
-    else
-    {
-        std::ofstream clearFile(locationDataPath, std::ios::trunc);
+        std::ofstream clearFile(filePath, std::ios::trunc);
         clearFile.close();
     }
 }
