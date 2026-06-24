@@ -30,24 +30,28 @@ class DQ3World(World):
     # The starting region of the game
     origin_region_name = "Aliahan"
 
-    # Below are the useful functions that the generator will call to create the world
-
+    # Called by the generator to create regions
     def create_regions(self) -> None:
         regions.create_and_connect_regions(self)
         locations.create_all_locations(self)
 
+    # Called by the generator to associate entrances/locations rules
     def set_rules(self) -> None:
         rules.set_all_rules(self)
 
+    # Called by the generator to create all items
     def create_items(self) -> None:
         items.create_all_items(self)
 
+    # Called by the generator to create a specific given item
     def create_item(self, name: str) -> items.DQ3Item:
         return items.create_item_with_correct_classification(self, name)
     
+    # Called by the generator to create a random filler item
     def get_filler_item_name(self) -> str:
         return items.get_random_filler_item_name(self)
     
+    # Define which options are going to be sent to the client
     def fill_slot_data(self) -> Mapping[str, Any]:
         return self.options.as_dict(
             "container_sanity",

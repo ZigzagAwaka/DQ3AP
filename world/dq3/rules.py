@@ -1,12 +1,20 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import (Any, TYPE_CHECKING)
 
 from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
 
+from . import locations
+
 if TYPE_CHECKING:
     from .world import DQ3World
+    from BaseClasses import CollectionRule
+
+
+HAS_THIEF_KEY = Has("Thief's Key")
+HAS_MAGIC_KEY = Has("Magic Key")
+HAS_ULTIMATE_KEY = Has("Ultimate Key")
 
 
 def set_all_rules(world: DQ3World) -> None:
@@ -16,11 +24,15 @@ def set_all_rules(world: DQ3World) -> None:
 
 
 def set_all_entrance_rules(world: DQ3World) -> None:
+    # Already done in regions.connect_regions
     pass
 
 
 def set_all_location_rules(world: DQ3World) -> None:
-    pass
+    # Create all locations rules based of Info values in ALL_LOCATIONS if a rule is specified
+    for location_name, info in locations.ALL_LOCATIONS.items():
+        if info.rule is not None:
+            world.set_rule(world.get_location(location_name), info.rule)
 
 
 def set_completion_condition(world: DQ3World) -> None:
