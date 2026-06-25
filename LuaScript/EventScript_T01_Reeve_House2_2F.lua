@@ -1,27 +1,6 @@
 print("Load Script EventScript_T01_Reeve_House2_2F")
 
--- AP functions
-
--- log some text in log file
-function Log(text)
-  local time = os.time()
-  local file = io.open("Archipelago/LuaAP.log", "a")
-  if file then
-    file:write("[" .. os.date("%d/%m/%y %H:%M:%S", time) .. "] " .. text .. "\n")
-    file:close()
-  end
-end
-
--- mark the given event as checked
-function CheckLocation(EventId)
-  local file = io.open("Archipelago/locations.data", "a")
-  if file then
-    file:write(tostring(EventId) .. "\n")
-    file:close()
-  end
-end
-
--- AP functions end
+local AP = require("Src/DQ3AP") -- AP
 
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
@@ -71,8 +50,8 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_10")
   end
   -- AP
-  Log("Reeve_House2_1F_SUB_0_ACTOR_0110_010 called (Reeve - Old man that gives the Wrecking Ball)")
-  CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
+  AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_010 called (Reeve - Old man that gives the Wrecking Ball)")
+  AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   AddItem(ItemId)
   CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)

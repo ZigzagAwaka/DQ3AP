@@ -1,3 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
 *.lua linguist-vendored
+LuaScript/DQ3AP.lua -linguist-vendored
+#file.py linguist-language=cpp

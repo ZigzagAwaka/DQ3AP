@@ -1,27 +1,6 @@
 print("Load Script EventScript_D02_NajimiTower_Penthouse")
 
--- AP functions
-
--- log some text in log file
-function Log(text)
-  local time = os.time()
-  local file = io.open("Archipelago/LuaAP.log", "a")
-  if file then
-    file:write("[" .. os.date("%d/%m/%y %H:%M:%S", time) .. "] " .. text .. "\n")
-    file:close()
-  end
-end
-
--- mark the given event as checked
-function CheckLocation(EventId)
-  local file = io.open("Archipelago/locations.data", "a")
-  if file then
-    file:write(tostring(EventId) .. "\n")
-    file:close()
-  end
-end
-
--- AP functions end
+local AP = require("Src/DQ3AP") -- AP
 
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
@@ -100,8 +79,8 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     CmdTurnNpc(OldMan_Najimi, NPC_D_LOW)
     CmdEventClosingMessage("NPC_TALK_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_13")
     -- AP
-    Log("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010 called (Dreamer's Tower - Old man that gives the Thief's Key)")
-    CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
+    AP.Log("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010 called (Dreamer's Tower - Old man that gives the Thief's Key)")
+    AP.CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     AddItem(ItemId)
     if ItemId == "ITEM_ARCHIPELAGO" then

@@ -1,34 +1,13 @@
 print("Load Script Nicola_EventCommonScript")
 
--- AP functions
-
--- log some text in log file
-function Log(text)
-  local time = os.time()
-  local file = io.open("Archipelago/LuaAP.log", "a")
-  if file then
-    file:write("[" .. os.date("%d/%m/%y %H:%M:%S", time) .. "] " .. text .. "\n")
-    file:close()
-  end
-end
-
--- mark the given treasure as checked
-function CheckLocation(TreasureId)
-  local file = io.open("Archipelago/locations.data", "a")
-  if file then
-    file:write(tostring(TreasureId) .. "\n")
-    file:close()
-  end
-end
-
--- AP functions end
+local AP = require("Src/DQ3AP") -- AP
 
 function SearchObject_ShowMessage(ObjectId, TreasureId, ItemId, ItemCount, Gold)
   local receptor = 0
   local result = 0
   -- AP
-  Log("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", ItemCount: " .. tostring(ItemCount) .. ", Gold: " .. tostring(Gold))
-  CheckLocation(TreasureId)
+  AP.Log("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", ItemCount: " .. tostring(ItemCount) .. ", Gold: " .. tostring(Gold))
+  AP.CheckLocation(TreasureId)
   ItemId = "ITEM_ARCHIPELAGO"
   Gold = 0
   AddItem(ItemId)
