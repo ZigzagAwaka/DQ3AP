@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from BaseClasses import CollectionRule
 
 
+HAS_WRECKING_BALL = Has("Wrecking Ball")
 HAS_THIEF_KEY = Has("Thief's Key")
 HAS_MAGIC_KEY = Has("Magic Key")
 HAS_ULTIMATE_KEY = Has("Ultimate Key")

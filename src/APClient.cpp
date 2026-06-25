@@ -77,7 +77,7 @@ void APClient::Update()
             }
             else
             {
-                logger.LogError("Unknown location: " + line);
+                logger.Log("Unknown location: " + line);
             }
         }
         file.close();
@@ -99,7 +99,7 @@ void APClient::ReceiveCheckedLocation(int64_t locationId)
     }
     else
     {
-        logger.LogError("Unknown location Id: " + locationId);
+        logger.Log("Unknown location Id: " + locationId);
     }*/
 }
 
@@ -118,7 +118,7 @@ void APClient::ReceiveItem(int64_t itemId)
     }
     else
     {
-        logger.LogError("Unknown item Id: " + itemId);
+        logger.Log("Unknown item Id: " + itemId);
     }
 }
 

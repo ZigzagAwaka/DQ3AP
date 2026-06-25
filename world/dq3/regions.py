@@ -24,15 +24,35 @@ class Connect:
 # Every region can connect to other regions with an optional connection rule if needed
 ALL_REGIONS: dict[str, list[Connect]] = {
     "Aliahan": [
-        Connect("Overworld"),
+        Connect("Aliahan Castle"),
+    ],
+    "Aliahan Castle": [
         Connect("Dreamer's Tower", rules.HAS_THIEF_KEY),
     ],
-    "Overworld": [
-
+    "Aliahan Continent": [
+        Connect("Aliahan"),
+        Connect("Reeve"),
+        Connect("Shrine of the Plains"),
+        Connect("Promontory Passage"),
+        Connect("Little Shrine", rules.HAS_THIEF_KEY),
+        Connect("Path of Promise", rules.HAS_WRECKING_BALL),
     ],
-    "Dreamer's Tower": [
-
+    "Reeve": [],
+    "Shrine of the Plains": [
+        Connect("Dreamer's Tower"),
     ],
+    "Promontory Passage": [
+        Connect("Dreamer's Tower"),
+    ],
+    "Dreamer's Tower": [],
+    "Little Shrine": [],
+    "Path of Promise": [
+        Connect("Shrine of Promise", rules.HAS_THIEF_KEY),
+    ],
+    "Shrine of Promise": [
+        Connect("Overworld"),
+    ],
+    "Overworld": [],
 }
 
 
