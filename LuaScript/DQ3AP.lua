@@ -21,4 +21,98 @@ function AP.CheckLocation(TreasureId)
   end
 end
 
+-- checks if the given item is gold
+function AP.IsItemGold(ItemId)
+    local count = string.match(ItemId, "^GOLD_(%d+)$")
+    return count ~= nil, tonumber(count)
+end
+
+-- set specific important flags if ItemId needs to have those flags set
+function AP.SetSpecialFlags(ItemId)
+  if ItemId == "ITEM_IMPORTANT_WRECKING_BALL" then
+    SetFlag(Flag.FE57, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
+  elseif ItemId == "ITEM_IMPORTANT_THIEFS_KEY" then
+    SetFlag(Flag.FE54, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
+  end
+end
+
+-- give the specified item to the player
+function AP.GiveItem(ItemId)
+  local isGold, goldCount = AP.IsItemGold(ItemId)
+  local receptor = 0
+  if isGold then
+    AddGold(goldCount)
+    SetTagValue(goldCount)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_8")
+  elseif ItemId ~= "None" then
+    receptor = AddItem(ItemId)
+    SetTagItemId(ItemId)
+    if receptor == 0 then
+      if IsRareItem(ItemId) then
+        PlayJingleOnGetItemRareDefaultFade()
+        CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+        WaitPlayJingle()
+      else
+        PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+        CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+      end
+      if GetItemType(ItemId) == EItemTypeITEM_IMPORTANT then
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+      else
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_7")
+      end
+    elseif receptor == -2 then
+      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+      CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+      if GetFlag(Flag.FE962) == false then
+        CloseMessage()
+        CmdCallTutorialUI("INFORMATION_MEDAL")
+        SetFlag(Flag.FE962, true)
+      end
+    elseif 0 < receptor then
+      if IsRareItem(ItemId) then
+        PlayJingleOnGetItemRareDefaultFade()
+        SetTagActorFromParty(receptor - 1)
+        CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+        WaitPlayJingle()
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+      else
+        PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+        SetTagActorFromParty(receptor - 1)
+        CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+      end
+    elseif receptor == -1 then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
+    end
+  end
+  AP.SetSpecialFlags(ItemId)
+end
+
+-- check if there is available items and if yes then gives them to the player
+function AP.GiveItemsIfAvailable()
+  local file = io.open("Archipelago/items.data", "r")
+  if file then
+    local hasContent = file:read("*l")
+    if hasContent then
+      file:seek("set", 0)
+      for line in file:lines() do
+        AP.Log("Available item: " .. line)
+        AP.GiveItem(line)
+      end
+    end
+    file:close()
+    if hasContent then
+      local clearFile = io.open("Archipelago/items.data", "w")
+      if clearFile then
+          clearFile:close()
+      end
+    end
+  end
+end
+
 return AP

@@ -1,3 +1,5 @@
+local AP = require("Src/DQ3AP") -- AP
+
 function OpenFieldTopDirect(BeginOverlap, table, ...)
   print("OpenFieldTopDirect Begin")
   
@@ -386,6 +388,9 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     })
   end
   AddTransitionTime(_MapId, "TransitionEnd")
+  -- AP
+  AP.GiveItemsIfAvailable();
+  -- AP end
 end
 
 function TransitionBattle(BeginOverlap, tbl, ...)
@@ -584,6 +589,9 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
     StartRetryBattle()
   end
   print("TransitionBattleToLevel End")
+  -- AP
+  AP.GiveItemsIfAvailable();
+  -- AP end
 end
 
 function TransitionInn()
@@ -637,6 +645,9 @@ function TransitionInn()
     FinishTransition()
   end
   print("TransitionInn End")
+  -- AP
+  AP.GiveItemsIfAvailable();
+  -- AP end
 end
 
 function GetStartPos(_startPointName)

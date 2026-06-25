@@ -24,13 +24,13 @@ class Connect:
 # Every region can connect to other regions with an optional connection rule if needed
 ALL_REGIONS: dict[str, list[Connect]] = {
     "Aliahan": [
+        Connect("Aliahan Continent"),
         Connect("Aliahan Castle"),
     ],
     "Aliahan Castle": [
         Connect("Dreamer's Tower", rules.HAS_THIEF_KEY),
     ],
     "Aliahan Continent": [
-        Connect("Aliahan"),
         Connect("Reeve"),
         Connect("Shrine of the Plains"),
         Connect("Promontory Passage"),

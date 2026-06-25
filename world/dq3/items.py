@@ -22,7 +22,7 @@ class Info:
 # format: "Item name": (id, classification, quantity)
 ALL_ITEMS: dict[str, Info] = {
     # GOLD
-    "31 Gold": Info(2), #GOLD_31 #when giving gold, check for amount in id then give gold amount
+    "31 Gold": Info(2), #GOLD_31
     "50 Gold": Info(8), #GOLD_50
     "12 Gold": Info(12, quantity=2), #GOLD_12
     "6 Gold": Info(14, quantity=2), #GOLD_6
