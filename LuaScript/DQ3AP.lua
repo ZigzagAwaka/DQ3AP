@@ -35,6 +35,9 @@ function AP.SetSpecialFlags(ItemId)
   elseif ItemId == "ITEM_IMPORTANT_THIEFS_KEY" then
     SetFlag(Flag.FE54, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
+  elseif ItemId == "ITEM_IMPORTANT_WAKEY_DUST" then
+    SetFlag(Flag.FE61, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_ELFVILLAGE_GetWakeyDust, true)
   end
 end
 

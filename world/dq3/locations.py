@@ -122,12 +122,120 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Path of Promise] Chest in right room B3": Info(88, rules.HAS_THIEF_KEY), #SEARCH_IzanaiCave_B3FA_TREASURE_NORMAL_0
     "[Path of Promise] Pot 1 in left room B3": Info(89, rules.HAS_THIEF_KEY), #SEARCH_IzanaiCave_B3FA_POT_0
     "[Path of Promise] Pot 2 in left room B3": Info(90, rules.HAS_THIEF_KEY), #SEARCH_IzanaiCave_B3FA_POT_1
-    "[Path of Promise] Chest in the bottom B3 Hole": Info(91), #SEARCH_IzanaiCave_B3FB_TREASURE_NORMAL_0
-    "[Path of Promise] Pot 1 in the top left B3 Hole": Info(92), #SEARCH_IzanaiCave_B3FB_POT_0
-    "[Path of Promise] Pot 2 in the top right B3 Hole": Info(93), #SEARCH_IzanaiCave_B3FB_POT_1
+    "[Path of Promise] Chest in bottom B3 Hole": Info(91), #SEARCH_IzanaiCave_B3FB_TREASURE_NORMAL_0
+    "[Path of Promise] Pot 1 in top left B3 Hole": Info(92), #SEARCH_IzanaiCave_B3FB_POT_0
+    "[Path of Promise] Pot 2 in top right B3 Hole": Info(93), #SEARCH_IzanaiCave_B3FB_POT_1
     # ----- Shrine of Promise -----
     "[Shrine of Promise] Hidden Ground in the bottom left corner": Info(94), #SEARCH_IzanaiShrine_1F_GROUND_0
     "[Shrine of Promise] Pot near stairs": Info(95), #SEARCH_IzanaiShrine_1F_POT_0
+    # ----- Romaria -----
+    "[Romaria] Hidden Ground near right wall of Romaria Castle": Info(96), #SEARCH_Romaria_Out_GROUND_0
+    "[Romaria] Hidden Ground": Info(97), #SEARCH_Romaria_Out_GROUND_1
+    "[Romaria] Pot near Monster Arena": Info(98), #SEARCH_Romaria_Out_POT_0
+    "[Romaria] Pot in left house garden": Info(99), #SEARCH_Romaria_Out_POT_1
+    "[Romaria] Barrel near Inn": Info(100), #SEARCH_Romaria_Out_BARREL_0
+    "[Romaria] Barrel near right entrance": Info(101), #SEARCH_Romaria_Out_BARREL_1
+    "[Romaria] Barrel on the left of the Item Shop": Info(102), #SEARCH_Romaria_Out_BARREL_2
+    "[Romaria] Drawer 1 in Inn": Info(103), #SEARCH_Romaria_Inn_1F_DRAWER_0
+    #"[Romaria] Event": Info(104), #SEARCH_Romaria_Inn_1F_EVENT_0 # no items here
+    "[Romaria] Drawer 2 in Inn": Info(105), #SEARCH_Romaria_Inn_2F_DRAWER_0
+    "[Romaria] Drawer in left house": Info(106), #SEARCH_Romaria_House_DRAWER_0
+    "[Romaria] Pot in left house": Info(107), #SEARCH_Romaria_House_POT_0
+    "[Romaria] Drawer in Church": Info(108), #SEARCH_Romaria_Church_DRAWER_0
+    "[Romaria] Bookshelf in Church": Info(109), #SEARCH_Romaria_Church_BOOKSHELF_0
+    "[Romaria] Pot in Item Shop": Info(110), #SEARCH_Romaria_Shop_POT_0
+    "[Romaria] Pot at the back of the Monster Arena": Info(111), #SEARCH_Romaria_BattleRoad_POT_0
+    "[Romaria] Pot near stairs in Monster Arena": Info(112), #SEARCH_Romaria_BattleRoad_BARREL_0
+    # ----- Romaria Castle -----
+    "[Romaria Castle] Hidden Ground in bottom right garden": Info(113), #SEARCH_Romaria_Castle_1F_GROUND_0
+    "[Romaria Castle] Hidden Ground right of the fountain in the top garden": Info(114, rules.HAS_MAGIC_KEY), #SEARCH_Romaria_Castle_1F_GROUND_1
+    "[Romaria Castle] Pot in the bottom right area": Info(115), #SEARCH_Romaria_Castle_1F_POT_0
+    "[Romaria Castle] Pot in the top right area": Info(116), #SEARCH_Romaria_Castle_1F_POT_1
+    "[Romaria Castle] Pot top right of the center garden": Info(117), #SEARCH_Romaria_Castle_1F_POT_2
+    "[Romaria Castle] Pot top left of the center garden": Info(118), #SEARCH_Romaria_Castle_1F_POT_3
+    "[Romaria Castle] Barrel in the top left area": Info(119), #SEARCH_Romaria_Castle_1F_BARREL_0
+    "[Romaria Castle] Hidden Ground near the top right corner 2F": Info(120), #SEARCH_Romaria_Castle_2F_GROUND_0
+    "[Romaria Castle] Pot left of the stairs 2F": Info(121), #SEARCH_Romaria_Castle_2F_POT_0
+    "[Romaria Castle] Pot right of the stairs 2F": Info(122), #SEARCH_Romaria_Castle_2F_POT_1
+    "[Romaria Castle] Bookshelf in East Tower room": Info(123), #SEARCH_Romaria_Castle_4F_A_BOOKSHELF_0
+    "[Romaria Castle] Drawer in East Tower room": Info(124), #SEARCH_Romaria_Castle_4F_A_DRAWER_0
+    "[Romaria Castle] Hidden Ground in West Tower room": Info(125, rules.HAS_ULTIMATE_KEY), #SEARCH_Romaria_Castle_4F_B_GROUND_0
+    "[Romaria Castle] Chest 1 in treasure room B1": Info(126, rules.HAS_ULTIMATE_KEY), #SEARCH_Romaria_Castle_B1_TREASURE_NORMAL_0
+    "[Romaria Castle] Chest 2 in treasure room B1": Info(127, rules.HAS_ULTIMATE_KEY), #SEARCH_Romaria_Castle_B1_TREASURE_NORMAL_1
+    # ----- Romarian Road -----
+    "[Romarian Road] Barrel near top entrance": Info(128), #SEARCH_RomariaHighroad_Out_BARREL_0
+    # ----- Romarian Outpost -----
+    "[Romarian Outpost] Hidden Ground on rock near bottom right entrance": Info(129), #SEARCH_RomariaBarrier_Out_GROUND_0
+    "[Romarian Outpost] Pot near right entrance": Info(130), #SEARCH_RomariaBarrier_Out_POT_0
+    "[Romarian Outpost] Hidden Ground in top left corner of the Passage portal room": Info(131, rules.HAS_ULTIMATE_KEY), #SEARCH_RomariaBarrier_B1F_GROUND_0 #REQUIRES THE ULTIMATE KEY UNLESS COMING FROM THE OTHER SIDE OF THE PORTAL UNLESS THE OTHER SIDE IS LOCKED BY A ULTIMATE KEY DOOR
+    "[Romarian Outpost] Hidden Ground near left Passage entrance": Info(132, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_GROUND_1
+    "[Romarian Outpost] Barrel on Passage top wall": Info(133, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_BARREL_0
+    # ----- Khoryv -----
+    "[Khoryv] Hidden Ground on bottom right grave in graveyard": Info(134), #SEARCH_Kazave_Out_GROUND_0
+    "[Khoryv] Pot on top right house wall": Info(135), #SEARCH_Kazave_Out_POT_0
+    "[Khoryv] Barrel near Inn": Info(136), #SEARCH_Kazave_Out_BARREL_0
+    "[Khoryv] Chest 1 in Item Shop (night)": Info(137, rules.HAS_THIEF_KEY), #SEARCH_Kazave_Shop_TREASURE_NORMAL_0
+    "[Khoryv] Chest 2 in Item Shop (night)": Info(138, rules.HAS_THIEF_KEY), #SEARCH_Kazave_Shop_TREASURE_NORMAL_1
+    "[Khoryv] Drawer in Item Shop": Info(139, rules.HAS_THIEF_KEY), #SEARCH_Kazave_Shop_DRAWER_0
+    "[Khoryv] Barrel in Bar (day)": Info(140), #SEARCH_Kazave_Bar_1F_BARREL_0
+    "[Khoryv] Drawer in back Bar": Info(141), #SEARCH_Kazave_Bar_2F_DRAWER_0
+    "[Khoryv] Barrel in back Bar": Info(142), #SEARCH_Kazave_Bar_2F_BARREL_1
+    "[Khoryv] Drawer 1 in Inn": Info(143), #SEARCH_Kazave_Inn_1F_DRAWER_0
+    "[Khoryv] Drawer 2 in Inn": Info(144), #SEARCH_Kazave_Inn_1F_DRAWER_1
+    # ----- Norvik -----
+    "[Norvik] Barrel at the back of Inn": Info(145), #SEARCH_Noaniel_Out_BARREL_0
+    "[Norvik] Barrel near top right house": Info(146), #SEARCH_Noaniel_Out_BARREL_1
+    "[Norvik] Hidden Ground near left entrance": Info(147), #SEARCH_Noaniel_Out_GROUND_0
+    "[Norvik] Hidden Ground near right entrance": Info(148), #SEARCH_Noaniel_Out_GROUND_1
+    "[Norvik] Drawer 1 in Inn": Info(149), #SEARCH_Noaniel_Inn_2F_DRAWER_0
+    "[Norvik] Drawer 2 in Inn": Info(150), #SEARCH_Noaniel_Inn_2F_DRAWER_1
+    "[Norvik] Pot in Inn": Info(151), #SEARCH_Noaniel_Inn_2F_POT_0
+    "[Norvik] Sack in Inn": Info(152), #SEARCH_Noaniel_Inn_2F_SACK_0
+    "[Norvik] Pot in Item Shop": Info(153), #SEARCH_Noaniel_Shop_POT_0
+    "[Norvik] Pot in top right house": Info(154), #SEARCH_Noaniel_Room01_1F_POT_0
+    "[Norvik] Pot in bottom left house": Info(155), #SEARCH_Noaniel_Room02_1F_POT_0
+    "[Norvik] Bookshelf in bottom left house": Info(156), #SEARCH_Noaniel_Room02_2F_BOOKSHELF_0
+    "[Norvik] Chest in bottom left house": Info(157), #SEARCH_Noaniel_Room02_2F_TREASURE_NORMAL_0
+    # ----- Faerie Village -----
+    "[Faerie Village] Hidden Ground left of Faerie Queen house": Info(158), #SEARCH_ElfVillage_Out_GROUND_0
+    "[Faerie Village] Hidden Ground near right of lake": Info(159), #SEARCH_ElfVillage_Out_GROUND_1
+    "[Faerie Village] Hidden Ground near the middle left entrance, south of the Item Shop": Info(160), #SEARCH_ElfVillage_Out_GROUND_2
+    "[Faerie Village] Pot near right entrance": Info(161), #SEARCH_ElfVillage_Out_POT_0
+    "[Faerie Village] Pot near lake": Info(162), #SEARCH_ElfVillage_Out_POT_1
+    "[Faerie Village] Pot right of the Item Shop": Info(163), #SEARCH_ElfVillage_Out_POT_2
+    "[Faerie Village] Hidden Ground in Faerie Queen house": Info(164), #SEARCH_ElfVillage_House_GROUND_0
+    "[Faerie Village] Reward from Faerie Queen after giving the Dreamstone": Info(165, rules.HAS_DREAMSTONE), #ElfVillage_House_SUB_0_VOLUME_0110_030
+    # ----- Underground Lake -----
+    "[Underground Lake] Chest at the dead end near the entrance": Info(166), #SEARCH_UndergroundLake_B1F_TREASURE_NORMAL_0
+    "[Underground Lake] Chest at the right dead end": Info(167), #SEARCH_UndergroundLake_B1F_TREASURE_NORMAL_1
+    "[Underground Lake] Chest in top left B2": Info(168), #SEARCH_UndergroundLake_B2F_A_TREASURE_NORMAL_0
+    "[Underground Lake] Chest in top right B2": Info(169), #SEARCH_UndergroundLake_B2F_A_TREASURE_NORMAL_1
+    "[Underground Lake] Chest in loop path B2": Info(170), #SEARCH_UndergroundLake_B2F_B3F_TREASURE_NORMAL_0
+    "[Underground Lake] Chest at bottom left dead end B3": Info(171), #SEARCH_UndergroundLake_B3F_TREASURE_NORMAL_0
+    "[Underground Lake] Chest at dead end near bottom stairs B3": Info(172), #SEARCH_UndergroundLake_B3F_TREASURE_NORMAL_1
+    "[Underground Lake] Chest 1 in center B3": Info(173), #SEARCH_UndergroundLake_B3F_TREASURE_NORMAL_2
+    "[Underground Lake] Chest 2 in center B3": Info(174), #SEARCH_UndergroundLake_B3F_TREASURE_NORMAL_3
+    "[Underground Lake] Wooden Box in center of altar B4": Info(175), #SEARCH_UndergroundLake_B4F_EVENT_0
+    "[Underground Lake] Chest at the end of the isolated path B4": Info(176), #SEARCH_UndergroundLake_B4F_TREASURE_NORMAL_0
+    # ----- Skyfell Tower -----
+    "[Skyfell Tower] Chest in bottom right area": Info(177), #SEARCH_ShampaneTower_1F_TREASURE_NORMAL_0
+    "[Skyfell Tower] Barrel on the path to the stairs": Info(178), #SEARCH_ShampaneTower_1F_BARREL_0
+    "[Skyfell Tower] Chest in bottom right area 2F": Info(179), #SEARCH_ShampaneTower_2F_TREASURE_NORMAL_0
+    "[Skyfell Tower] Barrel 1 on left wall in top area 2F": Info(180), #SEARCH_ShampaneTower_2F_BARREL_0
+    "[Skyfell Tower] Barrel 2 on left wall in top area 2F": Info(181), #SEARCH_ShampaneTower_2F_BARREL_1
+    "[Skyfell Tower] Chest near left wall of area near right stairs 3F": Info(182), #SEARCH_ShampaneTower_3F_TREASURE_NORMAL_0
+    "[Skyfell Tower] Pot 1 in bottom area 3F": Info(183), #SEARCH_ShampaneTower_3F_POT_0
+    "[Skyfell Tower] Pot 2 in bottom area 3F": Info(184), #SEARCH_ShampaneTower_3F_POT_1
+    "[Skyfell Tower] Robbin' 'Ood Boss Reward": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
+    "[Skyfell Tower] Chest in top right corner of inner tower 4F": Info(186), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_0
+    "[Skyfell Tower] Chest in top left corner of inner tower 4F": Info(187), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_1
+    "[Skyfell Tower] Pot on left wall exterior of inner tower 4F": Info(188), #SEARCH_ShampaneTower_4F_POT_0
+    "[Skyfell Tower] Pot at bottom 4F": Info(189), #SEARCH_ShampaneTower_4F_POT_1
+    "[Skyfell Tower] Pot in inner tower 4F": Info(190), #SEARCH_ShampaneTower_4F_POT_2
+    "[Skyfell Tower] Chest 1 in final floor 6F": Info(191), #SEARCH_ShampaneTower_6F_TREASURE_NORMAL_0
+    "[Skyfell Tower] Chest 2 in final floor 6F": Info(192), #SEARCH_ShampaneTower_6F_TREASURE_NORMAL_1
+    # ----- Nordy's Grotto -----
+    # ----- Asham -----
 }
 
 

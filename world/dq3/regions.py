@@ -50,9 +50,38 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Shrine of Promise", rules.HAS_THIEF_KEY),
     ],
     "Shrine of Promise": [
+        Connect("Romaria"),
+        Connect("Romarian Road"),
+    ],
+    "Romaria": [
+        Connect("Romaria Castle"),
+    ],
+    "Romaria Castle": [],
+    "Romarian Road": [
         Connect("Overworld"),
     ],
-    "Overworld": [],
+    "Overworld": [
+        Connect("Romarian Outpost"),
+        Connect("Khoryv"),
+        Connect("Norvik"),
+        Connect("Faerie Village"),
+        Connect("Underground Lake"),
+        Connect("Skyfell Tower"),
+        Connect("Nordy's Grotto"),
+        Connect("Asham"),
+    ],
+    "Romarian Outpost": [
+        #Connect("xxxxxx", rules.HAS_ULTIMATE_KEY), #PORTAL IN PASSAGE
+    ],
+    "Khoryv": [],
+    "Norvik": [],
+    "Faerie Village": [],
+    "Underground Lake": [],
+    "Skyfell Tower": [],
+    "Nordy's Grotto": [
+        #Connect("xxxxxx", rules.xxxx), #RIGHT ENTRANCE BLOCKED
+    ],
+    "Asham": [],
 }
 
 
