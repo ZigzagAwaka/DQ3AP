@@ -57,6 +57,22 @@ The game will cache the received items then give them all to the player when one
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
 
+### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
+
+You can play in singleplayer by generating a world with only this game, then connect and play as usual.
+
+As items are all remotely implemented for now, you will still find multiworld items and receive your own items as if someone else was giving it to you but besides that it's completely playable.
+
+### What about saving ?
+
+Make sure to always save the game before turning it off !
+
+If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to check again but actually checking it will have no effect since it was already checked by the Archipelago server.
+
+If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
+
+*Planned : Add auto-saving when receiving an item.*
+
 ### Can I go back to previously explored areas ?
 
 If you don't want to walk back to previous areas, then you can collect and use a Chimera Wing or level up and learn Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.

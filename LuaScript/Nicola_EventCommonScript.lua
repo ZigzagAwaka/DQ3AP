@@ -316,6 +316,21 @@ function CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCou
   print("Treasure_Enemy execute, TreasureId : " .. tostring(TreasureId) .. ", Item : " .. tostring(ItemId) .. ", Count : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))
   print("CanObtainItem=" .. tostring(CanObtainItem))
   if CanObtainItem then
+    -- AP
+    AP.Log("CmdTreasure_Enemy called with TreasureId : " .. tostring(TreasureId) .. ", Item : " .. tostring(ItemId) .. ", Count : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))
+    AP.CheckLocation(TreasureId)
+    ItemId = "ITEM_ARCHIPELAGO"
+    AddItem(ItemId)
+    SetTagItemId(ItemId)
+    CmdLoadItemIcon(ItemId)
+    CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    if ItemId == "ITEM_ARCHIPELAGO" then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_STORAGE_4")
+      return
+    end
+    -- AP end
     RequestPreloadEventBattle(EnemyId)
     PlaySEUI("SYSSE_TD_TREASURE_BOX")
     CmdPlayOpenAnimSearchObj(eventInfo[1])

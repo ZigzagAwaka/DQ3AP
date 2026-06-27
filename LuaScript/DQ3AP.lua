@@ -27,6 +27,12 @@ function AP.IsItemGold(ItemId)
     return count ~= nil, tonumber(count)
 end
 
+-- checks if the given item is an enemy
+function AP.IsItemEnemy(ItemId)
+    local enemy = string.match(ItemId, "^BATTLE_")
+    return enemy ~= nil
+end
+
 -- set specific important flags if ItemId needs to have those flags set
 function AP.SetSpecialFlags(ItemId)
   if ItemId == "ITEM_IMPORTANT_WRECKING_BALL" then
@@ -38,14 +44,31 @@ function AP.SetSpecialFlags(ItemId)
   elseif ItemId == "ITEM_IMPORTANT_WAKEY_DUST" then
     SetFlag(Flag.FE61, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_ELFVILLAGE_GetWakeyDust, true)
+  elseif ItemId == "ITEM_IMPORTANT_DREAMSTONE" then
+    SetFlag(Flag.FE60, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true)
+  elseif ItemId == "ITEM_EQUIP_HELMET_KINGS_CROWN" then
+    SetFlag(Flag.FE59, true)
+  elseif ItemId == "ITEM_IMPORTANT_MAGIC_KEY" then
+    SetFlag(Flag.FE55, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PYRAMID_GetMagicKey, true)
   end
 end
 
 -- give the specified item to the player
 function AP.GiveItem(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
+  local isEnemy = AP.IsItemEnemy(ItemId)
   local receptor = 0
-  if isGold then
+  if isEnemy then
+    RequestPreloadEventBattle(ItemId)
+    local MonsterTextId = GetEventBattleMonsterTextId(ItemId)
+    SetTagWord(MonsterTextId)
+    CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_1")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_9")
+    CloseMessage()
+    CmdStartEventBattle(ItemId)
+  elseif isGold then
     AddGold(goldCount)
     SetTagValue(goldCount)
     PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
