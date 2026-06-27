@@ -67,8 +67,11 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Faerie Village"),
         Connect("Underground Lake"),
         Connect("Skyfell Tower"),
-        Connect("Nordy's Grotto"),
+        Connect("Nordy's Grotto", rules.HAS_THIEF_KEY),
         Connect("Asham"),
+        Connect("Desert Shrine"),
+        Connect("Ibis"),
+        Connect("Pyramid"),
     ],
     "Romarian Outpost": [
         #Connect("xxxxxx", rules.HAS_ULTIMATE_KEY), #PORTAL IN PASSAGE
@@ -78,10 +81,14 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Faerie Village": [],
     "Underground Lake": [],
     "Skyfell Tower": [],
-    "Nordy's Grotto": [
-        #Connect("xxxxxx", rules.xxxx), #RIGHT ENTRANCE BLOCKED
-    ],
+    "Nordy's Grotto": [],
     "Asham": [],
+    "Desert Shrine": [],
+    "Ibis": [
+        Connect("Palace of Ibis"),
+    ],
+    "Palace of Ibis": [],
+    "Pyramid": [],
 }
 
 

@@ -15,8 +15,10 @@ if TYPE_CHECKING:
 HAS_WRECKING_BALL = Has("Wrecking Ball")
 HAS_THIEF_KEY = Has("Thief's Key")
 HAS_MAGIC_KEY = Has("Magic Key")
+HAS_THIEF_AND_MAGIC_KEYS = HAS_THIEF_KEY & HAS_MAGIC_KEY
 HAS_ULTIMATE_KEY = Has("Ultimate Key")
 HAS_DREAMSTONE = Has("Dreamstone")
+HAS_MISSIVE = Has("Missive")
 
 
 def set_all_rules(world: DQ3World) -> None:

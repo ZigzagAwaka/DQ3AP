@@ -235,7 +235,123 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Skyfell Tower] Chest 1 in final floor 6F": Info(191), #SEARCH_ShampaneTower_6F_TREASURE_NORMAL_0
     "[Skyfell Tower] Chest 2 in final floor 6F": Info(192), #SEARCH_ShampaneTower_6F_TREASURE_NORMAL_1
     # ----- Nordy's Grotto -----
+    "[Nordy's Grotto] Chest 1 in Nordy's room": Info(193), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_0
+    "[Nordy's Grotto] Chest 2 in Nordy's room": Info(194), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_1
+    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_MISSIVE), #SEARCH_NorudCave_B1F_BARREL_1
+    "[Nordy's Grotto] Barrel in Nordy's room": Info(196), #SEARCH_NorudCave_B1F_BARREL_2
+    "[Nordy's Grotto] Hidden Ground on right wall in well": Info(197), #SEARCH_NorudCave_Well_GROUND_0
+    "[Nordy's Grotto] Hidden Ground on bottom left wall in well": Info(198), #SEARCH_NorudCave_Well_GROUND_1
     # ----- Asham -----
+    "[Asham] Barrel between two houses left of the Item Shop": Info(199), #SEARCH_Ashalam_Out_BARREL_0
+    "[Asham] Barrel in the top left corner": Info(200), #SEARCH_Ashalam_Out_BARREL_1
+    "[Asham] Pot near right house": Info(201), #SEARCH_Ashalam_Out_POT_0
+    "[Asham] Pot near Hotel": Info(202), #SEARCH_Ashalam_Out_POT_1
+    "[Asham] Storage in Puff Puff house (night)": Info(203), #SEARCH_Ashalam_House01_2F_STORAGE_0
+    "[Asham] Pot in top left house": Info(204, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_1F_POT_0
+    "[Asham] Hidden Ground on top right square tile floor in top left house": Info(205, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_2F_GROUND_0
+    "[Asham] Bookshelf in locked room in top left house": Info(206, rules.HAS_THIEF_AND_MAGIC_KEYS), #SEARCH_Ashalam_House02_2F_BOOKSHELF_0
+    "[Asham] Pot in right house": Info(207), #SEARCH_Ashalam_House03_POT_0
+    "[Asham] Storage in Hotel": Info(208), #SEARCH_Ashalam_Hotel_STORAGE_0
+    "[Asham] Pot in Hotel": Info(209), #SEARCH_Ashalam_Hotel_POT_0
+    "[Asham] Hidden Ground near bottom chair in Theather back room": Info(210, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_Theater_GROUND_0
+    #"[Asham] Event": Info(211), #SEARCH_Ashalam_Theater_EVENT_0 # no items here
+    # ----- Desert Shrine -----
+    "[Desert Shrine] Pot in the top left corner": Info(212), #SEARCH_DesertShrine_1F_POT_0
+    "[Desert Shrine] Bookshelf in top right corner": Info(213), #SEARCH_DesertShrine_1F_BOOKSHELF_0
+    "[Desert Shrine] Drawer on the left": Info(214), #SEARCH_DesertShrine_1F_DRAWER_0
+    # ----- Ibis -----
+    "[Ibis] Hidden Ground near left of well": Info(215), #SEARCH_Isis_Out_GROUND_0
+    "[Ibis] Hidden Ground in the bottom left field": Info(216), #SEARCH_Isis_Out_GROUND_1
+    "[Ibis] Pot near left house": Info(217), #SEARCH_Isis_Out_POT_0
+    "[Ibis] Pot near Equipment Shop": Info(218), #SEARCH_Isis_Out_POT_1
+    "[Ibis] Barrel near right Item Shop": Info(219), #SEARCH_Isis_Out_BARREL_0
+    "[Ibis] Sack in left house": Info(220), #SEARCH_Isis_HouseA1F_SACK_0
+    "[Ibis] Hidden Ground on bottom left corner in left house": Info(221), #SEARCH_Isis_HouseA1F_GROUND_0
+    "[Ibis] Storage in left house": Info(222), #SEARCH_Isis_HouseA2F_STORAGE_0
+    "[Ibis] Sack in center locked house (night)": Info(223, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB1F_SACK_0
+    "[Ibis] Bookshelf in center locked house (night)": Info(224, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB2F_BOOKSHELF_0
+    "[Ibis] Storage in Inn": Info(225), #SEARCH_Isis_Inn_STORAGE_0
+    "[Ibis] Pot in Equipment Shop": Info(226), #SEARCH_Isis_WeaponShop_POT_0
+    "[Ibis] Chest in well": Info(227), #SEARCH_Isis_Well_TREASURE_NORMAL_0
+    "[Ibis] Barrel at the back of the Monster Arena": Info(228), #SEARCH_Isis_BattleRoad_BARREL_0
+    "[Ibis] Pot on the right of the Monster Arena": Info(229), #SEARCH_Isis_BattleRoad_POT_0
+    # ----- Palace of Ibis -----
+    "[Palace of Ibis] Hidden Ground in the Surroundings isolated area after going through the Secret Passage": Info(230), #SEARCH_Isis_Castle_Out_GROUND_0
+    "[Palace of Ibis] Chest 1 in top left room (night)": Info(231, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_0
+    "[Palace of Ibis] Chest 2 in top left room (night)": Info(232, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_1
+    "[Palace of Ibis] Chest 3 in top left room (night)": Info(233, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_2
+    "[Palace of Ibis] Chest 4 in top left room (night)": Info(234, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_3
+    "[Palace of Ibis] Chest 1 in top right room (night)": Info(235, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_4
+    "[Palace of Ibis] Chest 2 in top right room (night)": Info(236, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_5
+    "[Palace of Ibis] Chest 3 in top right room (night)": Info(237, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_6
+    "[Palace of Ibis] Chest 4 in top right room (night)": Info(238, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_7
+    "[Palace of Ibis] Drawer in the right room": Info(239, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_DRAWER_0
+    "[Palace of Ibis] Bookshelf in the bottom right room": Info(240, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_BOOKSHELF_0
+    "[Palace of Ibis] Pot in the left room": Info(241, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_0
+    "[Palace of Ibis] Pot in the bottom left room": Info(242, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_1
+    "[Palace of Ibis] Hidden Ground on throne (night) 2F": Info(243), #SEARCH_Isis_Castle_2F_GROUND_0
+    "[Palace of Ibis] Hidden Ground near top right corner of the balcony 2F": Info(244), #SEARCH_Isis_Castle_2F_Out_GROUND_0
+    "[Palace of Ibis] Hidden Ground at the back of the queen's bed (night) 3F": Info(245, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_3F_GROUND_0
+    "[Palace of Ibis] Chest guarded by ghost after going through the Secret Passage B2": Info(246), #SEARCH_Isis_Castle_B2F_TREASURE_IMPORTANT_0
+    # ----- Pyramid -----
+    "[Pyramid] Chest at the left of the top left corner room 1F": Info(247), #SEARCH_Pyramid_1F_TREASURE_NORMAL_0
+    "[Pyramid] Chest 1 at the right of the top left corner room 1F": Info(248), #SEARCH_Pyramid_1F_TREASURE_NORMAL_1 # empty in vanilla
+    "[Pyramid] Chest 2 at the right of the top left corner room 1F": Info(249), #SEARCH_Pyramid_1F_TREASURE_NORMAL_2
+    "[Pyramid] Chest 3 at the right of the top left corner room 1F": Info(250), #SEARCH_Pyramid_1F_TREASURE_ENEMY_3
+    "[Pyramid] Chest 4 at the right of the top left corner room 1F": Info(251), #SEARCH_Pyramid_1F_TREASURE_NORMAL_4
+    "[Pyramid] Chest 1 in the second left corridor 1F": Info(252), #SEARCH_Pyramid_1F_TREASURE_NORMAL_5
+    "[Pyramid] Chest 2 in the second left corridor 1F": Info(253), #SEARCH_Pyramid_1F_TREASURE_ENEMY_6
+    "[Pyramid] Chest 3 in the second left corridor 1F": Info(254), #SEARCH_Pyramid_1F_TREASURE_ENEMY_7
+    "[Pyramid] Chest in the first left corridor 1F": Info(255), #SEARCH_Pyramid_1F_TREASURE_NORMAL_8 # empty in vanilla
+    "[Pyramid] Chest in the first right corridor 1F": Info(256), #SEARCH_Pyramid_1F_TREASURE_NORMAL_9
+    #"[Pyramid] Event Statue": Info(257), #SEARCH_Pyramid_1F_EVENT_STATUE_0 # no items here
+    "[Pyramid] Pot in the middle of the two first corridors 1F": Info(258), #SEARCH_Pyramid_1F_POT_0
+    "[Pyramid] Pot at the dead end after the two second corridors 1F": Info(259), #SEARCH_Pyramid_1F_POT_1
+    "[Pyramid] Chest at the middle left dead end 2F": Info(260), #SEARCH_Pyramid_2F_TREASURE_NORMAL_0
+    "[Pyramid] Pot on the left of the first stairs 2F": Info(261), #SEARCH_Pyramid_2F_POT_0
+    "[Pyramid] Pot in the center 2F": Info(262), #SEARCH_Pyramid_2F_POT_1
+    "[Pyramid] Pot at the bottom left corner 2F": Info(263), #SEARCH_Pyramid_2F_POT_2
+    "[Pyramid] Ripper of the Rift Boss Reward Chest 1": Info(264), #SEARCH_Pyramid_3F_TREASURE_NORMAL_0
+    "[Pyramid] Ripper of the Rift Boss Reward Chest 2": Info(265), #SEARCH_Pyramid_3F_TREASURE_IMPORTANT_0
+    #"[Pyramid] Event Switch 1": Info(266), #SEARCH_Pyramid_3F_EVENT_SWITCH_1 # no items here
+    #"[Pyramid] Event Switch 2": Info(267), #SEARCH_Pyramid_3F_EVENT_SWITCH_2 # no items here
+    #"[Pyramid] Event Switch 3": Info(268), #SEARCH_Pyramid_3F_EVENT_SWITCH_3 # no items here
+    #"[Pyramid] Event Switch 4": Info(269), #SEARCH_Pyramid_3F_EVENT_SWITCH_4 # no items here
+    #"[Pyramid] Event Door": Info(270), #SEARCH_Pyramid_3F_EVENT_DOOR_0 # no items here
+    "[Pyramid] Chest 1 in treasure room 4F": Info(271, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_0
+    "[Pyramid] Chest 2 in treasure room 4F": Info(272, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_1
+    "[Pyramid] Chest 3 in treasure room 4F": Info(273, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_2
+    "[Pyramid] Chest 4 in treasure room 4F": Info(274, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_3
+    "[Pyramid] Chest 5 in treasure room 4F": Info(275, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_4
+    "[Pyramid] Chest 6 in treasure room 4F": Info(276, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_5
+    "[Pyramid] Chest 7 in treasure room 4F": Info(277, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_6
+    "[Pyramid] Chest 8 in treasure room 4F": Info(278, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_7
+    "[Pyramid] Chest 9 in treasure room 4F": Info(279, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_8
+    "[Pyramid] Chest 10 in treasure room 4F": Info(280, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_9
+    "[Pyramid] Chest 11 in treasure room 4F": Info(281, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_10
+    "[Pyramid] Chest 12 in treasure room 4F": Info(282, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_11
+    "[Pyramid] Chest 13 in treasure room 4F": Info(283, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_12
+    "[Pyramid] Chest 14 in treasure room 4F": Info(284, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_TREASURE_PYRAMID_13
+    #"[Pyramid] Event Coffin": Info(285, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_0 # no items here
+    #"[Pyramid] Event Coffin": Info(286, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_1 # no items here
+    #"[Pyramid] Event Coffin": Info(287, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_2 # no items here
+    #"[Pyramid] Event Coffin": Info(288, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_3 # no items here
+    #"[Pyramid] Event Coffin": Info(289, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_4 # no items here
+    #"[Pyramid] Event Coffin": Info(290, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_5 # no items here
+    #"[Pyramid] Event Coffin": Info(291, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_6 # no items here
+    #"[Pyramid] Event Coffin": Info(292, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_7 # no items here
+    #"[Pyramid] Event Coffin": Info(293, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_8 # no items here
+    #"[Pyramid] Event Coffin": Info(294, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_9 # no items here
+    #"[Pyramid] Event Coffin": Info(295, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_10 # no items here
+    #"[Pyramid] Event Coffin": Info(296, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_11 # no items here
+    #"[Pyramid] Event Coffin": Info(297, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_12 # no items here
+    #"[Pyramid] Event Coffin": Info(298, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_4F_EVENT_COFFIN_13 # no items here
+    "[Pyramid] Chest on top wall 5F": Info(299, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_5F_TREASURE_NORMAL_0
+    "[Pyramid] Pot at the start of the loop path B1": Info(300), #SEARCH_Pyramid_B1F_POT_0
+    "[Pyramid] Pot in the top right corner of the loop path B1": Info(301), #SEARCH_Pyramid_B1F_POT_1
+    #"[Pyramid] Event": Info(302), #SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0 # no items here
+    "[Pyramid] Coffin in the secret underground room B2": Info(303), #SEARCH_Pyramid_B2FEVENT_COFFIN_0
+    "[Pyramid] Hidden Ground at the top of the Pyramid": Info(304, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_out_GROUND_0
 }
 
 
