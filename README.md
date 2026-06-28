@@ -82,7 +82,10 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 
 ### What other modifications are being made to the game ?
 
-For now, none, but this may change in future releases.
+Other modifications were implemented to nicely integrate Archipelago :
+
+- Major NPC (that gives an important item) will be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their non randomized items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay !
+- Once the Ship is unlocked, it will spawn near Aliahan instead of near Portoga to allow you to have easy access to it.
 
 ## Feedbacks and issues
 
