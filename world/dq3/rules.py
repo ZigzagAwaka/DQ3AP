@@ -17,7 +17,9 @@ HAS_THIEF_KEY = Has("Progressive Key", count=1)
 HAS_MAGIC_KEY = Has("Progressive Key", count=2)
 HAS_ULTIMATE_KEY = Has("Progressive Key", count=3)
 HAS_DREAMSTONE = Has("Dreamstone")
-HAS_MISSIVE = Has("Missive")
+HAS_ROYAL_MISSIVE = Has("Royal Missive")
+HAS_BLACK_PEPPER = Has("Black Pepper")
+BARAMOS_TMP = Has("Baramos") # TMP
 
 
 def set_all_rules(world: DQ3World) -> None:

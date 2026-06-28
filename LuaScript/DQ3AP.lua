@@ -43,6 +43,9 @@ function AP.ConvertSpecialItemIds(ItemId)
     --elseif not GetFlag(Flag.FE56) then
       --ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
     end
+  elseif ItemId == "ITEM_IMPORTANT_SHIP" then
+    AP.SetSpecialFlags(ItemId) --set ship flags before id conversion (discard id, ship is not a real item)
+    ItemId = "None"
   end
   return ItemId
 end
@@ -66,6 +69,20 @@ function AP.SetSpecialFlags(ItemId)
   elseif ItemId == "ITEM_IMPORTANT_MAGIC_KEY" then
     SetFlag(Flag.FE55, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PYRAMID_GetMagicKey, true)
+  elseif ItemId == "ITEM_IMPORTANT_ROYAL_MISSIVE" then
+    SetFlag(Flag.FE63, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_GetLetter, true)
+  elseif ItemId == "ITEM_IMPORTANT_BLACK_PEPPER" then
+    SetFlag(Flag.FE64, true)
+  elseif ItemId == "ITEM_IMPORTANT_SHIP" then
+    SetFlag(Flag.FE106, true)
+    SetFlag(Flag.FE734, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_TalkWithPepper, true)
+    SetFlag(Flag.FE801, true)
+    SetFlag(Flag.FE34, true)
+    SetFlag(Flag.FE107, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
   end
 end
 

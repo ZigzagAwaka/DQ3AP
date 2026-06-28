@@ -237,7 +237,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Nordy's Grotto -----
     "[Nordy's Grotto] Chest 1 in Nordy's room": Info(193), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_0
     "[Nordy's Grotto] Chest 2 in Nordy's room": Info(194), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_1
-    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_MISSIVE), #SEARCH_NorudCave_B1F_BARREL_1
+    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_ROYAL_MISSIVE), #SEARCH_NorudCave_B1F_BARREL_1
     "[Nordy's Grotto] Barrel in Nordy's room": Info(196), #SEARCH_NorudCave_B1F_BARREL_2
     "[Nordy's Grotto] Hidden Ground on right wall in well": Info(197), #SEARCH_NorudCave_Well_GROUND_0
     "[Nordy's Grotto] Hidden Ground on bottom left wall in well": Info(198), #SEARCH_NorudCave_Well_GROUND_1
@@ -355,26 +355,27 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Portoga -----
     "[Portoga] Hidden Ground at the back of the Item Shop": Info(305, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Out_GROUND_0
     "[Portoga] Hidden Ground in the bottom right area": Info(306), #SEARCH_Portoga_Out_GROUND_1
-    "[Portoga] xxxxxxxxx": Info(307), #SEARCH_Portoga_Out_GROUND_2
-    "[Portoga] xxxxxxxxx": Info(308), #SEARCH_Portoga_Out_EVENT_0
-    "[Portoga] xxxxxxxxx": Info(309), #SEARCH_Portoga_Out_POT_0
-    "[Portoga] xxxxxxxxx": Info(310), #SEARCH_Portoga_Out_POT_1
-    "[Portoga] xxxxxxxxx": Info(311), #SEARCH_Portoga_Out_POT_2
-    "[Portoga] xxxxxxxxx": Info(312), #SEARCH_Portoga_Out_POT_3
-    "[Portoga] xxxxxxxxx": Info(313), #SEARCH_Portoga_Out_BARREL_0
-    "[Portoga] xxxxxxxxx": Info(314), #SEARCH_Portoga_Out_BARREL_1
-    "[Portoga] xxxxxxxxx": Info(315), #SEARCH_Portoga_Out_BARREL_2
-    "[Portoga] xxxxxxxxx": Info(316), #SEARCH_Portoga_Inn_DRAWER_0
-    "[Portoga] xxxxxxxxx": Info(317), #SEARCH_Portoga_Room01_1F_SACK_0
-    "[Portoga] xxxxxxxxx": Info(318), #SEARCH_Portoga_Room02_B1F_POT_0
-    "[Portoga] xxxxxxxxx": Info(319), #SEARCH_Portoga_Room02_B1F_BOOKSHELF_0
+    "[Portoga] Hidden Ground at the top of the lighthouse": Info(307), #SEARCH_Portoga_Out_GROUND_2
+    #"[Portoga] Event": Info(308), #SEARCH_Portoga_Out_EVENT_0 # no items here
+    "[Portoga] Pot 1 at the end of the wooden bridge": Info(309), #SEARCH_Portoga_Out_POT_0
+    "[Portoga] Pot 2 at the end of the wooden bridge": Info(310), #SEARCH_Portoga_Out_POT_1
+    "[Portoga] Pot at the end of the left dock": Info(311), #SEARCH_Portoga_Out_POT_2
+    "[Portoga] Pot left of Portoga Castle": Info(312), #SEARCH_Portoga_Out_POT_3
+    "[Portoga] Barrel on the right of the right house": Info(313), #SEARCH_Portoga_Out_BARREL_0
+    "[Portoga] Barrel near Church": Info(314), #SEARCH_Portoga_Out_BARREL_1
+    "[Portoga] Barrel on the bottom right corner": Info(315), #SEARCH_Portoga_Out_BARREL_2
+    "[Portoga] Drawer in Inn": Info(316), #SEARCH_Portoga_Inn_DRAWER_0
+    "[Portoga] Sack in right house": Info(317, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Room01_1F_SACK_0
+    "[Portoga] Pot downstairs near the lighthouse": Info(318), #SEARCH_Portoga_Room02_B1F_POT_0
+    "[Portoga] Bookshelf downstairs near the lighthouse": Info(319), #SEARCH_Portoga_Room02_B1F_BOOKSHELF_0
+    "[Portoga] Gift from woman in the bottom right area after defeating Baramos": Info(320, rules.BARAMOS_TMP), #Portoga_Out_SUB_0_ACTOR_1010_010 #CHANGE THE RULE ONCE BARAMOS LOGIC IS FINISHED. FLAG FE90 IS BARAMOS
     # ----- Portoga Castle -----
-    "[Portoga Castle] xxxxxxxxx": Info(320), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_0
-    "[Portoga Castle] xxxxxxxxx": Info(321), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_1
-    "[Portoga Castle] xxxxxxxxx": Info(322), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_2
-    "[Portoga Castle] xxxxxxxxx": Info(323), #SEARCH_Portoga_Castle_1F_DRAWER_0
-    "[Portoga Castle] xxxxxxxxx": Info(324), #xxxxxxxxx
-    "[Portoga Castle] xxxxxxxxx": Info(325), #xxxxxxxxx
+    "[Portoga Castle] Chest 1 in middle room": Info(321, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_0
+    "[Portoga Castle] Chest 2 in middle room": Info(322, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_1
+    "[Portoga Castle] Chest 3 in middle room": Info(323, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_2
+    "[Portoga Castle] Drawer in top room": Info(324, rules.HAS_MAGIC_KEY), #SEARCH_Portoga_Castle_1F_DRAWER_0
+    "[Portoga Castle] Gift from Portoga King": Info(325), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_010
+    "[Portoga Castle] Reward from Portoga King after giving the Black Pepper": Info(326, rules.HAS_BLACK_PEPPER), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_020
 }
 
 

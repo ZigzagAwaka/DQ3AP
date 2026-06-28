@@ -41,7 +41,7 @@ ALL_ITEMS: dict[str, Info] = {
     "43 Gold": Info(59), #GOLD_43
     "135 Gold": Info(66), #GOLD_135
     "52 Gold": Info(69, quantity=2), #GOLD_52
-    "14 Gold": Info(70, quantity=2), #GOLD_14
+    "14 Gold": Info(70, quantity=3), #GOLD_14
     "56 Gold": Info(78), #GOLD_56
     "47 Gold": Info(85), #GOLD_47
     "22 Gold": Info(86), #GOLD_22
@@ -62,47 +62,48 @@ ALL_ITEMS: dict[str, Info] = {
     "1120 Gold": Info(136), #GOLD_1120
     "567 Gold": Info(138), #GOLD_567
     "710 Gold": Info(141), #GOLD_710
+    "67 Gold": Info(144), #GOLD_67
     # USABLE ITEMS
     "Holy Water": Info(1, quantity=5), #ITEM_USE_ITEM_HOLY_WATER
     "Chimera Wing": Info(3, quantity=10), #ITEM_USE_ITEM_CHIMERA_WING
     "Medical Herb": Info(4, quantity=11), #ITEM_USE_ITEM_MEDICAL_HERB
     "Antidotal Herb": Info(6, quantity=6), #ITEM_USE_ITEM_ANTIDOTAL_HERB
     "Magic Water": Info(10, quantity=7), #ITEM_USE_ITEM_MAGIC_WATER
-    "Unsealant": Info(16, quantity=4), #ITEM_USE_ITEM_WHISPERING_NECTAR
+    "Unsealant": Info(16, quantity=5), #ITEM_USE_ITEM_WHISPERING_NECTAR
     "Musk": Info(23, quantity=4), #ITEM_USE_ITEM_POUCH_OF_MUSK
     "Strong Medicine": Info(32, quantity=2), #ITEM_USE_ITEM_STRONG_MEDICINE
-    "Moonwort Bulb": Info(61, quantity=2), #ITEM_USE_ITEM_MOONWORT_BULB
+    "Moonwort Bulb": Info(61, quantity=3), #ITEM_USE_ITEM_MOONWORT_BULB
     "Tangleweb": Info(67), #ITEM_USE_ITEM_TANGLEWEB
     "Dazzle-me-not": Info(68, quantity=3), #ITEM_USE_ITEM_DEDAZZLE_GRASS
-    "Special Medicine": Info(75, quantity=5), #ITEM_USE_ITEM_SPECIAL_MEDICINE
+    "Special Medicine": Info(75, quantity=6), #ITEM_USE_ITEM_SPECIAL_MEDICINE
     "Coagulant": Info(76, quantity=5), #ITEM_USE_ITEM_COAGULANT
     "Angel Bell": Info(77), #ITEM_USE_ITEM_SKYBELL
     "Sage's Elixir": Info(88, quantity=2), #ITEM_USE_ITEM_SAGES_ELIXIR
     "Prayer Ring": Info(104, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_PRAYER_RING
     "Elfin Elixir": Info(133), #ITEM_USE_ITEM_ELFIN_ELIXIR
     "Yggdrasil Leaf": Info(139), #ITEM_USE_ITEM_YGGDRASIL_LEAF
-    "Oomph Powder": Info(140), #ITEM_USE_ITEM_OOMPH_POWDER
+    "Oomph Powder": Info(140, quantity=2), #ITEM_USE_ITEM_OOMPH_POWDER
     # USABLE ITEMS SEEDS
-    "Seed of Strength": Info(9, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_STRENGTH
+    "Seed of Strength": Info(9, ItemClassification.useful, quantity=8), #ITEM_USE_ITEM_SEED_OF_STRENGTH
     "Seed of Life": Info(15, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_LIFE
     "Seed of Agility": Info(19, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_AGILITY
     "Seed of Magic": Info(24, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_SEED_OF_MAGIC
-    "Seed of Defence": Info(33, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_PROTECTION
+    "Seed of Defence": Info(33, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_PROTECTION
     "Seed of Stamina": Info(37, ItemClassification.useful, quantity=2), #ITEM_USE_ITEM_SEED_OF_RESILIENCE
     "Seed of Wisdom": Info(39, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_WISDOM
-    "Seed of Luck": Info(60, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_LUCK
+    "Seed of Luck": Info(60, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_LUCK
     # USABLE ITEMS BOOKS
     "Book: Diary of a Hardman": Info(38), #ITEM_USE_ITEM_DIARY_OF_A_HARDMAN
     "Book: The Girl's Own Annual": Info(46, quantity=2), #ITEM_USE_ITEM_THE_GIRLS_OWN_ANNUAL
     "Book: Primm's Primer": Info(57), #ITEM_USE_ITEM_PRIMMS_PRIMER
     "Book: The Eureka Moment": Info(65, quantity=2), #ITEM_USE_ITEM_SMART_BOOK
     "Book: Would I Lie to You?": Info(71), #ITEM_USE_ITEM_CHEATER_BOOK
-    "Book: The Saddest Story Ever Told": Info(87), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
+    "Book: The Saddest Story Ever Told": Info(87, quantity=2), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
     "Book: Look, No Pants!": Info(109), #ITEM_USE_ITEM_COMEDY_BOOK
     "Book: Leap before you Look": Info(120), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is the Four-Letter Word": Info(121), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
     # MEDAL
-    "Mini Medal": Info(11, ItemClassification.useful, quantity=28), #ITEM_SMALL_MEDAL # progression?
+    "Mini Medal": Info(11, ItemClassification.useful, quantity=30), #ITEM_SMALL_MEDAL # progression?
     # NOTHING
     "Nothing": Info(125, quantity=2), #None
     # BATTLES
@@ -123,6 +124,9 @@ ALL_ITEMS: dict[str, Info] = {
     "Knuckledusters": Info(127), #ITEM_EQUIP_WEAPON_KNUCKLEDUSTERS
     "Holy Lance": Info(132), #ITEM_EQUIP_WEAPON_HOLY_LANCE
     "Golden Claws": Info(143, ItemClassification.useful), #ITEM_EQUIP_WEAPON_GOLDEN_CLAWS
+    "Edged Boomerang": Info(146), #ITEM_EQUIP_WEAPON_EDGED_BOOMERANG
+    "Staff of Antimagic": Info(147), #ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC
+    "Siren Sword": Info(148), #ITEM_EQUIP_WEAPON_SIREN_SWORD
     # SHIELDS
     "Pot Lid": Info(27), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
@@ -148,6 +152,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Silk Robe": Info(116), #ITEM_EQUIP_ARMOR_SILK_ROBE
     "Magical Skirt": Info(134), #ITEM_EQUIP_ARMOR_MAGICAL_SKIRT
     "Fizzle-Retardant Suit": Info(142), #ITEM_EQUIP_ARMOR_FIZZLE_RETARDANT_SUIT
+    "Sparring Suit": Info(145), #ITEM_EQUIP_ARMOR_SPARRING_SUIT
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Wind Earrings": Info(20), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
@@ -164,21 +169,25 @@ ALL_ITEMS: dict[str, Info] = {
     "Ruby Wristband": Info(106), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
     "Leg Warmers": Info(107), #ITEM_EQUIP_ACCESSORY_LEG_WARMERS
     "Tough Guy Tatoo": Info(111), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
-    "Gold Chain": Info(113), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
+    "Gold Chain": Info(113, quantity=2), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
     "Golden Tiara": Info(118), #ITEM_EQUIP_ACCESSORY_GOLDEN_TIARA
     "Recovery Ring": Info(123), #ITEM_EQUIP_ACCESSORY_RECOVERY_RING
     "Meteorite Bracer": Info(124, ItemClassification.useful), #ITEM_EQUIP_ACCESSORY_METEORITE_BRACER
     "Banishing Bell": Info(130), #ITEM_EQUIP_ACCESSORY_AMULET_BELL
+    "Care Ring": Info(131), #ITEM_EQUIP_ACCESSORY_CARE_RING
     "Ten Ton Toupee": Info(137), #ITEM_EQUIP_ACCESSORY_TEN_TON_TOUPEE
     # IMPORTANT
     "Wrecking Ball": Info(40, ItemClassification.progression), #ITEM_IMPORTANT_WRECKING_BALL
-    "Progressive Key": Info(47, ItemClassification.progression, quantity=2), #ITEM_IMPORTANT_PROGRESSIVE_KEY (ITEM_IMPORTANT_THIEFS_KEY, ITEM_IMPORTANT_MAGIC_KEY)
+    "Progressive Key": Info(47, ItemClassification.progression | ItemClassification.useful, quantity=2), #ITEM_IMPORTANT_PROGRESSIVE_KEY (ITEM_IMPORTANT_THIEFS_KEY, ITEM_IMPORTANT_MAGIC_KEY)
     #"World Map": Info(48, ItemClassification.useful), #ITEM_IMPORTANT_ADVENTURERS_MAP # not randomized
     "Wakey Dust": Info(90, ItemClassification.useful), #ITEM_IMPORTANT_WAKEY_DUST
     "Dreamstone": Info(98, ItemClassification.progression), #ITEM_IMPORTANT_DREAMSTONE
+    "Royal Missive": Info(149, ItemClassification.progression), #ITEM_IMPORTANT_ROYAL_MISSIVE
+    "Ship": Info(150, ItemClassification.progression | ItemClassification.useful), #ITEM_IMPORTANT_SHIP
+    # black pepper
     #"Ultimate Key": Info(xx, ItemClassification.progression), #ITEM_IMPORTANT_ULTIMATE_KEY
 }
-# id 131 is free
+
 
 ITEM_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_ITEMS.items()}
 

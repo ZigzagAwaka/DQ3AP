@@ -333,7 +333,29 @@ const std::unordered_map<std::string, int> WorldData::locations =
     {"SEARCH_Pyramid_B2FEVENT_COFFIN_0", 303},
     {"SEARCH_Pyramid_out_GROUND_0", 304},
     // ----- Portoga -----
+    {"SEARCH_Portoga_Out_GROUND_0", 305},
+    {"SEARCH_Portoga_Out_GROUND_1", 306},
+    {"SEARCH_Portoga_Out_GROUND_2", 307},
+    //{"SEARCH_Portoga_Out_EVENT_0", 308},
+    {"SEARCH_Portoga_Out_POT_0", 309},
+    {"SEARCH_Portoga_Out_POT_1", 310},
+    {"SEARCH_Portoga_Out_POT_2", 311},
+    {"SEARCH_Portoga_Out_POT_3", 312},
+    {"SEARCH_Portoga_Out_BARREL_0", 313},
+    {"SEARCH_Portoga_Out_BARREL_1", 314},
+    {"SEARCH_Portoga_Out_BARREL_2", 315},
+    {"SEARCH_Portoga_Inn_DRAWER_0", 316},
+    {"SEARCH_Portoga_Room01_1F_SACK_0", 317},
+    {"SEARCH_Portoga_Room02_B1F_POT_0", 318},
+    {"SEARCH_Portoga_Room02_B1F_BOOKSHELF_0", 319},
+    {"Portoga_Out_SUB_0_ACTOR_1010_010", 320},
     // ----- Portoga Castle -----
+    {"SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_0", 321},
+    {"SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_1", 322},
+    {"SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_2", 323},
+    {"SEARCH_Portoga_Castle_1F_DRAWER_0", 324},
+    {"Portoga_Castle_1F_MAIN_0_VOLUME_0010_010", 325},
+    {"Portoga_Castle_1F_MAIN_0_VOLUME_0010_020", 326},
 };
 
 const std::unordered_map<int, std::string> WorldData::items =
@@ -379,6 +401,7 @@ const std::unordered_map<int, std::string> WorldData::items =
     {136, "GOLD_1120"},
     {138, "GOLD_567"},
     {141, "GOLD_710"},
+    {144, "GOLD_67"},
     // USABLE ITEMS
     {1, "ITEM_USE_ITEM_HOLY_WATER"},
     {3, "ITEM_USE_ITEM_CHIMERA_WING"},
@@ -440,6 +463,9 @@ const std::unordered_map<int, std::string> WorldData::items =
     {127, "ITEM_EQUIP_WEAPON_KNUCKLEDUSTERS"},
     {132, "ITEM_EQUIP_WEAPON_HOLY_LANCE"},
     {143, "ITEM_EQUIP_WEAPON_GOLDEN_CLAWS"},
+    {146, "ITEM_EQUIP_WEAPON_EDGED_BOOMERANG"},
+    {147, "ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC"},
+    {148, "ITEM_EQUIP_WEAPON_SIREN_SWORD"},
     // SHIELDS
     {27, "ITEM_EQUIP_SHIELD_POT_LID"},
     {44, "ITEM_EQUIP_SHIELD_LEATHER_SHIELD"},
@@ -465,6 +491,7 @@ const std::unordered_map<int, std::string> WorldData::items =
     {116, "ITEM_EQUIP_ARMOR_SILK_ROBE"},
     {134, "ITEM_EQUIP_ARMOR_MAGICAL_SKIRT"},
     {142, "ITEM_EQUIP_ARMOR_FIZZLE_RETARDANT_SUIT"},
+    {145, "ITEM_EQUIP_ARMOR_SPARRING_SUIT"},
     // EQUIPMENT ACCESSORIES
     {7, "ITEM_EQUIP_ACCESSORY_DRAGON_SCALES"},
     {20, "ITEM_EQUIP_ACCESSORY_WIND_EARRINGS"},
@@ -486,6 +513,7 @@ const std::unordered_map<int, std::string> WorldData::items =
     {123, "ITEM_EQUIP_ACCESSORY_RECOVERY_RING"},
     {124, "ITEM_EQUIP_ACCESSORY_METEORITE_BRACER"},
     {130, "ITEM_EQUIP_ACCESSORY_AMULET_BELL"},
+    {131, "ITEM_EQUIP_ACCESSORY_CARE_RING"},
     {137, "ITEM_EQUIP_ACCESSORY_TEN_TON_TOUPEE"},
     // IMPORTANT
     {40, "ITEM_IMPORTANT_WRECKING_BALL"},
@@ -493,5 +521,6 @@ const std::unordered_map<int, std::string> WorldData::items =
     {48, "ITEM_IMPORTANT_ADVENTURERS_MAP"},
     {90, "ITEM_IMPORTANT_WAKEY_DUST"},
     {98, "ITEM_IMPORTANT_DREAMSTONE"},
-    //{131, "ITEM_IMPORTANT_MAGIC_KEY"},
+    {149, "ITEM_IMPORTANT_ROYAL_MISSIVE"},
+    {150, "ITEM_IMPORTANT_SHIP"},
 };
