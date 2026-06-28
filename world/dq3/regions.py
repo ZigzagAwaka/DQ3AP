@@ -72,6 +72,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Desert Shrine"),
         Connect("Ibis"),
         Connect("Pyramid"),
+        Connect("Portoga", rules.HAS_MAGIC_KEY),
     ],
     "Romarian Outpost": [
         #Connect("xxxxxx", rules.HAS_ULTIMATE_KEY), #PORTAL IN PASSAGE
@@ -89,6 +90,10 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Palace of Ibis": [],
     "Pyramid": [],
+    "Portoga": [
+        Connect("Portoga Castle"),
+    ],
+    "Portoga Castle": [],
 }
 
 

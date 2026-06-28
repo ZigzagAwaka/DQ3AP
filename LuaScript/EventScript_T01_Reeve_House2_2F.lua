@@ -72,28 +72,41 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
+  return
+  --[[
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_020_1")
   EventEnd(eventInfo, "")
+  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
+  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
+  return
+  --[[
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
   EventEnd(eventInfo, "")
+  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_035(BeginOverlap, table, ...)
+  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
+  return
+  --[[
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
   EventEnd(eventInfo, "")
+  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
+  AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Wrecking ball 2)")
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local MapTime = GetMapTimeFrame()

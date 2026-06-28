@@ -51,8 +51,7 @@ Also, as development for this integration was made on Windows, we don't know if 
 
 The game will cache the received items then give them all to the player when one of the following events happens :
 
-- The player enters/exits an area, house, dungeon or village
-- The player sleeps at an Inn
+- The player enters/exits an area, dungeon, or village
 - The player successfully defeats an enemy or a boss
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
@@ -71,7 +70,7 @@ If you check a location then turn off the game without saving (or reloading a pr
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
-*Planned : Add auto-saving when receiving an item.*
+The game already perform some auto saves automatically when entering an area, so you can also reload the last auto save if you need it.
 
 ### Can I go back to previously explored areas ?
 

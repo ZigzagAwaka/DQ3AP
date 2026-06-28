@@ -34,7 +34,8 @@ public:
 
     /// @brief Receive an item from Archipelago
     /// @param itemId The Id of the received item
-    void ReceiveItem(int64_t itemId);
+    /// @param notify False if the item has already been notified/collected
+    void ReceiveItem(int64_t itemId, bool notify);
 
     /// @brief Clear and reset AP data files
     void ClearData();

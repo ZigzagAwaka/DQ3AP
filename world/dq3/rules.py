@@ -13,10 +13,9 @@ if TYPE_CHECKING:
 
 
 HAS_WRECKING_BALL = Has("Wrecking Ball")
-HAS_THIEF_KEY = Has("Thief's Key")
-HAS_MAGIC_KEY = Has("Magic Key")
-HAS_THIEF_AND_MAGIC_KEYS = HAS_THIEF_KEY & HAS_MAGIC_KEY
-HAS_ULTIMATE_KEY = Has("Ultimate Key")
+HAS_THIEF_KEY = Has("Progressive Key", count=1)
+HAS_MAGIC_KEY = Has("Progressive Key", count=2)
+HAS_ULTIMATE_KEY = Has("Progressive Key", count=3)
 HAS_DREAMSTONE = Has("Dreamstone")
 HAS_MISSIVE = Has("Missive")
 

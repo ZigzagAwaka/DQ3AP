@@ -220,6 +220,12 @@ function TransitionRura(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
+  -- AP
+  if _IsSuccessRura then
+    AP.Log("Transition rura")
+    AP.GiveItemsIfAvailable();
+  end
+  -- AP end
 end
 
 function TransitionRiremito(BeginOverlap, table, ...)
@@ -267,10 +273,17 @@ function TransitionRiremito(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
+  -- AP
+  if result then
+    AP.Log("Transition riremito")
+    AP.GiveItemsIfAvailable();
+  end
+  -- AP end
 end
 
 function TransitionLevel(BeginOverlap, table, ...)
   local _MapId, _StartPointName, _RiremitoPointID, _SeId, _FadeTime, _Orientation, _PlayerType, _bAutoSave, _IsPlayBGM, _IsTravelDoor, _SpawnX, _SpawnY, fadePriority, _ShowChoice, _IsOnProgress, _ProgressId, _TextId = ...
+  local isField = IsFieldMapId(_MapId) -- AP
   local execTransition = true
   if _ShowChoice then
     execTransition = CmdChoiceMessage(_TextId)
@@ -294,7 +307,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
     TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority)
-    if _bAutoSave == true then
+    if isField or _bAutoSave == true then -- AP
       RequestAutoSave()
       WaitFrame(1)
     end
@@ -304,6 +317,11 @@ function TransitionLevel(BeginOverlap, table, ...)
   else
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   end
+  -- AP
+  if isField then
+    AP.GiveItemsIfAvailable();
+  end
+  -- AP end
 end
 
 function OnStartTransitionFieldTownDungeon(_MapId, _StartPointName)
@@ -388,9 +406,6 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     })
   end
   AddTransitionTime(_MapId, "TransitionEnd")
-  -- AP
-  AP.GiveItemsIfAvailable();
-  -- AP end
 end
 
 function TransitionBattle(BeginOverlap, tbl, ...)
@@ -570,7 +585,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
       WaitPlayerOnGround()
     end
   end
-  if bDoAutoSave == true then
+  if isField or bDoAutoSave == true then -- AP
     RequestAutoSave()
     WaitFrame(1)
   end
@@ -590,7 +605,9 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  AP.GiveItemsIfAvailable();
+  if isField and not bDoRetry then
+    AP.GiveItemsIfAvailable();
+  end
   -- AP end
 end
 
@@ -646,7 +663,7 @@ function TransitionInn()
   end
   print("TransitionInn End")
   -- AP
-  AP.GiveItemsIfAvailable();
+  --AP.GiveItemsIfAvailable();
   -- AP end
 end
 

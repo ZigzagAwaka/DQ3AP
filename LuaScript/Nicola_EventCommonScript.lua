@@ -6,17 +6,16 @@ function SearchObject_ShowMessage(ObjectId, TreasureId, ItemId, ItemCount, Gold)
   local receptor = 0
   local result = 0
   -- AP
-  AP.Log("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", ItemCount: " .. tostring(ItemCount) .. ", Gold: " .. tostring(Gold))
-  AP.CheckLocation(TreasureId)
-  ItemId = "ITEM_ARCHIPELAGO"
-  Gold = 0
-  AddItem(ItemId)
-  SetTagItemId(ItemId)
-  CmdLoadItemIcon(ItemId)
-  CmdPlayItemGetNoWait(ObjectId, TreasureId)
-  PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
-  CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-  if ItemId == "ITEM_ARCHIPELAGO" then
+  AP.Log("SearchObject_ShowMessage called with ObjectId: " .. tostring(ObjectId) .. ", TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", Gold: " .. tostring(Gold))
+  if not AP.IsLocationExcluded(TreasureId) then
+    AP.CheckLocation(TreasureId)
+    ItemId = "ITEM_ARCHIPELAGO"
+    AddItem(ItemId)
+    SetTagItemId(ItemId)
+    CmdLoadItemIcon(ItemId)
+    CmdPlayItemGetNoWait(ObjectId, TreasureId)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
     return result
   end
   -- AP end

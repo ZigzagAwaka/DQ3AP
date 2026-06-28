@@ -25,7 +25,7 @@ void APClient::Connect(const std::string& host, const std::string& player, const
         });
 
         AP_SetItemRecvCallback([this](int64_t itemId, bool notify) {
-            ReceiveItem(itemId);
+            ReceiveItem(itemId, notify);
         });
 
         AP_SetLocationCheckedCallback([this](int64_t locationId) {
@@ -104,8 +104,12 @@ void APClient::ReceiveCheckedLocation(int64_t locationId)
 }
 
 
-void APClient::ReceiveItem(int64_t itemId)
+void APClient::ReceiveItem(int64_t itemId, bool notify)
 {
+    if (!notify)
+    {
+        return;
+    }
     std::string itemName = WorldData::GetItemName(itemId);
     if (!itemName.empty())
     {

@@ -33,6 +33,20 @@ function AP.IsItemEnemy(ItemId)
     return enemy ~= nil
 end
 
+-- checks if the given item is an item that needs an id conversion and returns the new id if it needs one
+function AP.ConvertSpecialItemIds(ItemId)
+  if ItemId == "ITEM_IMPORTANT_PROGRESSIVE_KEY" then
+    if not GetFlag(Flag.FE54) then
+      ItemId = "ITEM_IMPORTANT_THIEFS_KEY"
+    elseif not GetFlag(Flag.FE55) then
+      ItemId = "ITEM_IMPORTANT_MAGIC_KEY"
+    --elseif not GetFlag(Flag.FE56) then
+      --ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
+    end
+  end
+  return ItemId
+end
+
 -- set specific important flags if ItemId needs to have those flags set
 function AP.SetSpecialFlags(ItemId)
   if ItemId == "ITEM_IMPORTANT_WRECKING_BALL" then
@@ -57,6 +71,7 @@ end
 
 -- give the specified item to the player
 function AP.GiveItem(ItemId)
+  ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
   local isEnemy = AP.IsItemEnemy(ItemId)
   local receptor = 0
@@ -138,6 +153,20 @@ function AP.GiveItemsIfAvailable()
           clearFile:close()
       end
     end
+  end
+end
+
+-- list of all predefined non randomized locations
+local predefined_excluded_locations = {
+  TEST_TO_COMPLETE_AP = true,
+}
+
+-- check if the given location is a excluded from the randomization
+function AP.IsLocationExcluded(LocationId)
+  if predefined_excluded_locations[LocationId] then
+    return true
+  else
+    return false
   end
 end
 

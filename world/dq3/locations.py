@@ -249,7 +249,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Asham] Storage in Puff Puff house (night)": Info(203), #SEARCH_Ashalam_House01_2F_STORAGE_0
     "[Asham] Pot in top left house": Info(204, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_1F_POT_0
     "[Asham] Hidden Ground on top right square tile floor in top left house": Info(205, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_2F_GROUND_0
-    "[Asham] Bookshelf in locked room in top left house": Info(206, rules.HAS_THIEF_AND_MAGIC_KEYS), #SEARCH_Ashalam_House02_2F_BOOKSHELF_0
+    "[Asham] Bookshelf in locked room in top left house": Info(206, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_2F_BOOKSHELF_0
     "[Asham] Pot in right house": Info(207), #SEARCH_Ashalam_House03_POT_0
     "[Asham] Storage in Hotel": Info(208), #SEARCH_Ashalam_Hotel_STORAGE_0
     "[Asham] Pot in Hotel": Info(209), #SEARCH_Ashalam_Hotel_POT_0
@@ -352,6 +352,29 @@ ALL_LOCATIONS: dict[str, Info] = {
     #"[Pyramid] Event": Info(302), #SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0 # no items here
     "[Pyramid] Coffin in the secret underground room B2": Info(303), #SEARCH_Pyramid_B2FEVENT_COFFIN_0
     "[Pyramid] Hidden Ground at the top of the Pyramid": Info(304, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_out_GROUND_0
+    # ----- Portoga -----
+    "[Portoga] Hidden Ground at the back of the Item Shop": Info(305, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Out_GROUND_0
+    "[Portoga] Hidden Ground in the bottom right area": Info(306), #SEARCH_Portoga_Out_GROUND_1
+    "[Portoga] xxxxxxxxx": Info(307), #SEARCH_Portoga_Out_GROUND_2
+    "[Portoga] xxxxxxxxx": Info(308), #SEARCH_Portoga_Out_EVENT_0
+    "[Portoga] xxxxxxxxx": Info(309), #SEARCH_Portoga_Out_POT_0
+    "[Portoga] xxxxxxxxx": Info(310), #SEARCH_Portoga_Out_POT_1
+    "[Portoga] xxxxxxxxx": Info(311), #SEARCH_Portoga_Out_POT_2
+    "[Portoga] xxxxxxxxx": Info(312), #SEARCH_Portoga_Out_POT_3
+    "[Portoga] xxxxxxxxx": Info(313), #SEARCH_Portoga_Out_BARREL_0
+    "[Portoga] xxxxxxxxx": Info(314), #SEARCH_Portoga_Out_BARREL_1
+    "[Portoga] xxxxxxxxx": Info(315), #SEARCH_Portoga_Out_BARREL_2
+    "[Portoga] xxxxxxxxx": Info(316), #SEARCH_Portoga_Inn_DRAWER_0
+    "[Portoga] xxxxxxxxx": Info(317), #SEARCH_Portoga_Room01_1F_SACK_0
+    "[Portoga] xxxxxxxxx": Info(318), #SEARCH_Portoga_Room02_B1F_POT_0
+    "[Portoga] xxxxxxxxx": Info(319), #SEARCH_Portoga_Room02_B1F_BOOKSHELF_0
+    # ----- Portoga Castle -----
+    "[Portoga Castle] xxxxxxxxx": Info(320), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_0
+    "[Portoga Castle] xxxxxxxxx": Info(321), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_1
+    "[Portoga Castle] xxxxxxxxx": Info(322), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_2
+    "[Portoga Castle] xxxxxxxxx": Info(323), #SEARCH_Portoga_Castle_1F_DRAWER_0
+    "[Portoga Castle] xxxxxxxxx": Info(324), #xxxxxxxxx
+    "[Portoga Castle] xxxxxxxxx": Info(325), #xxxxxxxxx
 }
 
 

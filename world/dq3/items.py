@@ -105,7 +105,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Mini Medal": Info(11, ItemClassification.useful, quantity=28), #ITEM_SMALL_MEDAL # progression?
     # NOTHING
     "Nothing": Info(125, quantity=2), #None
-    # BATTLE
+    # BATTLES
     "Cannibox Trap": Info(126, ItemClassification.trap, quantity=3), #BATTLE_EVENT_PYRAMID_MANEATERBOX_1
     # WEAPONS
     "Rune Staff": Info(18), #ITEM_EQUIP_WEAPON_RUNE_STAFF
@@ -172,14 +172,13 @@ ALL_ITEMS: dict[str, Info] = {
     "Ten Ton Toupee": Info(137), #ITEM_EQUIP_ACCESSORY_TEN_TON_TOUPEE
     # IMPORTANT
     "Wrecking Ball": Info(40, ItemClassification.progression), #ITEM_IMPORTANT_WRECKING_BALL
-    "Thief's Key": Info(47, ItemClassification.progression), #ITEM_IMPORTANT_THIEFS_KEY
+    "Progressive Key": Info(47, ItemClassification.progression, quantity=2), #ITEM_IMPORTANT_PROGRESSIVE_KEY (ITEM_IMPORTANT_THIEFS_KEY, ITEM_IMPORTANT_MAGIC_KEY)
     #"World Map": Info(48, ItemClassification.useful), #ITEM_IMPORTANT_ADVENTURERS_MAP # not randomized
     "Wakey Dust": Info(90, ItemClassification.useful), #ITEM_IMPORTANT_WAKEY_DUST
     "Dreamstone": Info(98, ItemClassification.progression), #ITEM_IMPORTANT_DREAMSTONE
-    "Magic Key": Info(131, ItemClassification.progression), #ITEM_IMPORTANT_MAGIC_KEY
     #"Ultimate Key": Info(xx, ItemClassification.progression), #ITEM_IMPORTANT_ULTIMATE_KEY
 }
-
+# id 131 is free
 
 ITEM_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_ITEMS.items()}
 

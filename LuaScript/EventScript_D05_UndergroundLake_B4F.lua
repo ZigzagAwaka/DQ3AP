@@ -47,7 +47,7 @@ function UndergroundLake_B4F_Treasure(BeginOverlap, table, CanObtainItem, Treasu
     Wait(0.5)
     SetVisibleActor(eventInfo[1], false)
     -- AP
-    local ItemId = "ITEM_ARCHIPELAGO"
+    ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
     else
       SetFlag(Flag.FE60, true)

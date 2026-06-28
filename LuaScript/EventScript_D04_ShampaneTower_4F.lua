@@ -640,7 +640,7 @@ function ShampaneTower_4F_SearchEvent_Kings_Crown_00(BeginOverlap, table, CanObt
   SetVisibleActor("BP_SearchEvent_D04_Kings_Crown_00", false)
   SearchObject_Important(eventInfo, TreasureId, ItemId)
   -- AP
-  local ItemId = "ITEM_ARCHIPELAGO"
+  ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
   else
     SetFlag(Flag.FE59, true)

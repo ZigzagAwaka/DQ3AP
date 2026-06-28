@@ -108,6 +108,9 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
 end
 
 function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
+  NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
+  return
+  --[[
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   local OldMan_Najimi
@@ -137,4 +140,5 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
     end
   end
   EventEnd(eventInfo, "")
+  ]]
 end

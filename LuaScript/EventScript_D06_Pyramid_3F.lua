@@ -270,7 +270,7 @@ function Pyramid_3F_IMPORTANT_MAGIC_KEY(BeginOverlap, table, CanObtainItem, Trea
   eventInfo = EventStart(table, "")
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   -- AP
-  local ItemId = "ITEM_ARCHIPELAGO"
+  ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
   else
     SetFlag(Flag.FE55, true)

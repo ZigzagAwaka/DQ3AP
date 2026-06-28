@@ -308,6 +308,9 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
 end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
+  ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+  return
+  --[[
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   if CheckTransform() == true then
@@ -319,6 +322,7 @@ function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_1")
   CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_2")
   EventEnd(eventInfo, "")
+  ]]
 end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
