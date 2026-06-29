@@ -167,7 +167,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Romarian Outpost -----
     "[Romarian Outpost] Hidden Ground on rock near bottom right entrance": Info(129), #SEARCH_RomariaBarrier_Out_GROUND_0
     "[Romarian Outpost] Pot near right entrance": Info(130), #SEARCH_RomariaBarrier_Out_POT_0
-    "[Romarian Outpost] Hidden Ground in top left corner of the Passage portal room": Info(131, rules.HAS_ULTIMATE_KEY), #SEARCH_RomariaBarrier_B1F_GROUND_0 #REQUIRES THE ULTIMATE KEY UNLESS COMING FROM THE OTHER SIDE OF THE PORTAL UNLESS THE OTHER SIDE IS LOCKED BY A ULTIMATE KEY DOOR
+    "[Romarian Outpost] Hidden Ground in top left corner of the Passage portal room": Info(131, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_RomariaBarrier_B1F_GROUND_0
     "[Romarian Outpost] Hidden Ground near left Passage entrance": Info(132, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_GROUND_1
     "[Romarian Outpost] Barrel on Passage top wall": Info(133, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_BARREL_0
     # ----- Khoryv -----
@@ -237,7 +237,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Nordy's Grotto -----
     "[Nordy's Grotto] Chest 1 in Nordy's room": Info(193), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_0
     "[Nordy's Grotto] Chest 2 in Nordy's room": Info(194), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_1
-    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_ROYAL_MISSIVE), #SEARCH_NorudCave_B1F_BARREL_1
+    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_NorudCave_B1F_BARREL_1
     "[Nordy's Grotto] Barrel in Nordy's room": Info(196), #SEARCH_NorudCave_B1F_BARREL_2
     "[Nordy's Grotto] Hidden Ground on right wall in well": Info(197), #SEARCH_NorudCave_Well_GROUND_0
     "[Nordy's Grotto] Hidden Ground on bottom left wall in well": Info(198), #SEARCH_NorudCave_Well_GROUND_1

@@ -23,14 +23,15 @@ class Connect:
 # A region is a container for locations ("checks"), which connects to other regions via "Entrance" objects
 # Every region can connect to other regions with an optional connection rule if needed
 ALL_REGIONS: dict[str, list[Connect]] = {
+    # ALIAHAN
     "Aliahan": [
-        Connect("Aliahan Continent"),
+        Connect("Aliahan Overworld"),
         Connect("Aliahan Castle"),
     ],
     "Aliahan Castle": [
         Connect("Dreamer's Tower", rules.HAS_THIEF_KEY),
     ],
-    "Aliahan Continent": [
+    "Aliahan Overworld": [
         Connect("Reeve"),
         Connect("Shrine of the Plains"),
         Connect("Promontory Passage"),
@@ -49,40 +50,46 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Path of Promise": [
         Connect("Shrine of Promise", rules.HAS_THIEF_KEY),
     ],
+    # NORTHWEST
     "Shrine of Promise": [
+        Connect("Northwest Overworld"),
+    ],
+    "Northwest Overworld": [
         Connect("Romaria"),
         Connect("Romarian Road"),
-    ],
-    "Romaria": [
-        Connect("Romaria Castle"),
-    ],
-    "Romaria Castle": [],
-    "Romarian Road": [
-        Connect("Overworld"),
-    ],
-    "Overworld": [
         Connect("Romarian Outpost"),
         Connect("Khoryv"),
         Connect("Norvik"),
         Connect("Faerie Village"),
         Connect("Underground Lake"),
         Connect("Skyfell Tower"),
-        Connect("Nordy's Grotto", rules.HAS_THIEF_KEY),
-        Connect("Asham"),
-        Connect("Desert Shrine"),
-        Connect("Ibis"),
-        Connect("Pyramid"),
-        Connect("Portoga", rules.HAS_MAGIC_KEY),
+        Connect("Great Desert Overworld"),
     ],
+    "Romaria": [
+        Connect("Romaria Castle"),
+    ],
+    "Romaria Castle": [],
+    "Romarian Road": [],
     "Romarian Outpost": [
-        #Connect("xxxxxx", rules.HAS_ULTIMATE_KEY), #PORTAL IN PASSAGE
+        Connect("Portoga Overworld", rules.HAS_MAGIC_KEY),
+        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP),
     ],
     "Khoryv": [],
     "Norvik": [],
     "Faerie Village": [],
     "Underground Lake": [],
     "Skyfell Tower": [],
-    "Nordy's Grotto": [],
+    # GREAT DESERT
+    "Great Desert Overworld": [
+        Connect("Nordy's Grotto", rules.HAS_THIEF_KEY),
+        Connect("Asham"),
+        Connect("Desert Shrine"),
+        Connect("Ibis"),
+        Connect("Pyramid"),
+    ],
+    "Nordy's Grotto": [
+        Connect("Center Overworld", rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP)
+    ],
     "Asham": [],
     "Desert Shrine": [],
     "Ibis": [
@@ -90,10 +97,40 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Palace of Ibis": [],
     "Pyramid": [],
+    # PORTOGA
+    "Portoga Overworld": [
+        Connect("Portoga"),
+        Connect("Aliahan Overworld", rules.HAS_SHIP),
+        Connect("Northwest Overworld", rules.HAS_SHIP),
+        Connect("Great Desert Overworld", rules.HAS_SHIP),
+        Connect("Center Overworld", rules.HAS_SHIP),
+    ],
     "Portoga": [
         Connect("Portoga Castle"),
     ],
     "Portoga Castle": [],
+    # CENTER
+    "Center Overworld": [
+        Connect("Olivia's Promontory"),
+        Connect("Baharata"),
+    ],
+    "Olivia's Promontory": [
+        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
+        Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
+    ],
+    "Baharata": [],
+
+    # WIP
+    "Teleportal Shrine": [],
+    "Wayfarer's Chapel": [
+        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
+    ],
+    "North Overworld?": [
+        Connect("Teleportal Shrine", rules.HAS_SHIP),
+    ],
+    "Southeast Overworld?": [
+        Connect("Wayfarer's Chapel"), #rules?
+    ],
 }
 
 

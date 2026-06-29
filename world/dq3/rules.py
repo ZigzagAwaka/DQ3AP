@@ -19,6 +19,7 @@ HAS_ULTIMATE_KEY = Has("Progressive Key", count=3)
 HAS_DREAMSTONE = Has("Dreamstone")
 HAS_ROYAL_MISSIVE = Has("Royal Missive")
 HAS_BLACK_PEPPER = Has("Black Pepper")
+HAS_SHIP = Has("Ship")
 BARAMOS_TMP = Has("Baramos") # TMP
 
 

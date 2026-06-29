@@ -108,6 +108,12 @@ function AP.GiveItem(ItemId)
   elseif ItemId ~= "None" then
     receptor = AddItem(ItemId)
     SetTagItemId(ItemId)
+    --[[
+    if 0 < receptor or receptor == 0 or receptor == -2 then
+      CmdLoadItemIcon(ItemId)
+      CmdPlayItemGetNoWait(ObjectId, TreasureId)
+    end
+    ]]
     if receptor == 0 then
       if IsRareItem(ItemId) then
         PlayJingleOnGetItemRareDefaultFade()
@@ -175,7 +181,35 @@ end
 
 -- list of all predefined non randomized locations
 local predefined_excluded_locations = {
-  TEST_TO_COMPLETE_AP = true,
+  SEARCH_Aliahan_House3_1F_BOOKSHELF_0 = true,
+  SEARCH_Reeve_House2_1F_EVENT_0 = true,
+  SEARCH_SmallShrine_B1F_BOOKSHELF_0 = true,
+  SEARCH_IzanaiCave_B1F_After_TREASURE_IMPORTANT_0 = true,
+  SEARCH_IzanaiCave_B1F_After_EVENT_0 = true,
+  SEARCH_Romaria_Inn_1F_EVENT_0 = true,
+  SEARCH_Ashalam_Theater_EVENT_0 = true,
+  SEARCH_Pyramid_1F_EVENT_STATUE_0 = true,
+  SEARCH_Pyramid_3F_EVENT_SWITCH_1 = true,
+  SEARCH_Pyramid_3F_EVENT_SWITCH_2 = true,
+  SEARCH_Pyramid_3F_EVENT_SWITCH_3 = true,
+  SEARCH_Pyramid_3F_EVENT_SWITCH_4 = true,
+  SEARCH_Pyramid_3F_EVENT_DOOR_0 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_0 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_1 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_2 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_3 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_4 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_5 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_6 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_7 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_8 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_9 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_10 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_11 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_12 = true,
+  SEARCH_Pyramid_4F_EVENT_COFFIN_13 = true,
+  SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0 = true,
+  SEARCH_Portoga_Out_EVENT_0 = true,
 }
 
 -- check if the given location is a excluded from the randomization

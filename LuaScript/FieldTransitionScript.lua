@@ -222,7 +222,6 @@ function TransitionRura(BeginOverlap, table, ...)
   SetDispBtnGuide(true)
   -- AP
   if _IsSuccessRura then
-    AP.Log("Transition rura")
     AP.GiveItemsIfAvailable();
   end
   -- AP end
@@ -274,10 +273,7 @@ function TransitionRiremito(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  if result then
-    AP.Log("Transition riremito")
-    AP.GiveItemsIfAvailable();
-  end
+  --AP.GiveItemsIfAvailable();
   -- AP end
 end
 
@@ -605,7 +601,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  if isField and not bDoRetry then
+  if not bDoRetry then
     AP.GiveItemsIfAvailable();
   end
   -- AP end
