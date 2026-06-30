@@ -229,7 +229,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Skyfell Tower] Robbin' 'Ood Boss Reward": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
     "[Skyfell Tower] Chest in top right corner of inner tower 4F": Info(186), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_0
     "[Skyfell Tower] Chest in top left corner of inner tower 4F": Info(187), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_1
-    "[Skyfell Tower] Pot on left wall exterior of inner tower 4F": Info(188), #SEARCH_ShampaneTower_4F_POT_0
+    "[Skyfell Tower] Pot on left wall outside of inner tower 4F": Info(188), #SEARCH_ShampaneTower_4F_POT_0
     "[Skyfell Tower] Pot at bottom 4F": Info(189), #SEARCH_ShampaneTower_4F_POT_1
     "[Skyfell Tower] Pot in inner tower 4F": Info(190), #SEARCH_ShampaneTower_4F_POT_2
     "[Skyfell Tower] Chest 1 in final floor 6F": Info(191), #SEARCH_ShampaneTower_6F_TREASURE_NORMAL_0
@@ -376,6 +376,69 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Portoga Castle] Drawer in top room": Info(324, rules.HAS_MAGIC_KEY), #SEARCH_Portoga_Castle_1F_DRAWER_0
     "[Portoga Castle] Gift from Portoga King": Info(325), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_010
     "[Portoga Castle] Reward from Portoga King after giving the Black Pepper": Info(326, rules.HAS_BLACK_PEPPER), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_020
+    # ----- Olivia's Promontory -----
+    "[Olivia's Promontory] Hidden Ground between the two portals in the Portal room": Info(327, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_OliviaMisaki_1F_GROUND_0
+    "[Olivia's Promontory] Drawer in the top room": Info(328, rules.HAS_ULTIMATE_KEY), #SEARCH_OliviaMisaki_1F_DRAWER_0
+    "[Olivia's Promontory] Sack on the left": Info(329), #SEARCH_OliviaMisaki_1F_SACK_0
+    "[Olivia's Promontory] Hidden Ground on the outside of the top room": Info(330, rules.HAS_ULTIMATE_KEY), #SEARCH_OliviaMisaki_Out_GROUND_0
+    # ----- Baharata -----
+    #"[Baharata] Event": Info(331), #SEARCH_Baharata_Out_EVENT_0 # no items here
+    "[Baharata] Hidden Ground on the left of the dock": Info(332), #SEARCH_Baharata_Out_GROUND_0
+    "[Baharata] Barrel near the left of the Inn": Info(333), #SEARCH_Baharata_Out_BARREL_0
+    "[Baharata] Barrel in the left exterior of the bottom left house": Info(334), #SEARCH_Baharata_Out_BARREL_1
+    "[Baharata] Pot 1 near the right entrance": Info(335), #SEARCH_Baharata_Out_POT_0
+    "[Baharata] Pot near the left of the Inn": Info(336), #SEARCH_Baharata_Out_POT_1
+    "[Baharata] Pot 2 near the right entrance": Info(337), #SEARCH_Baharata_Out_POT_2
+    "[Baharata] Drawer in the right house": Info(338), #SEARCH_Baharata_House1_1F_DRAWER_0
+    "[Baharata] Drawer in Inn": Info(339), #SEARCH_Baharata_inn_1F_DRAWER_0
+    "[Baharata] Sack in bottom left house": Info(340), #SEARCH_Baharata_Shop3_1F_SACK_0
+    "[Baharata] Drawer in bottom left house": Info(341), #SEARCH_Baharata_Shop3_2F_DRAWER_0
+    # ----- Kidnapper's Cave -----
+    "[Kidnapper's Cave] Chest 1 in the top locked rooms": Info(342, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_ENEMY_0
+    "[Kidnapper's Cave] Chest 2 in the top locked rooms": Info(343, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_NORMAL_1
+    "[Kidnapper's Cave] Chest 3 in the top locked rooms": Info(344, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_NORMAL_2
+    "[Kidnapper's Cave] Chest 4 in the top locked rooms": Info(345, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_ENEMY_3
+    "[Kidnapper's Cave] Chest 5 in the top locked rooms": Info(346, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_NORMAL_4
+    "[Kidnapper's Cave] Chest in the bottom left corner of the area": Info(347, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_NORMAL_5
+    "[Kidnapper's Cave] Barrel in the second to last left small corridor": Info(348), #SEARCH_BaharataEastCave_B1F_BARREL_0
+    "[Kidnapper's Cave] Barrel one room above the bottom right locked door": Info(349), #SEARCH_BaharataEastCave_B1F_BARREL_1
+    "[Kidnapper's Cave] Barrel two rooms above the bottom middle locked door": Info(350), #SEARCH_BaharataEastCave_B1F_BARREL_2
+    "[Kidnapper's Cave] Hidden Ground at the top left dead end": Info(351), #SEARCH_BaharataEastCave_B1F_GROUND_0
+    "[Kidnapper's Cave] Chest 1 in treasure room B2": Info(352, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_0
+    "[Kidnapper's Cave] Chest 2 in treasure room B2": Info(353, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_1
+    "[Kidnapper's Cave] Chest 3 in treasure room B2": Info(354, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_2
+    "[Kidnapper's Cave] Chest 4 in treasure room B2": Info(355, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_3
+    "[Kidnapper's Cave] Sack on the left wall of the room before jails B2": Info(356), #SEARCH_BaharataEastCave_B2F_SACK_0
+    "[Kidnapper's Cave] Hidden Ground in the top left corner of the left jail B2": Info(357, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_GROUND_0
+    "[Kidnapper's Cave] Hidden Ground in the top right corner of the right jail B2": Info(358, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_GROUND_1
+    #"[Kidnapper's Cave] Lever Event": Info(359, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_EVENT_0 # no items here
+    "[Kidnapper's Cave] Barrel near the right jail B2": Info(360, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_BARREL_0
+    # ----- Alltrades Abbey -----
+    "[Alltrades Abbey] Hidden Ground near a statue in the center of the area": Info(361, rules.HAS_MAGIC_KEY), #SEARCH_Dharma_Castle_1F_GROUND_0
+    "[Alltrades Abbey] Pot in the right corridor": Info(362, rules.HAS_MAGIC_KEY), #SEARCH_Dharma_Castle_1F_POT_0
+    "[Alltrades Abbey] Pot in the left corridor": Info(363, rules.HAS_MAGIC_KEY), #SEARCH_Dharma_Castle_1F_POT_1
+    "[Alltrades Abbey] Hidden Ground behind the Church B1": Info(364), #SEARCH_Dharma_Castle_B1F_GROUND_0
+    "[Alltrades Abbey] Pot 1 at the bottom of Inn B1": Info(365), #SEARCH_Dharma_Castle_B1F_POT_0
+    "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
+    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
+    # ----- Wayfarer's Inn -----
+    "[Wayfarer's Inn] Drawer in the left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
+    "[Wayfarer's Inn] Drawer in the right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
+    # ----- Mur -----
+    "[Mur] Barrel on the small island": Info(370), #SEARCH_Muor_Out_BARREL_0
+    "[Mur] Barrel on the edge near the bottom entrance": Info(371), #SEARCH_Muor_Out_BARREL_1
+    "[Mur] Barrel near Church": Info(372), #SEARCH_Muor_Out_BARREL_2
+    "[Mur] Sack near the left entrance": Info(373), #SEARCH_Muor_Out_SACK_1
+    "[Mur] Hidden Ground between candelabras in Church": Info(374), #SEARCH_Muor_Church_1F_GROUND_0
+    "[Mur] Storage in Inn": Info(375), #SEARCH_Muor_Inn_1F_STORAGE_0
+    "[Mur] Pot in Inn": Info(376), #SEARCH_Muor_Inn_1F_POT_0
+    "[Mur] Hidden Ground at the back of the locked room in Market": Info(377, rules.HAS_ULTIMATE_KEY), #SEARCH_Muor_Market_1F_GROUND_0
+    #"[Mur] Event": Info(378), #SEARCH_Muor_Market_1F_EVENT_0 # no items here
+    "[Mur] Pot 1 in the back room of the Market": Info(379), #SEARCH_Muor_Market_2F_POT_0
+    "[Mur] Pot 2 in the back room of the Market": Info(380), #SEARCH_Muor_Market_2F_POT_1
+    "[Mur] Pot in the small island house": Info(381), #SEARCH_Muor_House1_1F_POT_0
+    "[Mur] Gift from Old Man in the back room of the Market": Info(382), #Muor_Market_1F_SUB_0_SCENE_0610_010
+    # ----- Tower of Transcendence -----
 }
 
 

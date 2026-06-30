@@ -41,6 +41,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Reeve": [],
     "Shrine of the Plains": [
         Connect("Dreamer's Tower"),
+        Connect("Portoga Lighthouse", rules.HAS_ULTIMATE_KEY),
     ],
     "Promontory Passage": [
         Connect("Dreamer's Tower"),
@@ -100,6 +101,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     # PORTOGA
     "Portoga Overworld": [
         Connect("Portoga"),
+        Connect("Portoga Lighthouse", rules.HAS_SHIP),
         Connect("Aliahan Overworld", rules.HAS_SHIP),
         Connect("Northwest Overworld", rules.HAS_SHIP),
         Connect("Great Desert Overworld", rules.HAS_SHIP),
@@ -109,27 +111,44 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Portoga Castle"),
     ],
     "Portoga Castle": [],
+    "Portoga Lighthouse": [],
     # CENTER
     "Center Overworld": [
         Connect("Olivia's Promontory"),
         Connect("Baharata"),
+        Connect("Kidnapper's Cave"),
+        Connect("Alltrades Abbey"),
+        Connect("Wayfarer's Inn", rules.HAS_THIEF_KEY),
+        Connect("Mur"),
+        Connect("Tower of Transcendence"),
     ],
     "Olivia's Promontory": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
         Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
     ],
     "Baharata": [],
+    "Kidnapper's Cave": [],
+    "Alltrades Abbey": [],
+    "Wayfarer's Inn": [
+        Connect("Wayfarer's Shrine", rules.HAS_ULTIMATE_KEY),
+    ],
+    "Mur": [],
+    "Tower of Transcendence": [],
 
     # WIP
     "Teleportal Shrine": [],
     "Wayfarer's Chapel": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
     ],
+    "Wayfarer's Shrine": [],
     "North Overworld?": [
         Connect("Teleportal Shrine", rules.HAS_SHIP),
     ],
     "Southeast Overworld?": [
         Connect("Wayfarer's Chapel"), #rules?
+    ],
+    "South montain overworld?": [
+        Connect("Wayfarer's Shrine"), #rules?
     ],
 }
 

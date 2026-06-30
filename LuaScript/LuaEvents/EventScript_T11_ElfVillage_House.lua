@@ -283,7 +283,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     SetFlag(Flag.FE61, true)
   end
   -- AP end
-  RemoveItem("ITEM_IMPORTANT_DREAMSTONE")
+  --RemoveItem("ITEM_IMPORTANT_DREAMSTONE") -- removed for AP because of the flag system causing repeating events
   Wait(0.5)
   ChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
   DestroyPartyClone()

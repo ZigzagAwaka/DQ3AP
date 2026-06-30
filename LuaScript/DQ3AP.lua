@@ -74,6 +74,9 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_GetLetter, true)
   elseif ItemId == "ITEM_IMPORTANT_BLACK_PEPPER" then
     SetFlag(Flag.FE64, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)
+  elseif ItemId == "ITEM_EQUIP_HELMET_ORTEGAS_HELM" then
+    SetFlag(Flag.FE67, true)
   elseif ItemId == "ITEM_IMPORTANT_SHIP" then
     SetFlag(Flag.FE106, true)
     SetFlag(Flag.FE734, true)
@@ -89,7 +92,7 @@ function AP.SetSpecialFlags(ItemId)
 end
 
 -- give the specified item to the player
-function AP.GiveItem(ItemId)
+function AP.GiveItem(ItemId, ObjectId, TreasureId)
   ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
   local isEnemy = AP.IsItemEnemy(ItemId)
@@ -110,12 +113,13 @@ function AP.GiveItem(ItemId)
   elseif ItemId ~= "None" then
     receptor = AddItem(ItemId)
     SetTagItemId(ItemId)
-    --[[
     if 0 < receptor or receptor == 0 or receptor == -2 then
-      CmdLoadItemIcon(ItemId)
-      CmdPlayItemGetNoWait(ObjectId, TreasureId)
+      if ObjectId == nil or TreasureId == nil then
+      else
+        CmdLoadItemIcon(ItemId)
+        CmdPlayItemGetNoWait(ObjectId, TreasureId)
+      end
     end
-    ]]
     if receptor == 0 then
       if IsRareItem(ItemId) then
         PlayJingleOnGetItemRareDefaultFade()
@@ -160,7 +164,7 @@ function AP.GiveItem(ItemId)
 end
 
 -- check if there is available items and if yes then gives them to the player
-function AP.GiveItemsIfAvailable()
+function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
   local file = io.open("Archipelago/items.data", "r")
   if file then
     local hasContent = file:read("*l")
@@ -168,7 +172,7 @@ function AP.GiveItemsIfAvailable()
       file:seek("set", 0)
       for line in file:lines() do
         AP.Log("Available item: " .. line)
-        AP.GiveItem(line)
+        AP.GiveItem(line, ObjectId, TreasureId)
       end
     end
     file:close()

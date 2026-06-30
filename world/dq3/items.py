@@ -63,35 +63,42 @@ ALL_ITEMS: dict[str, Info] = {
     "567 Gold": Info(138), #GOLD_567
     "710 Gold": Info(141), #GOLD_710
     "67 Gold": Info(144), #GOLD_67
+    "369 Gold": Info(151), #GOLD_369
+    "542 Gold": Info(154), #GOLD_542
+    "484 Gold": Info(156), #GOLD_484
+    "337 Gold": Info(158), #GOLD_337
+    "1760 Gold": Info(161), #GOLD_1760
+    "240 Gold": Info(162), #GOLD_240
+    "15 Gold": Info(167), #GOLD_15
     # USABLE ITEMS
     "Holy Water": Info(1, quantity=5), #ITEM_USE_ITEM_HOLY_WATER
-    "Chimera Wing": Info(3, quantity=10), #ITEM_USE_ITEM_CHIMERA_WING
-    "Medical Herb": Info(4, quantity=11), #ITEM_USE_ITEM_MEDICAL_HERB
+    "Chimera Wing": Info(3, quantity=11), #ITEM_USE_ITEM_CHIMERA_WING
+    "Medical Herb": Info(4, quantity=12), #ITEM_USE_ITEM_MEDICAL_HERB
     "Antidotal Herb": Info(6, quantity=6), #ITEM_USE_ITEM_ANTIDOTAL_HERB
-    "Magic Water": Info(10, quantity=7), #ITEM_USE_ITEM_MAGIC_WATER
+    "Magic Water": Info(10, quantity=9), #ITEM_USE_ITEM_MAGIC_WATER
     "Unsealant": Info(16, quantity=5), #ITEM_USE_ITEM_WHISPERING_NECTAR
     "Musk": Info(23, quantity=4), #ITEM_USE_ITEM_POUCH_OF_MUSK
-    "Strong Medicine": Info(32, quantity=2), #ITEM_USE_ITEM_STRONG_MEDICINE
+    "Strong Medicine": Info(32, quantity=3), #ITEM_USE_ITEM_STRONG_MEDICINE
     "Moonwort Bulb": Info(61, quantity=3), #ITEM_USE_ITEM_MOONWORT_BULB
     "Tangleweb": Info(67), #ITEM_USE_ITEM_TANGLEWEB
-    "Dazzle-me-not": Info(68, quantity=3), #ITEM_USE_ITEM_DEDAZZLE_GRASS
-    "Special Medicine": Info(75, quantity=6), #ITEM_USE_ITEM_SPECIAL_MEDICINE
+    "Dazzle-me-not": Info(68, quantity=4), #ITEM_USE_ITEM_DEDAZZLE_GRASS
+    "Special Medicine": Info(75, quantity=7), #ITEM_USE_ITEM_SPECIAL_MEDICINE
     "Coagulant": Info(76, quantity=5), #ITEM_USE_ITEM_COAGULANT
-    "Angel Bell": Info(77), #ITEM_USE_ITEM_SKYBELL
-    "Sage's Elixir": Info(88, quantity=2), #ITEM_USE_ITEM_SAGES_ELIXIR
-    "Prayer Ring": Info(104, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_PRAYER_RING
-    "Elfin Elixir": Info(133), #ITEM_USE_ITEM_ELFIN_ELIXIR
+    "Angel Bell": Info(77, quantity=2), #ITEM_USE_ITEM_SKYBELL
+    "Sage's Elixir": Info(88, quantity=3), #ITEM_USE_ITEM_SAGES_ELIXIR
+    "Prayer Ring": Info(104, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_PRAYER_RING
+    "Elfin Elixir": Info(133, quantity=2), #ITEM_USE_ITEM_ELFIN_ELIXIR
     "Yggdrasil Leaf": Info(139), #ITEM_USE_ITEM_YGGDRASIL_LEAF
-    "Oomph Powder": Info(140, quantity=2), #ITEM_USE_ITEM_OOMPH_POWDER
+    "Oomph Powder": Info(140, quantity=3), #ITEM_USE_ITEM_OOMPH_POWDER
     # USABLE ITEMS SEEDS
     "Seed of Strength": Info(9, ItemClassification.useful, quantity=8), #ITEM_USE_ITEM_SEED_OF_STRENGTH
-    "Seed of Life": Info(15, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_LIFE
-    "Seed of Agility": Info(19, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_AGILITY
-    "Seed of Magic": Info(24, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_SEED_OF_MAGIC
-    "Seed of Defence": Info(33, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_PROTECTION
+    "Seed of Life": Info(15, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_LIFE
+    "Seed of Agility": Info(19, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_AGILITY
+    "Seed of Magic": Info(24, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_MAGIC
+    "Seed of Defence": Info(33, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_PROTECTION
     "Seed of Stamina": Info(37, ItemClassification.useful, quantity=2), #ITEM_USE_ITEM_SEED_OF_RESILIENCE
-    "Seed of Wisdom": Info(39, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_WISDOM
-    "Seed of Luck": Info(60, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_LUCK
+    "Seed of Wisdom": Info(39, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_WISDOM
+    "Seed of Luck": Info(60, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_LUCK
     # USABLE ITEMS BOOKS
     "Book: Diary of a Hardman": Info(38), #ITEM_USE_ITEM_DIARY_OF_A_HARDMAN
     "Book: The Girl's Own Annual": Info(46, quantity=2), #ITEM_USE_ITEM_THE_GIRLS_OWN_ANNUAL
@@ -103,17 +110,18 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Leap before you Look": Info(120), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is the Four-Letter Word": Info(121), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
     # MEDAL
-    "Mini Medal": Info(11, ItemClassification.useful, quantity=30), #ITEM_SMALL_MEDAL # progression?
+    "Mini Medal": Info(11, ItemClassification.useful, quantity=39), #ITEM_SMALL_MEDAL # progression?
     # NOTHING
     "Nothing": Info(125, quantity=2), #None
     # BATTLES
     "Cannibox Trap": Info(126, ItemClassification.trap, quantity=3), #BATTLE_EVENT_PYRAMID_MANEATERBOX_1
+    "Cannibox lvl.2 Trap": Info(155, ItemClassification.trap, quantity=2), #BATTLE_EVENT_BAHARATAEASTCAVE_MANEATERBOX_2
     # WEAPONS
     "Rune Staff": Info(18), #ITEM_EQUIP_WEAPON_RUNE_STAFF
     "Oaken Club": Info(35, quantity=2), #ITEM_EQUIP_WEAPON_OAKEN_CLUB
     "Boomerang": Info(45, quantity=2), #ITEM_EQUIP_WEAPON_BOOMERANG
     "Chain Sickle": Info(54, quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_SICKLE
-    "Cypress Stick": Info(58), #ITEM_EQUIP_WEAPON_CYPRESS_STICK
+    "Cypress Stick": Info(58, quantity=2), #ITEM_EQUIP_WEAPON_CYPRESS_STICK
     "Assassin's Dagger": Info(73), #ITEM_EQUIP_WEAPON_ASSASSINS_DAGGER
     "Poison Needle": Info(78, quantity=2), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
     "Wizard's Staff": Info(83, quantity=2), #ITEM_EQUIP_WEAPON_WIZARDS_STAFF
@@ -127,6 +135,8 @@ ALL_ITEMS: dict[str, Info] = {
     "Edged Boomerang": Info(146), #ITEM_EQUIP_WEAPON_EDGED_BOOMERANG
     "Staff of Antimagic": Info(147), #ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC
     "Siren Sword": Info(148), #ITEM_EQUIP_WEAPON_SIREN_SWORD
+    "Thorn Whip": Info(153), #ITEM_EQUIP_WEAPON_THORN_WHIP
+    "Iron Axe": Info(160), #ITEM_EQUIP_WEAPON_IRON_AXE
     # SHIELDS
     "Pot Lid": Info(27), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
@@ -138,32 +148,35 @@ ALL_ITEMS: dict[str, Info] = {
     "Turban": Info(63, quantity=2), #ITEM_EQUIP_HELMET_TURBAN
     "Fur Hood": Info(80), #ITEM_EQUIP_HELMET_FUR_HOOD
     "King's Crown": Info(103, ItemClassification.useful), #ITEM_EQUIP_HELMET_KINGS_CROWN
+    "Iron Helmet": Info(157), #ITEM_EQUIP_HELMET_IRON_HELMET
+    "Ortega's Helm": Info(165, ItemClassification.useful), #ITEM_EQUIP_HELMET_ORTEGAS_HELM
     # EQUIPMENT ARMORS
-    "Training Togs": Info(5, quantity=2), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
-    "Wayfarer's Clothes": Info(29, quantity=2), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
+    "Training Togs": Info(5, quantity=3), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
+    "Wayfarer's Clothes": Info(29, quantity=3), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
     "Tortoise Shell": Info(52), #ITEM_EQUIP_ARMOR_TORTOISE_SHELL
     "Leather Armor": Info(62), #ITEM_EQUIP_ARMOR_LEATHER_ARMOUR
     "Leather Cape": Info(72), #ITEM_EQUIP_ARMOR_LEATHER_CAPE
     "Boxer Shorts": Info(79, quantity=2), #ITEM_EQUIP_ARMOR_BOXER_SHORTS
     "Plain Clothes": Info(82), #ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
-    "Leather Kilt": Info(84), #ITEM_EQUIP_ARMOR_LEATHER_KILT
+    "Leather Kilt": Info(84, quantity=2), #ITEM_EQUIP_ARMOR_LEATHER_KILT
     "Cloak of Evasion": Info(94), #ITEM_EQUIP_ARMOR_CLOAK_OF_EVASION
     "Leather Dress": Info(114), #ITEM_EQUIP_ARMOR_LEATHER_DRESS
     "Silk Robe": Info(116), #ITEM_EQUIP_ARMOR_SILK_ROBE
     "Magical Skirt": Info(134), #ITEM_EQUIP_ARMOR_MAGICAL_SKIRT
     "Fizzle-Retardant Suit": Info(142), #ITEM_EQUIP_ARMOR_FIZZLE_RETARDANT_SUIT
     "Sparring Suit": Info(145), #ITEM_EQUIP_ARMOR_SPARRING_SUIT
+    "Full Plate Armor": Info(159), #ITEM_EQUIP_ARMOR_FULL_PLATE_ARMOUR
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Wind Earrings": Info(20), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
     "Ring of Reason": Info(21), #ITEM_EQUIP_ACCESSORY_RING_OF_REASON
     "Mighty Armlet": Info(22), #ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET
     "Rousing Ring": Info(26, quantity=3), #ITEM_EQUIP_ACCESSORY_ALARM_RING
-    "Bunny Tail": Info(50), #ITEM_EQUIP_ACCESSORY_BUNNY_TAIL
+    "Rabbit Tail": Info(50, quantity=2), #ITEM_EQUIP_ACCESSORY_BUNNY_TAIL
     "Cower Ring": Info(51), #ITEM_EQUIP_ACCESSORY_COWER_RING
     "Restless Heart": Info(64), #ITEM_EQUIP_ACCESSORY_RESTLESS_HEART
     "Necklace of Immunity": Info(81), #ITEM_EQUIP_ACCESSORY_POISON_RESISTANCE_NECKLACE
-    "Care Riviere": Info(93, quantity=2), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
+    "Care Riviere": Info(93, quantity=3), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
     "Silver Rosary": Info(97), #ITEM_EQUIP_ACCESSORY_GOLD_ROSARY
     "Skull Ring": Info(105), #ITEM_EQUIP_ACCESSORY_SKULL_RING
     "Ruby Wristband": Info(106), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
@@ -174,8 +187,11 @@ ALL_ITEMS: dict[str, Info] = {
     "Recovery Ring": Info(123), #ITEM_EQUIP_ACCESSORY_RECOVERY_RING
     "Meteorite Bracer": Info(124, ItemClassification.useful), #ITEM_EQUIP_ACCESSORY_METEORITE_BRACER
     "Banishing Bell": Info(130), #ITEM_EQUIP_ACCESSORY_AMULET_BELL
-    "Care Ring": Info(131), #ITEM_EQUIP_ACCESSORY_CARE_RING
+    "Care Ring": Info(131, quantity=2), #ITEM_EQUIP_ACCESSORY_CARE_RING
     "Ten Ton Toupee": Info(137), #ITEM_EQUIP_ACCESSORY_TEN_TON_TOUPEE
+    "Holy Talisman": Info(152), #ITEM_EQUIP_ACCESSORY_HOLY_SYMBOL_OF_AMULET
+    "Torc of Truth": Info(163), #ITEM_EQUIP_ACCESSORY_PHANTOM_RESISTANCE_NECKLACE
+    "Asbestos Earrings": Info(166), #ITEM_EQUIP_ACCESSORY_ICE_EARRINGS
     # IMPORTANT
     "Wrecking Ball": Info(40, ItemClassification.progression), #ITEM_IMPORTANT_WRECKING_BALL
     "Progressive Key": Info(47, ItemClassification.progression | ItemClassification.useful, quantity=2), #ITEM_IMPORTANT_PROGRESSIVE_KEY (ITEM_IMPORTANT_THIEFS_KEY, ITEM_IMPORTANT_MAGIC_KEY)
@@ -184,8 +200,8 @@ ALL_ITEMS: dict[str, Info] = {
     "Dreamstone": Info(98, ItemClassification.progression), #ITEM_IMPORTANT_DREAMSTONE
     "Royal Missive": Info(149, ItemClassification.progression), #ITEM_IMPORTANT_ROYAL_MISSIVE
     "Ship": Info(150, ItemClassification.progression | ItemClassification.useful), #ITEM_IMPORTANT_SHIP
-    # black pepper
-    #"Ultimate Key": Info(xx, ItemClassification.progression), #ITEM_IMPORTANT_ULTIMATE_KEY
+    "Black Pepper": Info(164, ItemClassification.progression), #ITEM_IMPORTANT_BLACK_PEPPER
+    #WIP "Ultimate Key": Info(xx, ItemClassification.progression), #ITEM_IMPORTANT_ULTIMATE_KEY
 }
 
 
