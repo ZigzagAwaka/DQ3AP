@@ -82,6 +82,25 @@ function SearchObject_ShowMessage(ObjectId, TreasureId, ItemId, ItemCount, Gold)
 end
 
 function SearchObject_Important(eventInfo, TreasureId, ItemId, bgmJingleId)
+  -- AP
+  AP.Log("SearchObject_Important called with TreasureId: " .. tostring(TreasureId) .. ", ItemId: " .. tostring(ItemId) .. ", bgmJingleId: " .. tostring(bgmJingleId))
+  if not AP.IsLocationExcluded(TreasureId) then
+    AP.CheckLocation(TreasureId)
+    ItemId = "ITEM_ARCHIPELAGO"
+    local receptor = AddItem(ItemId)
+    SetTagItemId(ItemId)
+    CmdLoadItemIcon(ItemId)
+    CmdPlayItemGetNoWait(eventInfo[1], TreasureId)
+    SetTagActorFromParty(receptor - 1)
+    CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
+    if IsRareItem(ItemId) then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_7")
+    end
+    return
+  end
+  -- AP end
   local receptor = AddItem(ItemId)
   SetTagItemId(ItemId)
   if bgmJingleId ~= nil then
@@ -107,6 +126,7 @@ end
 function SearchObject_Storage(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Storage(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -127,6 +147,7 @@ end
 function SearchObject_JipangStorage(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_JipangStorage(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -147,6 +168,7 @@ end
 function SearchObject_Drawer(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Drawer(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -167,6 +189,7 @@ end
 function SearchObject_Bookshelf(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Bookshelf(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -186,6 +209,7 @@ end
 function SearchObject_Barrel(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Barrel(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -205,6 +229,7 @@ end
 function SearchObject_Pot(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Pot(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -224,6 +249,7 @@ end
 function SearchObject_Sack(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, "")
   CmdSearchObject_Sack(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -245,6 +271,7 @@ function SearchObject_Ground(BeginOverlap, table, CanObtainItem, TreasureId, Ite
   eventInfo = EventStart(table, "")
   SetVisibleActor(eventInfo[1], false)
   CmdSearchObject_Ground(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -264,6 +291,7 @@ end
 function Treasure_Normal(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   eventInfo = EventStart(table, "")
   CmdTreasure_Normal(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -286,6 +314,7 @@ end
 function Treasure_Important(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   eventInfo = EventStart(table, "")
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -308,6 +337,7 @@ end
 function Treasure_Enemy(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   eventInfo = EventStart(table, "")
   CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -317,17 +347,17 @@ function CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCou
   if CanObtainItem then
     -- AP
     AP.Log("CmdTreasure_Enemy called with TreasureId : " .. tostring(TreasureId) .. ", Item : " .. tostring(ItemId) .. ", Count : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))
-    AP.CheckLocation(TreasureId)
-    ItemId = "ITEM_ARCHIPELAGO"
-    AddItem(ItemId)
-    SetTagItemId(ItemId)
-    CmdLoadItemIcon(ItemId)
-    CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
-    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
-    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-    if ItemId == "ITEM_ARCHIPELAGO" then
+    if not AP.IsLocationExcluded(TreasureId) then
+      AP.CheckLocation(TreasureId)
+      ItemId = "ITEM_ARCHIPELAGO"
+      AddItem(ItemId)
+      SetTagItemId(ItemId)
+      CmdLoadItemIcon(ItemId)
+      CmdPlayItemGetNoWait(ObjectId, TreasureId)
+      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_STORAGE_4")
-      return
+      return result
     end
     -- AP end
     RequestPreloadEventBattle(EnemyId)

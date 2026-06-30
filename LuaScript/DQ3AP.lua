@@ -83,6 +83,8 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE107, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
+  --elseif ItemId == "ITEM_IMPORTANT_ULTIMATE_KEY" then
+    --SetFlag(Flag.FE56, true)
   end
 end
 

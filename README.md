@@ -53,8 +53,11 @@ The game will cache the received items then give them all to the player when one
 
 - The player enters/exits an area, dungeon, or village
 - The player successfully defeats an enemy or a boss
+- The player checks a container that gives an Archipelago check
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
+
+Once items are received, the game will display a message to show what's been received for each items (except for the Ship and the Bird since those are not real items in the game, but are progression checks/items for Archipelago).
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
 
@@ -97,4 +100,5 @@ You can report anything in the `Dragon Quest III HD-2D Remake` post in the `futu
 - [Game Interactive Maps by th3blackb3rry](https://gamefaqs.gamespot.com/pc/466975-dragon-quest-iii-hd-2d-remake/faqs)
 - [APCpp Library: used by the client mod](https://github.com/N00byKing/APCpp)
 - [@mike9k1: for useful modding advices](https://www.nexusmods.com/profile/mike9k1)
+- [@mastermarz: for helping at building the logic in some locations](https://www.twitch.tv/mastermarz)
 - [@seraphin_eveles: for good support](https://www.twitch.tv/seraphin_eveles)

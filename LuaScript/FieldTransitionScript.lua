@@ -222,7 +222,7 @@ function TransitionRura(BeginOverlap, table, ...)
   SetDispBtnGuide(true)
   -- AP
   if _IsSuccessRura then
-    AP.GiveItemsIfAvailable();
+    AP.GiveItemsIfAvailable()
   end
   -- AP end
 end
@@ -273,7 +273,7 @@ function TransitionRiremito(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  --AP.GiveItemsIfAvailable();
+  --AP.GiveItemsIfAvailable()
   -- AP end
 end
 
@@ -315,7 +315,7 @@ function TransitionLevel(BeginOverlap, table, ...)
   end
   -- AP
   if isField then
-    AP.GiveItemsIfAvailable();
+    AP.GiveItemsIfAvailable()
   end
   -- AP end
 end
@@ -602,7 +602,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   print("TransitionBattleToLevel End")
   -- AP
   if not bDoRetry then
-    AP.GiveItemsIfAvailable();
+    AP.GiveItemsIfAvailable()
   end
   -- AP end
 end
@@ -659,7 +659,7 @@ function TransitionInn()
   end
   print("TransitionInn End")
   -- AP
-  --AP.GiveItemsIfAvailable();
+  --AP.GiveItemsIfAvailable()
   -- AP end
 end
 
