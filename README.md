@@ -37,9 +37,9 @@ Items in shops and enemy drops are also not randomized but this may change in th
 
 ### What does another world's item look like in the game ?
 
-Multiworld items appear as a mini medal sprite when you collect them.
+Multiworld items appear as a mini medal sprite when you collect them. The game will say that you got an Archipelago medal.
 
-*Planned : The sprite will be edited into a proper Archipelago sprite in a future release.*
+*Planned : If possible, the sprite will be edited into a proper Archipelago sprite.*
 
 ### What versions of the game are supported ?
 

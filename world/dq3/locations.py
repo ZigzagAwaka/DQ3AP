@@ -226,7 +226,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Skyfell Tower] Chest near left wall of area near right stairs 3F": Info(182), #SEARCH_ShampaneTower_3F_TREASURE_NORMAL_0
     "[Skyfell Tower] Pot 1 in bottom area 3F": Info(183), #SEARCH_ShampaneTower_3F_POT_0
     "[Skyfell Tower] Pot 2 in bottom area 3F": Info(184), #SEARCH_ShampaneTower_3F_POT_1
-    "[Skyfell Tower] Robbin' 'Ood Boss Reward": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
+    "[Skyfell Tower] On ground after defeating Robbin' 'Ood Boss 4F": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
     "[Skyfell Tower] Chest in top right corner of inner tower 4F": Info(186), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_0
     "[Skyfell Tower] Chest in top left corner of inner tower 4F": Info(187), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_1
     "[Skyfell Tower] Pot on left wall outside of inner tower 4F": Info(188), #SEARCH_ShampaneTower_4F_POT_0
@@ -311,8 +311,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Pyramid] Pot on the left of the first stairs 2F": Info(261), #SEARCH_Pyramid_2F_POT_0
     "[Pyramid] Pot in the center 2F": Info(262), #SEARCH_Pyramid_2F_POT_1
     "[Pyramid] Pot at the bottom left corner 2F": Info(263), #SEARCH_Pyramid_2F_POT_2
-    "[Pyramid] Ripper of the Rift Boss Reward Chest 1": Info(264), #SEARCH_Pyramid_3F_TREASURE_NORMAL_0
-    "[Pyramid] Ripper of the Rift Boss Reward Chest 2": Info(265), #SEARCH_Pyramid_3F_TREASURE_IMPORTANT_0
+    "[Pyramid] Chest 1 after defeating Ripper of the Rift Boss 3F": Info(264), #SEARCH_Pyramid_3F_TREASURE_NORMAL_0
+    "[Pyramid] Chest 2 after defeating Ripper of the Rift Boss 3F": Info(265), #SEARCH_Pyramid_3F_TREASURE_IMPORTANT_0
     #"[Pyramid] Event Switch 1": Info(266), #SEARCH_Pyramid_3F_EVENT_SWITCH_1 # no items here
     #"[Pyramid] Event Switch 2": Info(267), #SEARCH_Pyramid_3F_EVENT_SWITCH_2 # no items here
     #"[Pyramid] Event Switch 3": Info(268), #SEARCH_Pyramid_3F_EVENT_SWITCH_3 # no items here
@@ -420,7 +420,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Hidden Ground behind the Church B1": Info(364), #SEARCH_Dharma_Castle_B1F_GROUND_0
     "[Alltrades Abbey] Pot 1 at the bottom of Inn B1": Info(365), #SEARCH_Dharma_Castle_B1F_POT_0
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
-    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
+    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2 Boss": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
     # ----- Wayfarer's Inn -----
     "[Wayfarer's Inn] Drawer in the left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
     "[Wayfarer's Inn] Drawer in the right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
@@ -439,6 +439,18 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Mur] Pot in the small island house": Info(381), #SEARCH_Muor_House1_1F_POT_0
     "[Mur] Gift from Old Man in the back room of the Market": Info(382), #Muor_Market_1F_SUB_0_SCENE_0610_010
     # ----- Tower of Transcendence -----
+    "[Tower of Transcendence] Chest in the middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Pot 1 in the middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
+    "[Tower of Transcendence] Pot 2 in the middle top room": Info(385), #SEARCH_GarunaTower_1F_POT_1
+    "[Tower of Transcendence] Chest in the center room 2F": Info(386), #SEARCH_GarunaTower_2F_TREASURE_IMPORTANT_0
+    "[Tower of Transcendence] Pot in the top area 2F": Info(387), #SEARCH_GarunaTower_2F_POT_0
+    "[Tower of Transcendence] Chest in the top room 3F": Info(388), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Chest in the bottom room 3F": Info(389), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_1
+    "[Tower of Transcendence] Chest in the left room 3F": Info(390), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_2
+    "[Tower of Transcendence] Chest in the bottom right room 3F": Info(391), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_3
+    "[Tower of Transcendence] Chest in the left room 4F": Info(392), #SEARCH_GarunaTower_4F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Pot in the center room 4F": Info(393), #SEARCH_GarunaTower_4F_POT_0
+    "[Tower of Transcendence] Chest in the left room 5F": Info(394), #SEARCH_GarunaTower_5F_TREASURE_NORMAL_0
 }
 
 
