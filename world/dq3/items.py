@@ -71,8 +71,9 @@ ALL_ITEMS: dict[str, Info] = {
     "240 Gold": Info(162), #GOLD_240
     "15 Gold": Info(167), #GOLD_15
     "448 Gold": Info(171), #GOLD_448
+    "351 Gold": Info(177), #GOLD_351
     # USABLE ITEMS
-    "Holy Water": Info(1, quantity=5), #ITEM_USE_ITEM_HOLY_WATER
+    "Holy Water": Info(1, quantity=6), #ITEM_USE_ITEM_HOLY_WATER
     "Chimera Wing": Info(3, quantity=11), #ITEM_USE_ITEM_CHIMERA_WING
     "Medical Herb": Info(4, quantity=12), #ITEM_USE_ITEM_MEDICAL_HERB
     "Antidotal Herb": Info(6, quantity=6), #ITEM_USE_ITEM_ANTIDOTAL_HERB
@@ -82,7 +83,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Strong Medicine": Info(32, quantity=4), #ITEM_USE_ITEM_STRONG_MEDICINE
     "Moonwort Bulb": Info(61, quantity=3), #ITEM_USE_ITEM_MOONWORT_BULB
     "Tangleweb": Info(67), #ITEM_USE_ITEM_TANGLEWEB
-    "Dazzle-me-not": Info(68, quantity=4), #ITEM_USE_ITEM_DEDAZZLE_GRASS
+    "Dazzle-me-not": Info(68, quantity=5), #ITEM_USE_ITEM_DEDAZZLE_GRASS
     "Special Medicine": Info(75, quantity=7), #ITEM_USE_ITEM_SPECIAL_MEDICINE
     "Coagulant": Info(76, quantity=5), #ITEM_USE_ITEM_COAGULANT
     "Angel Bell": Info(77, quantity=2), #ITEM_USE_ITEM_SKYBELL
@@ -92,13 +93,14 @@ ALL_ITEMS: dict[str, Info] = {
     "Yggdrasil Leaf": Info(139), #ITEM_USE_ITEM_YGGDRASIL_LEAF
     "Oomph Powder": Info(140, quantity=3), #ITEM_USE_ITEM_OOMPH_POWDER
     "Dieamend": Info(170), #ITEM_USE_ITEM_DIEAMEND
+    "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
     # USABLE ITEMS SEEDS
     "Seed of Strength": Info(9, ItemClassification.useful, quantity=8), #ITEM_USE_ITEM_SEED_OF_STRENGTH
-    "Seed of Life": Info(15, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_LIFE
+    "Seed of Life": Info(15, ItemClassification.useful, quantity=7), #ITEM_USE_ITEM_SEED_OF_LIFE
     "Seed of Agility": Info(19, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_AGILITY
     "Seed of Magic": Info(24, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_MAGIC
     "Seed of Defence": Info(33, ItemClassification.useful, quantity=7), #ITEM_USE_ITEM_SEED_OF_PROTECTION
-    "Seed of Stamina": Info(37, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_SEED_OF_RESILIENCE
+    "Seed of Stamina": Info(37, ItemClassification.useful, quantity=4), #ITEM_USE_ITEM_SEED_OF_RESILIENCE
     "Seed of Wisdom": Info(39, ItemClassification.useful, quantity=5), #ITEM_USE_ITEM_SEED_OF_WISDOM
     "Seed of Luck": Info(60, ItemClassification.useful, quantity=6), #ITEM_USE_ITEM_SEED_OF_LUCK
     # USABLE ITEMS BOOKS
@@ -112,7 +114,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Leap before you Look": Info(120), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is the Four-Letter Word": Info(121), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
     # MEDAL
-    "Mini Medal": Info(11, ItemClassification.useful, quantity=40), #ITEM_SMALL_MEDAL
+    "Mini Medal": Info(11, ItemClassification.useful, quantity=42), #ITEM_SMALL_MEDAL
     # NOTHING
     "Nothing": Info(125, quantity=2), #None
     # BATTLES
@@ -140,6 +142,9 @@ ALL_ITEMS: dict[str, Info] = {
     "Thorn Whip": Info(153), #ITEM_EQUIP_WEAPON_THORN_WHIP
     "Iron Axe": Info(160), #ITEM_EQUIP_WEAPON_IRON_AXE
     "Battle Fork": Info(172), #ITEM_EQUIP_WEAPON_BATTLE_FORK
+    "Somatic Staff": Info(174), #ITEM_EQUIP_WEAPON_SOMATIC_STAFF
+    "Battle-Axe": Info(175), #ITEM_EQUIP_WEAPON_BATTLEAXE
+    "Beast Claws": Info(176), #ITEM_EQUIP_WEAPON_BEAST_CLAWS
     # SHIELDS
     "Pot Lid": Info(27), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
@@ -155,9 +160,11 @@ ALL_ITEMS: dict[str, Info] = {
     "Ortega's Helm": Info(165, ItemClassification.useful), #ITEM_EQUIP_HELMET_ORTEGAS_HELM
     "Silver Tiara": Info(169), #ITEM_EQUIP_HELMET_SILVER_TIARA
     "Hermes' Hat": Info(173), #ITEM_EQUIP_HELMET_HERMES_HAT
+    "Black Bandana": Info(178), #ITEM_EQUIP_HELMET_BLACK_BANDANA
+    "Pointy Hat": Info(180), #ITEM_EQUIP_HELMET_POINTY_HAT
     # EQUIPMENT ARMORS
     "Training Togs": Info(5, quantity=3), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
-    "Wayfarer's Clothes": Info(29, quantity=3), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
+    "Wayfarer's Clothes": Info(29, quantity=4), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
     "Tortoise Shell": Info(52), #ITEM_EQUIP_ARMOR_TORTOISE_SHELL
     "Leather Armor": Info(62), #ITEM_EQUIP_ARMOR_LEATHER_ARMOUR
     "Leather Cape": Info(72), #ITEM_EQUIP_ARMOR_LEATHER_CAPE
@@ -186,7 +193,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Skull Ring": Info(105), #ITEM_EQUIP_ACCESSORY_SKULL_RING
     "Ruby Wristband": Info(106), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
     "Leg Warmers": Info(107), #ITEM_EQUIP_ACCESSORY_LEG_WARMERS
-    "Tough Guy Tatoo": Info(111), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
+    "Tough Guy Tatoo": Info(111, quantity=2), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
     "Gold Chain": Info(113, quantity=2), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
     "Golden Tiara": Info(118), #ITEM_EQUIP_ACCESSORY_GOLDEN_TIARA
     "Recovery Ring": Info(123), #ITEM_EQUIP_ACCESSORY_RECOVERY_RING
@@ -207,6 +214,13 @@ ALL_ITEMS: dict[str, Info] = {
     "Ship": Info(150, ItemClassification.progression | ItemClassification.useful), #ITEM_IMPORTANT_SHIP
     "Black Pepper": Info(164, ItemClassification.progression), #ITEM_IMPORTANT_BLACK_PEPPER
     "Words of Wisdom": Info(168, ItemClassification.useful), #ITEM_IMPORTANT_WORDS_OF_WISDOM
+    "Green Orb": Info(181, ItemClassification.progression), #ITEM_IMPORTANT_GREEN_ORB
+    "Ramia": Info(182, ItemClassification.progression | ItemClassification.useful), #ITEM_IMPORTANT_RAMIA
+    #orb
+    #orb
+    #orb
+    #orb
+    #orb
     #WIP "Ultimate Key": Info(xx, ItemClassification.progression), #ITEM_IMPORTANT_ULTIMATE_KEY
 }
 

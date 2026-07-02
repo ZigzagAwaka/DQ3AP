@@ -57,7 +57,7 @@ The game will cache the received items then give them all to the player when one
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
 
-Once items are received, the game will display a message to show what's been received for each items (except for the Ship and the Bird since those are not real items in the game, but are progression checks/items for Archipelago).
+Once items are received, the game will display a message to show what's been received for each items (except for the Ship and Ramia since those are not real items in the game, but are progression checks/items for Archipelago).
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
 
@@ -87,8 +87,10 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 
 Other modifications were implemented to nicely integrate Archipelago :
 
-- Major NPC (that gives an important item) will be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their non randomized items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay !
-- Once the Ship is unlocked, it will spawn near Portoga but if you don't have access to it yet then you can use Zoom to teleport to a previously explored location and the ship will be teleported near you. *Planned: Maybe make it so the ship spawn near Aliahan?*
+- Parts of the game were patched to skip or ignore some important story flags.
+    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their non randomized items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay ! (you'll still get an Archipelago check)
+    - Some scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
+- Once the Ship or Ramia are unlocked, they will spawn near Portoga or the Shrine of the Everbird but if you don't have access to these places yet then you can use Zoom to teleport to a previously explored location and the ship and Ramia will be teleported near you. *Planned: Maybe make it so the ship/ramia spawn near Aliahan?*
 
 ## Feedbacks and issues
 

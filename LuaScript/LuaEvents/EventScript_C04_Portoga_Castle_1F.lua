@@ -161,7 +161,9 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_030_7_5")
   CmdFadeOut(EFadingPriorityTopMost, 0)
   DestroyPartyClone()
-  --RemoveItem("ITEM_IMPORTANT_BLACK_PEPPER") -- removed for AP because of the flag system causing repeating events
+  if IsHaveItem("ITEM_IMPORTANT_BLACK_PEPPER") then -- AP
+    RemoveItem("ITEM_IMPORTANT_BLACK_PEPPER")
+  end
   -- AP
   AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 called (Portoga - King giving the Ship)")
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020")

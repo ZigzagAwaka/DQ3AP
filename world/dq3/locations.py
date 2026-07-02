@@ -167,7 +167,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Romarian Outpost -----
     "[Romarian Outpost] Hidden Ground on rock near bottom right entrance": Info(129), #SEARCH_RomariaBarrier_Out_GROUND_0
     "[Romarian Outpost] Pot near right entrance": Info(130), #SEARCH_RomariaBarrier_Out_POT_0
-    "[Romarian Outpost] Hidden Ground in top left corner of the Passage portal room": Info(131, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_RomariaBarrier_B1F_GROUND_0
+    "[Romarian Outpost] Hidden Ground in top left corner of the Passage portal room": Info(131, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_RomariaBarrier_B1F_GROUND_0
     "[Romarian Outpost] Hidden Ground near left Passage entrance": Info(132, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_GROUND_1
     "[Romarian Outpost] Barrel on Passage top wall": Info(133, rules.HAS_MAGIC_KEY), #SEARCH_RomariaBarrier_B1F_BARREL_0
     # ----- Khoryv -----
@@ -237,7 +237,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Nordy's Grotto -----
     "[Nordy's Grotto] Chest 1 in Nordy's room": Info(193), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_0
     "[Nordy's Grotto] Chest 2 in Nordy's room": Info(194), #SEARCH_NorudCave_B1F_TREASURE_NORMAL_1
-    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_NorudCave_B1F_BARREL_1
+    "[Nordy's Grotto] Barrel near right entrance": Info(195, rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_NorudCave_B1F_BARREL_1
     "[Nordy's Grotto] Barrel in Nordy's room": Info(196), #SEARCH_NorudCave_B1F_BARREL_2
     "[Nordy's Grotto] Hidden Ground on right wall in well": Info(197), #SEARCH_NorudCave_Well_GROUND_0
     "[Nordy's Grotto] Hidden Ground on bottom left wall in well": Info(198), #SEARCH_NorudCave_Well_GROUND_1
@@ -285,8 +285,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Palace of Ibis] Chest 2 in top right room (night)": Info(236, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_5
     "[Palace of Ibis] Chest 3 in top right room (night)": Info(237, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_6
     "[Palace of Ibis] Chest 4 in top right room (night)": Info(238, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_1F_TREASURE_NORMAL_7
-    "[Palace of Ibis] Drawer in the right room": Info(239, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_DRAWER_0
-    "[Palace of Ibis] Bookshelf in the bottom right room": Info(240, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_BOOKSHELF_0
+    "[Palace of Ibis] Drawer in right room": Info(239, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_DRAWER_0
+    "[Palace of Ibis] Bookshelf in bottom right room": Info(240, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_BOOKSHELF_0
     "[Palace of Ibis] Pot in the left room": Info(241, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_0
     "[Palace of Ibis] Pot in the bottom left room": Info(242, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_1
     "[Palace of Ibis] Hidden Ground on throne (night) 2F": Info(243), #SEARCH_Isis_Castle_2F_GROUND_0
@@ -377,8 +377,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Portoga Castle] Gift from Portoga King": Info(325), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_010
     "[Portoga Castle] Reward from Portoga King after giving the Black Pepper": Info(326, rules.HAS_BLACK_PEPPER), #Portoga_Castle_1F_MAIN_0_VOLUME_0010_020
     # ----- Olivia's Promontory -----
-    "[Olivia's Promontory] Hidden Ground between the two portals in the Portal room": Info(327, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP), #SEARCH_OliviaMisaki_1F_GROUND_0
-    "[Olivia's Promontory] Drawer in the top room": Info(328, rules.HAS_ULTIMATE_KEY), #SEARCH_OliviaMisaki_1F_DRAWER_0
+    "[Olivia's Promontory] Hidden Ground between the two portals in the Portal room": Info(327, rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_OliviaMisaki_1F_GROUND_0
+    "[Olivia's Promontory] Drawer in top room": Info(328, rules.HAS_ULTIMATE_KEY), #SEARCH_OliviaMisaki_1F_DRAWER_0
     "[Olivia's Promontory] Sack on the left": Info(329), #SEARCH_OliviaMisaki_1F_SACK_0
     "[Olivia's Promontory] Hidden Ground on the outside of the top room": Info(330, rules.HAS_ULTIMATE_KEY), #SEARCH_OliviaMisaki_Out_GROUND_0
     # ----- Baharata -----
@@ -422,8 +422,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
     "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2 Boss": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
     # ----- Wayfarer's Inn -----
-    "[Wayfarer's Inn] Drawer in the left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
-    "[Wayfarer's Inn] Drawer in the right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
+    "[Wayfarer's Inn] Drawer in left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
+    "[Wayfarer's Inn] Drawer in right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
     # ----- Mur -----
     "[Mur] Barrel on the small island": Info(370), #SEARCH_Muor_Out_BARREL_0
     "[Mur] Barrel on the edge near the bottom entrance": Info(371), #SEARCH_Muor_Out_BARREL_1
@@ -439,18 +439,84 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Mur] Pot in the small island house": Info(381), #SEARCH_Muor_House1_1F_POT_0
     "[Mur] Gift from Old Man in the back room of the Market": Info(382), #Muor_Market_1F_SUB_0_SCENE_0610_010
     # ----- Tower of Transcendence -----
-    "[Tower of Transcendence] Chest in the middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
-    "[Tower of Transcendence] Pot 1 in the middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
-    "[Tower of Transcendence] Pot 2 in the middle top room": Info(385), #SEARCH_GarunaTower_1F_POT_1
-    "[Tower of Transcendence] Chest in the center room 2F": Info(386), #SEARCH_GarunaTower_2F_TREASURE_IMPORTANT_0
+    "[Tower of Transcendence] Chest in middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Pot 1 in middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
+    "[Tower of Transcendence] Pot 2 in middle top room": Info(385), #SEARCH_GarunaTower_1F_POT_1
+    "[Tower of Transcendence] Chest in center room 2F": Info(386), #SEARCH_GarunaTower_2F_TREASURE_IMPORTANT_0
     "[Tower of Transcendence] Pot in the top area 2F": Info(387), #SEARCH_GarunaTower_2F_POT_0
-    "[Tower of Transcendence] Chest in the top room 3F": Info(388), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_0
-    "[Tower of Transcendence] Chest in the bottom room 3F": Info(389), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_1
-    "[Tower of Transcendence] Chest in the left room 3F": Info(390), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_2
-    "[Tower of Transcendence] Chest in the bottom right room 3F": Info(391), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_3
-    "[Tower of Transcendence] Chest in the left room 4F": Info(392), #SEARCH_GarunaTower_4F_TREASURE_NORMAL_0
-    "[Tower of Transcendence] Pot in the center room 4F": Info(393), #SEARCH_GarunaTower_4F_POT_0
-    "[Tower of Transcendence] Chest in the left room 5F": Info(394), #SEARCH_GarunaTower_5F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Chest in top room 3F": Info(388), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Chest in bottom room 3F": Info(389), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_1
+    "[Tower of Transcendence] Chest in left room 3F": Info(390), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_2
+    "[Tower of Transcendence] Chest in bottom right room 3F": Info(391), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_3
+    "[Tower of Transcendence] Chest in left room 4F": Info(392), #SEARCH_GarunaTower_4F_TREASURE_NORMAL_0
+    "[Tower of Transcendence] Pot in center room 4F": Info(393), #SEARCH_GarunaTower_4F_POT_0
+    "[Tower of Transcendence] Chest in left room 5F": Info(394), #SEARCH_GarunaTower_5F_TREASURE_NORMAL_0
+    # ----- Portoga Lighthouse -----
+    "[Portoga Lighthouse] Barrel on the left 2F": Info(395), #SEARCH_PortogaLight_2F_BARREL_0
+    "[Portoga Lighthouse] Chest on the bottom left 3F": Info(396), #SEARCH_PortogaLight_3F_TREASURE_NORMAL_0
+    #"[Portoga Lighthouse] Event": Info(397), #SEARCH_PortogaLight_4F_EVENT_0 # no items here
+    "[Portoga Lighthouse] Pot on the top 4F": Info(398), #SEARCH_PortogaLight_4F_POT_0
+    # ----- Shrine of the Dwarf -----
+    "[Shrine of the Dwarf] Hidden Ground near the top window": Info(399), #SEARCH_HobbitShrine_1F_GROUND_0
+    "[Shrine of the Dwarf] Barrel on the right": Info(400), #SEARCH_HobbitShrine_1F_BARREL_0
+    # ----- Wayfarer's Shrine -----
+    "[Wayfarer's Shrine] Pot in the bottom left corner": Info(401), #SEARCH_TravelersShrine_1F_POT_0
+    # ----- Theddon -----
+    "[Theddon] Hidden Ground in the middle of the right big poison marsh": Info(402), #SEARCH_Tedon_Out_GROUND_0
+    "[Theddon] Hidden Ground on the cross after obtaining the riddle hint": Info(403, rules.RIDDLE_TMP), #SEARCH_Tedon_Out_GROUND_1 #CHANGE THE RULE ONCE POSTGAME LOGIC IS FINISHED
+    "[Theddon] Pot on the right of the right big poison marsh": Info(404), #SEARCH_Tedon_Out_POT_0
+    "[Theddon] Storage in the bottom left house (day)": Info(405), #SEARCH_Tedon_Out_STORAGE_0
+    "[Theddon] Chest in the bottom left house (day)": Info(406), #SEARCH_Tedon_Out_TREASURE_IMPORTANT_0
+    "[Theddon] Barrel near the center cell": Info(407), #SEARCH_Tedon_Out_BARREL_0
+    "[Theddon] Barrel in the bottom left house": Info(408), #SEARCH_Tedon_Shop_1F_BARREL_0
+    "[Theddon] Hidden Ground next to the broken barrel in the basement room at the right of the right big poison marsh": Info(409), #SEARCH_Tedon_Room_B1F_GROUND_0
+    #"[Theddon] Event": Info(410), #SEARCH_Tedon_Room_B1F_EVENT_0 # no items here
+    "[Theddon] Reward for defeating Dying Fire Boss (night)": Info(411, rules.HAS_ULTIMATE_KEY), #Tedon_Out_MAIN_0_BATTLE_END_0120_010
+    # ----- Shrine of the Everbird -----
+    #"[Shrine of the Everbird] Event 0": Info(412), #SEARCH_Reiamuland_Out_EVENT_0 # no items here
+    #"[Shrine of the Everbird] Event 1": Info(413), #SEARCH_Reiamuland_Out_EVENT_1 # no items here
+    #"[Shrine of the Everbird] Event 2": Info(414), #SEARCH_Reiamuland_Out_EVENT_2 # no items here
+    #"[Shrine of the Everbird] Event 3": Info(415), #SEARCH_Reiamuland_Out_EVENT_3 # no items here
+    #"[Shrine of the Everbird] Event 4": Info(416), #SEARCH_Reiamuland_Out_EVENT_4 # no items here
+    #"[Shrine of the Everbird] Event 5": Info(417), #SEARCH_Reiamuland_Out_EVENT_5 # no items here
+    #"[Shrine of the Everbird] Event 6": Info(418), #SEARCH_Reiamuland_Out_EVENT_6 # no items here
+    "[Shrine of the Everbird] Hidden Ground near the right of the ladder": Info(419), #SEARCH_Reiamuland_Out_GROUND_0
+    "[Shrine of the Everbird] Reward for offering the 6 orbs": Info(420, rules.HAS_ALL_ORBS), #EVESE_REIAMULAND_ORB_SHINE_ALL
+    # ----- Jipang -----
+    "[Jipang] xxxxxxxxxxxx": Info(421), #SEARCH_Jipang_EVENT_0
+    "[Jipang] xxxxxxxxxxxx": Info(422), #SEARCH_Jipang_Out_GROUND_0
+    "[Jipang] xxxxxxxxxxxx": Info(423), #SEARCH_Jipang_Out_GROUND_1
+    "[Jipang] xxxxxxxxxxxx": Info(424), #SEARCH_Jipang_Out_POT_0
+    "[Jipang] xxxxxxxxxxxx": Info(425), #SEARCH_Jipang_House1_STORAGE_0
+    "[Jipang] xxxxxxxxxxxx": Info(426), #SEARCH_Jipang_House2_STORAGE_0
+    "[Jipang] xxxxxxxxxxxx": Info(427), #SEARCH_Jipang_House2_SACK_0
+    "[Jipang] xxxxxxxxxxxx": Info(428), #SEARCH_Jipang_House3_POT_0
+    "[Jipang] xxxxxxxxxxxx": Info(429), #SEARCH_Jipang_House3_SACK_0
+    "[Jipang] xxxxxxxxxxxx": Info(430), #SEARCH_Jipang_House3_GROUND_0
+    "[Jipang] xxxxxxxxxxxx": Info(431), #SEARCH_Jipang_Storehouse_POT_0
+    "[Jipang] xxxxxxxxxxxx": Info(432), #SEARCH_Jipang_Storehouse_POT_1
+    "[Jipang] xxxxxxxxxxxx": Info(433), #SEARCH_Jipang_Storehouse_POT_2
+    "[Jipang] xxxxxxxxxxxx": Info(434), #SEARCH_Jipang_Storehouse_POT_3
+    "[Jipang] xxxxxxxxxxxx": Info(435), #SEARCH_Jipang_Well_GROUND_0
+    "[Jipang] xxxxxxxxxxxx": Info(436), #SEARCH_Jipang_BattleRoad_BARREL_0
+    "[Jipang] xxxxxxxxxxxx": Info(437), #SEARCH_Jipang_BattleRoad_POT_0
+    # ----- Pimiko's Palace -----
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(438), #SEARCH_Jipang_Castle_Room_POT_0
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(439), #SEARCH_Jipang_Castle_Room_POT_1
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(440), #SEARCH_Jipang_Castle_Room_POT_2
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(441), #SEARCH_Jipang_Castle_Room_STORAGE_0
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(442), #SEARCH_Jipang_Castle_Room_STORAGE_1
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(443), #xxxxxxxxxxxx
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(444), #xxxxxxxxxxxx
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(445), #xxxxxxxxxxxx
+    "[Pimiko's Palace] xxxxxxxxxxxx": Info(446), #xxxxxxxxxxxx
+    # ----- Orochi's Lair -----
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(447), #SEARCH_JipangCave_1F_TREASURE_NORMAL_0
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(448), #SEARCH_JipangCave_1F_TREASURE_NORMAL_1
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(449), #SEARCH_JipangCave_1F_TREASURE_NORMAL_2
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(450), #SEARCH_JipangCave_1F_TREASURE_NORMAL_3
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(451), #SEARCH_JipangCave_2F_EVENT_0
+    "[Orochi's Lair] xxxxxxxxxxxx": Info(452), #SEARCH_JipangCave_2F_TREASURE_NORMAL_0
 }
 
 

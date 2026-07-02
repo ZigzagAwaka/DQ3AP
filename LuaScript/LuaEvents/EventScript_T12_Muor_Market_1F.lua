@@ -340,9 +340,9 @@ function Muor_Market_1F_SUB_0_SCENE_0610_010(BeginOverlap, table, ...)
   else
     AddItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
     SetFlag(Flag.FE67, true)
+    CheckCreateLightHelm()
   end
   -- AP end
-  CheckCreateLightHelm() -- maybe this needs to be removed for AP?
   SetFlag(Flag.FD10, false)
   DestroyPartyClone()
   PartyMemberAlignment(ALIGNMENT_TOGETHER, ALIGNMENT_MOVE_WALK)

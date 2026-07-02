@@ -20,7 +20,11 @@ HAS_DREAMSTONE = Has("Dreamstone")
 HAS_ROYAL_MISSIVE = Has("Royal Missive")
 HAS_BLACK_PEPPER = Has("Black Pepper")
 HAS_SHIP = Has("Ship")
+HAS_ALL_ORBS = HasAll("Green Orb", "Red Orb", "Purple Orb", "Yellow Orb", "Silver Orb", "Blue Orb")
+HAS_BIRD = Has("Ramia")
 BARAMOS_TMP = Has("Baramos") # TMP
+RIDDLE_TMP = Has("Riddle hint") # TMP
+XENION_TMP = Has("Xenion wish") # TMP
 
 
 def set_all_rules(world: DQ3World) -> None:

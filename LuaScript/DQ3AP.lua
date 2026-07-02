@@ -43,8 +43,8 @@ function AP.ConvertSpecialItemIds(ItemId)
     --elseif not GetFlag(Flag.FE56) then
       --ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
     end
-  elseif ItemId == "ITEM_IMPORTANT_SHIP" then
-    AP.SetSpecialFlags(ItemId) --set ship flags before id conversion (discard id, ship is not a real item)
+  elseif ItemId == "ITEM_IMPORTANT_SHIP" or ItemId == "ITEM_IMPORTANT_RAMIA" then
+    AP.SetSpecialFlags(ItemId) --set ship/ramia flags before id conversion (discard id, ship/ramia are not real items)
     ItemId = "None"
   end
   return ItemId
@@ -77,6 +77,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)
   elseif ItemId == "ITEM_EQUIP_HELMET_ORTEGAS_HELM" then
     SetFlag(Flag.FE67, true)
+    CheckCreateLightHelm() -- maybe needs to be edited for light helm side quest
   elseif ItemId == "ITEM_IMPORTANT_SHIP" then
     SetFlag(Flag.FE106, true)
     SetFlag(Flag.FE734, true)
@@ -86,6 +87,16 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE107, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
+  elseif ItemId == "ITEM_IMPORTANT_GREEN_ORB" then
+    --SetFlag(Flag.FE73, true) -- green orb flag cant be set or it will prevent the theddon boss to spawn
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  elseif ItemId == "ITEM_IMPORTANT_RAMIA" then
+    SetFlag(Flag.FE35, true)
+    SetFlag(Flag.FE214, true)
+    SetFlag(Flag.FE215, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REIAMULAND_RevivalLamia, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_RAMIA, true)
   --elseif ItemId == "ITEM_IMPORTANT_ULTIMATE_KEY" then
     --SetFlag(Flag.FE56, true)
   end

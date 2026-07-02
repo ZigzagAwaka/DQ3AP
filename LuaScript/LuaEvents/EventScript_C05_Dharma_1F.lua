@@ -1,5 +1,7 @@
 print("Load Script EventScript_C05_Dharma_1F")
 
+local AP = require("Src/DQ3AP") -- AP
+
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]

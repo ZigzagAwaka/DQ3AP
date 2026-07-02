@@ -65,6 +65,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Underground Lake"),
         Connect("Skyfell Tower"),
         Connect("Great Desert Overworld"),
+        Connect("Edina", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Romaria": [
         Connect("Romaria Castle"),
@@ -73,13 +74,14 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Romarian Road": [],
     "Romarian Outpost": [
         Connect("Portoga Overworld", rules.HAS_MAGIC_KEY),
-        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP),
+        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Khoryv": [],
     "Norvik": [],
     "Faerie Village": [],
     "Underground Lake": [],
     "Skyfell Tower": [],
+    "Edina": [],
     # GREAT DESERT
     "Great Desert Overworld": [
         Connect("Nordy's Grotto", rules.HAS_THIEF_KEY),
@@ -89,7 +91,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Pyramid"),
     ],
     "Nordy's Grotto": [
-        Connect("Center Overworld", rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP)
+        Connect("Center Overworld", rules.HAS_ROYAL_MISSIVE | rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD)
     ],
     "Asham": [],
     "Desert Shrine": [],
@@ -101,11 +103,13 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     # PORTOGA
     "Portoga Overworld": [
         Connect("Portoga"),
-        Connect("Portoga Lighthouse", rules.HAS_SHIP),
-        Connect("Aliahan Overworld", rules.HAS_SHIP),
-        Connect("Northwest Overworld", rules.HAS_SHIP),
-        Connect("Great Desert Overworld", rules.HAS_SHIP),
-        Connect("Center Overworld", rules.HAS_SHIP),
+        Connect("Portoga Lighthouse", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Aliahan Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Northwest Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Great Desert Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Center Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Southern Mountains Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Ocean Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Portoga": [
         Connect("Portoga Castle"),
@@ -121,6 +125,9 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Wayfarer's Inn", rules.HAS_THIEF_KEY),
         Connect("Mur"),
         Connect("Tower of Transcendence"),
+        Connect("Shrine of the Dwarf", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Jipang", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Orochi's Lair", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Olivia's Promontory": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
@@ -134,21 +141,38 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Mur": [],
     "Tower of Transcendence": [],
+    "Shrine of the Dwarf": [],
+    "Jipang": [
+        Connect("Pimiko's Palace"),
+    ],
+    "Pimiko's Palace": [],
+    "Orochi's Lair": [],
+    # SOUTHERN MOUNTAINS
+    "Southern Mountains Overworld": [
+        Connect("Wayfarer's Shrine"),
+        Connect("Theddon"),
+        Connect("Mt. Necrogond", rules.HAS_SHIP | rules.HAS_BIRD),
+    ],
+    "Wayfarer's Shrine": [],
+    "Theddon": [],
+    "Mt. Necrogond": [],
+    # OCEAN
+    "Ocean Overworld": [
+        Connect("Shrine of the Everbird", rules.HAS_SHIP | rules.HAS_BIRD),
+    ],
+    "Shrine of the Everbird": [],
+
 
     # WIP
     "Teleportal Shrine": [],
     "Wayfarer's Chapel": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
     ],
-    "Wayfarer's Shrine": [],
     "North Overworld?": [
-        Connect("Teleportal Shrine", rules.HAS_SHIP),
+        Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Southeast Overworld?": [
         Connect("Wayfarer's Chapel"), #rules?
-    ],
-    "South montain overworld?": [
-        Connect("Wayfarer's Shrine"), #rules?
     ],
 }
 
