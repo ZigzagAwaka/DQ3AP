@@ -330,7 +330,7 @@ function Muor_Market_1F_SUB_0_SCENE_0610_010(BeginOverlap, table, ...)
   CloseMessage()
   CmdFadeIn(EFadingPriorityUIBackGround, 0.5)
   CmdEventClosingMessage("NPC_Talk_Muor_Market_1F_SUB_0_SCENE_0610_010_14")
-  ItemGetMessageToActor("NPC_Talk_Muor_Market_1F_SUB_0_SCENE_0610_010_15", "ITEM_EQUIP_HELMET_ORTEGAS_HELM", Hero, false, true)
+  ItemGetMessageToActor("NPC_Talk_Muor_Market_1F_SUB_0_SCENE_0610_010_15", "ITEM_ARCHIPELAGO"--[["ITEM_EQUIP_HELMET_ORTEGAS_HELM"]], Hero, false, true) -- AP
   -- AP
   AP.Log("Muor_Market_1F_SUB_0_SCENE_0610_010 called (NPC giving Ortega's Helm)")
   AP.CheckLocation("Muor_Market_1F_SUB_0_SCENE_0610_010")

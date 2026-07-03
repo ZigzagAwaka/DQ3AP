@@ -1,4 +1,7 @@
 print("Load Script EventScript_C06_Jipang_Room")
+
+local AP = require("Src/DQ3AP") -- AP
+
 local _partyId = {
   "Party1",
   "Party2",
@@ -413,14 +416,25 @@ function JipangRoomAfterDreamSpace()
   HideMessageWindowPageFeedIcon()
   CmdMessage("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_1110_010_8")
   ChangeSpeaker()
-  ItemGetMessageToActor("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_USE_ITEM_DIEAMEND", oldManJipang01, true)
-  ItemGetMessage("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_USE_ITEM_YGGDRASIL_LEAF", true)
-  ItemGetMessage("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_EQUIP_ACCESSORY_AGILITY_RING", true)
+  ItemGetMessageToActor("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_ARCHIPELAGO"--[["ITEM_USE_ITEM_DIEAMEND"]], oldManJipang01, true) -- AP
+  ItemGetMessage("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_ARCHIPELAGO"--[["ITEM_USE_ITEM_YGGDRASIL_LEAF"]], true) -- AP
+  ItemGetMessage("NPC_Talk_Jipang_Room_MAIN_0_ACTOR_0150_010_5", "ITEM_ARCHIPELAGO"--[["ITEM_EQUIP_ACCESSORY_AGILITY_RING"]], true) -- AP
   CloseMessage()
   PauseMainBGM(false, 0)
-  AddItem("ITEM_USE_ITEM_DIEAMEND")
-  AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF")
-  AddItem("ITEM_EQUIP_ACCESSORY_AGILITY_RING")
+  -- AP
+  AP.Log("Jipang_Room_MAIN_0_SCENE_0010_010 called (Pimiko's Palace, rewards for defeating Orochi)")
+  AP.CheckLocation("Jipang_Room_MAIN_0_SCENE_0010_010_Sub_1\nJipang_Room_MAIN_0_SCENE_0010_010_Sub_2\nJipang_Room_MAIN_0_SCENE_0010_010_Sub_3\nJipang_Room_MAIN_0_SCENE_0010_010_Main")
+  local ItemId = "ITEM_ARCHIPELAGO"
+  if ItemId == "ITEM_ARCHIPELAGO" then
+    AddItem(ItemId)
+    AddItem(ItemId)
+    AddItem(ItemId)
+  else
+    AddItem("ITEM_USE_ITEM_DIEAMEND")
+    AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF")
+    AddItem("ITEM_EQUIP_ACCESSORY_AGILITY_RING")
+  end
+  -- AP end
   CmdMoveNpcRelativeDetail(oldManJipang01, {
     X = oldManJipang01MoveX,
     Y = 0,
@@ -458,11 +472,22 @@ function JipangRoomAfterDreamSpace()
   CmdFadeIn(EFadingPriorityUIBackGround, 1.5)
   SetEventVolumeEnabled("Jipang_Room_Himiko_Room_02", false)
   SetFlag(Flag.FE151, true)
-  AddItem("ITEM_IMPORTANT_PURPLE_ORB")
-  SetFlag(Flag.FE76, true)
+  -- AP
+  if ItemId == "ITEM_ARCHIPELAGO" then
+    AddItem(ItemId)
+  else
+    AddItem("ITEM_IMPORTANT_PURPLE_ORB")
+    SetFlag(Flag.FE76, true)
+  end
+  -- AP end
   SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_DefeatOrochi, true)
-  SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MULTI_HintOrb, true)
-  CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  -- AP
+  if ItemId == "ITEM_ARCHIPELAGO" then
+  else
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MULTI_HintOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  end
+  -- AP end
   SetFlag(Flag.FD15, false)
   SetFlag(Flag.FD16, true)
   RequestAutoSaveFromEvent()

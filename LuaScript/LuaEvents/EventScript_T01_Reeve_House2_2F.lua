@@ -35,7 +35,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   end
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_5")
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_6")
-  ItemGetMessageToActor("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_7", "ITEM_IMPORTANT_WRECKING_BALL", Oldman_Reeve)
+  ItemGetMessageToActor("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_7", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_WRECKING_BALL"]], Oldman_Reeve) -- AP
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_8")
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_8_1")
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_010_9")
@@ -53,18 +53,14 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_010 called (Reeve - Old man that gives the Wrecking Ball)")
   AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
-  AddItem(ItemId)
-  CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
-  SetDispMiniMap(true)
-  RequestAutoSaveFromEvent()
-  EventEnd(eventInfo, "")
   if ItemId == "ITEM_ARCHIPELAGO" then
-    return
+    AddItem(ItemId)
+  else
+    AddItem("ITEM_IMPORTANT_WRECKING_BALL")
+    SetFlag(Flag.FE57, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
   end
   -- AP end
-  AddItem("ITEM_IMPORTANT_WRECKING_BALL")
-  SetFlag(Flag.FE57, true)
-  SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
   CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
   SetDispMiniMap(true)
   RequestAutoSaveFromEvent()
@@ -106,7 +102,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_035(BeginOverlap, table, ...)
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
-  AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Wrecking ball 2)")
+  AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Wrecking ball 2)") -- AP
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local MapTime = GetMapTimeFrame()

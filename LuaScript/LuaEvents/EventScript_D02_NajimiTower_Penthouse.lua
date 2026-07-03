@@ -59,7 +59,7 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     end
   end
   if result == true then
-    ItemGetMessageToActor("NPC_TALK_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_9", "ITEM_IMPORTANT_THIEFS_KEY", OldMan_Najimi)
+    ItemGetMessageToActor("NPC_TALK_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_9", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_THIEFS_KEY"]], OldMan_Najimi) -- AP
     CmdMessage("NPC_Talk_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_9_1")
     CmdEventClosingMessage("NPC_TALK_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_9_2")
     SetNpcAnimation(OldMan_Najimi, AnimationType.Act4, 1, EFlipbookPlayTypeLoop, true)
@@ -82,16 +82,16 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     AP.Log("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010 called (Dreamer's Tower - Old man that gives the Thief's Key)")
     AP.CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
-    AddItem(ItemId)
     if ItemId == "ITEM_ARCHIPELAGO" then
+      AddItem(ItemId)
       SetFlag(Flag.FF1, true)
     else
-    -- AP end
       AddItem("ITEM_IMPORTANT_THIEFS_KEY")
       SetFlag(Flag.FE54, true)
       SetFlag(Flag.FF1, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
     end
+    -- AP end
   else
     CmdEventClosingMessage("NPC_TALK_NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010_8")
   end

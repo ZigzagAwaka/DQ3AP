@@ -256,7 +256,7 @@ function Portoga_Out_SUB_0_ACTOR_1010_010(BeginOverlap, table, ...)
     CmdMessage("NPC_Talk_Portoga_Out_SUB_0_ACTOR_1010_010_1")
     CmdMessage("NPC_Talk_Portoga_Out_SUB_0_ACTOR_1010_010_2")
     CmdMessage("NPC_Talk_Portoga_Out_SUB_0_ACTOR_1010_010_3")
-    ItemGetMessageToActor("NPC_Talk_Portoga_Out_SUB_0_ACTOR_1010_010_5", "ITEM_EQUIP_WEAPON_SIREN_SWORD", Sabrina, false, true)
+    ItemGetMessageToActor("NPC_Talk_Portoga_Out_SUB_0_ACTOR_1010_010_5", "ITEM_ARCHIPELAGO"--[["ITEM_EQUIP_WEAPON_SIREN_SWORD"]], Sabrina, false, true) -- AP
     -- AP
     AP.Log("Portoga_Out_SUB_0_ACTOR_1010_010 called (Portoga - Woman giving the Siren Sword)")
     AP.CheckLocation("Portoga_Out_SUB_0_ACTOR_1010_010")

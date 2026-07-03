@@ -1,7 +1,5 @@
 print("Load Script EventScript_D05_UndergroundLake_B4F")
 
-local AP = require("Src/DQ3AP") -- AP
-
 function UndergroundLake_B4F_Treasure(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   eventInfo = EventStart(table, "")
   print("Treasure_Normal execute, TreasureId : " .. tostring(TreasureId) .. ", Item : " .. tostring(ItemId) .. ", Count : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))

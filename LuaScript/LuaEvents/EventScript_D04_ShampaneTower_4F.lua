@@ -1,7 +1,5 @@
 print("Load Script EventScript_D04_ShampaneTower_4F")
 
-local AP = require("Src/DQ3AP") -- AP
-
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]

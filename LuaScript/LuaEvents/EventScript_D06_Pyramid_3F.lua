@@ -1,7 +1,5 @@
 print("Load Script EventScript_D06_Pyramid_3F")
 
-local AP = require("Src/DQ3AP") -- AP
-
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]

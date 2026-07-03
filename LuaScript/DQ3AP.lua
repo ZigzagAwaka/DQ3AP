@@ -88,7 +88,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
   elseif ItemId == "ITEM_IMPORTANT_GREEN_ORB" then
-    --SetFlag(Flag.FE73, true) -- green orb flag cant be set or it will prevent the theddon boss to spawn
+    --SetFlag(Flag.FE73, true) -- green orb flag cant be set or it will prevent the boss in theddon to spawn
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_RAMIA" then
@@ -97,6 +97,13 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE215, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REIAMULAND_RevivalLamia, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_RAMIA, true)
+  elseif ItemId == "ITEM_IMPORTANT_HAMMER_OF_GAIA" then
+    SetFlag(Flag.FE841, true) -- needs to be tested
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
+  elseif ItemId == "ITEM_IMPORTANT_PURPLE_ORB" then
+    SetFlag(Flag.FE76, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MULTI_HintOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
   --elseif ItemId == "ITEM_IMPORTANT_ULTIMATE_KEY" then
     --SetFlag(Flag.FE56, true)
   end

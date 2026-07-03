@@ -74,7 +74,7 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
   CmdShowEventScreenShotUI("EVENTSCREENSHOT_Portoga001", EFadingPriorityTopMost, 0.5)
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_4")
   CmdCloseEventScreenShotUI(EFadingPriorityTopMost, 0.5)
-  ItemGetMessageToActor("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_5", "ITEM_IMPORTANT_ROYAL_MISSIVE", "Portoga_Castle_1F_King_Portoga_01_L1")
+  ItemGetMessageToActor("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_5", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_ROYAL_MISSIVE"]], "Portoga_Castle_1F_King_Portoga_01_L1") -- AP
   -- AP
   AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010 called (Portoga - King giving the Royal Missive)")
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010")

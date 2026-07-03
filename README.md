@@ -88,7 +88,7 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 Other modifications were implemented to nicely integrate Archipelago :
 
 - Parts of the game were patched to skip or ignore some important story flags.
-    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their non randomized items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay ! (you'll still get an Archipelago check)
+    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay !
     - Some scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
 - Once the Ship or Ramia are unlocked, they will spawn near Portoga or the Shrine of the Everbird but if you don't have access to these places yet then you can use Zoom to teleport to a previously explored location and the ship and Ramia will be teleported near you. *Planned: Maybe make it so the ship/ramia spawn near Aliahan?*
 

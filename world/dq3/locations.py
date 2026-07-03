@@ -483,40 +483,40 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Shrine of the Everbird] Hidden Ground near the right of the ladder": Info(419), #SEARCH_Reiamuland_Out_GROUND_0
     "[Shrine of the Everbird] Reward for offering the 6 orbs": Info(420, rules.HAS_ALL_ORBS), #EVESE_REIAMULAND_ORB_SHINE_ALL
     # ----- Jipang -----
-    "[Jipang] xxxxxxxxxxxx": Info(421), #SEARCH_Jipang_EVENT_0
-    "[Jipang] xxxxxxxxxxxx": Info(422), #SEARCH_Jipang_Out_GROUND_0
-    "[Jipang] xxxxxxxxxxxx": Info(423), #SEARCH_Jipang_Out_GROUND_1
-    "[Jipang] xxxxxxxxxxxx": Info(424), #SEARCH_Jipang_Out_POT_0
-    "[Jipang] xxxxxxxxxxxx": Info(425), #SEARCH_Jipang_House1_STORAGE_0
-    "[Jipang] xxxxxxxxxxxx": Info(426), #SEARCH_Jipang_House2_STORAGE_0
-    "[Jipang] xxxxxxxxxxxx": Info(427), #SEARCH_Jipang_House2_SACK_0
-    "[Jipang] xxxxxxxxxxxx": Info(428), #SEARCH_Jipang_House3_POT_0
-    "[Jipang] xxxxxxxxxxxx": Info(429), #SEARCH_Jipang_House3_SACK_0
-    "[Jipang] xxxxxxxxxxxx": Info(430), #SEARCH_Jipang_House3_GROUND_0
-    "[Jipang] xxxxxxxxxxxx": Info(431), #SEARCH_Jipang_Storehouse_POT_0
-    "[Jipang] xxxxxxxxxxxx": Info(432), #SEARCH_Jipang_Storehouse_POT_1
-    "[Jipang] xxxxxxxxxxxx": Info(433), #SEARCH_Jipang_Storehouse_POT_2
-    "[Jipang] xxxxxxxxxxxx": Info(434), #SEARCH_Jipang_Storehouse_POT_3
-    "[Jipang] xxxxxxxxxxxx": Info(435), #SEARCH_Jipang_Well_GROUND_0
-    "[Jipang] xxxxxxxxxxxx": Info(436), #SEARCH_Jipang_BattleRoad_BARREL_0
-    "[Jipang] xxxxxxxxxxxx": Info(437), #SEARCH_Jipang_BattleRoad_POT_0
+    #"[Jipang] Event": Info(421), #SEARCH_Jipang_EVENT_0 # no items here
+    "[Jipang] Hidden Ground near left of Pimiko's Palace": Info(422), #SEARCH_Jipang_Out_GROUND_0
+    "[Jipang] Hidden Ground behind the top right house": Info(423), #SEARCH_Jipang_Out_GROUND_1
+    "[Jipang] Pot behind the bottom house": Info(424), #SEARCH_Jipang_Out_POT_0
+    "[Jipang] Storage in bottom house": Info(425), #SEARCH_Jipang_House1_STORAGE_0
+    "[Jipang] Storage in top right house": Info(426), #SEARCH_Jipang_House2_STORAGE_0
+    "[Jipang] Sack in top right house": Info(427), #SEARCH_Jipang_House2_SACK_0
+    "[Jipang] Pot in top left house": Info(428), #SEARCH_Jipang_House3_POT_0
+    "[Jipang] Sack in top left house": Info(429), #SEARCH_Jipang_House3_SACK_0
+    "[Jipang] Hidden Ground in top left house after talking to the Smith in Kol": Info(430, rules.KOL_TMP), #SEARCH_Jipang_House3_GROUND_0 #CHANGE RULE ONCE ALEFGARD AND KOL LOGIC ARE FINISHED
+    "[Jipang] Pot 1 in basement room near the top left house": Info(431), #SEARCH_Jipang_Storehouse_POT_0
+    "[Jipang] Pot 2 in basement room near the top left house": Info(432), #SEARCH_Jipang_Storehouse_POT_1
+    "[Jipang] Pot 3 in basement room near the top left house": Info(433), #SEARCH_Jipang_Storehouse_POT_2
+    #"[Jipang] Pot 4 in basement room near the top left house": Info(434), #SEARCH_Jipang_Storehouse_POT_3 # no items here
+    "[Jipang] Hidden Ground near the right in the well": Info(435), #SEARCH_Jipang_Well_GROUND_0
+    "[Jipang] Barrel on the back right side of the Monster Arena": Info(436, rules.XENION_TMP), #SEARCH_Jipang_BattleRoad_BARREL_0 #CHANGE RULE ONCE POSTGAME AND XENION LOGIC ARE FINISHED
+    "[Jipang] Pot near stairs in Monster Arena": Info(437, rules.XENION_TMP), #SEARCH_Jipang_BattleRoad_POT_0 #CHANGE RULE ONCE POSTGAME AND XENION LOGIC ARE FINISHED
     # ----- Pimiko's Palace -----
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(438), #SEARCH_Jipang_Castle_Room_POT_0
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(439), #SEARCH_Jipang_Castle_Room_POT_1
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(440), #SEARCH_Jipang_Castle_Room_POT_2
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(441), #SEARCH_Jipang_Castle_Room_STORAGE_0
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(442), #SEARCH_Jipang_Castle_Room_STORAGE_1
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(443), #xxxxxxxxxxxx
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(444), #xxxxxxxxxxxx
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(445), #xxxxxxxxxxxx
-    "[Pimiko's Palace] xxxxxxxxxxxx": Info(446), #xxxxxxxxxxxx
+    "[Pimiko's Palace] Pot in top left room": Info(438), #SEARCH_Jipang_Castle_Room_POT_0
+    "[Pimiko's Palace] Pot 1 in right room": Info(439), #SEARCH_Jipang_Castle_Room_POT_1
+    "[Pimiko's Palace] Pot 2 in right room": Info(440), #SEARCH_Jipang_Castle_Room_POT_2
+    "[Pimiko's Palace] Storage 1 in top right room": Info(441), #SEARCH_Jipang_Castle_Room_STORAGE_0
+    "[Pimiko's Palace] Storage 2 in top right room": Info(442), #SEARCH_Jipang_Castle_Room_STORAGE_1
+    "[Pimiko's Palace] Villager reward 1 for defeating Orochi Boss": Info(443), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_1
+    "[Pimiko's Palace] Villager reward 2 for defeating Orochi Boss": Info(444), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_2
+    "[Pimiko's Palace] Villager reward 3 for defeating Orochi Boss": Info(445), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_3
+    "[Pimiko's Palace] Main reward for defeating Orochi Boss": Info(446), #Jipang_Room_MAIN_0_SCENE_0010_010_Main
     # ----- Orochi's Lair -----
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(447), #SEARCH_JipangCave_1F_TREASURE_NORMAL_0
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(448), #SEARCH_JipangCave_1F_TREASURE_NORMAL_1
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(449), #SEARCH_JipangCave_1F_TREASURE_NORMAL_2
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(450), #SEARCH_JipangCave_1F_TREASURE_NORMAL_3
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(451), #SEARCH_JipangCave_2F_EVENT_0
-    "[Orochi's Lair] xxxxxxxxxxxx": Info(452), #SEARCH_JipangCave_2F_TREASURE_NORMAL_0
+    "[Orochi's Lair] Chest in the right area before the stairs": Info(447), #SEARCH_JipangCave_1F_TREASURE_NORMAL_0
+    "[Orochi's Lair] Chest in the center of the big dead end path": Info(448), #SEARCH_JipangCave_1F_TREASURE_NORMAL_1
+    "[Orochi's Lair] Chest at the dead end near the entrance": Info(449), #SEARCH_JipangCave_1F_TREASURE_NORMAL_2
+    "[Orochi's Lair] Chest in the bottom right corner of the left area": Info(450), #SEARCH_JipangCave_1F_TREASURE_NORMAL_3
+    #"[Orochi's Lair] Event": Info(451), #SEARCH_JipangCave_2F_EVENT_0 # no items here
+    "[Orochi's Lair] Chest on the left B2": Info(452), #SEARCH_JipangCave_2F_TREASURE_NORMAL_0
 }
 
 

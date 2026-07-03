@@ -271,7 +271,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   SetNpcAnimation(Queen_Elf, AnimationType.Act7, 1, EFlipbookPlayTypeStopEnd, true)
   CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_VOLUME_0110_030_10")
   CloseMessage()
-  ItemGetMessageToActor("NPC_Talk_ElfVillage_House_SUB_0_VOLUME_0110_030_12", "ITEM_IMPORTANT_WAKEY_DUST", party1, false, true)
+  ItemGetMessageToActor("NPC_Talk_ElfVillage_House_SUB_0_VOLUME_0110_030_12", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_WAKEY_DUST"]], party1, false, true) -- AP
   -- AP
   AP.Log("ElfVillage_House_SUB_0_VOLUME_0110_030 called (Faerie Village - Faerie Queen giving the Wakey Dust)")
   AP.CheckLocation("ElfVillage_House_SUB_0_VOLUME_0110_030")

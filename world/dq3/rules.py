@@ -23,6 +23,7 @@ HAS_SHIP = Has("Ship")
 HAS_ALL_ORBS = HasAll("Green Orb", "Red Orb", "Purple Orb", "Yellow Orb", "Silver Orb", "Blue Orb")
 HAS_BIRD = Has("Ramia")
 BARAMOS_TMP = Has("Baramos") # TMP
+KOL_TMP = Has("Kol scene") # TMP
 RIDDLE_TMP = Has("Riddle hint") # TMP
 XENION_TMP = Has("Xenion wish") # TMP
 

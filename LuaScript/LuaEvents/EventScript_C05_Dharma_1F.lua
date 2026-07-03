@@ -101,7 +101,7 @@ function Dharma_1F_SUB_0_ACTOR_0810_010(BeginOverlap, table, ...)
     Wait(1)
     TurnNpc(Trader, NPC_D_TO_PLAYER)
     CmdEventClosingMessage("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_3")
-    ItemGetMessageToActor("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_4", "ITEM_IMPORTANT_BLACK_PEPPER", Trader)
+    ItemGetMessageToActor("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_4", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_BLACK_PEPPER"]], Trader) -- AP
     -- AP
     AP.Log("Dharma_1F_SUB_0_ACTOR_0810_010 called (Trader giving the Black Pepper)")
     AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
