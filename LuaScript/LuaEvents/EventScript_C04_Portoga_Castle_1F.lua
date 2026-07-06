@@ -166,9 +166,7 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
   end
   -- AP
   AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 called (Portoga - King giving the Ship)")
-  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020")
-  AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 - sending Portoga_Castle_1F_MAIN_0_VOLUME_0010_010 for security progress")
-  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010")
+  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020\nPortoga_Castle_1F_MAIN_0_VOLUME_0010_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
     --AddItem(ItemId) --still a check but no items

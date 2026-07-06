@@ -29,8 +29,30 @@ end
 
 -- checks if the given item is an enemy
 function AP.IsItemEnemy(ItemId)
-    local enemy = string.match(ItemId, "^BATTLE_")
-    return enemy ~= nil
+    local enemy = string.match(ItemId, "^BATTLE_EVENT_(.+)$")
+    return enemy ~= nil, tostring(enemy)
+end
+
+-- all possible cannibox battle ids
+local random_cannibox = {
+  "BATTLE_EVENT_PYRAMID_MANEATERBOX_1",
+  "BATTLE_EVENT_BAHARATAEASTCAVE_MANEATERBOX_2",
+  "BATTLE_EVENT_GAIA_MIMIC_1",
+  "BATTLE_EVENT_ARPTOWER_MANEATERBOX_3",
+}
+
+-- all possible mimic battle ids
+local random_mimic = {
+  "BATTLE_EVENT_RACAVE_MIMIC_2",
+}
+
+-- returns a possible enemy battle id corresponding to the given enemy name
+function AP.GetBattleIdFromEnemyName(enemyName)
+  if enemyName == "CANNIBOX" then
+    return random_cannibox[math.random(#random_cannibox)]
+  else -- MIMIC
+    return random_mimic[math.random(#random_mimic)]
+  end
 end
 
 -- checks if the given item is an item that needs an id conversion and returns the new id if it needs one
@@ -40,8 +62,8 @@ function AP.ConvertSpecialItemIds(ItemId)
       ItemId = "ITEM_IMPORTANT_THIEFS_KEY"
     elseif not GetFlag(Flag.FE55) then
       ItemId = "ITEM_IMPORTANT_MAGIC_KEY"
-    --elseif not GetFlag(Flag.FE56) then
-      --ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
+    elseif not GetFlag(Flag.FE56) then
+      ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
     end
   elseif ItemId == "ITEM_IMPORTANT_SHIP" or ItemId == "ITEM_IMPORTANT_RAMIA" then
     AP.SetSpecialFlags(ItemId) --set ship/ramia flags before id conversion (discard id, ship/ramia are not real items)
@@ -53,8 +75,13 @@ end
 -- set specific important flags if ItemId needs to have those flags set
 function AP.SetSpecialFlags(ItemId)
   if ItemId == "ITEM_IMPORTANT_WRECKING_BALL" then
-    SetFlag(Flag.FE57, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
+    if not GetFlag(Flag.FE57) then
+      SetFlag(Flag.FE57, true)
+      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
+    else
+      SetFlag(Flag.FE837, true)
+      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall_2, true)
+    end
   elseif ItemId == "ITEM_IMPORTANT_THIEFS_KEY" then
     SetFlag(Flag.FE54, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
@@ -77,7 +104,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)
   elseif ItemId == "ITEM_EQUIP_HELMET_ORTEGAS_HELM" then
     SetFlag(Flag.FE67, true)
-    CheckCreateLightHelm() -- maybe needs to be edited for light helm side quest
+    CheckCreateLightHelm()
   elseif ItemId == "ITEM_IMPORTANT_SHIP" then
     SetFlag(Flag.FE106, true)
     SetFlag(Flag.FE734, true)
@@ -98,14 +125,42 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REIAMULAND_RevivalLamia, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_RAMIA, true)
   elseif ItemId == "ITEM_IMPORTANT_HAMMER_OF_GAIA" then
-    SetFlag(Flag.FE841, true) -- needs to be tested
+    SetFlag(Flag.FE841, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
   elseif ItemId == "ITEM_IMPORTANT_PURPLE_ORB" then
     SetFlag(Flag.FE76, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MULTI_HintOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
-  --elseif ItemId == "ITEM_IMPORTANT_ULTIMATE_KEY" then
-    --SetFlag(Flag.FE56, true)
+  elseif ItemId == "ITEM_IMPORTANT_BOATMANS_BONE" then
+    SetFlag(Flag.FE70, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GREENLAD_GetBoatmanBone, true)
+  elseif ItemId == "ITEM_IMPORTANT_RED_ORB" then
+    SetFlag(Flag.FE75, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PIRATESBASE_GetRedOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  elseif ItemId == "ITEM_IMPORTANT_YELLOW_ORB" then
+    SetFlag(Flag.FE77, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BURG_GetYellowOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  elseif ItemId == "ITEM_IMPORTANT_BLUE_ORB" then
+    --SetFlag(Flag.FE74, true) -- blue orb flag cant be set or it will prevent the boss in gaia's navel to spawn
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  elseif ItemId == "ITEM_IMPORTANT_BLUE_METAL" then
+    SetFlag(Flag.FE859, true)
+    CheckCreateLightHelm()
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal, true)
+  elseif ItemId == "ITEM_IMPORTANT_BOTTOMLESS_POT" then
+    SetFlag(Flag.FE66, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_EDINBEAR_GetBottomlessPot, true)
+  elseif ItemId == "ITEM_IMPORTANT_ULTIMATE_KEY" then
+    SetFlag(Flag.FE56, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHALLOWSHRINE_GetLastKey, true)
+  elseif ItemId == "ITEM_IMPORTANT_RAS_MIRROR" then
+    SetFlag(Flag.FE68, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_RACAVE_GetRaMirror, true)
+  elseif ItemId == "ITEM_IMPORTANT_MOD_ROD" then
+    SetFlag(Flag.FE69, true)
   end
 end
 
@@ -113,16 +168,17 @@ end
 function AP.GiveItem(ItemId, ObjectId, TreasureId)
   ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
-  local isEnemy = AP.IsItemEnemy(ItemId)
+  local isEnemy, enemyName = AP.IsItemEnemy(ItemId)
   local receptor = 0
   if isEnemy then
-    RequestPreloadEventBattle(ItemId)
-    local MonsterTextId = GetEventBattleMonsterTextId(ItemId)
+    local BattleId = AP.GetBattleIdFromEnemyName(enemyName)
+    RequestPreloadEventBattle(BattleId)
+    local MonsterTextId = GetEventBattleMonsterTextId(BattleId)
     SetTagWord(MonsterTextId)
     CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_1")
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_9")
     CloseMessage()
-    CmdStartEventBattle(ItemId)
+    CmdStartEventBattle(BattleId)
   elseif isGold then
     AddGold(goldCount)
     SetTagValue(goldCount)
@@ -133,6 +189,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     SetTagItemId(ItemId)
     if 0 < receptor or receptor == 0 or receptor == -2 then
       if ObjectId == nil or TreasureId == nil then
+        --ItemGetMessageToActor("None", ItemId, "Party1", false, true)
       else
         CmdLoadItemIcon(ItemId)
         CmdPlayItemGetNoWait(ObjectId, TreasureId)
@@ -191,6 +248,7 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
       for line in file:lines() do
         AP.Log("Available item: " .. line)
         AP.GiveItem(line, ObjectId, TreasureId)
+        RequestAutoSave()
       end
     end
     file:close()
@@ -234,6 +292,44 @@ local predefined_excluded_locations = {
   SEARCH_Pyramid_4F_EVENT_COFFIN_13 = true,
   SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0 = true,
   SEARCH_Portoga_Out_EVENT_0 = true,
+  SEARCH_Baharata_Out_EVENT_0 = true,
+  SEARCH_BaharataEastCave_B2F_EVENT_0 = true,
+  SEARCH_Muor_Market_1F_EVENT_0 = true,
+  SEARCH_PortogaLight_4F_EVENT_0 = true,
+  SEARCH_Tedon_Room_B1F_EVENT_0 = true,
+  SEARCH_Reiamuland_Out_EVENT_0 = true,
+  SEARCH_Reiamuland_Out_EVENT_1 = true,
+  SEARCH_Reiamuland_Out_EVENT_2 = true,
+  SEARCH_Reiamuland_Out_EVENT_3 = true,
+  SEARCH_Reiamuland_Out_EVENT_4 = true,
+  SEARCH_Reiamuland_Out_EVENT_5 = true,
+  SEARCH_Reiamuland_Out_EVENT_6 = true,
+  SEARCH_Jipang_EVENT_0 = true,
+  SEARCH_Jipang_Storehouse_POT_3 = true,
+  SEARCH_JipangCave_2F_EVENT_0 = true,
+  SEARCH_PiratesBase_Out_EVENT_0 = true,
+  SEARCH_Burg_3_Out_GROUND_0 = true,
+  SEARCH_Burg_4_House01_1F_TREASURE_NORMAL_0 = true,
+  SEARCH_Burg_4_House01_1F_TREASURE_NORMAL_1 = true,
+  SEARCH_Burg_4_Theater_1F_DRAWER_0 = true,
+  SEARCH_Burg_4_Theater_1F_DRAWER_1 = true,
+  SEARCH_Burg_5_House01_1F_GROUND_0 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_1 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_2 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_3 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_4 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_5 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_6 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_7 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_8 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_9 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_10 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_11 = true,
+  SEARCH_GaiaNavel_B3F_EVENT_12 = true,
+  SEARCH_GaiaNavel_B4F_EVENT_0 = true,
+  SEARCH_ShallowShrine_Out_EVENT_0 = true,
+  SEARCH_Samanosa_Out_EVENT_0 = true,
+  SEARCH_Samanosa_Castle_2F_BedRoom_TREASURE_IMPORTANT_0 = true,
 }
 
 -- check if the given location is a excluded from the randomization

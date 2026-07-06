@@ -102,7 +102,6 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_035(BeginOverlap, table, ...)
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
-  AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Wrecking ball 2)") -- AP
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local MapTime = GetMapTimeFrame()
@@ -115,7 +114,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   SetNicolaApertureRate(100, 0)
   SetDispMiniMap(false)
   SetTagItemId("ITEM_IMPORTANT_WRECKING_BALL")
-  if GetFlag(Flag.FE837) == true then
+  if false--[[GetFlag(Flag.FE837) == true]] then -- AP
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
   else
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
@@ -123,26 +122,44 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     Wait(1.5)
     CloseMangaIconAllByParty(1)
     CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_2")
-    ItemGetMessageToActor("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_3", "ITEM_IMPORTANT_WRECKING_BALL", Oldman_Reeve)
-    AddItem("ITEM_IMPORTANT_WRECKING_BALL")
+    ItemGetMessageToActor("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_3", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_WRECKING_BALL"]], Oldman_Reeve) -- AP
+    -- AP
+    AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Old man that gives the Wrecking Ball 2)")
+    AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_040\nReeve_House2_1F_SUB_0_ACTOR_0110_010")
+    local ItemId = "ITEM_ARCHIPELAGO"
+    if ItemId == "ITEM_ARCHIPELAGO" then
+      AddItem(ItemId)
+    else
+      AddItem("ITEM_IMPORTANT_WRECKING_BALL")
+    end
+    -- AP end
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
   end
   SetDispMiniMap(true)
   if GetFlag(Flag.FE837) == true then
   else
-    SetFlag(Flag.FE837, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall_2, true)
+    -- AP
+    local ItemId = "ITEM_ARCHIPELAGO"
+    if ItemId == "ITEM_ARCHIPELAGO" then
+    else
+      SetFlag(Flag.FE837, true)
+      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall_2, true)
+    end
+    -- AP end
     RequestAutoSaveFromEvent()
   end
   EventEnd(eventInfo, "")
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
+  Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...) -- AP
+  --[[
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
   EventEnd(eventInfo, "")
+  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0220_010(BeginOverlap, table, ...)

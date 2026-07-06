@@ -65,7 +65,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Underground Lake"),
         Connect("Skyfell Tower"),
         Connect("Great Desert Overworld"),
-        Connect("Edina", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Edina Castle", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Romaria": [
         Connect("Romaria Castle"),
@@ -81,7 +81,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Faerie Village": [],
     "Underground Lake": [],
     "Skyfell Tower": [],
-    "Edina": [],
+    "Edina Castle": [],
     # GREAT DESERT
     "Great Desert Overworld": [
         Connect("Nordy's Grotto", rules.HAS_THIEF_KEY),
@@ -108,7 +108,9 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Northwest Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Great Desert Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Center Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Southern Mountains Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Manoza Overworld", rules.HAS_BIRD),
         Connect("Ocean Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Portoga": [
@@ -147,6 +149,21 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Pimiko's Palace": [],
     "Orochi's Lair": [],
+    # EASTERN
+    "Eastern Overworld": [
+        Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Persistence", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Fifer's Spire", rules.HAS_THIEF_KEY),
+        Connect("Merchantburg", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Pirates' Den"),
+    ],
+    "Teleportal Shrine": [
+        Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
+    ],
+    "Persistence": [],
+    "Fifer's Spire": [],
+    "Merchantburg": [],
+    "Pirates' Den": [],
     # SOUTHERN MOUNTAINS
     "Southern Mountains Overworld": [
         Connect("Wayfarer's Shrine"),
@@ -156,24 +173,36 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Wayfarer's Shrine": [],
     "Theddon": [],
     "Mt. Necrogond": [],
+    # MANOZA
+    "Wayfarer's Chapel": [
+        Connect("Manoza Overworld"),
+    ],
+    "Manoza Overworld": [
+        Connect("Manoza"),
+        Connect("Manoza Cave"),
+    ],
+    "Manoza": [
+        Connect("Manoza Castle"),
+    ],
+    "Manoza Castle": [],
+    "Manoza Cave": [],
     # OCEAN
     "Ocean Overworld": [
         Connect("Shrine of the Everbird", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Grimland", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Lozamii", rules.HAS_SHIP),
+        Connect("Lanson", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Gaia's Navel", rules.HAS_BIRD),
+        Connect("Shallows Shrine", rules.HAS_SHIP & rules.HAS_BOTTOMLESS_POT),
     ],
     "Shrine of the Everbird": [],
-
-
-    # WIP
-    "Teleportal Shrine": [],
-    "Wayfarer's Chapel": [
-        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
+    "Grimland": [],
+    "Lozamii": [],
+    "Lanson": [
+        Connect("Gaia's Navel", rules.HAS_ULTIMATE_KEY),
     ],
-    "North Overworld?": [
-        Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
-    ],
-    "Southeast Overworld?": [
-        Connect("Wayfarer's Chapel"), #rules?
-    ],
+    "Gaia's Navel": [],
+    "Shallows Shrine": [],
 }
 
 

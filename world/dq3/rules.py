@@ -22,6 +22,12 @@ HAS_BLACK_PEPPER = Has("Black Pepper")
 HAS_SHIP = Has("Ship")
 HAS_ALL_ORBS = HasAll("Green Orb", "Red Orb", "Purple Orb", "Yellow Orb", "Silver Orb", "Blue Orb")
 HAS_BIRD = Has("Ramia")
+HAS_MOD_ROD = Has("Mod Rod")
+HAS_BOATMANS_BONE = Has("Boatman's Bone")
+HAS_RAS_MIRROR = Has("Ra's Mirror")
+HAS_BOTTOMLESS_POT = Has("Bottomless Pot")
+HAS_WRECKING_BALL_HINT = Has("Wrecking 2 hint") # TMP
+HAS_WRECKING_BALL_2 = Has("Wrecking Ball", count=2)
 BARAMOS_TMP = Has("Baramos") # TMP
 KOL_TMP = Has("Kol scene") # TMP
 RIDDLE_TMP = Has("Riddle hint") # TMP
@@ -47,4 +53,4 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 
 def set_completion_condition(world: DQ3World) -> None:
-    pass
+    world.set_completion_rule(HAS_ALL_ORBS) # WIP

@@ -546,7 +546,8 @@ function CheckOrbCount()
   if IsHaveItem("ITEM_IMPORTANT_GREEN_ORB") then
     orbCount = orbCount + 1
   end
-  if GetFlag(Flag.FE74) == true then
+  --if GetFlag(Flag.FE74) == true then -- AP: blue orb flag can't be used
+  if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") then
     orbCount = orbCount + 1
   end
   if GetFlag(Flag.FE75) == true then

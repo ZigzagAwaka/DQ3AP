@@ -86,6 +86,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Reeve] Pot 1 in Inn": Info(57, rules.HAS_THIEF_KEY), #SEARCH_Reeve_Inn_1F_POT_0
     "[Reeve] Pot 2 in Inn": Info(58), #SEARCH_Reeve_Inn_2F_POT_0
     "[Reeve] Gift from Old Man in top right house": Info(59, rules.HAS_THIEF_KEY), #Reeve_House2_1F_SUB_0_ACTOR_0110_010
+    "[Reeve] Second gift from Old Man in top right house after talking to the man in Quagmire Cave": Info(546, rules.HAS_THIEF_KEY & rules.HAS_WRECKING_BALL_HINT), #Reeve_House2_1F_SUB_0_ACTOR_0110_040
     # ----- Shrine of the Plains -----
     "[Shrine of the Plains] Barrel near left entrance": Info(60), #SEARCH_ReeveSouth_BARREL_0
     "[Shrine of the Plains] Pot near Dreamer's Tower entrance": Info(61), #SEARCH_ReeveSouth_POT_0
@@ -151,8 +152,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Romaria Castle] Hidden Ground right of the fountain in the top garden": Info(114, rules.HAS_MAGIC_KEY), #SEARCH_Romaria_Castle_1F_GROUND_1
     "[Romaria Castle] Pot in the bottom right area": Info(115), #SEARCH_Romaria_Castle_1F_POT_0
     "[Romaria Castle] Pot in the top right area": Info(116), #SEARCH_Romaria_Castle_1F_POT_1
-    "[Romaria Castle] Pot top right of the center garden": Info(117), #SEARCH_Romaria_Castle_1F_POT_2
-    "[Romaria Castle] Pot top left of the center garden": Info(118), #SEARCH_Romaria_Castle_1F_POT_3
+    "[Romaria Castle] Pot top right of the central garden": Info(117), #SEARCH_Romaria_Castle_1F_POT_2
+    "[Romaria Castle] Pot top left of the central garden": Info(118), #SEARCH_Romaria_Castle_1F_POT_3
     "[Romaria Castle] Barrel in the top left area": Info(119), #SEARCH_Romaria_Castle_1F_BARREL_0
     "[Romaria Castle] Hidden Ground near the top right corner 2F": Info(120), #SEARCH_Romaria_Castle_2F_GROUND_0
     "[Romaria Castle] Pot left of the stairs 2F": Info(121), #SEARCH_Romaria_Castle_2F_POT_0
@@ -226,7 +227,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Skyfell Tower] Chest near left wall of area near right stairs 3F": Info(182), #SEARCH_ShampaneTower_3F_TREASURE_NORMAL_0
     "[Skyfell Tower] Pot 1 in bottom area 3F": Info(183), #SEARCH_ShampaneTower_3F_POT_0
     "[Skyfell Tower] Pot 2 in bottom area 3F": Info(184), #SEARCH_ShampaneTower_3F_POT_1
-    "[Skyfell Tower] On ground after defeating Robbin' 'Ood Boss 4F": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
+    "[Skyfell Tower] On ground after defeating Robbin' 'Ood 4F": Info(185), #SEARCH_ShampaneTower_4F_EVENT_0
     "[Skyfell Tower] Chest in top right corner of inner tower 4F": Info(186), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_0
     "[Skyfell Tower] Chest in top left corner of inner tower 4F": Info(187), #SEARCH_ShampaneTower_4F_TREASURE_NORMAL_1
     "[Skyfell Tower] Pot on left wall outside of inner tower 4F": Info(188), #SEARCH_ShampaneTower_4F_POT_0
@@ -268,8 +269,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Ibis] Sack in left house": Info(220), #SEARCH_Isis_HouseA1F_SACK_0
     "[Ibis] Hidden Ground on bottom left corner in left house": Info(221), #SEARCH_Isis_HouseA1F_GROUND_0
     "[Ibis] Storage in left house": Info(222), #SEARCH_Isis_HouseA2F_STORAGE_0
-    "[Ibis] Sack in center locked house (night)": Info(223, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB1F_SACK_0
-    "[Ibis] Bookshelf in center locked house (night)": Info(224, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB2F_BOOKSHELF_0
+    "[Ibis] Sack in central locked house (night)": Info(223, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB1F_SACK_0
+    "[Ibis] Bookshelf in central locked house (night)": Info(224, rules.HAS_THIEF_KEY), #SEARCH_Isis_HouseB2F_BOOKSHELF_0
     "[Ibis] Storage in Inn": Info(225), #SEARCH_Isis_Inn_STORAGE_0
     "[Ibis] Pot in Equipment Shop": Info(226), #SEARCH_Isis_WeaponShop_POT_0
     "[Ibis] Chest in well": Info(227), #SEARCH_Isis_Well_TREASURE_NORMAL_0
@@ -311,8 +312,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Pyramid] Pot on the left of the first stairs 2F": Info(261), #SEARCH_Pyramid_2F_POT_0
     "[Pyramid] Pot in the center 2F": Info(262), #SEARCH_Pyramid_2F_POT_1
     "[Pyramid] Pot at the bottom left corner 2F": Info(263), #SEARCH_Pyramid_2F_POT_2
-    "[Pyramid] Chest 1 after defeating Ripper of the Rift Boss 3F": Info(264), #SEARCH_Pyramid_3F_TREASURE_NORMAL_0
-    "[Pyramid] Chest 2 after defeating Ripper of the Rift Boss 3F": Info(265), #SEARCH_Pyramid_3F_TREASURE_IMPORTANT_0
+    "[Pyramid] Chest 1 after defeating Ripper of the Rift 3F": Info(264), #SEARCH_Pyramid_3F_TREASURE_NORMAL_0
+    "[Pyramid] Chest 2 after defeating Ripper of the Rift 3F": Info(265), #SEARCH_Pyramid_3F_TREASURE_IMPORTANT_0
     #"[Pyramid] Event Switch 1": Info(266), #SEARCH_Pyramid_3F_EVENT_SWITCH_1 # no items here
     #"[Pyramid] Event Switch 2": Info(267), #SEARCH_Pyramid_3F_EVENT_SWITCH_2 # no items here
     #"[Pyramid] Event Switch 3": Info(268), #SEARCH_Pyramid_3F_EVENT_SWITCH_3 # no items here
@@ -420,7 +421,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Hidden Ground behind the Church B1": Info(364), #SEARCH_Dharma_Castle_B1F_GROUND_0
     "[Alltrades Abbey] Pot 1 at the bottom of Inn B1": Info(365), #SEARCH_Dharma_Castle_B1F_POT_0
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
-    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2 Boss": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
+    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
     # ----- Wayfarer's Inn -----
     "[Wayfarer's Inn] Drawer in left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
     "[Wayfarer's Inn] Drawer in right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
@@ -442,14 +443,14 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Tower of Transcendence] Chest in middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
     "[Tower of Transcendence] Pot 1 in middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
     "[Tower of Transcendence] Pot 2 in middle top room": Info(385), #SEARCH_GarunaTower_1F_POT_1
-    "[Tower of Transcendence] Chest in center room 2F": Info(386), #SEARCH_GarunaTower_2F_TREASURE_IMPORTANT_0
+    "[Tower of Transcendence] Chest in central room 2F": Info(386), #SEARCH_GarunaTower_2F_TREASURE_IMPORTANT_0
     "[Tower of Transcendence] Pot in the top area 2F": Info(387), #SEARCH_GarunaTower_2F_POT_0
     "[Tower of Transcendence] Chest in top room 3F": Info(388), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_0
     "[Tower of Transcendence] Chest in bottom room 3F": Info(389), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_1
     "[Tower of Transcendence] Chest in left room 3F": Info(390), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_2
     "[Tower of Transcendence] Chest in bottom right room 3F": Info(391), #SEARCH_GarunaTower_3F_TREASURE_NORMAL_3
     "[Tower of Transcendence] Chest in left room 4F": Info(392), #SEARCH_GarunaTower_4F_TREASURE_NORMAL_0
-    "[Tower of Transcendence] Pot in center room 4F": Info(393), #SEARCH_GarunaTower_4F_POT_0
+    "[Tower of Transcendence] Pot in central room 4F": Info(393), #SEARCH_GarunaTower_4F_POT_0
     "[Tower of Transcendence] Chest in left room 5F": Info(394), #SEARCH_GarunaTower_5F_TREASURE_NORMAL_0
     # ----- Portoga Lighthouse -----
     "[Portoga Lighthouse] Barrel on the left 2F": Info(395), #SEARCH_PortogaLight_2F_BARREL_0
@@ -471,7 +472,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Theddon] Barrel in the bottom left house": Info(408), #SEARCH_Tedon_Shop_1F_BARREL_0
     "[Theddon] Hidden Ground next to the broken barrel in the basement room at the right of the right big poison marsh": Info(409), #SEARCH_Tedon_Room_B1F_GROUND_0
     #"[Theddon] Event": Info(410), #SEARCH_Tedon_Room_B1F_EVENT_0 # no items here
-    "[Theddon] Reward for defeating Dying Fire Boss (night)": Info(411, rules.HAS_ULTIMATE_KEY), #Tedon_Out_MAIN_0_BATTLE_END_0120_010
+    "[Theddon] Reward for defeating Dying Fire (night)": Info(411, rules.HAS_ULTIMATE_KEY), #Tedon_Out_MAIN_0_BATTLE_END_0120_010
     # ----- Shrine of the Everbird -----
     #"[Shrine of the Everbird] Event 0": Info(412), #SEARCH_Reiamuland_Out_EVENT_0 # no items here
     #"[Shrine of the Everbird] Event 1": Info(413), #SEARCH_Reiamuland_Out_EVENT_1 # no items here
@@ -492,7 +493,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Jipang] Sack in top right house": Info(427), #SEARCH_Jipang_House2_SACK_0
     "[Jipang] Pot in top left house": Info(428), #SEARCH_Jipang_House3_POT_0
     "[Jipang] Sack in top left house": Info(429), #SEARCH_Jipang_House3_SACK_0
-    "[Jipang] Hidden Ground in top left house after talking to the Smith in Kol": Info(430, rules.KOL_TMP), #SEARCH_Jipang_House3_GROUND_0 #CHANGE RULE ONCE ALEFGARD AND KOL LOGIC ARE FINISHED
+    "[Jipang] On ground in top left house after talking to the Smith in Kol": Info(430, rules.KOL_TMP), #SEARCH_Jipang_House3_GROUND_0 #CHANGE RULE ONCE ALEFGARD AND KOL LOGIC ARE FINISHED
     "[Jipang] Pot 1 in basement room near the top left house": Info(431), #SEARCH_Jipang_Storehouse_POT_0
     "[Jipang] Pot 2 in basement room near the top left house": Info(432), #SEARCH_Jipang_Storehouse_POT_1
     "[Jipang] Pot 3 in basement room near the top left house": Info(433), #SEARCH_Jipang_Storehouse_POT_2
@@ -506,10 +507,10 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Pimiko's Palace] Pot 2 in right room": Info(440), #SEARCH_Jipang_Castle_Room_POT_2
     "[Pimiko's Palace] Storage 1 in top right room": Info(441), #SEARCH_Jipang_Castle_Room_STORAGE_0
     "[Pimiko's Palace] Storage 2 in top right room": Info(442), #SEARCH_Jipang_Castle_Room_STORAGE_1
-    "[Pimiko's Palace] Villager reward 1 for defeating Orochi Boss": Info(443), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_1
-    "[Pimiko's Palace] Villager reward 2 for defeating Orochi Boss": Info(444), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_2
-    "[Pimiko's Palace] Villager reward 3 for defeating Orochi Boss": Info(445), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_3
-    "[Pimiko's Palace] Main reward for defeating Orochi Boss": Info(446), #Jipang_Room_MAIN_0_SCENE_0010_010_Main
+    "[Pimiko's Palace] Villager reward 1 for defeating Orochi": Info(443), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_1
+    "[Pimiko's Palace] Villager reward 2 for defeating Orochi": Info(444), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_2
+    "[Pimiko's Palace] Villager reward 3 for defeating Orochi": Info(445), #Jipang_Room_MAIN_0_SCENE_0010_010_Sub_3
+    "[Pimiko's Palace] Main reward for defeating Orochi": Info(446), #Jipang_Room_MAIN_0_SCENE_0010_010_Main
     # ----- Orochi's Lair -----
     "[Orochi's Lair] Chest in the right area before the stairs": Info(447), #SEARCH_JipangCave_1F_TREASURE_NORMAL_0
     "[Orochi's Lair] Chest in the center of the big dead end path": Info(448), #SEARCH_JipangCave_1F_TREASURE_NORMAL_1
@@ -517,6 +518,197 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Orochi's Lair] Chest in the bottom right corner of the left area": Info(450), #SEARCH_JipangCave_1F_TREASURE_NORMAL_3
     #"[Orochi's Lair] Event": Info(451), #SEARCH_JipangCave_2F_EVENT_0 # no items here
     "[Orochi's Lair] Chest on the left B2": Info(452), #SEARCH_JipangCave_2F_TREASURE_NORMAL_0
+    # ----- Teleportal Shrine -----
+    "[Teleportal Shrine] Hidden Ground on the back of the center water hole": Info(453), #SEARCH_TravelDoorShrine_1F_GROUND_0
+    # ----- Persistence -----
+    "[Persistence] Hidden Ground near the river on the right of the bridge": Info(454), #SEARCH_Soo_Out_GROUND_0
+    "[Persistence] Hidden Ground near the well": Info(455), #SEARCH_Soo_Out_GROUND_1
+    "[Persistence] Pot near the bottom right house": Info(456), #SEARCH_Soo_Out_POT_0
+    "[Persistence] Pot near the top house": Info(457), #SEARCH_Soo_Out_POT_1
+    "[Persistence] Pot in bottom right house": Info(458), #SEARCH_Soo_Room01_POT_0
+    "[Persistence] Pot in top house": Info(459), #SEARCH_Soo_Room02_POT_0
+    "[Persistence] Barrel 1 in right house": Info(460), #SEARCH_Soo_Room03_BARREL_0
+    "[Persistence] Barrel 2 in right house": Info(461), #SEARCH_Soo_Room03_BARREL_1
+    "[Persistence] Drawer in well": Info(462), #SEARCH_Soo_Well_DRAWER_0
+    "[Persistence] Sack in Inn": Info(463), #SEARCH_Soo_Inn_SACK_0
+    # ----- Grimland -----
+    "[Grimland] Chest on bottom left": Info(464), #SEARCH_Greenlad_Out_TREASURE_NORMAL_0
+    "[Grimland] Chest on the center left hill": Info(465), #SEARCH_Greenlad_Out_TREASURE_NORMAL_1
+    "[Grimland] Chest on bottom right": Info(466), #SEARCH_Greenlad_Out_TREASURE_NORMAL_2
+    "[Grimland] Pot near tree": Info(467), #SEARCH_Greenlad_Out_POT_0
+    "[Grimland] Sack on the right": Info(468), #SEARCH_Greenlad_Out_SACK_0
+    "[Grimland] Drawer 1 in Hermitage house": Info(469), #SEARCH_Greenlad_House_DRAWER_0
+    "[Grimland] Drawer 2 in Hermitage house": Info(470), #SEARCH_Greenlad_House_DRAWER_1
+    "[Grimland] Reward from Old Man after giving the Mod Rod": Info(471, rules.HAS_MOD_ROD), #Greenlad_House_SUB_0_ACTOR_0110_020
+    # ----- Pirates' Den -----
+    "[Pirates' Den] Barrel 1 outside near entrance": Info(472), #SEARCH_PiratesBase_Out_BARREL_0
+    "[Pirates' Den] Barrel 2 outside near entrance": Info(473), #SEARCH_PiratesBase_Out_BARREL_1
+    "[Pirates' Den] Drawer in top left room": Info(474, rules.HAS_THIEF_KEY), #SEARCH_PiratesBase_1F_DRAWER_0
+    "[Pirates' Den] Pot 1 in top room": Info(475), #SEARCH_PiratesBase_1F_POT_0
+    "[Pirates' Den] Pot 2 in top room": Info(476), #SEARCH_PiratesBase_1F_POT_1
+    "[Pirates' Den] Barrel in top room": Info(477), #SEARCH_PiratesBase_1F_BARREL_0
+    "[Pirates' Den] Barrel in bottom right room": Info(478), #SEARCH_PiratesBase_1F_BARREL_1
+    "[Pirates' Den] Sack in right room": Info(479), #SEARCH_PiratesBase_1F_SACK_0
+    "[Pirates' Den] Hidden Ground in top right corner of the right jail B1": Info(480, rules.HAS_THIEF_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_PiratesBase_B1F_GROUND_0
+    "[Pirates' Den] Chest 1 in outside Secret Room": Info(481), #SEARCH_PiratesBase_Secret_TREASURE_NORMAL_0
+    "[Pirates' Den] Chest 2 in outside Secret Room": Info(482), #SEARCH_PiratesBase_Secret_TREASURE_NORMAL_1
+    "[Pirates' Den] On ground in outside Secret Room": Info(483), #SEARCH_PiratesBase_Secret_EVENT_0
+    #"[Pirates' Den] Event": Info(484), #SEARCH_PiratesBase_Out_EVENT_0 # no items here
+    # ----- Lozamii -----
+    "[Lozamii] Hidden Ground on grave on the top left island": Info(485), #SEARCH_Luzami_Out_GROUND_0
+    "[Lozamii] Hidden Ground in the middle of the flower field on the top island": Info(486), #SEARCH_Luzami_Out_GROUND_1
+    "[Lozamii] Bookshelf 1 in right house": Info(487), #SEARCH_Luzami_House1_1F_BOOKSHELF_0
+    "[Lozamii] Bookshelf 2 in right house": Info(488), #SEARCH_Luzami_House1_1F_BOOKSHELF_1
+    "[Lozamii] Bookshelf 3 in right house": Info(489), #SEARCH_Luzami_House1_1F_BOOKSHELF_2
+    "[Lozamii] Bookshelf 4 in right house": Info(490), #SEARCH_Luzami_House1_1F_BOOKSHELF_3
+    "[Lozamii] Bookshelf 5 in right house": Info(491), #SEARCH_Luzami_House1_1F_BOOKSHELF_4
+    "[Lozamii] Drawer in right house": Info(492), #SEARCH_Luzami_House1_1F_DRAWER_0
+    "[Lozamii] Hidden Ground in second floor of right house": Info(493), #SEARCH_Luzami_House1_2F_GROUND_0
+    "[Lozamii] Bookshelf 1 in top house": Info(494), #SEARCH_Luzami_House2_BOOKSHELF_0
+    "[Lozamii] Bookshelf 2 in top house": Info(495), #SEARCH_Luzami_House2_BOOKSHELF_1
+    # ----- Merchantburg -----
+    #"[Merchantburg] Hidden Ground near Church": Info(496), #SEARCH_Burg_3_Out_GROUND_0 # not randomized, missable
+    "[Merchantburg] Pot in Item Shop": Info(497, rules.HAS_ULTIMATE_KEY), #SEARCH_Burg_3_House01_2F_POT_0
+    "[Merchantburg] Sack in Inn": Info(498, rules.HAS_ULTIMATE_KEY), #SEARCH_Burg_3_Inn_1F_SACK_0
+    "[Merchantburg] Drawer in Inn": Info(499, rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR), #SEARCH_Burg_3_Inn_1F_DRAWER_0
+    #"[Merchantburg] Chest 1 in top left house": Info(500), #SEARCH_Burg_4_House01_1F_TREASURE_NORMAL_0 # not randomized, missable
+    #"[Merchantburg] Chest 2 in top left house": Info(501), #SEARCH_Burg_4_House01_1F_TREASURE_NORMAL_1 # not randomized, missable
+    #"[Merchantburg] Drawer 1 in Theater": Info(502), #SEARCH_Burg_4_Theater_1F_DRAWER_0 # not randomized, missable
+    #"[Merchantburg] Drawer 2 in Theater": Info(503), #SEARCH_Burg_4_Theater_1F_DRAWER_1 # not randomized, missable
+    #"[Merchantburg] Hidden Ground behind throne in top left house": Info(504, rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR), #SEARCH_Burg_5_House01_1F_GROUND_0 # excluded, missable in AP, yellow orb moved to SEARCH_Burg_6_House02_2F_DRAWER_0, gold placed here instead
+    "[Merchantburg] Drawer in Theater": Info(505, rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_BIRD), #SEARCH_Burg_6_Theater_1F_DRAWER_0
+    "[Merchantburg] Drawer in left house": Info(506, rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_BIRD), #SEARCH_Burg_6_House02_2F_DRAWER_0 # gold chain in vanilla, now default yellow orb
+    # ----- Lanson -----
+    "[Lanson] Hidden Ground between the top building and the top right building": Info(507), #SEARCH_Lancel_Out_GROUND_0
+    "[Lanson] Pot 1 near the left of the Item Shop": Info(508), #SEARCH_Lancel_Out_POT_0
+    "[Lanson] Pot 2 near the left of the Item Shop": Info(509), #SEARCH_Lancel_Out_POT_1
+    "[Lanson] Barrel near the left of the Inn": Info(510), #SEARCH_Lancel_Out_BARREL_0
+    "[Lanson] Barrel near Church": Info(511), #SEARCH_Lancel_Out_BARREL_1
+    "[Lanson] Barrel near the center of Lanson": Info(512), #SEARCH_Lancel_Out_BARREL_2
+    "[Lanson] Sack near the center of Lanson, on the right side": Info(513), #SEARCH_Lancel_Out_SACK_0
+    "[Lanson] Chest on the right of the top right building": Info(514), #SEARCH_Lancel_Out_TREASURE_NORMAL_0
+    "[Lanson] Sack in Inn": Info(515), #SEARCH_Lancel_Inn_SACK_0
+    "[Lanson] Pot in left house": Info(516), #SEARCH_Lancel_House_POT_0
+    "[Lanson] Drawer in left house": Info(517), #SEARCH_Lancel_House_DRAWER_0
+    "[Lanson] Pot in Equipment Shop": Info(518), #SEARCH_Lancel_WeaponShop_POT_0
+    "[Lanson] Chest on the bridge after the top building": Info(519, rules.HAS_ULTIMATE_KEY | rules.HAS_BIRD), #SEARCH_Lancel_Bridge_TREASURE_NORMAL_0
+    # ----- Gaia's Navel -----
+    "[Gaia's Navel] Chest in top left room near entrance": Info(520), #SEARCH_GaiaNavel_B1FA_TREASURE_NORMAL_0
+    "[Gaia's Navel] Chest in top right room near entrance": Info(521), #SEARCH_GaiaNavel_B1FA_TREASURE_NORMAL_1
+    "[Gaia's Navel] Chest in bottom left room near entrance": Info(522), #SEARCH_GaiaNavel_B1FA_TREASURE_ENEMY_2
+    "[Gaia's Navel] Chest in bottom right room near entrance": Info(523), #SEARCH_GaiaNavel_B1FA_TREASURE_NORMAL_3
+    "[Gaia's Navel] Chest at the end of the top left stairs corridor B2": Info(524), #SEARCH_GaiaNavel_B1FB_TREASURE_NORMAL_0
+    "[Gaia's Navel] Chest at the end of the bottom right stairs corridor B2": Info(525), #SEARCH_GaiaNavel_B1FC_TREASURE_NORMAL_0
+    "[Gaia's Navel] Pot 1 near center B2": Info(526), #SEARCH_GaiaNavel_B2F_POT_0
+    "[Gaia's Navel] Pot 2 near center B2": Info(527), #SEARCH_GaiaNavel_B2F_POT_1
+    "[Gaia's Navel] Pot in the bottom right corner B2": Info(528), #SEARCH_GaiaNavel_B2F_POT_2
+    "[Gaia's Navel] Chest 1 after defeating Chiromancer B3": Info(529), #SEARCH_GaiaNavel_B3F_TREASURE_NORMAL_0
+    "[Gaia's Navel] Chest 2 after defeating Chiromancer B3": Info(530), #SEARCH_GaiaNavel_B3F_TREASURE_NORMAL_1
+    #"[Gaia's Navel] Event": Info(531), #SEARCH_GaiaNavel_B3F_EVENT_1 # no items here
+    #"[Gaia's Navel] Event": Info(532), #SEARCH_GaiaNavel_B3F_EVENT_2 # no items here
+    #"[Gaia's Navel] Event": Info(533), #SEARCH_GaiaNavel_B3F_EVENT_3 # no items here
+    #"[Gaia's Navel] Event": Info(534), #SEARCH_GaiaNavel_B3F_EVENT_4 # no items here
+    #"[Gaia's Navel] Event": Info(535), #SEARCH_GaiaNavel_B3F_EVENT_5 # no items here
+    #"[Gaia's Navel] Event": Info(536), #SEARCH_GaiaNavel_B3F_EVENT_6 # no items here
+    #"[Gaia's Navel] Event": Info(537), #SEARCH_GaiaNavel_B3F_EVENT_7 # no items here
+    #"[Gaia's Navel] Event": Info(538), #SEARCH_GaiaNavel_B3F_EVENT_8 # no items here
+    #"[Gaia's Navel] Event": Info(539), #SEARCH_GaiaNavel_B3F_EVENT_9 # no items here
+    #"[Gaia's Navel] Event": Info(540), #SEARCH_GaiaNavel_B3F_EVENT_10 # no items here
+    #"[Gaia's Navel] Event": Info(541), #SEARCH_GaiaNavel_B3F_EVENT_11 # no items here
+    #"[Gaia's Navel] Event": Info(542), #SEARCH_GaiaNavel_B3F_EVENT_12 # no items here
+    #"[Gaia's Navel] Event": Info(543), #SEARCH_GaiaNavel_B4F_EVENT_0 # no items here
+    "[Gaia's Navel] Reward for defeating Chiromancer B3": Info(544), #GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020
+    "[Gaia's Navel] On the right wall behind rocks in the hidden passage B4": Info(545, rules.HAS_WRECKING_BALL_2), #GaiaNavel_B4F_blue
+    # ----- Edina Castle -----
+    "[Edina Castle] Hidden Ground near the top right corner unicorn's statue at the top of the castle": Info(547), #SEARCH_Edinbear_Castle_Out_GROUND_0
+    "[Edina Castle] Hidden Ground in the bottom left corner of the right garden": Info(548), #SEARCH_Edinbear_Castle_Out_GROUND_1
+    "[Edina Castle] Pot in the bottom left corner of the left garden": Info(549), #SEARCH_Edinbear_Castle_Out_POT_0
+    "[Edina Castle] Pot near the left garden entrance": Info(550), #SEARCH_Edinbear_Castle_Out_POT_1
+    "[Edina Castle] Barrel 1 at the top of the castle": Info(551), #SEARCH_Edinbear_Castle_Out_BARREL_0
+    "[Edina Castle] Barrel 2 at the top of the castle": Info(552), #SEARCH_Edinbear_Castle_Out_BARREL_1
+    "[Edina Castle] Bookshelf in the top right room": Info(553, rules.HAS_MAGIC_KEY), #SEARCH_Edinbear_Castle_1F_BOOKSHELF_0
+    "[Edina Castle] Storage 1 in the top right room": Info(554, rules.HAS_MAGIC_KEY), #SEARCH_Edinbear_Castle_1F_STORAGE_0
+    "[Edina Castle] Storage 2 in the top right room": Info(555, rules.HAS_MAGIC_KEY), #SEARCH_Edinbear_Castle_1F_STORAGE_1
+    "[Edina Castle] Storage in the bottom right room": Info(556, rules.HAS_THIEF_KEY), #SEARCH_Edinbear_Castle_1F_STORAGE_2
+    "[Edina Castle] Barrel in the bottom left room": Info(557), #SEARCH_Edinbear_Castle_1F_BARREL_0
+    "[Edina Castle] Barrel in the bottom right room": Info(558, rules.HAS_THIEF_KEY), #SEARCH_Edinbear_Castle_1F_BARREL_1
+    "[Edina Castle] Chest in the secret basement B1": Info(559), #SEARCH_Edinbear_Castle_B1FB_TREASURE_IMPORTANT_0
+    # ----- Shallows Shrine -----
+    "[Shallows Shrine] Chest in the center": Info(560), #SEARCH_ShallowShrine_B1F_TREASURE_IMPORTANT_0
+    "[Shallows Shrine] Hidden Ground between the chest and the door": Info(561), #SEARCH_ShallowShrine_B1F_GROUND_0
+    #"[Shallows Shrine] Event": Info(562), #SEARCH_ShallowShrine_Out_EVENT_0 # no items here
+    # ----- Fifer's Spire -----
+    "[Fifer's Spire] Chest in the top left corner of the inner corridor": Info(563), #SEARCH_ArpTower_1F_TREASURE_NORMAL_0
+    "[Fifer's Spire] Chest in top right room 2F": Info(564), #SEARCH_ArpTower_2F_TREASURE_NORMAL_0
+    "[Fifer's Spire] Chest in bottom right room 2F": Info(565), #SEARCH_ArpTower_2F_TREASURE_NORMAL_1
+    "[Fifer's Spire] Chest 1 on central platform 3F": Info(566), #SEARCH_ArpTower_3F_TREASURE_IMPORTANT_0
+    "[Fifer's Spire] Chest 2 on central platform 3F": Info(567), #SEARCH_ArpTower_3F_TREASURE_NORMAL_1
+    "[Fifer's Spire] Chest 3 on central platform 3F": Info(568), #SEARCH_ArpTower_3F_TREASURE_NORMAL_2
+    "[Fifer's Spire] Chest 4 on central platform 3F": Info(569), #SEARCH_ArpTower_3F_TREASURE_NORMAL_3
+    "[Fifer's Spire] Chest in bottom right area 3F": Info(570), #SEARCH_ArpTower_3F_TREASURE_NORMAL_4
+    "[Fifer's Spire] Chest in bottom left area 5F": Info(571), #SEARCH_ArpTower_5F_TREASURE_NORMAL_0
+    "[Fifer's Spire] Chest in bottom area 5F": Info(572), #SEARCH_ArpTower_5F_TREASURE_NORMAL_1
+    "[Fifer's Spire] Chest in bottom right area 5F": Info(573), #SEARCH_ArpTower_5F_TREASURE_ENEMY_2
+    # ----- Manoza -----
+    "[Manoza] Hidden Ground 1 on a grave in graveyard": Info(574), #SEARCH_Samanosa_Out_GROUND_0
+    "[Manoza] Hidden Ground 2 on a grave in graveyard": Info(575), #SEARCH_Samanosa_Out_GROUND_1
+    "[Manoza] Hidden Ground near a tree on the left of the castle": Info(576), #SEARCH_Samanosa_Out_GROUND_2
+    "[Manoza] Hidden Ground 3 on a grave in graveyard": Info(577), #SEARCH_Samanosa_Out_GROUND_3
+    "[Manoza] Barrel near Inn": Info(578), #SEARCH_Samanosa_Out_BARREL_0
+    "[Manoza] Barrel near Monster Arena": Info(579), #SEARCH_Samanosa_Out_BARREL_1
+    "[Manoza] Pot near right house": Info(580), #SEARCH_Samanosa_Out_POT_0
+    #"[Manoza] Grave Event": Info(581), #SEARCH_Samanosa_Out_EVENT_0 # no items here
+    "[Manoza] Pot in right house": Info(582), #SEARCH_Samanosa_House1_POT_0
+    "[Manoza] Sack in right house": Info(583), #SEARCH_Samanosa_House1_SACK_0
+    "[Manoza] Drawer in Equipment Shop": Info(584), #SEARCH_Samanosa_House2_1F_DRAWER_0
+    "[Manoza] Sack in Equipment Shop": Info(585), #SEARCH_Samanosa_House2_1F_SACK_0
+    "[Manoza] Pot in graveyard house": Info(586), #SEARCH_Samanosa_House3_POT_0
+    "[Manoza] Drawer in Inn": Info(587), #SEARCH_Samanosa_Inn_DRAWER_0
+    "[Manoza] Sack in Inn": Info(588), #SEARCH_Samanosa_Inn_SACK_0
+    "[Manoza] Pot at the back of the Monster Arena": Info(589), #SEARCH_Samanosa_BattleRoad_POT_0
+    "[Manoza] Barrel 1 on the right in Monster Arena": Info(590), #SEARCH_Samanosa_BattleRoad_BARREL_0
+    "[Manoza] Barrel 2 on the right in Monster Arena": Info(591), #SEARCH_Samanosa_BattleRoad_BARREL_1
+    # ----- Manoza Castle -----
+    "[Manoza Castle] Barrel in kitchen room": Info(592, rules.HAS_MAGIC_KEY | rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_1F_BARREL_0
+    "[Manoza Castle] Hidden Ground on flower pot statue in top garden": Info(593), #SEARCH_Samanosa_Castle_1F_GROUND_0
+    "[Manoza Castle] Pot in central left locked room": Info(594, rules.HAS_MAGIC_KEY), #SEARCH_Samanosa_Castle_1F_POT_0
+    "[Manoza Castle] Pot 1 in East Tower": Info(595), #SEARCH_Samanosa_Castle_2F_POT_0
+    "[Manoza Castle] Pot 2 in East Tower": Info(596), #SEARCH_Samanosa_Castle_2F_POT_1
+    "[Manoza Castle] Bookshelf in the king's bedroom": Info(597), #SEARCH_Samanosa_Castle_2F_BedRoom_BOOKSHELF_0
+    "[Manoza Castle] Drawer in the king's bedroom": Info(598), #SEARCH_Samanosa_Castle_2F_BedRoom_DRAWER_0
+    #"[Manoza Castle] Chest in the king's bedroom": Info(599), #SEARCH_Samanosa_Castle_2F_BedRoom_TREASURE_IMPORTANT_0 # does not exist in the game
+    "[Manoza Castle] Pot in top left jail B1": Info(600, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_B1_POT_0
+    "[Manoza Castle] Hidden Ground near the right wall in left jail B2": Info(601, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_B2_A_GROUND_0
+    "[Manoza Castle] Pot in right jail B2": Info(602), #SEARCH_Samanosa_Castle_B2_A_POT_0
+    "[Manoza Castle] Guard reward 1 for defeating Boss Troll (night)": Info(603, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_1
+    "[Manoza Castle] Guard reward 2 for defeating Boss Troll (night)": Info(604, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_2
+    "[Manoza Castle] Main reward for defeating Boss Troll (night)": Info(605, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Main
+    # ----- Manoza Cave -----
+    "[Manoza Cave] Chest on the left loop path B1": Info(606), #SEARCH_RaCave_B1_TREASURE_NORMAL_0
+    "[Manoza Cave] Chest near the top B1": Info(607), #SEARCH_RaCave_B1_TREASURE_NORMAL_1
+    "[Manoza Cave] Chest 1 at the end of the top dead end B2": Info(608), #SEARCH_RaCave_B2_TREASURE_ENEMY_0
+    "[Manoza Cave] Chest 2 at the end of the top dead end B2": Info(609), #SEARCH_RaCave_B2_TREASURE_ENEMY_1
+    "[Manoza Cave] Chest 3 at the end of the top dead end B2": Info(610), #SEARCH_RaCave_B2_TREASURE_ENEMY_2
+    "[Manoza Cave] Chest 4 at the end of the top dead end B2": Info(611), #SEARCH_RaCave_B2_TREASURE_NORMAL_3
+    "[Manoza Cave] Chest 1 on the path that leads to the top dead end B2": Info(612), #SEARCH_RaCave_B2_TREASURE_ENEMY_4
+    "[Manoza Cave] Chest 2 on the path that leads to the top dead end B2": Info(613), #SEARCH_RaCave_B2_TREASURE_NORMAL_5
+    "[Manoza Cave] Chest 3 on the path that leads to the top dead end B2": Info(614), #SEARCH_RaCave_B2_TREASURE_NORMAL_6
+    "[Manoza Cave] Chest 4 on the path that leads to the top dead end B2": Info(615), #SEARCH_RaCave_B2_TREASURE_ENEMY_7
+    "[Manoza Cave] Chest 1 in the central area B2": Info(616), #SEARCH_RaCave_B2_TREASURE_NORMAL_8
+    "[Manoza Cave] Chest 2 in the central area B2": Info(617), #SEARCH_RaCave_B2_TREASURE_NORMAL_9
+    "[Manoza Cave] Chest 3 in the central area B2": Info(618), #SEARCH_RaCave_B2_TREASURE_NORMAL_10
+    "[Manoza Cave] Chest 4 in the central area B2": Info(619), #SEARCH_RaCave_B2_TREASURE_NORMAL_11
+    "[Manoza Cave] Chest 5 in the central area B2": Info(620), #SEARCH_RaCave_B2_TREASURE_ENEMY_12
+    "[Manoza Cave] Chest 1 at the bottom left dead end B2": Info(621), #SEARCH_RaCave_B2_TREASURE_ENEMY_13
+    "[Manoza Cave] Chest 2 at the bottom left dead end B2": Info(622), #SEARCH_RaCave_B2_TREASURE_NORMAL_14
+    "[Manoza Cave] Chest 3 at the bottom left dead end B2": Info(623), #SEARCH_RaCave_B2_TREASURE_NORMAL_15
+    "[Manoza Cave] Chest 4 at the bottom left dead end B2": Info(624), #SEARCH_RaCave_B2_TREASURE_ENEMY_16
+    "[Manoza Cave] Chest 5 at the bottom left dead end B2": Info(625), #SEARCH_RaCave_B2_TREASURE_NORMAL_17
+    "[Manoza Cave] Chest 1 at the bottom right dead end B2": Info(626), #SEARCH_RaCave_B2_TREASURE_ENEMY_18
+    "[Manoza Cave] Chest 2 at the bottom right dead end B2": Info(627), #SEARCH_RaCave_B2_TREASURE_ENEMY_19
+    "[Manoza Cave] Chest 3 at the bottom right dead end B2": Info(628), #SEARCH_RaCave_B2_TREASURE_NORMAL_20
+    "[Manoza Cave] Chest on the left path B3": Info(629), #SEARCH_RaCave_B3_TREASURE_NORMAL_0
+    "[Manoza Cave] Chest in the central room B3": Info(630), #SEARCH_RaCave_B3_TREASURE_IMPORTANT_1
 }
 
 
