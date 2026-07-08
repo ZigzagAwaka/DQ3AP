@@ -44,6 +44,10 @@ local random_cannibox = {
 -- all possible mimic battle ids
 local random_mimic = {
   "BATTLE_EVENT_RACAVE_MIMIC_2",
+  "BATTLE_EVENT_GHOSTSHIP_MIMIC_3",
+  "BATTLE_EVENT_NECROGOND_MIMIC_1",
+  "BATTLE_EVENT_NECROGOND_MIMIC_2",
+  "BATTLE_EVENT_BARAMOS_MIMIC_1",
 }
 
 -- returns a possible enemy battle id corresponding to the given enemy name
@@ -161,6 +165,22 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_RACAVE_GetRaMirror, true)
   elseif ItemId == "ITEM_IMPORTANT_MOD_ROD" then
     SetFlag(Flag.FE69, true)
+  elseif ItemId == "ITEM_IMPORTANT_LOVERS_LOCKET" then
+    SetFlag(Flag.FE71, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GHOSTSHIP_GetLoveLocket, true)
+  elseif ItemId == "ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER" then
+    SetFlag(Flag.FE72, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHRINEPRISON_GetGaiaSword, true)
+  elseif ItemId == "ITEM_IMPORTANT_SILVER_ORB" then
+    SetFlag(Flag.FE78, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NECROGONDSHRINE_GetSilverOrb, true)
+    CheckGopEnum_MAIN_MULTI_GetAllOrb()
+  elseif ItemId == "ITEM_USE_ITEM_SPHERE_OF_LIGHT" then
+    SetFlag(Flag.FE184, true)
+    SetFlag(Flag.FE79, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true)
+    SetFlag(Flag.FD26, true)
+    --SetFlag(Flag.FE90, true) -- baramos defeated flag
   end
 end
 

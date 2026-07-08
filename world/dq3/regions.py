@@ -130,6 +130,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Shrine of the Dwarf", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Jipang", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Orochi's Lair", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Castle of the Dragon Queen", rules.HAS_BIRD & rules.HAS_MAGIC_KEY),
     ],
     "Olivia's Promontory": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
@@ -149,6 +150,13 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Pimiko's Palace": [],
     "Orochi's Lair": [],
+    "Castle of the Dragon Queen": [
+        Connect("???"), #WIP - ADD RULES
+    ],
+    "???": [
+        Connect("Cloudsgate Citadel"), #WIP - ADD RULES
+    ],
+    "Cloudsgate Citadel": [],
     # EASTERN
     "Eastern Overworld": [
         Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
@@ -169,10 +177,20 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Wayfarer's Shrine"),
         Connect("Theddon"),
         Connect("Mt. Necrogond", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Maw of the Necrogond", (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD),
+        Connect("Necrogond Shrine", (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD),
+        Connect("Pit of Giaga", rules.HAS_BIRD),
+        Connect("Baramos' Lair", rules.HAS_BIRD),
     ],
     "Wayfarer's Shrine": [],
     "Theddon": [],
     "Mt. Necrogond": [],
+    "Maw of the Necrogond": [],
+    "Necrogond Shrine": [],
+    "Pit of Giaga": [
+        Connect("West Tantegel Harbour", rules.HAS_SPHERE_OF_LIGHT),
+    ],
+    "Baramos' Lair": [],
     # MANOZA
     "Wayfarer's Chapel": [
         Connect("Manoza Overworld"),
@@ -194,6 +212,8 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Lanson", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Gaia's Navel", rules.HAS_BIRD),
         Connect("Shallows Shrine", rules.HAS_SHIP & rules.HAS_BOTTOMLESS_POT),
+        Connect("Ghost Ship", rules.HAS_SHIP & rules.HAS_BOATMANS_BONE),
+        Connect("Shrine of Shackles", ((rules.HAS_SHIP & rules.HAS_LOVERS_LOCKET) | rules.HAS_BIRD) & rules.HAS_ULTIMATE_KEY),
     ],
     "Shrine of the Everbird": [],
     "Grimland": [],
@@ -203,6 +223,13 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Gaia's Navel": [],
     "Shallows Shrine": [],
+    "Ghost Ship": [],
+    "Shrine of Shackles": [],
+    # ALEFGARD
+    "West Tantegel Harbour": [
+        Connect("Alefgard Overworld"),
+    ],
+    "Alefgard Overworld": [],
 }
 
 

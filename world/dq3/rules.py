@@ -26,9 +26,11 @@ HAS_MOD_ROD = Has("Mod Rod")
 HAS_BOATMANS_BONE = Has("Boatman's Bone")
 HAS_RAS_MIRROR = Has("Ra's Mirror")
 HAS_BOTTOMLESS_POT = Has("Bottomless Pot")
+HAS_LOVERS_LOCKET = Has("Lovers' Locket")
+HAS_MOUNTAINCLEAVER = Has("Mountaincleaver")
+HAS_SPHERE_OF_LIGHT = Has("Sphere of Light")
 HAS_WRECKING_BALL_HINT = Has("Wrecking 2 hint") # TMP
 HAS_WRECKING_BALL_2 = Has("Wrecking Ball", count=2)
-BARAMOS_TMP = Has("Baramos") # TMP
 KOL_TMP = Has("Kol scene") # TMP
 RIDDLE_TMP = Has("Riddle hint") # TMP
 XENION_TMP = Has("Xenion wish") # TMP

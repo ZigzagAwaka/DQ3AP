@@ -369,7 +369,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Portoga] Sack in right house": Info(317, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Room01_1F_SACK_0
     "[Portoga] Pot downstairs near the lighthouse": Info(318), #SEARCH_Portoga_Room02_B1F_POT_0
     "[Portoga] Bookshelf downstairs near the lighthouse": Info(319), #SEARCH_Portoga_Room02_B1F_BOOKSHELF_0
-    "[Portoga] Gift from woman in the bottom right area after defeating Baramos": Info(320, rules.BARAMOS_TMP), #Portoga_Out_SUB_0_ACTOR_1010_010 #CHANGE THE RULE ONCE BARAMOS LOGIC IS FINISHED. FLAG FE90 IS BARAMOS
+    "[Portoga] Gift from woman in the bottom right area after defeating Baramos": Info(320, rules.HAS_BIRD), #Portoga_Out_SUB_0_ACTOR_1010_010
     # ----- Portoga Castle -----
     "[Portoga Castle] Chest 1 in middle room": Info(321, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_0
     "[Portoga Castle] Chest 2 in middle room": Info(322, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Castle_1F_TREASURE_NORMAL_1
@@ -709,6 +709,69 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Manoza Cave] Chest 3 at the bottom right dead end B2": Info(628), #SEARCH_RaCave_B2_TREASURE_NORMAL_20
     "[Manoza Cave] Chest on the left path B3": Info(629), #SEARCH_RaCave_B3_TREASURE_NORMAL_0
     "[Manoza Cave] Chest in the central room B3": Info(630), #SEARCH_RaCave_B3_TREASURE_IMPORTANT_1
+    # ----- Ghost Ship -----
+    "[Ghost Ship] Barrel in center": Info(631), #SEARCH_GhostShip_1F_BARREL_0
+    "[Ghost Ship] Barrel near the top": Info(632), #SEARCH_GhostShip_1F_BARREL_1
+    "[Ghost Ship] Pot near right side": Info(633), #SEARCH_GhostShip_1F_POT_0
+    #"[Ghost Ship] Event": Info(634), #SEARCH_GhostShip_1F_EVENT_0 # no items here
+    "[Ghost Ship] Drawer in top room B1": Info(635), #SEARCH_GhostShip_B1_DRAWER_0
+    "[Ghost Ship] Chest 1 in treasure room B1": Info(636, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_0
+    "[Ghost Ship] Chest 2 in treasure room B1": Info(637, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_1
+    "[Ghost Ship] Chest 3 in treasure room B1": Info(638, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_2
+    "[Ghost Ship] Chest 4 in treasure room B1": Info(639, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_ENEMY_3
+    "[Ghost Ship] Chest 5 in treasure room B1": Info(640, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_4
+    "[Ghost Ship] On ground in bottom room": Info(641), #SEARCH_GhostShip_B1_EVENT_0
+    "[Ghost Ship] Barrel in treasure room B1": Info(642, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_BARREL_0
+    "[Ghost Ship] Pot in treasure room B1": Info(643, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_POT_0
+    # ----- Shrine of Shackles -----
+    "[Shrine of Shackles] Pot in top left jail": Info(644), #SEARCH_ShrinePrison_1F_POT_0
+    "[Shrine of Shackles] Pot in bottom left jail": Info(645), #SEARCH_ShrinePrison_1F_POT_1
+    "[Shrine of Shackles] Pot in bottom right jail": Info(646), #SEARCH_ShrinePrison_1F_POT_2
+    "[Shrine of Shackles] On ground in bottom right jail": Info(647), #ShrinePrison_1F_MAIN_3_After_Reminiscence
+    # ----- Maw of the Necrogond -----
+    "[Maw of the Necrogond] Chest at the end of the top left dead end 1F": Info(648), #SEARCH_NecrogondCave_1F_TREASURE_NORMAL_0
+    "[Maw of the Necrogond] Chest on the left near stairs 1F": Info(649), #SEARCH_NecrogondCave_1F_TREASURE_NORMAL_1
+    "[Maw of the Necrogond] Chest near water pool in the center 1F": Info(650), #SEARCH_NecrogondCave_1F_TREASURE_NORMAL_2
+    "[Maw of the Necrogond] Chest on the top right corner 1F": Info(651), #SEARCH_NecrogondCave_1F_TREASURE_NORMAL_3
+    "[Maw of the Necrogond] Chest near holes on the bottom area 2F": Info(652), #SEARCH_NecrogondCave_2FA_TREASURE_NORMAL_0
+    "[Maw of the Necrogond] Chest at the start of the loop path 2F": Info(653), #SEARCH_NecrogondCave_2FA_Loop_TREASURE_ENEMY_0
+    "[Maw of the Necrogond] Hidden Ground near the left of the rightmost central rock in the hole area 2F": Info(654), #SEARCH_NecrogondCave_2FB_GROUND_0
+    "[Maw of the Necrogond] Chest in the top left corner of the hole area 2F": Info(655), #SEARCH_NecrogondCave_2FB_TREASURE_NORMAL_0
+    "[Maw of the Necrogond] Chest in the bottom of the hole area 2F": Info(656), #SEARCH_NecrogondCave_2FB_TREASURE_NORMAL_1
+    "[Maw of the Necrogond] Chest at the end of the top left dead end 3F": Info(657), #SEARCH_NecrogondCave_3F_TREASURE_NORMAL_0
+    "[Maw of the Necrogond] Chest in the bottom right area 3F": Info(658), #SEARCH_NecrogondCave_3F_TREASURE_NORMAL_1
+    "[Maw of the Necrogond] Chest in the top left corner 4F": Info(659), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_0
+    "[Maw of the Necrogond] Chest at the dead end near the bottom left stairs 4F": Info(660), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_1
+    "[Maw of the Necrogond] Chest near the left of the central river 4F": Info(661), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_2
+    "[Maw of the Necrogond] Chest in the isolated area on the right of the central river 4F": Info(662), #SEARCH_NecrogondCave_4F_TREASURE_ENEMY_3
+    "[Maw of the Necrogond] Chest on the right river small island 4F": Info(663), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_4
+    "[Maw of the Necrogond] Chest at the top dead end between the central and the right rivers 4F": Info(664), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_5
+    # ----- Necrogond Shrine -----
+    "[Necrogond Shrine] Hidden Ground near the top windows in the shrine": Info(665), #SEARCH_NecrogondShrine_House_GROUND_0
+    "[Necrogond Shrine] Hidden Ground 1 somewhere in the shrine": Info(666), #SEARCH_NecrogondShrine_House_GROUND_1
+    "[Necrogond Shrine] Hidden Ground 2 somewhere in the shrine": Info(667), #SEARCH_NecrogondShrine_House_GROUND_2
+    "[Necrogond Shrine] Barrel near the right side of the shrine": Info(668), #SEARCH_NecrogondShrine_Out_BARREL_0
+    "[Necrogond Shrine] Gift from Priest": Info(669), #NecrogondShrine_House_MAIN_0_VOLUME_0110_010
+    # ----- Pit of Giaga -----
+    "[Pit of Giaga] Barrel in the bottom room": Info(670), #SEARCH_GiagaPit_1F_Before_BARREL_0
+    # ----- Baramos' Lair -----
+    "[Baramos' Lair] Hidden Ground in the Surroundings' top right corner garden area": Info(671), #SEARCH_BaramosCastle_Out_GROUND_0
+    "[Baramos' Lair] Chest on the Surroundings' roof above the first entrance": Info(672), #SEARCH_BaramosCastle_Out_TREASURE_NORMAL_0
+    "[Baramos' Lair] Chest 1 in the central room of the South-East Tower": Info(673), #SEARCH_BaramosCastle_1FB_TREASURE_NORMAL_0
+    "[Baramos' Lair] Chest 2 in the central room of the South-East Tower": Info(674), #SEARCH_BaramosCastle_1FB_TREASURE_NORMAL_1
+    "[Baramos' Lair] Chest 3 in the central room of the South-East Tower": Info(675), #SEARCH_BaramosCastle_1FB_TREASURE_NORMAL_2
+    "[Baramos' Lair] Chest in the left garden of the South-East Tower": Info(676), #SEARCH_BaramosCastle_1FB_TREASURE_NORMAL_3
+    "[Baramos' Lair] Chest near the central top wall in the Central Tower": Info(677), #SEARCH_BaramosCastle_1FC_TREASURE_ENEMY_0
+    "[Baramos' Lair] Chest in the bottom room of the Central Tower": Info(678), #SEARCH_BaramosCastle_1FC_TREASURE_NORMAL_1
+    "[Baramos' Lair] Hidden Ground on the throne in the Throne Room": Info(679), #SEARCH_BaramosCastle_1FF_GROUND_0
+    "[Baramos' Lair] Hidden Ground on the left of the jail's bed in the bottom right exterior Passageway": Info(680, rules.HAS_ULTIMATE_KEY), #SEARCH_BaramosCastle_B1A_GROUND_0
+    "[Baramos' Lair] Chest near the left stairs of the Central Tower Passageway": Info(681), #SEARCH_BaramosCastle_B1B_TREASURE_ENEMY_0
+    # ----- Castle of the Dragon Queen -----
+    "[Castle of the Dragon Queen] Hidden Ground at the back in the top room": Info(682), #SEARCH_DragonQueen_back_GROUND_0
+    #"[Castle of the Dragon Queen] Event": Info(683), #SEARCH_DragonQueen_1F_EVENT_0 # no items here
+    #"[Castle of the Dragon Queen] Event": Info(684), #SEARCH_DragonQueen_Queen_room_EVENT_0 # no items here
+    "[Castle of the Dragon Queen] Hidden Ground near the top right corner in the Throne Room": Info(685), #SEARCH_DragonQueen_Queen_room_GROUND_0
+    "[Castle of the Dragon Queen] Gift from the Dragon Queen": Info(686), #DragonQueen_Queen_room_MAIN_0_SCENE_0110_010
 }
 
 
