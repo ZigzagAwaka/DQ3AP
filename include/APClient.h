@@ -37,6 +37,11 @@ public:
     /// @param notify False if the item has already been notified/collected
     void ReceiveItem(int64_t itemId, bool notify);
 
+    /// @brief Checks if the given location name is a victory event
+    /// @param locationName The name of the given location to check
+    /// @return True if the location is the correct configured victory or else false
+    bool CheckVictoryLocation(const std::string& locationName);
+
     /// @brief Clear and reset AP data files
     void ClearData();
 

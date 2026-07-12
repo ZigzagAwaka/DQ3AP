@@ -37,6 +37,14 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Promontory Passage"),
         Connect("Little Shrine", rules.HAS_THIEF_KEY),
         Connect("Path of Promise", rules.HAS_WRECKING_BALL),
+        Connect("Northwest Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Great Desert Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Portoga Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Center Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Southern Mountains Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Manoza Overworld", rules.HAS_BIRD),
+        Connect("Ocean Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Reeve": [],
     "Shrine of the Plains": [
@@ -54,8 +62,10 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     # NORTHWEST
     "Shrine of Promise": [
         Connect("Northwest Overworld"),
+        Connect("Path of Promise", rules.HAS_THIEF_KEY),
     ],
     "Northwest Overworld": [
+        Connect("Shrine of Promise"),
         Connect("Romaria"),
         Connect("Romarian Road"),
         Connect("Romarian Outpost"),
@@ -73,6 +83,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Romaria Castle": [],
     "Romarian Road": [],
     "Romarian Outpost": [
+        Connect("Northwest Overworld"),
         Connect("Portoga Overworld", rules.HAS_MAGIC_KEY),
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD),
     ],
@@ -102,16 +113,9 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Pyramid": [],
     # PORTOGA
     "Portoga Overworld": [
+        Connect("Romarian Outpost", rules.HAS_MAGIC_KEY),
         Connect("Portoga"),
         Connect("Portoga Lighthouse", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Aliahan Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Northwest Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Great Desert Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Center Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Southern Mountains Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Manoza Overworld", rules.HAS_BIRD),
-        Connect("Ocean Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Portoga": [
         Connect("Portoga Castle"),
@@ -120,6 +124,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Portoga Lighthouse": [],
     # CENTER
     "Center Overworld": [
+        Connect("Nordy's Grotto"),
         Connect("Olivia's Promontory"),
         Connect("Baharata"),
         Connect("Kidnapper's Cave"),
@@ -135,12 +140,14 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Olivia's Promontory": [
         Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
         Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
+        Connect("Center Overworld"),
     ],
     "Baharata": [],
     "Kidnapper's Cave": [],
     "Alltrades Abbey": [],
     "Wayfarer's Inn": [
         Connect("Wayfarer's Shrine", rules.HAS_ULTIMATE_KEY),
+        Connect("Center Overworld"),
     ],
     "Mur": [],
     "Tower of Transcendence": [],
@@ -151,24 +158,32 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Pimiko's Palace": [],
     "Orochi's Lair": [],
     "Castle of the Dragon Queen": [
-        Connect("???"), #WIP - ADD RULES
+        Connect("???", rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY),
     ],
     "???": [
-        Connect("Cloudsgate Citadel"), #WIP - ADD RULES
+        Connect("Cloudsgate Citadel", rules.HAS_ULTIMATE_KEY),
     ],
-    "Cloudsgate Citadel": [],
+    "Cloudsgate Citadel": [
+        Connect("Citadel Tower"),
+    ],
+    "Citadel Tower": [],
     # EASTERN
     "Eastern Overworld": [
         Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Persistence", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Spirit Spring"),
         Connect("Fifer's Spire", rules.HAS_THIEF_KEY),
         Connect("Merchantburg", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Pirates' Den"),
     ],
     "Teleportal Shrine": [
         Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
+        Connect("Olivia's Promontory", rules.HAS_ULTIMATE_KEY),
+        Connect("Romarian Outpost", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
     ],
     "Persistence": [],
+    "Spirit Spring": [],
     "Fifer's Spire": [],
     "Merchantburg": [],
     "Pirates' Den": [],
@@ -182,20 +197,25 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Pit of Giaga", rules.HAS_BIRD),
         Connect("Baramos' Lair", rules.HAS_BIRD),
     ],
-    "Wayfarer's Shrine": [],
+    "Wayfarer's Shrine": [
+        Connect("Wayfarer's Inn", rules.HAS_ULTIMATE_KEY),
+    ],
     "Theddon": [],
     "Mt. Necrogond": [],
     "Maw of the Necrogond": [],
     "Necrogond Shrine": [],
     "Pit of Giaga": [
-        Connect("West Tantegel Harbour", rules.HAS_SPHERE_OF_LIGHT),
+        Connect("West Tantegel Harbour", rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT),
     ],
     "Baramos' Lair": [],
     # MANOZA
     "Wayfarer's Chapel": [
+        Connect("Teleportal Shrine", rules.HAS_ULTIMATE_KEY),
+        Connect("Olivia's Promontory", rules.HAS_ULTIMATE_KEY),
         Connect("Manoza Overworld"),
     ],
     "Manoza Overworld": [
+        Connect("Wayfarer's Chapel"),
         Connect("Manoza"),
         Connect("Manoza Cave"),
     ],
@@ -214,6 +234,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Shallows Shrine", rules.HAS_SHIP & rules.HAS_BOTTOMLESS_POT),
         Connect("Ghost Ship", rules.HAS_SHIP & rules.HAS_BOATMANS_BONE),
         Connect("Shrine of Shackles", ((rules.HAS_SHIP & rules.HAS_LOVERS_LOCKET) | rules.HAS_BIRD) & rules.HAS_ULTIMATE_KEY),
+        Connect("Temple of Trials", rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY),
     ],
     "Shrine of the Everbird": [],
     "Grimland": [],
@@ -225,11 +246,42 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Shallows Shrine": [],
     "Ghost Ship": [],
     "Shrine of Shackles": [],
+    "Temple of Trials": [],
     # ALEFGARD
     "West Tantegel Harbour": [
-        Connect("Alefgard Overworld"),
+        Connect("Alefgard Overworld", rules.HAS_SHIP),
     ],
-    "Alefgard Overworld": [],
+    "Alefgard Overworld": [
+        Connect("Tantegel"),
+        Connect("Galen's House"),
+        Connect("Talontear Tunnel"),
+        Connect("Tower of Rubiss", rules.HAS_SHIP & rules.HAS_THIEF_KEY),
+        Connect("Kol", rules.HAS_SHIP),
+        Connect("Quagmire Cave", rules.HAS_SHIP),
+        Connect("Craggy Cave"),
+        Connect("Damdara"),
+        Connect("Sanctum", rules.HAS_SHIP),
+        Connect("Cantlin"),
+        Connect("Shrine of the Spirit"),
+        Connect("Rimuldar"),
+        Connect("Zoma's Citadel", rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY),
+    ],
+    "Tantegel": [
+        Connect("Tantegel Castle"),
+    ],
+    "Tantegel Castle": [],
+    "Galen's House": [],
+    "Talontear Tunnel": [],
+    "Tower of Rubiss": [],
+    "Kol": [],
+    "Quagmire Cave": [],
+    "Craggy Cave": [],
+    "Damdara": [],
+    "Sanctum": [],
+    "Cantlin": [],
+    "Shrine of the Spirit": [],
+    "Rimuldar": [],
+    "Zoma's Citadel": [],
 }
 
 

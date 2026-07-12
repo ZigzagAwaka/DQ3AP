@@ -48,14 +48,26 @@ local random_mimic = {
   "BATTLE_EVENT_NECROGOND_MIMIC_1",
   "BATTLE_EVENT_NECROGOND_MIMIC_2",
   "BATTLE_EVENT_BARAMOS_MIMIC_1",
+  "BATTLE_EVENT_TALONTEAR_MIMIC_4",
+  "BATTLE_EVENT_RUBISSTOWER_MIMIC_5",
+  "BATTLE_EVENT_RUBISSTOWER_MIMIC_5_02",
+  "BATTLE_EVENT_SECRET_MIMIC_6",
+}
+
+-- all possible pandora's box battle ids
+local random_pandora = {
+  "BATTLE_EVENT_GRANDRAGON_PANDORABOX_1",
+  "BATTLE_EVENT_GRANDRAGON_PANDORABOX_2",
 }
 
 -- returns a possible enemy battle id corresponding to the given enemy name
 function AP.GetBattleIdFromEnemyName(enemyName)
   if enemyName == "CANNIBOX" then
     return random_cannibox[math.random(#random_cannibox)]
-  else -- MIMIC
+  elseif enemyName == "MIMIC" then
     return random_mimic[math.random(#random_mimic)]
+  else -- PANDORABOX
+    return random_pandora[math.random(#random_pandora)]
   end
 end
 
@@ -180,7 +192,40 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE79, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true)
     SetFlag(Flag.FD26, true)
-    --SetFlag(Flag.FE90, true) -- baramos defeated flag
+    --SetFlag(Flag.FE90, true) -- not needed? baramos defeated flag
+  elseif ItemId == "ITEM_IMPORTANT_RAINBOW_DROP" then
+    SetFlag(Flag.FE88, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_HOLYSHRINE_GetRainbowDrop, true)
+  elseif ItemId == "ITEM_IMPORTANT_SUNSTONE" then
+    SetFlag(Flag.FE85, true)
+    if IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") then
+      SetFlag(Flag.FE880, true)
+    end
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_LUDATORM_GetSunStone, true)
+  elseif ItemId == "ITEM_IMPORTANT_ORICHALCUM" then
+    SetFlag(Flag.FE82, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DOMDORA_GetOrichalcum, true)
+  elseif ItemId == "ITEM_IMPORTANT_BROKEN_SWORD" then
+    SetFlag(Flag.FE877, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MERCADO_GetBrokenSword, true)
+  elseif ItemId == "ITEM_EQUIP_WEAPON_STAFF_OF_RAIN" then
+    --SetFlag(Flag.FE87, true) -- can't be set, check for item in inventory instead
+    if GetFlag(Flag.FE85) == true then
+      SetFlag(Flag.FE880, true)
+    end
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SPIRITSHRINE_GetRainStick, true)
+  elseif ItemId == "ITEM_IMPORTANT_FAERIE_FLUTE" then
+    SetFlag(Flag.FE86, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetFairyFlute, true)
+  elseif ItemId == "ITEM_EQUIP_WEAPON_SWORD_OF_KINGS" then
+    --SetFlag(Flag.FE875, true) -- npc talk flag, not needed
+    --SetFlag(Flag.FE876, true) -- npc talk flag, not needed
+    --SetFlag(Flag.FE83, true) -- sword flag, not needed unless the sword is used for progression
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetKingSword, true)
+  elseif ItemId == "ITEM_EQUIP_ACCESSORY_SACRED_AMULET" then
+    SetFlag(Flag.FE81, true)
+  elseif ItemId == "ITEM_IMPORTANT_VERY_NAUGHTY_BOOK" then
+    SetFlag(Flag.FE344, true)
   end
 end
 
@@ -350,6 +395,51 @@ local predefined_excluded_locations = {
   SEARCH_ShallowShrine_Out_EVENT_0 = true,
   SEARCH_Samanosa_Out_EVENT_0 = true,
   SEARCH_Samanosa_Castle_2F_BedRoom_TREASURE_IMPORTANT_0 = true,
+  SEARCH_Volcano_Out_EVENT_0 = true,
+  SEARCH_DreamCastle_STORAGE_0 = true,
+  SEARCH_DreamCave_EVENT_1 = true,
+  SEARCH_DreamCave_EVENT_2 = true,
+  SEARCH_DreamCave_EVENT_3 = true,
+  SEARCH_DreamCave_EVENT_4 = true,
+  SEARCH_DreamDesert_STORAGE_0 = true,
+  SEARCH_DreamForest_STORAGE_0 = true,
+  SEARCH_DreamTheater_STORAGE_0 = true,
+  SEARCH_DreamTower_STORAGE_0 = true,
+  SEARCH_DreamTown_STORAGE_0 = true,
+  SEARCH_DreamVillage_DRAWER_1 = true,
+  SEARCH_DreamWaterFall_STORAGE_0 = true,
+  SEARCH_Common_STORAGE_0 = true,
+  SEARCH_Common_EVENT_0 = true,
+  SEARCH_Common_EVENT_1 = true,
+  SEARCH_Common_EVENT_2 = true,
+  SEARCH_Common_EVENT_3 = true,
+  SEARCH_Common_EVENT_4 = true,
+  SEARCH_Common_EVENT_5 = true,
+  SEARCH_Common_EVENT_6 = true,
+  SEARCH_Common_EVENT_7 = true,
+  SEARCH_Common_EVENT_8 = true,
+  SEARCH_Common_EVENT_Trap_1 = true,
+  SEARCH_Common_EVENT_Field_SignBoard_1 = true,
+  SEARCH_Common_TREASURE_NORMAL_0 = true,
+  SEARCH_Common_YGGDRASIL_LEAF_EVENT_0 = true,
+  SEARCH_Common_H12_ShallowShrine_EVENT_0 = true,
+  SEARCH_Common_H99_Rainbow_Bridge_EVENT_0 = true,
+  SEARCH_GranDragon_STORAGE_0 = true,
+  SEARCH_GhostShip_1F_EVENT_0 = true,
+  SEARCH_DragonQueen_1F_EVENT_0 = true,
+  SEARCH_DragonQueen_Queen_room_EVENT_0 = true,
+  SEARCH_WestPort_Out_EVENT_1 = true,
+  SEARCH_WestPort_House_DRAWER_0 = true,
+  WestPort_House_SUB_0_SCENE_0010_010 = true,
+  SEARCH_Ludatorm_Castle_1F_TREASURE_NORMAL_0 = true,
+  SEARCH_Ludatorm_Castle_1F_TREASURE_NORMAL_1 = true,
+  SEARCH_Ludatorm_Castle_1F_TREASURE_NORMAL_2 = true,
+  SEARCH_Mercado_Shop02_2F_EVENT_0 = true,
+  SEARCH_Mercado_Shop02_2F_EVENT_1 = true,
+  SEARCH_RubissTower_5FA_EVENT_0 = true,
+  SEARCH_ZomaCastle_1F_EVENT_1 = true,
+  SEARCH_Zenis_1F_EVENT_0 = true,
+  SEARCH_GranDragon_Entrance_EVENT_0 = true,
 }
 
 -- check if the given location is a excluded from the randomization

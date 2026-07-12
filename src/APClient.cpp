@@ -69,6 +69,12 @@ void APClient::Update()
         {
             if (line.empty()) continue;
             hasContent = true;
+            if (CheckVictoryLocation(line))
+            {
+                logger.LogInFile("Victory got for location: " + line);
+                AP_StoryComplete();
+                continue;
+            }
             int locationId = WorldData::GetLocationId(line);
             if (locationId != -1)
             {
@@ -124,6 +130,20 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
     {
         logger.Log("Unknown item Id: " + itemId);
     }
+}
+
+
+bool APClient::CheckVictoryLocation(const std::string& locationName)
+{
+    int victoryId = WorldData::IsLocationVictory(locationName);
+    if (victoryId == -1)
+    {
+        return false;
+    }
+    return (
+        (victoryId == 1 && true /*add option check*/) ||
+        (victoryId == 2 && false /*add option check*/)
+    );
 }
 
 
