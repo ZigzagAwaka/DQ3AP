@@ -388,7 +388,12 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 
 # Creates the given item by name with the correct classification
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
-    return DQ3Item(name, ALL_ITEMS[name].classification, ALL_ITEMS[name].id, world.player)
+    classification = ALL_ITEMS[name].classification
+
+    if name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"} and world.options.victory_goal in {"zoma", "medals"}:
+        classification = ItemClassification.useful
+
+    return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 
 # Create and submit the itempool of all items in the game

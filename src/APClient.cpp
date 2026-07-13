@@ -32,8 +32,9 @@ void APClient::Connect(const std::string& host, const std::string& player, const
             ReceiveCheckedLocation(locationId);
         });
 
-        AP_RegisterSlotDataIntCallback("container_sanity", [this](int value) {
-            logger.Log("Container Sanity: " + std::to_string(value));
+        AP_RegisterSlotDataIntCallback("victory_goal", [this](int value) {
+            logger.Log("Receive option victory_goal: " + std::to_string(value));
+            option_victory_goal = value;
         });
 
         AP_EnableQueueItemRecvMsgs(true);
@@ -136,14 +137,11 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
 bool APClient::CheckVictoryLocation(const std::string& locationName)
 {
     int victoryId = WorldData::IsLocationVictory(locationName);
-    if (victoryId == -1)
+    if (victoryId == -1 || option_victory_goal == -1)
     {
         return false;
     }
-    return (
-        (victoryId == 1 && true /*add option check*/) ||
-        (victoryId == 2 && false /*add option check*/)
-    );
+    return victoryId == option_victory_goal;
 }
 
 

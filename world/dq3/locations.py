@@ -1033,6 +1033,14 @@ ALL_LOCATIONS: dict[str, Info] = {
 LOCATION_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_LOCATIONS.items()}
 
 
+# Set of postgame locations that are not located in postgame regions, that needs to be excluded based on option values
+specific_postgame_locations = {"[Cantlin] Hidden Ground near flowers of left house",
+                               "[Lozamii] Hidden Ground near the telescope in right house",
+                               "[Jipang] Pot near stairs in Monster Arena",
+                               "[Jipang] Barrel on the back right side of the Monster Arena",
+                               "[Theddon] Hidden Ground on the cross in the bottom right area"}
+
+
 class DQ3Location(Location):
     game = "Dragon Quest III HD-2D Remake"
 
@@ -1042,16 +1050,24 @@ class DQ3LocationExcluded(DQ3Location):
 class DQ3LocationPriority(DQ3Location):
     progress_type = LocationProgressType.PRIORITY
 
+
 # Helper method that takes a list of location names and returns them as a dict with their IDs
 def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | None]:
     return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name in location_names}
 
-# Helper method that returns a list of location names whose prefix exactly matches the given prefix
-# or any of the optional other given prefixes
-def get_locations_by_prefix(prefix: str, *other_prefixes: str) -> list[str]:
-    prefixes = {prefix, *other_prefixes}
-    return [location_name for location_name in LOCATION_NAME_TO_ID.keys() 
-            if location_name.split("]")[0][1:] in prefixes]
+# Helper method that returns a list of location names whose prefix exactly matches the given prefix,
+# also exclude specific locations based on options values and returns them
+def get_locations_by_prefix(world: DQ3World, prefix: str) -> tuple[list[str], list[str]]:
+    # first, get all valid locations by prefix
+    valid_locations = [location_name for location_name in LOCATION_NAME_TO_ID.keys()
+                       if location_name.split("]")[0][1:] == prefix]
+    # then return immediatly depending on option values and given prefix
+    if world.options.victory_goal not in {"zoma", "medals"} or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon"}:
+        return valid_locations, []
+    # or else construct what locations are excluded and return two lists
+    excluded_locations = [location_name for location_name in valid_locations if location_name in specific_postgame_locations]
+    valid_locations = [location_name for location_name in valid_locations if location_name not in specific_postgame_locations]
+    return valid_locations, excluded_locations
 
 
 def create_all_locations(world: DQ3World) -> None:
@@ -1062,10 +1078,18 @@ def create_all_locations(world: DQ3World) -> None:
 def create_regular_locations(world: DQ3World) -> None:
     # Create all locations based of region prefixes that matches said region values in ALL_REGIONS
     for region_name in regions.ALL_REGIONS:
+        # Define if said region should be excluded based on option values
+        valid_location_type: Location = DQ3Location if world.options.victory_goal not in {"zoma", "medals"} or region_name not in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"} else DQ3LocationExcluded
+        # Get region from name
         region = world.get_region(region_name)
-        locations = get_locations_by_prefix(region_name)
-        if len(locations) != 0:
-            region.add_locations(get_location_names_with_ids(locations), DQ3Location)
+        # Get locations from region
+        valid_locations, excluded_locations = get_locations_by_prefix(world, region_name)
+        # Add valid locations
+        if len(valid_locations) != 0:
+            region.add_locations(get_location_names_with_ids(valid_locations), valid_location_type)
+        # Add excluded locations
+        if len(excluded_locations) != 0:
+            region.add_locations(get_location_names_with_ids(excluded_locations), DQ3LocationExcluded)
 
 
 def create_events(world: DQ3World) -> None:

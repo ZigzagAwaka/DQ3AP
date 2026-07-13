@@ -23,7 +23,7 @@ public:
     /// @param player Player name
     /// @param password Server password (optional)
     void Connect(const std::string& host, const std::string& player, const std::string& password = "");
-        
+
     /// @brief Update the client (is called periodically) to process any new AP messages
     /// and recently checked ingame locations
     void Update();
@@ -62,6 +62,8 @@ private:
 
     //std::ofstream itemFile;
     //std::ifstream locationFile;
+
+    int option_victory_goal = -1;
 
     /// @brief Create the specified AP data file if it doesn't exist,
     /// or clear it completely if it already exist
