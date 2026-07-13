@@ -393,6 +393,9 @@ def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3It
     if name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"} and not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"):
         classification = ItemClassification.useful
 
+    if name == "Mini Medal" and (world.options.victory_goal == "medals" or world.options.victory_goal == "medals_postgame"):
+        classification = ItemClassification.progression_skip_balancing | ItemClassification.useful
+
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 

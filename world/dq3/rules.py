@@ -69,7 +69,9 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 
 def set_completion_condition(world: DQ3World) -> None:
-    if not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"):
+    if world.options.victory_goal == "zoma":
         world.set_completion_rule(CAN_ACCESS_ZOMA)
-    else:
+    elif world.options.victory_goal == "grand_dragon":
         world.set_completion_rule(CAN_ACCESS_GRAND_DRAGON)
+    else: # medals or medals_postgame
+        world.set_completion_rule(HAS_ALL_MEDALS)

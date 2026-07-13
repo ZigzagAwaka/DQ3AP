@@ -334,6 +334,7 @@ end
 
 -- check mini medals count if victory goal is to get medals
 function AP.CheckMiniMedals(ItemId)
+  -- GetHaveItemNum does not work for medals............ needs to be improved
   if ItemId == "ITEM_SMALL_MEDAL" and GetHaveItemNum(ItemId) >= 110 then
     local option = AP.GetOption("victory_goal")
     if option ~= nil and (option == 2 or option == 3) then

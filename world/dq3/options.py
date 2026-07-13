@@ -9,8 +9,8 @@ class VictoryGoal(Choice):
     Choose the desired goal to mark the game as completed.
     - Zoma: Find a way to access Alefgard and defeat Zoma, the final boss of the game (choosing this option will exclude every postgame locations)
     - Grand Dragon: Defeat Zoma to gain access to postgame areas then defeat the Grand Dragon, the final boss of the postgame
-    - Medals: Find all 110 mini medals in the world to win (choosing this option will exclude every postgame locations)
-    - Medals postgame: Same as Medals but will also include postgame locations in the world
+    - Medals: Find all 110 mini medals in the world to win (choosing this option will exclude every postgame locations) [Warning: logic will work for this option but the game will never actually sent a victory event when the last medal is collected WIP]
+    - Medals postgame: Same as Medals but will also include postgame locations in the world [Warning: logic will work for this option but the game will never actually sent a victory event when the last medal is collected WIP]
     """
     display_name = "Victory Goal"
     option_zoma = 0
