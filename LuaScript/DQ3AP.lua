@@ -254,7 +254,12 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     SetTagItemId(ItemId)
     if 0 < receptor or receptor == 0 or receptor == -2 then
       if ObjectId == nil or TreasureId == nil then
-        --ItemGetMessageToActor("None", ItemId, "Party1", false, true)
+        --[[
+        CmdLoadItemIcon(ItemId)
+        HideMessageWindowPageFeedIcon()
+        PlayItemGetToActor("Party1", {X = 0, Y = 0, Z = 0}, ItemId, false)
+        _retry(SYS_WaitPlayItemGet)
+        ]]
       else
         CmdLoadItemIcon(ItemId)
         CmdPlayItemGetNoWait(ObjectId, TreasureId)

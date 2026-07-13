@@ -5,7 +5,7 @@ from typing import (Any, TYPE_CHECKING)
 from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
 
-from . import locations, options
+from . import locations
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -69,7 +69,7 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 
 def set_completion_condition(world: DQ3World) -> None:
-    if not options.is_postgame_enabled(world):
+    if not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"):
         world.set_completion_rule(CAN_ACCESS_ZOMA)
     else:
         world.set_completion_rule(CAN_ACCESS_GRAND_DRAGON)
