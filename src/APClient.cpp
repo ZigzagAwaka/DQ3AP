@@ -2,8 +2,8 @@
 #include "Archipelago.h"
 
 
-APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath)
-    : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath)
+APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath)
+    : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath), optionDataPath(optionPath)
 {
     ClearData();
 }
@@ -54,6 +54,12 @@ void APClient::Update()
         AP_Message* message = AP_GetLatestMessage();
         logger.Log(message->text);
         AP_ClearLatestMessage();
+    }
+
+    if (!hasWroteOptions)
+    {
+        WriteOptionData();
+        hasWroteOptions = true;
     }
 
     std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath);
@@ -141,7 +147,27 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
     {
         return false;
     }
-    return victoryId == option_victory_goal;
+    return (
+        victoryId == 0 && option_victory_goal == 0 ||
+        victoryId == 1 && option_victory_goal == 1 ||
+        victoryId == 2 && option_victory_goal == 2 ||
+        victoryId == 2 && option_victory_goal == 3
+    );
+}
+
+
+void APClient::WriteOptionData()
+{
+    if (option_victory_goal == -1)
+    {
+        return;
+    }
+    CreateOrClearFile(optionDataPath);
+    std::ofstream file;
+    file.open(optionDataPath, std::ios::app);
+    file << "victory_goal: " << std::to_string(option_victory_goal) << '\n';
+    file.flush();
+    file.close();
 }
 
 

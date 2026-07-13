@@ -16,7 +16,8 @@ public:
     /// @param logger Logger instance
     /// @param itemPath Path to AP items data file, will be created if it doesn't exist
     /// @param locationPath Path to AP locations data file, will be created if it doesn't exist
-    APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath);
+    /// @param optionPath Path to AP options data file, will be created if it doesn't exist
+    APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath);
 
     /// @brief Connect to Archipelago
     /// @param host Server host
@@ -42,7 +43,10 @@ public:
     /// @return True if the location is the correct configured victory or else false
     bool CheckVictoryLocation(const std::string& locationName);
 
-    /// @brief Clear and reset AP data files
+    /// @brief When connected, write options to AP options data file, overriding previous content
+    void WriteOptionData();
+
+    /// @brief Clear and reset AP items and locations data files
     void ClearData();
 
     /// @brief Disconnect from Archipelago
@@ -57,12 +61,14 @@ private:
 
     const std::string itemDataPath;
     const std::string locationDataPath;
+    const std::string optionDataPath;
 
     std::filesystem::file_time_type locationDataLastCheckTime;
 
     //std::ofstream itemFile;
     //std::ifstream locationFile;
 
+    bool hasWroteOptions = false;
     int option_victory_goal = -1;
 
     /// @brief Create the specified AP data file if it doesn't exist,

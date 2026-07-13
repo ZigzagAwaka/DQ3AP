@@ -306,6 +306,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     end
   end
   AP.SetSpecialFlags(ItemId)
+  AP.CheckMiniMedals(ItemId)
 end
 
 -- check if there is available items and if yes then gives them to the player
@@ -329,6 +330,44 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
       end
     end
   end
+end
+
+-- check mini medals count if victory goal is to get medals
+function AP.CheckMiniMedals(ItemId)
+  if ItemId == "ITEM_SMALL_MEDAL" and GetHaveItemNum(ItemId) >= 110 then
+    local option = AP.GetOption("victory_goal")
+    if option ~= nil and (option == 2 or option == 3) then
+        AP.Log("All 110 medals collected")
+        AP.CheckLocation("ITEM_SMALL_MEDAL_COLLECT_ALL")
+    end
+  end
+end
+
+-- contains every options received from the client
+local client_options = {
+  victory_goal = nil,
+}
+
+-- gets the option value if it exist or else search it in the option file
+function AP.GetOption(OptionName)
+  if client_options[OptionName] ~= nil then
+    return client_options[OptionName]
+  end
+  local file = io.open("Archipelago/options.data", "r")
+  if not file then
+    return nil
+  end
+  for line in file:lines() do
+    local key, value = string.match(line, "^([^:]+):%s*(.+)$")
+    if key == OptionName then
+      value = tonumber(value)
+      client_options[OptionName] = value
+      file:close()
+      return value
+    end
+  end
+  file:close()
+  return nil
 end
 
 -- list of all predefined non randomized locations

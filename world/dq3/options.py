@@ -15,8 +15,8 @@ class VictoryGoal(Choice):
     display_name = "Victory Goal"
     option_zoma = 0
     option_grand_dragon = 1
-    option_medals = 2 #wip
-    option_medals_postgame = 3 #wip
+    option_medals = 2
+    option_medals_postgame = 3
     default = 0
 
 

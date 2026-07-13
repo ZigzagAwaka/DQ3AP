@@ -1013,6 +1013,7 @@ const std::unordered_map<std::string, int> WorldData::victory_locations =
 {
     {"ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050", 0},
     {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020", 1},
+    {"ITEM_SMALL_MEDAL_COLLECT_ALL", 2},
 };
 
 const std::unordered_map<int, std::string> WorldData::items =
