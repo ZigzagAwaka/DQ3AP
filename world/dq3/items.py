@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 from typing import TYPE_CHECKING
 
+from . import options
+
 from BaseClasses import Item, ItemClassification
 
 if TYPE_CHECKING:
@@ -390,7 +392,7 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
     classification = ALL_ITEMS[name].classification
 
-    if name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"} and world.options.victory_goal in {"zoma", "medals"}:
+    if name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"} and not options.is_postgame_enabled(world):
         classification = ItemClassification.useful
 
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)

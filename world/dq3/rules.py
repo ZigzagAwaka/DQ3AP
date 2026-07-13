@@ -5,7 +5,7 @@ from typing import (Any, TYPE_CHECKING)
 from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
 
-from . import locations
+from . import locations, options
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -46,6 +46,9 @@ HAS_GRINGHAM_WHIP = Has("Gringham Whip")
 #HAS_MOD_ROD_2 = Has("") #non randomized, wip
 HAS_ALL_MEDALS = Has("Mini Medal", count=110)
 
+CAN_ACCESS_ZOMA = HAS_BIRD & HAS_SPHERE_OF_LIGHT & HAS_SHIP & HAS_RAINBOW_DROP & HAS_THIEF_KEY
+CAN_ACCESS_GRAND_DRAGON = CAN_ACCESS_ZOMA & HAS_MAGIC_KEY & HAS_ULTIMATE_KEY & HAS_AURORAL_HELM & HAS_SWORD_OF_KINGS & HAS_GRINGHAM_WHIP
+
 
 def set_all_rules(world: DQ3World) -> None:
     set_all_entrance_rules(world)
@@ -66,7 +69,7 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 
 def set_completion_condition(world: DQ3World) -> None:
-    world.set_completion_rule(HAS_BIRD & HAS_SPHERE_OF_LIGHT & HAS_SHIP & HAS_RAINBOW_DROP & HAS_THIEF_KEY)
-    
-    # postgame completion rule
-    #world.set_completion_rule(HAS_BIRD & HAS_SPHERE_OF_LIGHT & HAS_SHIP & HAS_RAINBOW_DROP & HAS_THIEF_KEY & HAS_MAGIC_KEY & HAS_ULTIMATE_KEY & HAS_AURORAL_HELM & HAS_SWORD_OF_KINGS & HAS_GRINGHAM_WHIP)
+    if not options.is_postgame_enabled(world):
+        world.set_completion_rule(CAN_ACCESS_ZOMA)
+    else:
+        world.set_completion_rule(CAN_ACCESS_GRAND_DRAGON)

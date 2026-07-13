@@ -158,7 +158,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Pimiko's Palace": [],
     "Orochi's Lair": [],
     "Castle of the Dragon Queen": [
-        Connect("???", rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY),
+        Connect("???", rules.CAN_ACCESS_ZOMA),
     ],
     "???": [
         Connect("Cloudsgate Citadel", rules.HAS_ULTIMATE_KEY),

@@ -1,12 +1,13 @@
 from __future__ import annotations
 from dataclasses import dataclass
 
+import logging
 from typing import (Any, TYPE_CHECKING)
 
 from BaseClasses import ItemClassification, Location, LocationProgressType
 from rule_builder.rules import Rule
 
-from . import items, rules, regions
+from . import items, rules, regions, options
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -1062,7 +1063,7 @@ def get_locations_by_prefix(world: DQ3World, prefix: str) -> tuple[list[str], li
     valid_locations = [location_name for location_name in LOCATION_NAME_TO_ID.keys()
                        if location_name.split("]")[0][1:] == prefix]
     # then return immediatly depending on option values and given prefix
-    if world.options.victory_goal not in {"zoma", "medals"} or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon"}:
+    if options.is_postgame_enabled(world) or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon"}:
         return valid_locations, []
     # or else construct what locations are excluded and return two lists
     excluded_locations = [location_name for location_name in valid_locations if location_name in specific_postgame_locations]
@@ -1079,7 +1080,7 @@ def create_regular_locations(world: DQ3World) -> None:
     # Create all locations based of region prefixes that matches said region values in ALL_REGIONS
     for region_name in regions.ALL_REGIONS:
         # Define if said region should be excluded based on option values
-        valid_location_type: Location = DQ3Location if world.options.victory_goal not in {"zoma", "medals"} or region_name not in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"} else DQ3LocationExcluded
+        valid_location_type: Location = DQ3Location if options.is_postgame_enabled(world) or region_name not in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"} else DQ3LocationExcluded
         # Get region from name
         region = world.get_region(region_name)
         # Get locations from region

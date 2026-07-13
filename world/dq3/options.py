@@ -2,7 +2,12 @@ from dataclasses import dataclass
 from BaseClasses import Tutorial
 from worlds.AutoWorld import WebWorld
 
+from typing import (Any, TYPE_CHECKING)
+
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle, DefaultOnToggle
+
+if TYPE_CHECKING:
+    from .world import DQ3World
 
 
 class VictoryGoal(Choice):
@@ -16,8 +21,8 @@ class VictoryGoal(Choice):
     display_name = "Victory Goal"
     option_zoma = 0
     option_grand_dragon = 1
-    option_medals = 0 #wip, defaults to zoma, not finished
-    option_medals_postgame = 0 #wip, defaults to zoma, not finished
+    option_medals = 2 #wip
+    option_medals_postgame = 3 #wip
     default = 0
 
 
@@ -34,6 +39,10 @@ class ContainerSanity(DefaultOnToggle):
 class DQ3Options(PerGameCommonOptions):
     victory_goal: VictoryGoal
     container_sanity: ContainerSanity
+
+
+def is_postgame_enabled(world: DQ3World) -> bool:
+    return world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"
 
 
 # Class to display options on the website (not used for this game)
