@@ -485,6 +485,15 @@ local predefined_excluded_locations = {
   SEARCH_ZomaCastle_1F_EVENT_1 = true,
   SEARCH_Zenis_1F_EVENT_0 = true,
   SEARCH_GranDragon_Entrance_EVENT_0 = true,
+  SEARCH_GranDragon_SecretMountain_08_POT_0 = true,
+  SEARCH_GranDragon_SecretMountain_08_POT_1 = true,
+  SEARCH_GranDragon_SecretMountain_08_POT_2 = true,
+  SEARCH_GranDragon_SecretMountain_21_GROUND_0 = true,
+  SEARCH_GranDragon_SecretMountain_21_TREASURE_NORMAL_0 = true,
+  SEARCH_GranDragon_SecretDesert_04_BARREL_0 = true,
+  SEARCH_GranDragon_SecretSea_34_POT_0 = true,
+  SEARCH_GranDragon_SecretSea_34_GROUND_0 = true,
+  SEARCH_GranDragon_SecretSea_34_GROUND_1 = true,
 }
 
 -- check if the given location is a excluded from the randomization

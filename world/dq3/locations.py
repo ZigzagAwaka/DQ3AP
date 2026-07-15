@@ -1028,6 +1028,218 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Temple of Trials] Chest near leftmost room in North-East Trial": Info(918), #SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_11
     "[Temple of Trials] Chest near top right corner area in North-East Trial": Info(919), #SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_12
     "[Temple of Trials] Reward for defeating the Grand Dragon in 19 turns or less": Info(920, rules.HAS_AURORAL_HELM & rules.HAS_SWORD_OF_KINGS & rules.HAS_GRINGHAM_WHIP), #GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL
+    # ----- Aliahan Overworld -----
+    "[Aliahan Overworld] Secret Spot near Reeve: Chest": Info(921), #SEARCH_GranDragon_SecretPlain_02_TREASURE_NORMAL_0
+    "[Aliahan Overworld] Secret Spot near Dreamer's Tower: Chest": Info(922), #SEARCH_GranDragon_SecretForest_02_TREASURE_NORMAL_0
+    "[Aliahan Overworld] Secret Spot north of Little Shrine: Barrel 1": Info(923), #SEARCH_GranDragon_SecretMountain_01_BARREL_0
+    "[Aliahan Overworld] Secret Spot north of Little Shrine: Barrel 2": Info(924), #SEARCH_GranDragon_SecretMountain_01_BARREL_1
+    "[Aliahan Overworld] Secret Spot in the mountain west of Aliahan: Hidden Ground on right rocks": Info(925, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_13_GROUND_0
+    "[Aliahan Overworld] Secret Spot in the mountain west of Aliahan: Chest": Info(926, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_13_TREASURE_NORMAL_0
+    # ----- Northwest Overworld -----
+    "[Northwest Overworld] Secret Spot north of Romaria: Barrel": Info(927), #SEARCH_GranDragon_SecretForest_03_BARREL_0
+    "[Northwest Overworld] Secret Spot north of Romaria: Pot": Info(928), #SEARCH_GranDragon_SecretForest_03_POT_0
+    "[Northwest Overworld] Secret Spot south of Khoryv: Pot": Info(929), #SEARCH_GranDragon_SecretPlain_01_POT_0
+    "[Northwest Overworld] Secret Spot in the east side passage to Khoryv: Pot": Info(930), #SEARCH_GranDragon_SecretPlain_03_POT_0
+    "[Northwest Overworld] Secret Spot in the east side passage to Khoryv: Sack": Info(931), #SEARCH_GranDragon_SecretPlain_03_SACK_0
+    "[Northwest Overworld] Secret Spot in the mountain south-east of Khoryv: Barrel 1": Info(932, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_15_BARREL_0
+    "[Northwest Overworld] Secret Spot in the mountain south-east of Khoryv: Barrel 2": Info(933, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_15_BARREL_1
+    "[Northwest Overworld] Secret Spot near Skyfell Tower: Pot": Info(934), #SEARCH_GranDragon_SecretForest_04_POT_0
+    "[Northwest Overworld] Secret Spot near Skyfell Tower: Sack": Info(935), #SEARCH_GranDragon_SecretForest_04_SACK_0
+    "[Northwest Overworld] Secret Spot west of Khoryv: Sack": Info(936), #SEARCH_GranDragon_SecretForest_01_SACK_0
+    "[Northwest Overworld] Secret Spot in the snowy mountain north-east of Khoryv: Barrel": Info(937, rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_32_BARREL_0
+    "[Northwest Overworld] Secret Spot north of Khoryv: Barrel": Info(938), #SEARCH_GranDragon_SecretSnow_01_BARREL_0
+    "[Northwest Overworld] Secret Spot near Norvik: Pot": Info(939), #SEARCH_GranDragon_SecretForest_31_POT_0
+    "[Northwest Overworld] Secret Spot near Edina Castle: Chest 1": Info(940, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_09_TREASURE_NORMAL_0
+    "[Northwest Overworld] Secret Spot near Edina Castle: Chest 2": Info(941, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_09_TREASURE_NORMAL_1
+    # ----- Great Desert Overworld -----
+    "[Great Desert Overworld] Secret Spot north of Asham: Barrel 1": Info(942), #SEARCH_GranDragon_SecretMountain_02_BARREL_0
+    "[Great Desert Overworld] Secret Spot north of Asham: Barrel 2": Info(943), #SEARCH_GranDragon_SecretMountain_02_BARREL_1
+    "[Great Desert Overworld] Secret Spot north of Asham: Barrel 3": Info(944), #SEARCH_GranDragon_SecretMountain_02_BARREL_2
+    "[Great Desert Overworld] Secret Spot west of Asham: Barrel": Info(945, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_91_BARREL_0
+    "[Great Desert Overworld] Secret Spot east of Pyramid: Barrel 1": Info(946), #SEARCH_GranDragon_SecretDesert_01_BARREL_0
+    "[Great Desert Overworld] Secret Spot east of Pyramid: Barrel 2": Info(947), #SEARCH_GranDragon_SecretDesert_01_BARREL_1
+    "[Great Desert Overworld] Secret Spot east of Pyramid: Barrel 3": Info(948), #SEARCH_GranDragon_SecretDesert_01_BARREL_2
+    "[Great Desert Overworld] Secret Spot in the mountain east of Ibis: Chest 1": Info(949, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_91_TREASURE_NORMAL_0
+    "[Great Desert Overworld] Secret Spot in the mountain east of Ibis: Chest 2": Info(950, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_91_TREASURE_NORMAL_1
+    "[Great Desert Overworld] Secret Spot north-west of Ibis: Pot": Info(951), #SEARCH_GranDragon_SecretDesert_02_POT_0
+    # ----- Portoga Overworld -----
+    "[Portoga Overworld] Secret Spot north of Portoga: Hidden Ground near a right side tree": Info(952), #SEARCH_GranDragon_SecretForest_05_GROUND_0
+    "[Portoga Overworld] Secret Spot north of Portoga: Sack": Info(953), #SEARCH_GranDragon_SecretForest_05_SACK_0
+    "[Portoga Overworld] Secret Spot near Portoga Lighthouse; Pot 1": Info(954, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_07_POT_0
+    "[Portoga Overworld] Secret Spot near Portoga Lighthouse: Pot 2": Info(955, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_07_POT_1
+    # ----- Central Overworld -----
+    "[Central Overworld] Secret Spot near east entrance of Nordy's Grotto: Barrel 1": Info(956), #SEARCH_GranDragon_SecretMountain_03_BARREL_0
+    "[Central Overworld] Secret Spot near east entrance of Nordy's Grotto: Barrel 2": Info(957), #SEARCH_GranDragon_SecretMountain_03_BARREL_1
+    "[Central Overworld] Secret Spot in the mountain north-west of Baharata: Barrel 1": Info(958, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_14_BARREL_0
+    "[Central Overworld] Secret Spot in the mountain north-west of Baharata: Barrel 2": Info(959, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_14_BARREL_1
+    "[Central Overworld] Secret Spot in the mountain north-west of Baharata: Barrel 3": Info(960, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_14_BARREL_2
+    "[Central Overworld] Secret Spot in the mountain north-west of Baharata: Barrel 4": Info(961, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_14_BARREL_3
+    "[Central Overworld] Secret Spot in the mountain north-west of Baharata: Hidden Ground near central rocks": Info(962, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_14_GROUND_0
+    "[Central Overworld] Secret Spot west of Baharata: Pot 1": Info(963), #SEARCH_GranDragon_SecretDesert_03_POT_0
+    "[Central Overworld] Secret Spot west of Baharata: Pot 2": Info(964), #SEARCH_GranDragon_SecretDesert_03_POT_1
+    "[Central Overworld] Secret Spot west of Baharata: Pot 3": Info(965), #SEARCH_GranDragon_SecretDesert_03_POT_2
+    "[Central Overworld] Secret Spot west of Baharata: Pot 4": Info(966), #SEARCH_GranDragon_SecretDesert_03_POT_3
+    "[Central Overworld] Secret Spot west of Baharata: Pot 5": Info(967), #SEARCH_GranDragon_SecretDesert_03_POT_4
+    "[Central Overworld] Secret Spot south-east of Baharata: Sack": Info(968), #SEARCH_GranDragon_SecretPlain_06_SACK_0
+    "[Central Overworld] Secret Spot near Kidnapper's Cave: Barrel 1": Info(969), #SEARCH_GranDragon_SecretForest_06_BARREL_0
+    "[Central Overworld] Secret Spot near Kidnapper's Cave: Barrel 2": Info(970), #SEARCH_GranDragon_SecretForest_06_BARREL_1
+    "[Central Overworld] Secret Spot near Alltrades Abbey: Barrel": Info(971), #SEARCH_GranDragon_SecretPlain_07_BARREL_0
+    "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 1": Info(972, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_0
+    "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 2": Info(973, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_1
+    "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 3": Info(974, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_2
+    "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 4": Info(975, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_3
+    "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 5": Info(976, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_4
+    "[Central Overworld] Secret Spot north of Wayfarer's Inn: Chest": Info(977), #SEARCH_GranDragon_SecretMountain_04_TREASURE_NORMAL_0
+    "[Central Overworld] Secret Spot in the mountain south-west of Mur: Chest 1": Info(978, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_16_TREASURE_NORMAL_0
+    "[Central Overworld] Secret Spot in the mountain south-west of Mur: Chest 2": Info(979, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_16_TREASURE_NORMAL_1
+    "[Central Overworld] Secret Spot in the mountain south-west of Mur: Chest 3": Info(980, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_16_TREASURE_NORMAL_2
+    "[Central Overworld] Secret Spot north-west of Mur: Hidden Ground behind bottom left rocks": Info(981), #SEARCH_GranDragon_SecretSnow_02_GROUND_0
+    "[Central Overworld] Secret Spot on the other side of the river west of Mur: Pot": Info(982, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_92_POT_0
+    "[Central Overworld] Secret Spot on the other side of the river west of Mur: Hidden Ground on the top right tree": Info(983, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_92_GROUND_0
+    "[Central Overworld] Secret Spot on the other side of the river west of Mur: Hidden Ground on the cliff at the bottom right of the central rocks": Info(984, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_92_GROUND_1
+    "[Central Overworld] Secret Spot in the middle of the forest south of Shrine of the Dwarf: Hidden Ground near the bottom right rock": Info(985, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_33_GROUND_0
+    "[Central Overworld] Secret Spot in the middle of the forest south of Shrine of the Dwarf: Chest 1": Info(986, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_33_TREASURE_NORMAL_0
+    "[Central Overworld] Secret Spot in the middle of the forest south of Shrine of the Dwarf: Chest 2": Info(987, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_33_TREASURE_NORMAL_1
+    "[Central Overworld] Secret Spot south of Shrine of the Dwarf: Barrel": Info(988, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_12_BARREL_0
+    "[Central Overworld] Secret Spot south of Shrine of the Dwarf: Pot": Info(989, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_12_POT_0
+    "[Central Overworld] Secret Spot north of Olivia's Promontory: Sack 1": Info(990, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_34_SACK_0
+    "[Central Overworld] Secret Spot north of Olivia's Promontory: Sack 2": Info(991, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_34_SACK_1
+    "[Central Overworld] Secret Spot north of Olivia's Promontory: Sack 3": Info(992, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_34_SACK_2
+    # ----- Eastern Overworld -----
+    "[Eastern Overworld] Secret Spot near Fifer's Spire: Hidden Ground on tree at the left of central rocks": Info(993), #SEARCH_GranDragon_SecretForest_32_GROUND_0
+    "[Eastern Overworld] Secret Spot near Fifer's Spire: Pot": Info(994), #SEARCH_GranDragon_SecretForest_32_POT_0
+    "[Eastern Overworld] Secret Spot west of Persistence: Barrel": Info(995, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_10_BARREL_0
+    "[Eastern Overworld] Secret Spot north of Persistence: Hidden Ground on top right tree": Info(996, rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_35_GROUND_0
+    "[Eastern Overworld] Secret Spot north of Persistence: Sack": Info(997, rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_35_SACK_0
+    "[Eastern Overworld] Secret Spot east of Persistence: Sack": Info(998, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_11_SACK_0
+    "[Eastern Overworld] Secret Spot east of Persistence: Barrel": Info(999, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_11_BARREL_0
+    "[Eastern Overworld] Secret Spot in the south path to Fifer's Spire: Barrel": Info(1000), #SEARCH_GranDragon_SecretMountain_09_BARREL_0
+    "[Eastern Overworld] Secret Spot in the mountain at the west coast on the west of Manoza: Hidden Ground at the right of rocks in the bottom right corner": Info(1001, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_17_GROUND_0
+    "[Eastern Overworld] Secret Spot in the mountain at the west coast on the west of Manoza: Barrel": Info(1002, rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_17_BARREL_0
+    "[Eastern Overworld] Secret Spot in the north path to Pirates' Den: Chest": Info(1003), #SEARCH_GranDragon_SecretMountain_07_TREASURE_NORMAL_0
+    "[Eastern Overworld] Secret Spot north of Pirates' Den: Pot": Info(1004), #SEARCH_GranDragon_SecretPlain_13_POT_0
+    "[Eastern Overworld] Secret Spot near Pirates' Den: Hidden Ground in the middle near the left entrance": Info(1005), #SEARCH_GranDragon_SecretForest_10_GROUND_0
+    "[Eastern Overworld] Secret Spot near Pirates' Den: Chest": Info(1006), #SEARCH_GranDragon_SecretForest_10_TREASURE_NORMAL_0
+    # ----- Southern Mountains Overworld -----
+    "[Southern Mountains Overworld] Secret Spot south-east of Wayfarer's Shrine: Barrel": Info(1007), #SEARCH_GranDragon_SecretForest_08_BARREL_0
+    "[Southern Mountains Overworld] Secret Spot south-east of Wayfarer's Shrine: Sack": Info(1008), #SEARCH_GranDragon_SecretForest_08_SACK_0
+    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 1": Info(1009), #SEARCH_GranDragon_SecretForest_09_POT_0
+    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 2": Info(1010), #SEARCH_GranDragon_SecretForest_09_POT_1
+    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Hidden Ground on the top left corner at the right of rocks": Info(1011), #SEARCH_GranDragon_SecretMountain_06_GROUND_0
+    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Barrel": Info(1012), #SEARCH_GranDragon_SecretMountain_06_BARREL_0
+    "[Southern Mountains Overworld] Secret Spot on a small coast east of Theddon: Pot": Info(1013, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_11_POT_0
+    "[Southern Mountains Overworld] Secret Spot on a small coast east of Theddon: Sack": Info(1014, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_11_SACK_0
+    "[Southern Mountains Overworld] Secret Spot in the mountain east of Maw of the Necrogond: Chest 1": Info(1015, rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_13_TREASURE_NORMAL_0
+    "[Southern Mountains Overworld] Secret Spot in the mountain east of Maw of the Necrogond: Chest 2": Info(1016, rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_13_TREASURE_NORMAL_1
+    "[Southern Mountains Overworld] Secret Spot near Necrogond Shrine: Chest 1": Info(1017, (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_12_TREASURE_NORMAL_0
+    "[Southern Mountains Overworld] Secret Spot near Necrogond Shrine: Chest 2": Info(1018, (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_12_TREASURE_NORMAL_1
+    # ----- Manoza Overworld -----
+    "[Manoza Overworld] Secret Spot west of Wayfarer's Chapel: Hidden Ground on top right tree": Info(1019), #SEARCH_GranDragon_SecretPlain_14_GROUND_0
+    "[Manoza Overworld] Secret Spot west of Wayfarer's Chapel: Pot": Info(1020), #SEARCH_GranDragon_SecretPlain_14_POT_0
+    "[Manoza Overworld] Secret Spot near Manoza: Barrel 1": Info(1021), #SEARCH_GranDragon_SecretMountain_11_BARREL_0
+    "[Manoza Overworld] Secret Spot near Manoza: Barrel 2": Info(1022), #SEARCH_GranDragon_SecretMountain_11_BARREL_1
+    "[Manoza Overworld] Secret Spot near Manoza: Barrel 3": Info(1023), #SEARCH_GranDragon_SecretMountain_11_BARREL_2
+    # ----- Ocean Overworld -----
+    "[Ocean Overworld] Secret Spot north-west of Norvik: Pot 1": Info(1024, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_32_POT_0
+    "[Ocean Overworld] Secret Spot north-west of Norvik: Pot 2": Info(1025, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_32_POT_1
+    "[Ocean Overworld] Secret Spot north-west of Norvik: Pot 3": Info(1026, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_32_POT_2
+    "[Ocean Overworld] Secret Spot north-west of Norvik: Pot 4": Info(1027, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_32_POT_3
+    "[Ocean Overworld] Secret Spot west of Wayfarer's Shrine: Chest": Info(1028, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_35_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot west of Wayfarer's Shrine: Barrel 1": Info(1029, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_35_BARREL_0
+    "[Ocean Overworld] Secret Spot west of Wayfarer's Shrine: Barrel 2": Info(1030, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_35_BARREL_1
+    "[Ocean Overworld] Secret Spot west of Shrine of the Everbird: Pot 1": Info(1031, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_63_POT_0
+    "[Ocean Overworld] Secret Spot west of Shrine of the Everbird: Pot 2": Info(1032, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_63_POT_1
+    "[Ocean Overworld] Secret Spot near Shrine of the Everbird: Barrel 1": Info(1033, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_31_BARREL_0
+    "[Ocean Overworld] Secret Spot near Shrine of the Everbird: Barrel 2": Info(1034, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_31_BARREL_1
+    "[Ocean Overworld] Secret Spot near Shrine of the Everbird: Pot": Info(1035, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_31_POT_0
+    "[Ocean Overworld] Secret Spot east of Shrine of the Everbird: Chest": Info(1036, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_64_TREASURE_NORMAL_1
+    "[Ocean Overworld] Secret Spot south of Lanson: Chest": Info(1037, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_91_TREASURE_NORMAL_1
+    "[Ocean Overworld] Secret Spot near Gaia's Navel: Chest": Info(1038, (rules.HAS_SHIP & rules.HAS_ULTIMATE_KEY) | rules.HAS_BIRD), #SEARCH_GranDragon_SecretDesert_05_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot north-west of Lanson: Pot 1": Info(1039, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_36_POT_0
+    "[Ocean Overworld] Secret Spot north-west of Lanson: Pot 2": Info(1040, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_36_POT_1
+    "[Ocean Overworld] Secret Spot south-west of Promontory Passage: Hidden Ground behind the central rocks": Info(1041, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_37_GROUND_0
+    "[Ocean Overworld] Secret Spot south-west of Promontory Passage: Pot": Info(1042, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_37_POT_0
+    "[Ocean Overworld] Secret Spot south-east of Pirates' Den: Pot 1": Info(1043, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_39_POT_0
+    "[Ocean Overworld] Secret Spot south-east of Pirates' Den: Pot 2": Info(1044, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_39_POT_1
+    "[Ocean Overworld] Secret Spot north-east of Jipang: Pot 1": Info(1045, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_92_POT_0
+    "[Ocean Overworld] Secret Spot north-east of Jipang: Pot 2": Info(1046, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_92_POT_1
+    "[Ocean Overworld] Secret Spot north-east of Jipang: Pot 3": Info(1047, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_92_POT_2
+    "[Ocean Overworld] Secret Spot south-east of Mur: Barrel": Info(1048, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_41_BARREL_0
+    "[Ocean Overworld] Secret Spot south-east of Mur: Pot 1": Info(1049, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_41_POT_0
+    "[Ocean Overworld] Secret Spot south-east of Mur: Pot 2": Info(1050, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_41_POT_1
+    "[Ocean Overworld] Secret Spot south-east of Mur: Pot 3": Info(1051, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_41_POT_2
+    "[Ocean Overworld] Secret Spot south-east of Mur: Pot 4": Info(1052, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_41_POT_3
+    "[Ocean Overworld] Secret Spot south-west of Shallows Shrine: Chest": Info(1053, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_33_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot east of Shallows Shrine: Chest": Info(1054, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_42_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot north-east of Shrine of the Dwarf: Chest": Info(1055, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_62_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot north-east of Shrine of the Dwarf: Pot 1": Info(1056, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_62_POT_0
+    "[Ocean Overworld] Secret Spot north-east of Shrine of the Dwarf: Pot 2": Info(1057, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_62_POT_1
+    "[Ocean Overworld] Secret Spot north of Castle of the Dragon Queen: Hidden Ground near the top left of the central rocks": Info(1058, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_61_GROUND_0
+    "[Ocean Overworld] Secret Spot north of Castle of the Dragon Queen: Hidden Ground near bottom entrance": Info(1059, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_61_GROUND_1
+    "[Ocean Overworld] Secret Spot north of Castle of the Dragon Queen: Hidden Ground near the top right edge": Info(1060, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_61_GROUND_2
+    "[Ocean Overworld] Secret Spot south of Merchantburg: Barrel": Info(1061, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_40_BARREL_0
+    "[Ocean Overworld] Secret Spot south of Teleportal Shrine: Pot 1": Info(1062, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_43_POT_0
+    "[Ocean Overworld] Secret Spot south of Teleportal Shrine: Pot 2": Info(1063, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_43_POT_1
+    "[Ocean Overworld] Secret Spot south of Teleportal Shrine: Hidden Ground near left entrance rocks": Info(1064, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_43_GROUND_0
+    "[Ocean Overworld] Secret Spot north-east of Teleportal Shrine: Pot 1": Info(1065, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_44_POT_0
+    "[Ocean Overworld] Secret Spot north-east of Teleportal Shrine: Pot 2": Info(1066, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_44_POT_1
+    "[Ocean Overworld] Secret Spot near Grimland: Chest": Info(1067, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_03_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot in the mountain east of Grimland: Chest behind the bottom left rock": Info(1068, rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_04_TREASURE_NORMAL_0
+    # ----- Alefgard Overworld -----
+    "[Alefgard Overworld] Secret Spot on the island north of Talontear Tunnel: Pot": Info(1069, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_15_POT_0
+    "[Alefgard Overworld] Secret Spot south-east of Galen's House: Hidden Ground on central tree": Info(1070), #SEARCH_GranDragon_SecretForest_15_GROUND_0
+    "[Alefgard Overworld] Secret Spot south-east of Galen's House: Chest": Info(1071), #SEARCH_GranDragon_SecretForest_15_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot west of Craggy Cave: Chest 1": Info(1072), #SEARCH_GranDragon_SecretForest_18_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot west of Craggy Cave: Chest 2": Info(1073), #SEARCH_GranDragon_SecretForest_18_TREASURE_NORMAL_1
+    "[Alefgard Overworld] Secret Spot south-east of Craggy Cave: Pot": Info(1074), #SEARCH_GranDragon_SecretForest_19_POT_0
+    "[Alefgard Overworld] Secret Spot in the river south of Craggy Cave: Pot 1": Info(1075, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_45_POT_0
+    "[Alefgard Overworld] Secret Spot in the river south of Craggy Cave: Pot 2": Info(1076, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_45_POT_1
+    "[Alefgard Overworld] Secret Spot in the river south of Craggy Cave: Pot 3": Info(1077, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_45_POT_2
+    "[Alefgard Overworld] Secret Spot south-west of Damdara: Chest 1": Info(1078), #SEARCH_GranDragon_SecretDesert_07_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot south-west of Damdara: Chest 2": Info(1079), #SEARCH_GranDragon_SecretDesert_07_TREASURE_NORMAL_1
+    "[Alefgard Overworld] Secret Spot in the outer passage south-east of Damdara: Barrel 1": Info(1080), #SEARCH_GranDragon_SecretPlain_18_BARREL_0
+    "[Alefgard Overworld] Secret Spot in the outer passage south-east of Damdara: Barrel 2": Info(1081), #SEARCH_GranDragon_SecretPlain_18_BARREL_1
+    "[Alefgard Overworld] Secret Spot in the outer passage south-east of Damdara: Sack": Info(1082), #SEARCH_GranDragon_SecretPlain_18_SACK_0
+    "[Alefgard Overworld] Secret Spot in the inner passage east of Damdara: Barrel": Info(1083), #SEARCH_GranDragon_SecretForest_20_BARREL_0
+    "[Alefgard Overworld] Secret Spot in the inner passage east of Damdara: Pot": Info(1084), #SEARCH_GranDragon_SecretForest_20_POT_0
+    "[Alefgard Overworld] Secret Spot in the inner passage east of Damdara: Hidden Ground on central rock": Info(1085), #SEARCH_GranDragon_SecretForest_20_GROUND_0
+    "[Alefgard Overworld] Secret Spot in the desert area north of Cantlin: Chest": Info(1086), #SEARCH_GranDragon_SecretDesert_08_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot in the desert area north of Cantlin: Hidden Ground near top right rocks": Info(1087), #SEARCH_GranDragon_SecretDesert_08_GROUND_0
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground near top left rocks": Info(1088, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_0
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground near left of bottom rocks": Info(1089, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_1
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground near bottom rocks": Info(1090, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_2
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground near central rock": Info(1091, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_3
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground between two rocks at the bottom of the central rock": Info(1092, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_4
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground on central right rocks": Info(1093, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_5
+    "[Alefgard Overworld] Secret Spot in the ocean south-west of Sanctum: Hidden Ground near bottom left side of central rock": Info(1094, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_46_GROUND_6
+    "[Alefgard Overworld] Secret Spot in the river south-west of Rimuldar: Pot": Info(1095, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_47_POT_0
+    "[Alefgard Overworld] Secret Spot north of Rimuldar: Hidden Ground near top left trees": Info(1096), #SEARCH_GranDragon_SecretForest_17_GROUND_0
+    "[Alefgard Overworld] Secret Spot north of Rimuldar: Barrel 1": Info(1097), #SEARCH_GranDragon_SecretForest_17_BARREL_0
+    "[Alefgard Overworld] Secret Spot north of Rimuldar: Barrel 2": Info(1098), #SEARCH_GranDragon_SecretForest_17_BARREL_1
+    "[Alefgard Overworld] Secret Spot north of Rimuldar: Barrel 3": Info(1099), #SEARCH_GranDragon_SecretForest_17_BARREL_2
+    "[Alefgard Overworld] Secret Spot on a small coast north-west of Rimuldar: Chest": Info(1100, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_92_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot on a small coast north-west of Rimuldar: Barrel 1": Info(1101, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_92_BARREL_0
+    "[Alefgard Overworld] Secret Spot on a small coast north-west of Rimuldar: Barrel 2": Info(1102, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_92_BARREL_1
+    "[Alefgard Overworld] Secret Spot on a small island south of Quagmire Cave: Barrel": Info(1103, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_17_BARREL_0
+    "[Alefgard Overworld] Secret Spot on a small island south of Quagmire Cave: Pot": Info(1104, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_17_POT_0
+    "[Alefgard Overworld] Secret Spot in the desert area south of Kol: Barrel 1": Info(1105, rules.HAS_SHIP), #SEARCH_GranDragon_SecretDesert_06_BARREL_0
+    "[Alefgard Overworld] Secret Spot in the desert area south of Kol: Barrel 2": Info(1106, rules.HAS_SHIP), #SEARCH_GranDragon_SecretDesert_06_BARREL_1
+    "[Alefgard Overworld] Secret Spot in the desert area south of Kol: Hidden Ground near top right rock": Info(1107, rules.HAS_SHIP), #SEARCH_GranDragon_SecretDesert_06_GROUND_0
+    "[Alefgard Overworld] Secret Spot north of Kol: Barrel 1": Info(1108, rules.HAS_SHIP), #SEARCH_GranDragon_SecretForest_16_BARREL_0
+    "[Alefgard Overworld] Secret Spot north of Kol: Barrel 2": Info(1109, rules.HAS_SHIP), #SEARCH_GranDragon_SecretForest_16_BARREL_1
+    "[Alefgard Overworld] Secret Spot north of Kol: Barrel 3": Info(1110, rules.HAS_SHIP), #SEARCH_GranDragon_SecretForest_16_BARREL_2
+    "[Alefgard Overworld] Secret Spot north of Kol: Barrel 4": Info(1111, rules.HAS_SHIP), #SEARCH_GranDragon_SecretForest_16_BARREL_3
+    "[Alefgard Overworld] Secret Spot at the end of the river canal south of Tower of Rubiss: Sack": Info(1112, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_16_SACK_0
+    "[Alefgard Overworld] Secret Spot at the end of the river canal south of Tower of Rubiss: Barrel": Info(1113, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_16_BARREL_0
+    "[Alefgard Overworld] Secret Spot at the end of the river canal south of Tower of Rubiss: Pot 1": Info(1114, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_16_POT_0
+    "[Alefgard Overworld] Secret Spot at the end of the river canal south of Tower of Rubiss: Pot 2": Info(1115, rules.HAS_SHIP), #SEARCH_GranDragon_SecretPlain_16_POT_1
+    "[Alefgard Overworld] Secret Spot on an island south-west of Tower of Rubiss: Hidden Ground near top left rocks": Info(1116, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_19_GROUND_0
+    "[Alefgard Overworld] Secret Spot on an island south-west of Tower of Rubiss: Chest 1": Info(1117, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_19_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot on an island south-west of Tower of Rubiss: Chest 2": Info(1118, rules.HAS_SHIP), #SEARCH_GranDragon_SecretMountain_19_TREASURE_NORMAL_1
+    "[Alefgard Overworld] Secret Spot north-east of Tantegel: Barrel": Info(1119), #SEARCH_GranDragon_SecretMountain_18_BARREL_0
+    "[Alefgard Overworld] Secret Spot near Zoma's Citadel: Chest 1": Info(1120, rules.HAS_RAINBOW_DROP), #SEARCH_GranDragon_SecretMountain_22_TREASURE_NORMAL_0
+    "[Alefgard Overworld] Secret Spot near Zoma's Citadel: Chest 2": Info(1121, rules.HAS_RAINBOW_DROP), #SEARCH_GranDragon_SecretMountain_22_TREASURE_NORMAL_1
+    "[Alefgard Overworld] Secret Spot near Zoma's Citadel: Chest 3": Info(1122, rules.HAS_RAINBOW_DROP), #SEARCH_GranDragon_SecretMountain_22_TREASURE_NORMAL_2
 }
 
 

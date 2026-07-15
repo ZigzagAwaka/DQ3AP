@@ -148,10 +148,8 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
         return false;
     }
     return (
-        victoryId == 0 && option_victory_goal == 0 ||
-        victoryId == 1 && option_victory_goal == 1 ||
-        victoryId == 2 && option_victory_goal == 2 ||
-        victoryId == 2 && option_victory_goal == 3
+        option_victory_goal <= 2 && victoryId == option_victory_goal ||
+        option_victory_goal == 3 && victoryId == 2
     );
 }
 
