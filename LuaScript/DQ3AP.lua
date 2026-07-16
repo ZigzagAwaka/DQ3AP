@@ -253,16 +253,11 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     receptor = AddItem(ItemId)
     SetTagItemId(ItemId)
     if 0 < receptor or receptor == 0 or receptor == -2 then
-      if ObjectId == nil or TreasureId == nil then
-        --[[
-        CmdLoadItemIcon(ItemId)
-        HideMessageWindowPageFeedIcon()
-        PlayItemGetToActor("Party1", {X = 0, Y = 0, Z = 0}, ItemId, false)
-        _retry(SYS_WaitPlayItemGet)
-        ]]
-      else
-        CmdLoadItemIcon(ItemId)
+      CmdLoadItemIcon(ItemId)
+      if ObjectId ~= nil and TreasureId ~= nil then
         CmdPlayItemGetNoWait(ObjectId, TreasureId)
+      else
+        PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)
       end
     end
     if receptor == 0 then
@@ -304,9 +299,9 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     elseif receptor == -1 then
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
     end
+    AP.SetSpecialFlags(ItemId)
+    --AP.CheckMiniMedals(ItemId)
   end
-  AP.SetSpecialFlags(ItemId)
-  AP.CheckMiniMedals(ItemId)
 end
 
 -- check if there is available items and if yes then gives them to the player

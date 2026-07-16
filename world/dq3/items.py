@@ -265,7 +265,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Silver Shield": Info(298), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
     "Shield of Shame": Info(312), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
     "Dragon Shield": Info(325, quantity=2), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
-    "Goddess Shield": Info(327), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
+    "Goddess Shield": Info(327, ItemClassification.useful), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
     # EQUIPMENT HELMETS
     "Leather Hat": Info(13, quantity=4), #ITEM_EQUIP_HELMET_LEATHER_HAT
     "Hardwood Headwear": Info(43, quantity=2), #ITEM_EQUIP_HELMET_HARDWOOD_HEADWEAR
@@ -334,7 +334,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Wizard's Robe": Info(362, quantity=2), #ITEM_EQUIP_ARMOR_WIZARDS_ROBE
     "Dragon Robe": Info(366), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
     "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
-    "Blessed Bikini": Info(371), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
+    "Blessed Bikini": Info(371, ItemClassification.useful), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7, quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Aerofoil Earrings": Info(20, quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS

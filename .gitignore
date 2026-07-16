@@ -70,6 +70,7 @@ Testing/
 # custom
 _utils
 .vscode
+dq3ap
 external
 LuaScript/Nicola_Library.lnk
 LuaScript/*.lub

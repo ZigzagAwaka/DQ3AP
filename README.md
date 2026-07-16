@@ -18,7 +18,7 @@ When the setup is finished, you can open the game on Steam to see a new separate
 - Type `/connect <host> <player> [password]` into the console with valid parameters *(example: /connect archipelago.gg:12345 Player1)*
 - You can connect anytime you want, before or after loading your game file. But make sure to be connected before checking a new location in the game !
 
-## FAQ
+## Useful informations
 ### What does randomization do to this game ?
 
 In Dragon Quest III HD-2D Remake, all obtainable items (usable items, equipment, gold, ...) are shuffled into the multiworld. From chests to barrels, pots, bookshelves and important NPC events, you'll have a great time figuring out a route to complete your goal !
