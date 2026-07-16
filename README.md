@@ -7,9 +7,10 @@ Dragon Quest III HD-2D Remake implementation for the [Archipelago multiworld ran
 1. Make sure you have [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) 0.6.7+ installed
 2. Download the latest version of [DQ3AP](https://github.com/ZigzagAwaka/DQ3AP/releases)
 3. Place `Game-WindowsNoEditor_P_DQ3AP.pak` in `Game/Content/Paks` in the game folder
-4. Place `DQ3AP.asi`, `dsound.dll` and `libAPCpp.dll` in `Game/Binaries/Win64` in the game folder, next to the executable
-5. For [generating a world](https://archipelago.gg/tutorial/Archipelago/setup_en#on-your-local-installation), place or install `dq3.apworld` in the `custom_worlds` folder of your Archipelago installation
-6. For configuring your randomized game, select `Generate Template Options` in the Archipelago Launcher to create a `Dragon Quest III HD-2D Remake.yaml` that you can edit to your liking (make sure to have the apworld installed before doing this)
+4. Place `DQ3AP.asi`, `dsound.dll`, `libAPCpp.dll`, `libstdc++-6.dll`, `libgcc_s_seh-1.dll` and `libwinpthread-1.dll` in `Game/Binaries/Win64` in the game folder, next to the executable
+5. If playing on a Linux computer, add `WINEDLLOVERRIDES="dsound.dll=n,b" %command%` in the game's launch options on Steam (no need to do that on Windows!)
+6. For [generating a world](https://archipelago.gg/tutorial/Archipelago/setup_en#on-your-local-installation), place or install `dq3.apworld` in the `custom_worlds` folder of your Archipelago installation
+7. For configuring your randomized game, select `Generate Template Options` in the Archipelago Launcher to create a `Dragon Quest III HD-2D Remake.yaml` that you can edit to your liking (make sure to have the apworld installed before doing this)
 
 ## Connecting to a hosted room
 
