@@ -32,9 +32,9 @@ The end goal of the randomizer is to defeat the final boss of the game.
 
 ### Which items can be in another player's world ?
 
-All obtainable items can be placed in other players' worlds, except the World Map which is not randomized.
+All obtainable items can be placed in other players' worlds, except the Maps which are not randomized.
 
-Items in shops and enemy drops are also not randomized but this may change in the future.
+Items in shops, medals rewards, arena rewards and enemy drops are also not randomized but this may change in the future.
 
 ### What does another world's item look like in the game ?
 
@@ -46,15 +46,15 @@ Multiworld items appear as a mini medal sprite when you collect them. The game w
 
 The only supported version is the Steam release of `Dragon Quest III HD-2D Remake`.
 
-Also, as development for this integration was made on Windows, we don't know if it works well on other operating systems.
-
 ### When the player receives an item, what happens ?
 
 The game will cache the received items then give them all to the player when one of the following events happens :
 
-- The player enters/exits an area, dungeon, or village
-- The player successfully defeats an enemy or a boss
-- The player checks a container that gives an Archipelago check
+- The player exits an area, dungeon, or village ; either by walking to an exit or warping outside the area with Zoom
+- The player successfully defeats an enemy (but not a Cannibox/Mimic/Pandora's Box as those are traps !)
+- The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
+- The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
+- The player talks to a Priest of any location ; either directly in the game or by loading a save file from the title screen
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
 

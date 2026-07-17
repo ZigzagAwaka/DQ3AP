@@ -33,7 +33,7 @@ void APClient::Connect(const std::string& host, const std::string& player, const
         });
 
         AP_RegisterSlotDataIntCallback("victory_goal", [this](int value) {
-            logger.Log("Receive option victory_goal: " + std::to_string(value));
+            logger.LogInFile("Receive option victory_goal: " + std::to_string(value));
             option_victory_goal = value;
         });
 

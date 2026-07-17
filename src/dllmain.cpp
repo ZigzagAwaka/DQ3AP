@@ -83,6 +83,9 @@ static DWORD WINAPI MainThread(LPVOID)
     std::signal(SIGINT, ExitHandler);
     std::signal(SIGTERM, ExitHandler);
 
+    // Wait 1s for the game to load
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
     // Initialize logger
     std::filesystem::create_directories("Archipelago");
     Logger logger("Archipelago/Client.log");

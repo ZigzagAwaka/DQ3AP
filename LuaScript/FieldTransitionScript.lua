@@ -169,6 +169,7 @@ end
 
 function TransitionRura(BeginOverlap, table, ...)
   local _LoadMapId, _StartPointName, _MapId, _RuraId, _IsSuccessRura, _IsDisableMagic, _TextId, _TextId2, _AnimationTime, _PlayerType, _Orientation, _FadeIn, _PrevMapId = ...
+  local isField = IsFieldMapId(_MapId) -- AP
   MapTimeNotifyStartSystemProcessing()
   SetDispMiniMap(false)
   SetDispBtnGuide(false)
@@ -221,7 +222,7 @@ function TransitionRura(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  if _IsSuccessRura then
+  if _IsSuccessRura and isField then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -272,9 +273,6 @@ function TransitionRiremito(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
-  -- AP
-  --AP.GiveItemsIfAvailable()
-  -- AP end
 end
 
 function TransitionLevel(BeginOverlap, table, ...)
@@ -303,7 +301,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
     TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority)
-    if isField or _bAutoSave == true then -- AP
+    if _bAutoSave == true then
       RequestAutoSave()
       WaitFrame(1)
     end
@@ -489,6 +487,7 @@ end
 function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   print("TransitionBattleToLevel Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, _orientation, isLose, isLoad, bDoAutoSave, bDoRetry, battleEventId = ...
+  local isEnemyTrapFromAP = AP.IsBattleIdEnemyTrap(battleEventId) -- AP
   StartTransition(_mapId)
   local isBattleRoad = IsBattleRoad()
   MapTimeNotifyStartSystemProcessing()
@@ -569,7 +568,12 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   local isPlayEvent = false
   if battleEventId ~= nil and battleEventId ~= "" and bDoRetry == false and (isLose == false or isBattleRoad == true or battleEventId == lancelLoseEventId) then
     print("OnEventBattleEnd " .. battleEventId)
-    isPlayEvent = CallBattleEndEvent(battleEventId)
+    -- AP
+    if isEnemyTrapFromAP then
+    else
+      isPlayEvent = CallBattleEndEvent(battleEventId)
+    end
+    -- AP end
   end
   local isPlayLancelLoseEvent = isPlayEvent and battleEventId == lancelLoseEventId
   local isCallChurchUI = isLose == true and isBattleRoad == false and bDoRetry == false and isPlayLancelLoseEvent == false
@@ -581,7 +585,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
       WaitPlayerOnGround()
     end
   end
-  if isField or bDoAutoSave == true then -- AP
+  if bDoAutoSave == true then
     RequestAutoSave()
     WaitFrame(1)
   end
@@ -601,7 +605,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  if not bDoRetry then
+  if not bDoRetry and not isEnemyTrapFromAP then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -658,9 +662,6 @@ function TransitionInn()
     FinishTransition()
   end
   print("TransitionInn End")
-  -- AP
-  --AP.GiveItemsIfAvailable()
-  -- AP end
 end
 
 function GetStartPos(_startPointName)

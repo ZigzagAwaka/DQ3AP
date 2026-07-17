@@ -60,6 +60,28 @@ local random_pandora = {
   "BATTLE_EVENT_GRANDRAGON_PANDORABOX_2",
 }
 
+function AP.IsBattleIdEnemyTrap(BattleId)
+  if BattleId == nil or BattleId == "" then
+    return false
+  end
+  for _, canniboxId in ipairs(random_cannibox) do
+    if canniboxId == BattleId then
+      return true
+    end
+  end
+  for _, mimicId in ipairs(random_mimic) do
+    if mimicId == BattleId then
+      return true
+    end
+  end
+  for _, pandoraId in ipairs(random_pandora) do
+    if pandoraId == BattleId then
+      return true
+    end
+  end
+  return false
+end
+
 -- returns a possible enemy battle id corresponding to the given enemy name
 function AP.GetBattleIdFromEnemyName(enemyName)
   if enemyName == "CANNIBOX" then
@@ -229,7 +251,7 @@ function AP.SetSpecialFlags(ItemId)
   end
 end
 
--- give the specified item to the player
+-- give the specified item to the player (and return true if the item was real, or false if this was an enemy)
 function AP.GiveItem(ItemId, ObjectId, TreasureId)
   ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
@@ -300,29 +322,41 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
     end
     AP.SetSpecialFlags(ItemId)
-    --AP.CheckMiniMedals(ItemId)
   end
+  return not isEnemy
 end
 
--- check if there is available items and if yes then gives them to the player
+-- check if there is available items and if yes then gives them all to the player if possible
 function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
-  local file = io.open("Archipelago/items.data", "r")
+  local filePath = "Archipelago/items.data"
+  local file = io.open(filePath, "r")
   if file then
-    local hasContent = file:read("*l")
-    if hasContent then
-      file:seek("set", 0)
-      for line in file:lines() do
-        AP.Log("Available item: " .. line)
-        AP.GiveItem(line, ObjectId, TreasureId)
-        RequestAutoSave()
+    local remainingLines = {}
+    local stopGiveItem = false
+    for line in file:lines() do
+      if line ~= "" then
+        if not stopGiveItem then
+          AP.Log("Available item: " .. line)
+          local isRealItem = AP.GiveItem(line, ObjectId, TreasureId)
+          if isRealItem then
+            RequestAutoSave() -- only auto save for real items and not for enemies
+          else
+            stopGiveItem = true -- if the item was an enemy, stop giving other items and keep them for the next call
+          end
+        else
+          remainingLines[#remainingLines + 1] = line
+        end
       end
     end
     file:close()
-    if hasContent then
-      local clearFile = io.open("Archipelago/items.data", "w")
-      if clearFile then
-          clearFile:close()
+    file = io.open(filePath, "w")
+    if file then
+      if stopGiveItem then
+        for _, line in ipairs(remainingLines) do
+          file:write(line .. "\n") -- rewrite items in the file for the next call
+        end
       end
+      file:close()
     end
   end
 end
