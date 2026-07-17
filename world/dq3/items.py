@@ -243,7 +243,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Dragontail Whip": Info(321, quantity=2), #ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP
     "Dragon Claws": Info(324, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_DRAGON_CLAWS
     "Conqueror's Axe": Info(328), #ITEM_EQUIP_WEAPON_CONQUERORS_AXE
-    "Aurora Staff": Info(329), #ITEM_EQUIP_WEAPON_AURORA_STAFF
+    "Aurora Staff": Info(329, ItemClassification.useful), #ITEM_EQUIP_WEAPON_AURORA_STAFF
     "Gringham Whip": Info(332, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_GRINGHAM_WHIP
     "Staff of Resurrection": Info(345, ItemClassification.useful), #ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
     "Fire Claws": Info(357), #ITEM_EQUIP_WEAPON_FIRE_CLAWS
@@ -327,7 +327,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Auroral Armor": Info(301, ItemClassification.useful), #ITEM_EQUIP_ARMOR_AURORAL_ARMOUR
     "Dragon Dojo Duds": Info(305, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_DOJO_DUDS
     "Shimmering Dress": Info(307, ItemClassification.useful), #ITEM_EQUIP_ARMOR_SHIMMERING_DRESS
-    "Godbird Armor": Info(331), #ITEM_EQUIP_ARMOR_GODBIRD_ARMOUR
+    "Godbird Armor": Info(331, ItemClassification.useful), #ITEM_EQUIP_ARMOR_GODBIRD_ARMOUR
     "Shell Armor": Info(334, quantity=2), #ITEM_EQUIP_ARMOR_SHELL_ARMOUR
     "Stealth Suit": Info(354, quantity=2), #ITEM_EQUIP_ARMOR_STEALTH_SUIT
     "Garish Garb": Info(360), #ITEM_EQUIP_ARMOR_GARISH_GARB

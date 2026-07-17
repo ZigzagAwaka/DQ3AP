@@ -132,15 +132,15 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Shrine of Promise] Pot near stairs": Info(95), #SEARCH_IzanaiShrine_1F_POT_0
     # ----- Romaria -----
     "[Romaria] Hidden Ground near right wall of Romaria Castle": Info(96), #SEARCH_Romaria_Out_GROUND_0
-    "[Romaria] Hidden Ground": Info(97), #SEARCH_Romaria_Out_GROUND_1
+    "[Romaria] Hidden Ground near the right wall behind the Church": Info(97), #SEARCH_Romaria_Out_GROUND_1
     "[Romaria] Pot near Monster Arena": Info(98), #SEARCH_Romaria_Out_POT_0
     "[Romaria] Pot in left house garden": Info(99), #SEARCH_Romaria_Out_POT_1
     "[Romaria] Barrel near Inn": Info(100), #SEARCH_Romaria_Out_BARREL_0
     "[Romaria] Barrel near right entrance": Info(101), #SEARCH_Romaria_Out_BARREL_1
     "[Romaria] Barrel on the left of the Item Shop": Info(102), #SEARCH_Romaria_Out_BARREL_2
-    "[Romaria] Drawer 1 in Inn": Info(103), #SEARCH_Romaria_Inn_1F_DRAWER_0
+    "[Romaria] Drawer 1 in Inn": Info(103, rules.HAS_THIEF_KEY), #SEARCH_Romaria_Inn_1F_DRAWER_0
     #"[Romaria] Event": Info(104), #SEARCH_Romaria_Inn_1F_EVENT_0 # no items here
-    "[Romaria] Drawer 2 in Inn": Info(105), #SEARCH_Romaria_Inn_2F_DRAWER_0
+    "[Romaria] Drawer 2 in Inn": Info(105, rules.HAS_THIEF_KEY), #SEARCH_Romaria_Inn_2F_DRAWER_0
     "[Romaria] Drawer in left house": Info(106), #SEARCH_Romaria_House_DRAWER_0
     "[Romaria] Pot in left house": Info(107), #SEARCH_Romaria_House_POT_0
     "[Romaria] Drawer in Church": Info(108), #SEARCH_Romaria_Church_DRAWER_0
