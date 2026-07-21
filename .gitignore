@@ -72,7 +72,7 @@ _utils
 .vscode
 dq3ap
 external
-LuaScript/Nicola_Library.lnk
+LuaScript/*.lnk
 LuaScript/*.lub
 LuaScript/LuaEvents/*.lub
 LuaScript/Game-WindowsNoEditor_P_DQ3AP
