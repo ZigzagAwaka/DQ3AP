@@ -51,14 +51,28 @@ void Commands::Process(const std::string& command)
     {
         apClientPtr->Disconnect();
     }
-    else if (command.substr(0, 8) == "/connect")
+    else if (command.rfind("/connect", 0) == 0)
     {
-        std::istringstream iss(command);
-        std::string cmd, host, player, password = "";
-        
-        iss >> cmd >> host >> player;  // Parsing command
-        iss >> password;  // Optional password, will be empty if not provided
-        
+        std::string input = command.substr(8);
+        while (!input.empty() && std::isspace(static_cast<unsigned char>(input[0])))
+        {
+            input.erase(input.begin()); // remove every spaces between "/connect" and the first argument in the input
+        }
+
+        const std::vector<std::string> arguments = ParseCommandInput(input);
+        std::string host, player, password;
+
+        if (arguments.size() >= 2)
+        {
+            host = arguments[0];
+            player = arguments[1];
+        }
+
+        if (arguments.size() >= 3)
+        {
+            password = arguments[2];
+        }
+
         if (host.empty() || player.empty())
         {
             loggerPtr->LogError("Cannot connect to Archipelago: Host and player must be set");
@@ -78,6 +92,41 @@ bool Commands::HasPendingCommands()
 {
     std::lock_guard<std::mutex> lock(queueMutex);
     return !commandQueue.empty();
+}
+
+std::vector<std::string> Commands::ParseCommandInput(const std::string& input)
+{
+    std::vector<std::string> allArguments; // return value, contains all parsed arguments
+    std::string argument; // the currently worked on argument
+    bool inQuotesMode = false; // define if quotes are used for the current argument and ignore spaces parsing if yes
+
+    for (const char ch : input)
+    {
+        if (ch == '"')
+        {
+            inQuotesMode = !inQuotesMode;
+            continue;
+        }
+
+        if (std::isspace(static_cast<unsigned char>(ch)) && !inQuotesMode)
+        {
+            if (!argument.empty())
+            {
+                allArguments.push_back(argument);
+                argument.clear();
+            }
+            continue;
+        }
+
+        argument.push_back(ch);
+    }
+
+    if (!argument.empty())
+    {
+        allArguments.push_back(argument);
+    }
+
+    return allArguments;
 }
 
 void Commands::PrintHelp()

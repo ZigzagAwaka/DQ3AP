@@ -6,6 +6,8 @@
 #include <string>
 #include <queue>
 #include <mutex>
+#include <cctype>
+#include <vector>
 
 /// @brief User command processing class
 class Commands
@@ -39,6 +41,11 @@ private:
 
     static APClient* apClientPtr;
     static Logger* loggerPtr;
+
+    /// @brief Parse the given command input and returns all valid arguments
+    /// @param input The input string to be parsed
+    /// @return A vector of string representing all arguments parsed in the input
+    static std::vector<std::string> ParseCommandInput(const std::string& input);
 
     /// @brief Print available commands
     static void PrintHelp();
