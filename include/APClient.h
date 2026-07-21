@@ -12,12 +12,19 @@
 class APClient
 {
 public:
-    /// @brief Create APClient with logger reference, and AP data paths
+    /// @brief Create APClient with logger reference, and AP data paths that will be created if it doesn't exist
     /// @param logger Logger instance
-    /// @param itemPath Path to AP items data file, will be created if it doesn't exist
-    /// @param locationPath Path to AP locations data file, will be created if it doesn't exist
-    /// @param optionPath Path to AP options data file, will be created if it doesn't exist
-    APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath);
+    /// @param itemPath Path to AP items data file
+    /// @param locationPath Path to AP locations data file
+    /// @param optionPath Path to AP options data file
+    /// @param hostPath Path to AP host information data file
+    APClient(
+        Logger& logger,
+        const std::string& itemPath,
+        const std::string& locationPath,
+        const std::string& optionPath,
+        const std::string& hostPath
+    );
 
     /// @brief Connect to Archipelago
     /// @param host Server host
@@ -62,18 +69,30 @@ private:
     const std::string itemDataPath;
     const std::string locationDataPath;
     const std::string optionDataPath;
+    const std::string hostDataPath;
 
     std::filesystem::file_time_type locationDataLastCheckTime;
+    std::string currentHost = "";
 
     //std::ofstream itemFile;
     //std::ifstream locationFile;
 
-    bool hasWroteOptions = false;
+    // the following member variables are all received from client callback
+
     int option_victory_goal = -1;
+    // wip
 
     /// @brief Create the specified AP data file if it doesn't exist,
-    /// or clear it completely if it already exist
+    /// or clear it completely if it already exist (depending on parameters)
     /// @param filePath Path to the AP data file
-    /// @param clearOnly Set to true to ignore file existing check and only clear the file, default to false
-    void CreateOrClearFile(const std::string& filePath, bool clearOnly = false);
+    /// @param create Set to true to create the file, default to true
+    /// @param clear Set to true to clear the file, default to true
+    void CreateOrClearFile(const std::string& filePath, bool create = true, bool clear = true);
+
+    /// @brief Write the current host value to AP host data file
+    void SetLastHost();
+
+    /// @brief Reads the host value from AP host data file and returns if it is the current host
+    /// @return True if the latest host is also the current host
+    bool IsKnownHost();
 };

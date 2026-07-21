@@ -2,8 +2,13 @@
 #include "Archipelago.h"
 
 
-APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath)
-    : logger(logger), itemDataPath(itemPath), locationDataPath(locationPath), optionDataPath(optionPath)
+APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath,
+                   const std::string& optionPath, const std::string& hostPath)
+    : logger(logger),
+    itemDataPath(itemPath),
+    locationDataPath(locationPath),
+    optionDataPath(optionPath),
+    hostDataPath(hostPath)
 {
     ClearData();
 }
@@ -37,6 +42,7 @@ void APClient::Connect(const std::string& host, const std::string& player, const
             option_victory_goal = value;
         });
 
+        currentHost = host;
         AP_EnableQueueItemRecvMsgs(true);
         AP_Start();
     }
@@ -54,12 +60,6 @@ void APClient::Update()
         AP_Message* message = AP_GetLatestMessage();
         logger.Log(message->text);
         AP_ClearLatestMessage();
-    }
-
-    if (!hasWroteOptions)
-    {
-        WriteOptionData();
-        hasWroteOptions = true;
     }
 
     std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath);
@@ -97,7 +97,7 @@ void APClient::Update()
 
         if (hasContent)
         {
-            CreateOrClearFile(locationDataPath, true);
+            CreateOrClearFile(locationDataPath, false, true);
         }
     }
 }
@@ -171,23 +171,64 @@ void APClient::WriteOptionData()
 
 void APClient::ClearData()
 {
-    CreateOrClearFile(itemDataPath);
+    // Only clear item data if connected to an unknown host or if the file does not exist
+    if (!currentHost.empty())
+    {
+        CreateOrClearFile(itemDataPath, true, !IsKnownHost());
+        // Then initialize current host data and client options
+        SetLastHost();
+        WriteOptionData();
+    }
+    // Always clear location data
     CreateOrClearFile(locationDataPath);
     locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
 }
 
 
-void APClient::CreateOrClearFile(const std::string& filePath, bool clearOnly)
+void APClient::CreateOrClearFile(const std::string& filePath, bool create, bool clear)
 {
-    if (!clearOnly && !std::filesystem::exists(filePath))
+    if (create && !std::filesystem::exists(filePath))
     {
         std::ofstream(filePath).close();
     }
-    else
+    else if (clear)
     {
         std::ofstream clearFile(filePath, std::ios::trunc);
         clearFile.close();
     }
+}
+
+
+void APClient::SetLastHost()
+{
+    if (currentHost.empty())
+    {
+        return;
+    }
+    CreateOrClearFile(hostDataPath);
+    std::ofstream file;
+    file.open(hostDataPath, std::ios::app);
+    file << currentHost << '\n';
+    file.flush();
+    file.close();
+}
+
+
+bool APClient::IsKnownHost()
+{
+    if (!std::filesystem::exists(hostDataPath))
+    {
+        return false;
+    }
+    std::ifstream file(hostDataPath);
+    std::string line;
+    std::string result;
+    if (std::getline(file, line) && !line.empty())
+    {
+        result = line;
+    }
+    file.close();
+    return result == currentHost;
 }
 
 
