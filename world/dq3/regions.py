@@ -121,7 +121,9 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Portoga Castle"),
     ],
     "Portoga Castle": [],
-    "Portoga Lighthouse": [],
+    "Portoga Lighthouse": [
+        Connect("Portoga Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+    ],
     # CENTRAL
     "Central Overworld": [
         Connect("Nordy's Grotto"),

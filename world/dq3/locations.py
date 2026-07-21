@@ -132,7 +132,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Shrine of Promise] Pot near stairs": Info(95), #SEARCH_IzanaiShrine_1F_POT_0
     # ----- Romaria -----
     "[Romaria] Hidden Ground near right wall of Romaria Castle": Info(96), #SEARCH_Romaria_Out_GROUND_0
-    "[Romaria] Hidden Ground near the right wall behind the Church": Info(97), #SEARCH_Romaria_Out_GROUND_1
+    "[Romaria] Hidden Ground near the right wall behind the Church (night)": Info(97), #SEARCH_Romaria_Out_GROUND_1
     "[Romaria] Pot near Monster Arena": Info(98), #SEARCH_Romaria_Out_POT_0
     "[Romaria] Pot in left house garden": Info(99), #SEARCH_Romaria_Out_POT_1
     "[Romaria] Barrel near Inn": Info(100), #SEARCH_Romaria_Out_BARREL_0
@@ -423,7 +423,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Hidden Ground behind the Church B1": Info(364), #SEARCH_Dharma_Castle_B1F_GROUND_0
     "[Alltrades Abbey] Pot 1 at the bottom of Inn B1": Info(365), #SEARCH_Dharma_Castle_B1F_POT_0
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
-    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to a Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
+    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to the pepper Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
     # ----- Wayfarer's Inn -----
     "[Wayfarer's Inn] Drawer in left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
     "[Wayfarer's Inn] Drawer in right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1

@@ -257,6 +257,7 @@ function Gift()
   AddItem("ITEM_USE_ITEM_CHIMERA_WING")
   AddItem("ITEM_USE_ITEM_CHIMERA_WING")
   SetFlag(Flag.FE342, true) -- flag that lets you change the hero hair color in alltrades abbey (no need to get this from xenlon in postgame)
+  SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_Xenlon_Looks, true)
   -- AP end
   SetFlag(Flag.FE160, true)
   SetFlag(Flag.FD31, true)
