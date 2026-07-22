@@ -1,5 +1,13 @@
 #include "WorldData.h"
 
+/*
+WorldData is a file used (alongside it's included .h) to translate between
+ingame locations/items ids and Archipelago locations/items ids.
+As the game use string ids in cpp/lua files but Archipelago uses
+int ids in python files, this was the only way to correctly translate
+any ids received from Archipelago to something that the game knows.
+*/
+
 std::unordered_map<int, std::string> WorldData::rev_locations = {};
 
 const std::unordered_map<std::string, int> WorldData::locations =

@@ -576,8 +576,22 @@ function WaitShowMessage()
 end
 
 function CmdCallShopUI(ShopId)
+  --[[
+  AP.Log("Shop: " .. ShopId)
+  local original = GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD")
+  AP.Log("qo " .. original)
+  ]]
   CallShopUI(ShopId)
   _retry(SYS_WaitShopUI)
+  --[[
+  if GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD") > original then
+    AP.Log("ITEM_EQUIP_WEAPON_COPPER_SWORD bought from shop " .. ShopId)
+    RemoveItem("ITEM_EQUIP_WEAPON_COPPER_SWORD")
+    AddItem("ITEM_ARCHIPELAGO")
+    AP.Log("qb " .. GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD"))
+  end
+  AP.Log("Shop end")
+  ]]
 end
 
 function WaitShopUI()
