@@ -3,12 +3,13 @@
 
 
 APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath,
-                   const std::string& optionPath, const std::string& hostPath)
+                   const std::string& optionPath, const std::string& hostPath, const std::string& medalsPath)
     : logger(logger),
     itemDataPath(itemPath),
     locationDataPath(locationPath),
     optionDataPath(optionPath),
-    hostDataPath(hostPath)
+    hostDataPath(hostPath),
+    medalsDataPath(medalsPath)
 {
     ClearData();
 }
@@ -37,12 +38,8 @@ void APClient::Connect(const std::string& host, const std::string& player, const
             ReceiveCheckedLocation(locationId);
         });
 
-        AP_RegisterSlotDataIntCallback("victory_goal", [this](int value) {
-            logger.LogInFile("Receive option victory_goal: " + std::to_string(value));
-            option_victory_goal = value;
-        });
-
         currentHost = host;
+        RegisterAllOptionsCallbacks();
         AP_EnableQueueItemRecvMsgs(true);
         AP_Start();
     }
@@ -123,7 +120,9 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
     {
         return;
     }
+
     std::string itemName = WorldData::GetItemName(itemId);
+
     if (!itemName.empty())
     {
         std::ofstream file;
@@ -132,6 +131,11 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
         file.flush();
         file.close();
         logger.LogInFile("Item received: " + itemName);
+
+        if (itemId == 11) // if the received item is a mini medal
+        {
+            WriteMedalsData();
+        }
     }
     else
     {
@@ -139,31 +143,132 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
     }
 }
 
+/*
+void APClient::ManageMedalsData()
+{
+    int victoryOption = Options::GetOption("victory_goal");
+    if ((victoryOption == 2 || victoryOption == 3) && !currentHost.empty())
+    {
+        CreateOrClearFile(medalsDataPath, true, false);
+
+        std::ifstream inputFile(medalsDataPath);
+        std::vector<std::string> updatedLines;
+        std::string line;
+        bool foundHost = false;
+
+        std::function<std::string(std::string)> trim = [](std::string value) {
+            const std::size_t first = value.find_first_not_of(" \t\r\n");
+            if (first == std::string::npos)
+            {
+                return std::string();
+            }
+            const std::size_t last = value.find_last_not_of(" \t\r\n");
+            return value.substr(first, last - first + 1);
+        };
+
+        while (std::getline(inputFile, line))
+        {
+            if (line.empty())
+            {
+                continue;
+            }
+
+            const auto separator = line.find(':');
+            if (separator == std::string::npos)
+            {
+                updatedLines.push_back(line);
+                continue;
+            }
+
+            std::string hostName = trim(line.substr(0, separator));
+            std::string valueText = trim(line.substr(separator + 1));
+
+            if (hostName == currentHost)
+            {
+                int value = 1;
+                try
+                {
+                    value = std::stoi(valueText);
+                }
+                catch (const std::exception&)
+                {
+                    value = 1;
+                }
+
+                updatedLines.push_back(hostName + " : " + std::to_string(value + 1));
+                foundHost = true;
+            }
+            else
+            {
+                updatedLines.push_back(line);
+            }
+        }
+        inputFile.close();
+
+        if (!foundHost)
+        {
+            updatedLines.push_back(currentHost + " : 1");
+        }
+
+        std::ofstream outputFile(medalsDataPath, std::ios::trunc);
+        for (const std::string& updatedLine : updatedLines)
+        {
+            outputFile << updatedLine << '\n';
+        }
+        outputFile.flush();
+        outputFile.close();
+    }
+}
+*/
 
 bool APClient::CheckVictoryLocation(const std::string& locationName)
 {
     int victoryId = WorldData::IsLocationVictory(locationName);
-    if (victoryId == -1 || option_victory_goal == -1)
+    int victoryOption = Options::GetOption("victory_goal");
+    if (victoryId == -1 || victoryOption == -1)
     {
         return false;
     }
-    return (
-        option_victory_goal <= 2 && victoryId == option_victory_goal ||
-        option_victory_goal == 3 && victoryId == 2
-    );
+    return victoryId == victoryOption;
+}
+
+
+void APClient::ReadMedalsData()
+{
+
+}
+
+
+void APClient::WriteMedalsData()
+{
+
+}
+
+
+std::unordered_map<std::string, int> APClient::Options::allOptions;
+
+void APClient::RegisterAllOptionsCallbacks()
+{
+    // All options that will be registered needs to be added in this vector
+    const std::vector<std::string> optionNames = {"victory_goal"};
+
+    for (int i = 0; i < optionNames.size(); i++)
+    {
+        std::string name = optionNames[i];
+        AP_RegisterSlotDataIntCallback(name, [this, name](int value) {
+            logger.LogInFile("Receive option " + name + ": " + std::to_string(value));
+            Options::SetOption(name, value);
+        });
+    }
 }
 
 
 void APClient::WriteOptionData()
 {
-    if (option_victory_goal == -1)
-    {
-        return;
-    }
     CreateOrClearFile(optionDataPath);
     std::ofstream file;
     file.open(optionDataPath, std::ios::app);
-    file << "victory_goal: " << std::to_string(option_victory_goal) << '\n';
+    file << Options::PrintOptions();
     file.flush();
     file.close();
 }
@@ -182,6 +287,8 @@ void APClient::ClearData()
     // Always clear location data
     CreateOrClearFile(locationDataPath);
     locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
+    // Always read and reset medals data
+    ReadMedalsData();
 }
 
 

@@ -6,6 +6,8 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
+#include <vector>
+#include <unordered_map>
 
 
 /// @brief Archipelago client wrapper using APCpp
@@ -23,7 +25,8 @@ public:
         const std::string& itemPath,
         const std::string& locationPath,
         const std::string& optionPath,
-        const std::string& hostPath
+        const std::string& hostPath,
+        const std::string& medalsPath
     );
 
     /// @brief Connect to Archipelago
@@ -53,7 +56,7 @@ public:
     /// @brief When connected, write options to AP options data file, overriding previous content
     void WriteOptionData();
 
-    /// @brief Clear and reset AP items and locations data files
+    /// @brief Clear and reset AP related data files
     void ClearData();
 
     /// @brief Disconnect from Archipelago
@@ -70,17 +73,20 @@ private:
     const std::string locationDataPath;
     const std::string optionDataPath;
     const std::string hostDataPath;
+    const std::string medalsDataPath;
 
     std::filesystem::file_time_type locationDataLastCheckTime;
     std::string currentHost = "";
+    std::unordered_map<std::string, int> hostToMedalsMap;
 
-    //std::ofstream itemFile;
-    //std::ifstream locationFile;
+    /// @brief Read AP medals data and store its values in hostToMedalsMap
+    void ReadMedalsData();
 
-    // the following member variables are all received from client callback
+    /// @brief Override AP medals data with the current values of hostToMedalsMap
+    void WriteMedalsData();
 
-    int option_victory_goal = -1;
-    // wip
+    /// @brief Register all AP client options callbacks
+    void RegisterAllOptionsCallbacks();
 
     /// @brief Create the specified AP data file if it doesn't exist,
     /// or clear it completely if it already exist (depending on parameters)
@@ -95,4 +101,48 @@ private:
     /// @brief Reads the host value from AP host data file and returns if it is the current host
     /// @return True if the latest host is also the current host
     bool IsKnownHost();
+
+
+    /// @brief Internal Options class to receive options from client callbacks
+    class Options
+    {
+    public:
+        Options() = delete;
+
+        /// @brief Add or update the value for an option
+        /// @param optionName Name of the option
+        /// @param optionValue Int value of the option
+        static void SetOption(const std::string& optionName, int optionValue)
+        {
+            auto it = allOptions.find(optionName);
+            if (it != allOptions.end())
+                allOptions[optionName] = optionValue;
+            else
+                allOptions.emplace(optionName, optionValue);
+        }
+
+        /// @brief Get the current option value
+        /// @param optionName Name of the option
+        /// @return Int value of the option, or -1 if the option was not set
+        static int GetOption(const std::string& optionName)
+        {
+            auto it = allOptions.find(optionName);
+            return it != allOptions.end() ? it->second : -1;
+        }
+
+        /// @brief Print all added options
+        /// @return String text containing all options in the format "Name: Value"
+        static std::string PrintOptions()
+        {
+            std::string result = "";
+            for (const auto& [key, value] : allOptions)
+            {
+                result += key + ": " + std::to_string(value) + "\n";
+            }
+            return result;
+        }
+
+    private:
+        static std::unordered_map<std::string, int> allOptions;
+    };
 };

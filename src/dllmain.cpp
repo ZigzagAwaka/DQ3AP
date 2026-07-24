@@ -91,7 +91,8 @@ static DWORD WINAPI MainThread(LPVOID)
     Logger logger("Archipelago/Client.log");
 
     // Create Archipelago client and initialize command system
-    APClient apClient(logger, "Archipelago/items.data", "Archipelago/locations.data", "Archipelago/options.data", "Archipelago/host.data");
+    APClient apClient(logger, "Archipelago/items.data", "Archipelago/locations.data", "Archipelago/options.data",
+                      "Archipelago/host.data", "Archipelago/medals.data");
     Commands::Initialize(apClient, logger);
 
     // Create input thread
@@ -143,7 +144,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID reserved)
             running = true;
             DisableThreadLibraryCalls(hModule);
             CreateThread(nullptr, 0, MainThread, nullptr, 0, nullptr);
-            //MessageBoxA(NULL, "Mod Loaded", "AP test", MB_OK);  // pop up message
             break;
         case DLL_PROCESS_DETACH:
             running = false;
