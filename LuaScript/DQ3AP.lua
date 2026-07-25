@@ -361,18 +361,6 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
   end
 end
 
--- check mini medals count if victory goal is to get medals
-function AP.CheckMiniMedals(ItemId)
-  -- GetHaveItemNum does not work for medals............ needs to be improved
-  if ItemId == "ITEM_SMALL_MEDAL" and GetHaveItemNum(ItemId) >= 110 then
-    local option = AP.GetOption("victory_goal")
-    if option ~= nil and (option == 2 or option == 3) then
-        AP.Log("All 110 medals collected")
-        AP.CheckLocation("ITEM_SMALL_MEDAL_COLLECT_ALL")
-    end
-  end
-end
-
 -- contains every options received from the client
 local client_options = {
   victory_goal = nil,

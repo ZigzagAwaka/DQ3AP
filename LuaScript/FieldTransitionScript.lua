@@ -277,7 +277,10 @@ end
 
 function TransitionLevel(BeginOverlap, table, ...)
   local _MapId, _StartPointName, _RiremitoPointID, _SeId, _FadeTime, _Orientation, _PlayerType, _bAutoSave, _IsPlayBGM, _IsTravelDoor, _SpawnX, _SpawnY, fadePriority, _ShowChoice, _IsOnProgress, _ProgressId, _TextId = ...
-  local isField = IsFieldMapId(_MapId) -- AP
+  -- AP
+  local isField = IsFieldMapId(_MapId)
+  local fromValidMap = true
+  -- AP end
   local execTransition = true
   if _ShowChoice then
     execTransition = CmdChoiceMessage(_TextId)
@@ -300,6 +303,13 @@ function TransitionLevel(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadePriority)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
+    -- AP
+    -- prevent some maps to receive items because they can play cutscenes at the same time
+    -- current maps in order: Mt. Necrogond, Talontear Tunnel
+    if prevMapId == "MAPLIST_H26F0101" or prevMapId == "MAPLIST_D16R0101" then
+      fromValidMap = false
+    end
+    -- AP end
     TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority)
     if _bAutoSave == true then
       RequestAutoSave()
@@ -312,7 +322,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   end
   -- AP
-  if isField then
+  if execTransition and isField and fromValidMap then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
