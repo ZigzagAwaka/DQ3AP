@@ -473,9 +473,9 @@ function JipangRoomAfterDreamSpace()
   if ItemId == "ITEM_ARCHIPELAGO" then
   else
     AddItem("ITEM_IMPORTANT_PURPLE_ORB")
-    SetFlag(Flag.FE76, true)
   end
   -- AP end
+  SetFlag(Flag.FE76, true) -- item flag can't be set, check for item in inventory instead
   SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_DefeatOrochi, true)
   -- AP
   if ItemId == "ITEM_ARCHIPELAGO" then

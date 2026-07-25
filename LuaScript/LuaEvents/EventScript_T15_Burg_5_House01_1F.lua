@@ -19,7 +19,7 @@ function Burg_5_House01_1F_Ground(BeginOverlap, table, CanObtainItem, TreasureId
   if true--[[GetFlag(Flag.FE77) == false]] then -- AP
     if GetFlag(Flag.FE126) == true then
       SetVisibleActor(eventInfo[1], false)
-      --SetFlag(Flag.FE77, true) -- AP
+      SetFlag(Flag.FE77, true)
       CmdSearchObject_Ground(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, 1--[[Gold]]) -- AP
       SetFlagGopEnumSearch(FlagGOPEnumSearch.SEARCH_Burg_5_House01_1F_GROUND_0, true)
       --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BURG_GetYellowOrb, true) -- AP

@@ -133,9 +133,9 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   if ItemId == "ITEM_ARCHIPELAGO" then
   else
     AddItem("ITEM_IMPORTANT_SILVER_ORB")
-    SetFlag(Flag.FE78, true)
   end
   -- AP end
+  SetFlag(Flag.FE78, true) -- item flag can't be set, check for item in inventory instead
   CmdMoveNpcRelativeDetail("Party1", {
     X = -100,
     Y = 0,
