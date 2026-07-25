@@ -262,7 +262,6 @@ function Portoga_Out_SUB_0_ACTOR_1010_010(BeginOverlap, table, ...)
     AP.CheckLocation("Portoga_Out_SUB_0_ACTOR_1010_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
     else
       AddItem("ITEM_EQUIP_WEAPON_SIREN_SWORD")
     end

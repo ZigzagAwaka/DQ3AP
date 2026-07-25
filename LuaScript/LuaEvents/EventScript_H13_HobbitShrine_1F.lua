@@ -503,7 +503,6 @@ function HobbitShrine_1F_SUB_0_SCENE_0020_010(BeginOverlap, table, ...)
       AP.CheckLocation("HobbitShrine_1F_SUB_0_SCENE_0020_010")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_EQUIP_HELMET_LIGHT_HELM")
       end

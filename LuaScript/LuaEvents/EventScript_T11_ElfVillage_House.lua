@@ -277,7 +277,6 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   AP.CheckLocation("ElfVillage_House_SUB_0_VOLUME_0110_030")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_WAKEY_DUST")
     SetFlag(Flag.FE61, true)

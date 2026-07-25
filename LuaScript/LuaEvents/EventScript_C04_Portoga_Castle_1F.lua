@@ -80,7 +80,6 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_ROYAL_MISSIVE")
     SetFlag(Flag.FE63, true)
@@ -169,7 +168,6 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020\nPortoga_Castle_1F_MAIN_0_VOLUME_0010_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    --AddItem(ItemId) --still a check but no items
   else
     SetFlag(Flag.FE106, true)
   end

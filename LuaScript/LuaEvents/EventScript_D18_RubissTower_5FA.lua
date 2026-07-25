@@ -67,7 +67,6 @@ function RubissTower_5FA_RubissStatue_00(BeginOverlap, table, CanObtainItem, Tre
       AP.CheckLocation("RubissTower_5FA_RubissStatue_00")
       local apItemId = "ITEM_ARCHIPELAGO"
       if apItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(apItemId)
       else
         AddItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET")
       end

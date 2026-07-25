@@ -643,7 +643,6 @@ function CheckPedestalOrbOffered(index)
     AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
       SetTagItemId(ItemId)
       PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")

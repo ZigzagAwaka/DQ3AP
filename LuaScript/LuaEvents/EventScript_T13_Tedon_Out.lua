@@ -168,7 +168,6 @@ function Tedon_Out_MAIN_0_BATTLE_END_0120_010(BeginOverlap, table, ...)
   AP.CheckLocation("Tedon_Out_MAIN_0_BATTLE_END_0120_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
     SetFlag(Flag.FE73, true) -- green orb flag is not possible to skip or else it will softlock the player into an infinite boss battle
   else
     AddItem("ITEM_IMPORTANT_GREEN_ORB")

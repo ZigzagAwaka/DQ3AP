@@ -135,7 +135,6 @@ function Ashalam_Theater_SUB_0_ACTOR_0520_020(BeginOverlap, table, ...)
   AP.CheckLocation("Ashalam_Theater_SUB_0_ACTOR_0520_020")
   local APid = "ITEM_ARCHIPELAGO"
   if APid == "ITEM_ARCHIPELAGO" then
-    AddItem(APid)
   else
     AddItem(itemId)
   end

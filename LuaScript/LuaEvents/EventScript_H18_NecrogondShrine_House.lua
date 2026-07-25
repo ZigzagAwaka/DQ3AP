@@ -131,7 +131,6 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("NecrogondShrine_House_MAIN_0_VOLUME_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_SILVER_ORB")
     SetFlag(Flag.FE78, true)

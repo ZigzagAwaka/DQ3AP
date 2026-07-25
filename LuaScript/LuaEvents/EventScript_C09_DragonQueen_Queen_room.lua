@@ -178,7 +178,6 @@ function DragonQueen_Queen_room_MAIN_0_SCENE_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("DragonQueen_Queen_room_MAIN_0_SCENE_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     SetFlag(Flag.FE184, true)
     AddItem("ITEM_USE_ITEM_SPHERE_OF_LIGHT")
@@ -286,7 +285,6 @@ function SEARCH_DragonQueen_Queen_room_EVENT_0(BeginOverlap, table, ...)
   -- AP
   AP.Log("SEARCH_DragonQueen_Queen_room_EVENT_0 called : sending DragonQueen_Queen_room_MAIN_0_SCENE_0110_010")
   AP.CheckLocation("DragonQueen_Queen_room_MAIN_0_SCENE_0110_010") -- sending the location here for security progress for AP
-  --AddItem("ITEM_ARCHIPELAGO") -- no items here
   -- AP end
   EventEnd(eventInfo, "")
 end

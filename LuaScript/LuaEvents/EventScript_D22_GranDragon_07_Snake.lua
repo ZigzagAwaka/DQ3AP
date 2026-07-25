@@ -361,7 +361,6 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       end
@@ -397,7 +396,6 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       end

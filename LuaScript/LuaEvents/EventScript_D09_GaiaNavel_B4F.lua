@@ -47,7 +47,6 @@ function GaiaNavel_B4F_blue(BeginOverlap, table, ...)
       AP.CheckLocation("GaiaNavel_B4F_blue")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_IMPORTANT_BLUE_METAL")
       end

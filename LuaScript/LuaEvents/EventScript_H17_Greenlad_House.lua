@@ -51,7 +51,6 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
       AP.CheckLocation("Greenlad_House_SUB_0_ACTOR_0110_020")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_IMPORTANT_BOATMANS_BONE")
         SetFlag(Flag.FE70, true)

@@ -351,7 +351,6 @@ function SwordSmithEvent(targetActorId)
       AP.CheckLocation("Myra_Shop_2F_SUB_0_ACTOR_0120_010")
       local apItemId = "ITEM_ARCHIPELAGO"
       if apItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(apItemId)
       else
         AddItem("ITEM_EQUIP_WEAPON_SWORD_OF_KINGS")
       end

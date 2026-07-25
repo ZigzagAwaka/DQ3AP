@@ -400,7 +400,6 @@ function GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020(BeginOverlap, table, ...)
   AP.CheckLocation("GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_BLUE_ORB")
   end

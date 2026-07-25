@@ -54,7 +54,6 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     SetFlag(Flag.FE57, true)
@@ -128,7 +127,6 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_040\nReeve_House2_1F_SUB_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
     else
       AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     end

@@ -741,7 +741,6 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
         AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_BOOK_1")
         local ItemId = "ITEM_ARCHIPELAGO"
         if ItemId == "ITEM_ARCHIPELAGO" then
-          AddItem(ItemId)
         else
           AddItem("ITEM_USE_ITEM_NAUGHTY_BOOK")
         end
@@ -765,7 +764,6 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
       AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_BOOK_2")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         SetFlag(Flag.FE344, true)
         AddItem("ITEM_IMPORTANT_VERY_NAUGHTY_BOOK")
@@ -800,7 +798,6 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
       AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_SWORD")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
-        AddItem(ItemId)
       else
         AddItem("ITEM_EQUIP_WEAPON_RUBISSS_SWORD")
       end

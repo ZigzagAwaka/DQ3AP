@@ -336,7 +336,6 @@ function Muor_Market_1F_SUB_0_SCENE_0610_010(BeginOverlap, table, ...)
   AP.CheckLocation("Muor_Market_1F_SUB_0_SCENE_0610_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
     SetFlag(Flag.FE67, true)

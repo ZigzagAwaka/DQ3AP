@@ -410,7 +410,6 @@ function SpiritShrineEventStart()
   SetFlag(Flag.FE87, true) -- can't be skiped or it will play the cutscene multiple times and can be avoided easily
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem(tagItemId2)
     if GetFlag(Flag.FE85) == true then

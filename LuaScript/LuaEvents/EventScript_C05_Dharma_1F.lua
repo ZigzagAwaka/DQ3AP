@@ -107,7 +107,6 @@ function Dharma_1F_SUB_0_ACTOR_0810_010(BeginOverlap, table, ...)
     AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
     else
       SetFlag(Flag.FE64, true)
       AddItem("ITEM_IMPORTANT_BLACK_PEPPER")

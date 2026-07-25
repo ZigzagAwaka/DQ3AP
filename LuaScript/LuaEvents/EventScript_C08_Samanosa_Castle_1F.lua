@@ -177,9 +177,6 @@ function Samanosa_Castle_1F_MAIN_0_SCENE_0010_010(BeginOverlap, table, ...)
   AP.CheckLocation("Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_1\nSamanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_2\nSamanosa_Castle_1F_MAIN_0_SCENE_0010_010_Main")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
-    AddItem(ItemId)
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_MOD_ROD")
     AddItem("ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET")

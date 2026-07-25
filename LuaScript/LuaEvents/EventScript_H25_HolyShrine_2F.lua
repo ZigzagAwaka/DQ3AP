@@ -137,7 +137,6 @@ function HolyShrine2FPriest(targetActorId)
     AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
     else
       AddItem(itemImportantRainbowDrop)
       SetFlag(Flag.FE88, true)

@@ -10,7 +10,6 @@ function SearchObject_ShowMessage(ObjectId, TreasureId, ItemId, ItemCount, Gold)
   if not AP.IsLocationExcluded(TreasureId) then
     AP.CheckLocation(TreasureId)
     ItemId = "ITEM_ARCHIPELAGO"
-    AddItem(ItemId)
     SetTagItemId(ItemId)
     CmdLoadItemIcon(ItemId)
     CmdPlayItemGetNoWait(ObjectId, TreasureId)
@@ -87,7 +86,7 @@ function SearchObject_Important(eventInfo, TreasureId, ItemId, bgmJingleId)
   if not AP.IsLocationExcluded(TreasureId) then
     AP.CheckLocation(TreasureId)
     ItemId = "ITEM_ARCHIPELAGO"
-    local receptor = AddItem(ItemId)
+    local receptor = 0 --AddItem(ItemId)
     SetTagItemId(ItemId)
     CmdLoadItemIcon(ItemId)
     CmdPlayItemGetNoWait(eventInfo[1], TreasureId)
@@ -350,7 +349,6 @@ function CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCou
     if not AP.IsLocationExcluded(TreasureId) then
       AP.CheckLocation(TreasureId)
       ItemId = "ITEM_ARCHIPELAGO"
-      AddItem(ItemId)
       SetTagItemId(ItemId)
       CmdLoadItemIcon(ItemId)
       CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)

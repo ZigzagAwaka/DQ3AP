@@ -426,9 +426,6 @@ function JipangRoomAfterDreamSpace()
   AP.CheckLocation("Jipang_Room_MAIN_0_SCENE_0010_010_Sub_1\nJipang_Room_MAIN_0_SCENE_0010_010_Sub_2\nJipang_Room_MAIN_0_SCENE_0010_010_Sub_3\nJipang_Room_MAIN_0_SCENE_0010_010_Main")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
-    AddItem(ItemId)
-    AddItem(ItemId)
   else
     AddItem("ITEM_USE_ITEM_DIEAMEND")
     AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF")
@@ -474,7 +471,6 @@ function JipangRoomAfterDreamSpace()
   SetFlag(Flag.FE151, true)
   -- AP
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_PURPLE_ORB")
     SetFlag(Flag.FE76, true)

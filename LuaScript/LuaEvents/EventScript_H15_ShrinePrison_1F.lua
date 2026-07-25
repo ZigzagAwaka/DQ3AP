@@ -548,7 +548,6 @@ function ShrinePrison_1F_MAIN_3_After_Reminiscence()
   AP.CheckLocation("ShrinePrison_1F_MAIN_3_After_Reminiscence")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER")
   end

@@ -83,7 +83,6 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     AP.CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      AddItem(ItemId)
       SetFlag(Flag.FF1, true)
     else
       AddItem("ITEM_IMPORTANT_THIEFS_KEY")

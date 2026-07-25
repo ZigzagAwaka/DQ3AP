@@ -125,7 +125,6 @@ function Mercado_Shop02_2F_RotoSword_02_0(BeginOverlap, table, ...)
   AP.CheckLocation("Mercado_Shop02_2F_RotoSword_02_0")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    AddItem(ItemId)
   else
     AddItem("ITEM_IMPORTANT_BROKEN_SWORD")
     SetFlag(Flag.FE877, true)
