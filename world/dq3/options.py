@@ -6,11 +6,11 @@ from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle, De
 
 class VictoryGoal(Choice):
     """
-    Choose the desired goal to mark the game as completed.
-    - Zoma: Find a way to access Alefgard and defeat Zoma, the final boss of the game (choosing this option will exclude every postgame locations)
+    Choose the desired goal to mark the game as completed. Note that if you choose a goal that end the game before the postgame, then this will exclude every postgame locations. 
+    - Zoma: Find a way to access Alefgard and defeat Zoma, the final boss of the game
     - Grand Dragon: Defeat Zoma to gain access to postgame areas then defeat the Grand Dragon, the final boss of the postgame
-    - Medals: Find all 110 mini medals in the world to win (choosing this option will exclude every postgame locations) [Warning: logic will work for this option but the game will never actually sent a victory event when the last medal is collected WIP]
-    - Medals postgame: Same as Medals but will also include postgame locations in the world [Warning: logic will work for this option but the game will never actually sent a victory event when the last medal is collected WIP]
+    - Medals: Find all 110 mini medals in the world to win
+    - Medals postgame: Same as Medals but will also include postgame locations in the world
     """
     display_name = "Victory Goal"
     option_zoma = 0
@@ -20,19 +20,19 @@ class VictoryGoal(Choice):
     default = 0
 
 
-class ContainerSanity(DefaultOnToggle):
-    """
-    Choose whether to have all the containers in the game to be filled with random items.
-    If this option is false, then only the chests will be randomized.
-    """
-    display_name = "Container Sanity"
+# class ContainerSanity(DefaultOnToggle):
+#     """
+#     Choose whether to have all the containers in the game to be filled with random items.
+#     If this option is false, then only the chests will be randomized.
+#     """
+#     display_name = "Container Sanity"
 
 
 # Put all options in a dataclass
 @dataclass
 class DQ3Options(PerGameCommonOptions):
     victory_goal: VictoryGoal
-    container_sanity: ContainerSanity
+    #container_sanity: ContainerSanity
 
 
 # Class to display options on the website (not used for this game)

@@ -77,6 +77,7 @@ private:
 
     std::filesystem::file_time_type locationDataLastCheckTime;
     std::string currentHost = "";
+    bool triggerEventOnOptionReceived = false;
     std::unordered_map<std::string, int> hostToMedalsMap;
 
     /// @brief Read AP medals data and store its values in hostToMedalsMap

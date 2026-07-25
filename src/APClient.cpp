@@ -52,6 +52,7 @@ void APClient::Connect(const std::string& host, const std::string& player, const
 
 void APClient::Update()
 {
+    // Manage newly received AP messages
     if (AP_IsMessagePending())
     {
         AP_Message* message = AP_GetLatestMessage();
@@ -59,6 +60,15 @@ void APClient::Update()
         AP_ClearLatestMessage();
     }
 
+    // Initialize options and medals data upon receiving an option from client callback
+    if (triggerEventOnOptionReceived)
+    {
+        WriteOptionData();
+        ReadMedalsData();
+        triggerEventOnOptionReceived = false;
+    }
+
+    // Manage newly checked locations
     std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath);
 
     if (lastCheck > locationDataLastCheckTime)
@@ -143,83 +153,6 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
     }
 }
 
-/*
-void APClient::ManageMedalsData()
-{
-    int victoryOption = Options::GetOption("victory_goal");
-    if ((victoryOption == 2 || victoryOption == 3) && !currentHost.empty())
-    {
-        CreateOrClearFile(medalsDataPath, true, false);
-
-        std::ifstream inputFile(medalsDataPath);
-        std::vector<std::string> updatedLines;
-        std::string line;
-        bool foundHost = false;
-
-        std::function<std::string(std::string)> trim = [](std::string value) {
-            const std::size_t first = value.find_first_not_of(" \t\r\n");
-            if (first == std::string::npos)
-            {
-                return std::string();
-            }
-            const std::size_t last = value.find_last_not_of(" \t\r\n");
-            return value.substr(first, last - first + 1);
-        };
-
-        while (std::getline(inputFile, line))
-        {
-            if (line.empty())
-            {
-                continue;
-            }
-
-            const auto separator = line.find(':');
-            if (separator == std::string::npos)
-            {
-                updatedLines.push_back(line);
-                continue;
-            }
-
-            std::string hostName = trim(line.substr(0, separator));
-            std::string valueText = trim(line.substr(separator + 1));
-
-            if (hostName == currentHost)
-            {
-                int value = 1;
-                try
-                {
-                    value = std::stoi(valueText);
-                }
-                catch (const std::exception&)
-                {
-                    value = 1;
-                }
-
-                updatedLines.push_back(hostName + " : " + std::to_string(value + 1));
-                foundHost = true;
-            }
-            else
-            {
-                updatedLines.push_back(line);
-            }
-        }
-        inputFile.close();
-
-        if (!foundHost)
-        {
-            updatedLines.push_back(currentHost + " : 1");
-        }
-
-        std::ofstream outputFile(medalsDataPath, std::ios::trunc);
-        for (const std::string& updatedLine : updatedLines)
-        {
-            outputFile << updatedLine << '\n';
-        }
-        outputFile.flush();
-        outputFile.close();
-    }
-}
-*/
 
 bool APClient::CheckVictoryLocation(const std::string& locationName)
 {
@@ -235,13 +168,83 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
 
 void APClient::ReadMedalsData()
 {
+    int victoryOption = Options::GetOption("victory_goal");
+    if (victoryOption != 2 && victoryOption != 3)
+    {
+        return;
+    }
 
+    CreateOrClearFile(medalsDataPath, true, false);
+    hostToMedalsMap.clear();
+
+    std::ifstream file(medalsDataPath);
+    std::string line;
+
+    std::function<std::string(std::string)> trim = [](std::string value) {
+        const std::size_t first = value.find_first_not_of(" \t\r\n");
+        if (first == std::string::npos)
+        {
+            return std::string();
+        }
+        const std::size_t last = value.find_last_not_of(" \t\r\n");
+        return value.substr(first, last - first + 1);
+    };
+
+    // Get every lines and save their values in hostToMedalsMap
+    while (std::getline(file, line))
+    {
+        if (line.empty()) continue;
+        const std::size_t equalPos = line.find('=');
+        if (equalPos == std::string::npos) continue;
+
+        std::string hostName = trim(line.substr(0, equalPos));
+        std::string medalsAmountStr = trim(line.substr(equalPos + 1));
+        int medalsAmount;
+
+        try
+        {
+            medalsAmount = std::stoi(medalsAmountStr);
+        }
+        catch (const std::exception&)
+        {
+            medalsAmount = 1;
+        }
+
+        hostToMedalsMap.emplace(hostName, medalsAmount);
+    }
+    file.close();
 }
 
 
 void APClient::WriteMedalsData()
 {
+    int victoryOption = Options::GetOption("victory_goal");
+    if ((victoryOption != 2 && victoryOption != 3) || currentHost.empty())
+    {
+        return;
+    }
 
+    // If the current host exist, increment by 1, else build a new entry with amount of 1
+    auto it = hostToMedalsMap.find(currentHost);
+    if (it != hostToMedalsMap.end())
+        hostToMedalsMap[currentHost]++;
+    else
+        hostToMedalsMap.emplace(currentHost, 1);
+        
+    std::ofstream file(medalsDataPath, std::ios::trunc);
+    for (const auto& [host, amount] : hostToMedalsMap)
+    {
+        file << host << " = " << std::to_string(amount) << '\n';
+    }
+    file.flush();
+    file.close();
+
+    // Finally, send medals victory event if amount is >= 110 (collected all medals)
+    if (hostToMedalsMap[currentHost] >= 110)
+    {
+        logger.LogInFile("Victory got for mini medals");
+        AP_StoryComplete();
+    }
 }
 
 
@@ -258,6 +261,7 @@ void APClient::RegisterAllOptionsCallbacks()
         AP_RegisterSlotDataIntCallback(name, [this, name](int value) {
             logger.LogInFile("Receive option " + name + ": " + std::to_string(value));
             Options::SetOption(name, value);
+            triggerEventOnOptionReceived = true;
         });
     }
 }
@@ -276,19 +280,16 @@ void APClient::WriteOptionData()
 
 void APClient::ClearData()
 {
-    // Only clear item data if connected to an unknown host or if the file does not exist
     if (!currentHost.empty())
     {
+        // Only clear item data if connected to an unknown host or if the file does not exist
         CreateOrClearFile(itemDataPath, true, !IsKnownHost());
-        // Then initialize current host data and client options
+        // Then save current host data
         SetLastHost();
-        WriteOptionData();
     }
     // Always clear location data
     CreateOrClearFile(locationDataPath);
     locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
-    // Always read and reset medals data
-    ReadMedalsData();
 }
 
 
