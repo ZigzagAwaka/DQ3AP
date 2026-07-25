@@ -338,10 +338,10 @@ function Muor_Market_1F_SUB_0_SCENE_0610_010(BeginOverlap, table, ...)
   if ItemId == "ITEM_ARCHIPELAGO" then
   else
     AddItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
-    SetFlag(Flag.FE67, true)
     CheckCreateLightHelm()
   end
   -- AP end
+  SetFlag(Flag.FE67, true) -- item flag can't be set, check for item in inventory instead
   SetFlag(Flag.FD10, false)
   DestroyPartyClone()
   PartyMemberAlignment(ALIGNMENT_TOGETHER, ALIGNMENT_MOVE_WALK)

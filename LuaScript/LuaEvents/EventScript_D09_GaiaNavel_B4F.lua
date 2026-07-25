@@ -54,10 +54,10 @@ function GaiaNavel_B4F_blue(BeginOverlap, table, ...)
       if IsHaveItem("ITEM_IMPORTANT_WRECKING_BALL") then -- AP
         RemoveItem("ITEM_IMPORTANT_WRECKING_BALL")
       end
+      SetFlag(Flag.FE859, true) -- item flag can't be set, check for item in inventory instead
       -- AP
       if ItemId == "ITEM_ARCHIPELAGO" then
       else
-        SetFlag(Flag.FE859, true)
         CheckCreateLightHelm()
       end
       if GetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal) == false then

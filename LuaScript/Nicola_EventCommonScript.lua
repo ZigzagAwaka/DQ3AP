@@ -86,17 +86,12 @@ function SearchObject_Important(eventInfo, TreasureId, ItemId, bgmJingleId)
   if not AP.IsLocationExcluded(TreasureId) then
     AP.CheckLocation(TreasureId)
     ItemId = "ITEM_ARCHIPELAGO"
-    local receptor = 0 --AddItem(ItemId)
     SetTagItemId(ItemId)
     CmdLoadItemIcon(ItemId)
     CmdPlayItemGetNoWait(eventInfo[1], TreasureId)
-    SetTagActorFromParty(receptor - 1)
-    CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
-    if IsRareItem(ItemId) then
-      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-    else
-      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_7")
-    end
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    AP.GiveItemsIfAvailable(eventInfo[1], TreasureId)
     return
   end
   -- AP end
@@ -354,7 +349,6 @@ function CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCou
       CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
       PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_STORAGE_4")
       return
     end
     -- AP end

@@ -541,25 +541,30 @@ function CheckWakeyDust()
 end
 
 function CheckOrbCount()
+  -- AP: orb flags can't be used, check for orbs in inventory instead
   local orbCount = 0
-  --if GetFlag(Flag.FE73) == true then -- AP: green orb flag can't be used
+  --if GetFlag(Flag.FE73) == true then
   if IsHaveItem("ITEM_IMPORTANT_GREEN_ORB") then
     orbCount = orbCount + 1
   end
-  --if GetFlag(Flag.FE74) == true then -- AP: blue orb flag can't be used
+  --if GetFlag(Flag.FE74) == true then
   if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") then
     orbCount = orbCount + 1
   end
-  if GetFlag(Flag.FE75) == true then
+  --if GetFlag(Flag.FE75) == true then
+  if IsHaveItem("ITEM_IMPORTANT_RED_ORB") then
     orbCount = orbCount + 1
   end
-  if GetFlag(Flag.FE76) == true then
+  --if GetFlag(Flag.FE76) == true then
+  if IsHaveItem("ITEM_IMPORTANT_PURPLE_ORB") then
     orbCount = orbCount + 1
   end
-  if GetFlag(Flag.FE77) == true then
+  --if GetFlag(Flag.FE77) == true then
+  if IsHaveItem("ITEM_IMPORTANT_YELLOW_ORB") then
     orbCount = orbCount + 1
   end
-  if GetFlag(Flag.FE78) == true then
+  --if GetFlag(Flag.FE78) == true then
+  if IsHaveItem("ITEM_IMPORTANT_SILVER_ORB") then
     orbCount = orbCount + 1
   end
   return orbCount
@@ -812,7 +817,7 @@ function CheckHeroClone()
 end
 
 function CheckCreateLightHelm()
-  if GetFlag(Flag.FE67) == true and GetFlag(Flag.FE859) == true and GetFlag(Flag.FE860) == true then
+  if IsHaveItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM") --[[GetFlag(Flag.FE67) == true]] and IsHaveItem("ITEM_IMPORTANT_BLUE_METAL") --[[GetFlag(Flag.FE859) == true]] and GetFlag(Flag.FE860) == true then
     SetFlag(Flag.FE861, true)
   end
 end

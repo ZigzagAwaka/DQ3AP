@@ -141,7 +141,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE64, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)
   elseif ItemId == "ITEM_EQUIP_HELMET_ORTEGAS_HELM" then
-    SetFlag(Flag.FE67, true)
+    --SetFlag(Flag.FE67, true) -- flag can't be set, check for item in inventory instead
     CheckCreateLightHelm()
   elseif ItemId == "ITEM_IMPORTANT_SHIP" then
     SetFlag(Flag.FE106, true)
@@ -153,7 +153,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
   elseif ItemId == "ITEM_IMPORTANT_GREEN_ORB" then
-    --SetFlag(Flag.FE73, true) -- green orb flag cant be set or it will prevent the boss in theddon to spawn
+    --SetFlag(Flag.FE73, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_RAMIA" then
@@ -166,26 +166,26 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE841, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
   elseif ItemId == "ITEM_IMPORTANT_PURPLE_ORB" then
-    SetFlag(Flag.FE76, true)
+    --SetFlag(Flag.FE76, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MULTI_HintOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_BOATMANS_BONE" then
     SetFlag(Flag.FE70, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GREENLAD_GetBoatmanBone, true)
   elseif ItemId == "ITEM_IMPORTANT_RED_ORB" then
-    SetFlag(Flag.FE75, true)
+    --SetFlag(Flag.FE75, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PIRATESBASE_GetRedOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_YELLOW_ORB" then
-    SetFlag(Flag.FE77, true)
+    --SetFlag(Flag.FE77, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BURG_GetYellowOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_BLUE_ORB" then
-    --SetFlag(Flag.FE74, true) -- blue orb flag cant be set or it will prevent the boss in gaia's navel to spawn
+    --SetFlag(Flag.FE74, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_IMPORTANT_BLUE_METAL" then
-    SetFlag(Flag.FE859, true)
+    --SetFlag(Flag.FE859, true) -- flag can't be set, check for item in inventory instead
     CheckCreateLightHelm()
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal, true)
   elseif ItemId == "ITEM_IMPORTANT_BOTTOMLESS_POT" then
@@ -206,7 +206,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE72, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHRINEPRISON_GetGaiaSword, true)
   elseif ItemId == "ITEM_IMPORTANT_SILVER_ORB" then
-    SetFlag(Flag.FE78, true)
+    --SetFlag(Flag.FE78, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NECROGONDSHRINE_GetSilverOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_USE_ITEM_SPHERE_OF_LIGHT" then

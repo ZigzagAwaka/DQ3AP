@@ -479,7 +479,7 @@ function SEARCH_Reiamuland_Out_EVENT_1(BeginOverlap, table, ...)
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
   --if GetFlag(Flag.FE73) == true and GetSysGlobal(SysGlobal.ORB0) == 0 then
-  if IsHaveItem("ITEM_IMPORTANT_GREEN_ORB") and GetSysGlobal(SysGlobal.ORB0) == 0 then -- AP: green orb flag can't be used
+  if IsHaveItem("ITEM_IMPORTANT_GREEN_ORB") and GetSysGlobal(SysGlobal.ORB0) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[1])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -503,7 +503,8 @@ function SEARCH_Reiamuland_Out_EVENT_2(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_010_2")
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
-  if GetFlag(Flag.FE76) == true and GetSysGlobal(SysGlobal.ORB1) == 0 then
+  -- if GetFlag(Flag.FE76) == true and GetSysGlobal(SysGlobal.ORB1) == 0 then
+  if IsHaveItem("ITEM_IMPORTANT_PURPLE_ORB") and GetSysGlobal(SysGlobal.ORB1) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[2])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -527,7 +528,8 @@ function SEARCH_Reiamuland_Out_EVENT_3(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_010_3")
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
-  if GetFlag(Flag.FE75) == true and GetSysGlobal(SysGlobal.ORB2) == 0 then
+  -- if GetFlag(Flag.FE75) == true and GetSysGlobal(SysGlobal.ORB2) == 0 then
+  if IsHaveItem("ITEM_IMPORTANT_RED_ORB") and GetSysGlobal(SysGlobal.ORB2) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[3])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -552,7 +554,7 @@ function SEARCH_Reiamuland_Out_EVENT_4(BeginOverlap, table, ...)
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
   --if GetFlag(Flag.FE74) == true and GetSysGlobal(SysGlobal.ORB3) == 0 then
-  if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") and GetSysGlobal(SysGlobal.ORB0) == 0 then -- AP: blue orb flag can't be used
+  if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") and GetSysGlobal(SysGlobal.ORB0) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[4])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -576,7 +578,8 @@ function SEARCH_Reiamuland_Out_EVENT_5(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_010_5")
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
-  if GetFlag(Flag.FE77) == true and GetSysGlobal(SysGlobal.ORB4) == 0 then
+  -- if GetFlag(Flag.FE77) == true and GetSysGlobal(SysGlobal.ORB4) == 0 then
+  if IsHaveItem("ITEM_IMPORTANT_YELLOW_ORB") and GetSysGlobal(SysGlobal.ORB4) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[5])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -600,7 +603,8 @@ function SEARCH_Reiamuland_Out_EVENT_6(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_010_6")
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
-  if GetFlag(Flag.FE78) == true and GetSysGlobal(SysGlobal.ORB5) == 0 then
+  -- if GetFlag(Flag.FE78) == true and GetSysGlobal(SysGlobal.ORB5) == 0 then
+  if IsHaveItem("ITEM_IMPORTANT_SILVER_ORB") and GetSysGlobal(SysGlobal.ORB5) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[6])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -644,6 +648,8 @@ function CheckPedestalOrbOffered(index)
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
       SetTagItemId(ItemId)
+      CmdLoadItemIcon(ItemId)
+      PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)
       PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
       RequestAutoSaveFromEvent()
