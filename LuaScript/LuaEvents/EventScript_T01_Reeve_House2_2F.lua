@@ -1,6 +1,8 @@
 print("Load Script EventScript_T01_Reeve_House2_2F")
 
 local AP = require("Src/DQ3AP") -- AP
+local GetItemFlagAP = false -- AP
+local GetItemFlagAP2 = false -- AP
 
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
@@ -11,6 +13,19 @@ end
 function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
+  -- AP
+  if GetItemFlagAP then
+    if GetFlag(Flag.FE90) then
+      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
+    elseif GetFlag(Flag.FE57) and GetFlag(Flag.FE216) then
+      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
+    else
+      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_020_1")
+    end
+    EventEnd(eventInfo, "")
+    return
+  end
+  -- AP end
   local MapTime = GetMapTimeFrame()
   local Oldman_Reeve
   if MapTime == MAPTIME_NIGHT then
@@ -54,6 +69,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
+    GetItemFlagAP = true
   else
     AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     SetFlag(Flag.FE57, true)
@@ -103,6 +119,18 @@ end
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
+  -- AP
+  if GetItemFlagAP2 then
+    if GetFlag(Flag.FE859) then
+      CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
+      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
+    else
+      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
+    end
+    EventEnd(eventInfo, "")
+    return
+  end
+  -- AP end
   local MapTime = GetMapTimeFrame()
   local Oldman_Reeve
   if MapTime == MAPTIME_NIGHT then
@@ -127,6 +155,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_040\nReeve_House2_1F_SUB_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
+      GetItemFlagAP2 = true
     else
       AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     end
