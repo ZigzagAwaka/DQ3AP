@@ -10,7 +10,7 @@ function Edinbear_Castle_B1FB_TreasurBox(BeginOverlap, table, CanObtainItem, Tre
   eventInfo = EventStart(table, "")
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_EDINBEAR_GetBottomlessPot, true) -- AP
-  if true--[[GetFlag(Flag.FE66) == false]] then -- AP
+  if not GetFlag(Flag.FAP9) --[[GetFlag(Flag.FE66) == false]] then -- AP
     CloseMessage()
     Wait(0.5)
     SetTagItemId("ITEM_IMPORTANT_BOTTOMLESS_POT")
@@ -29,6 +29,7 @@ function Edinbear_Castle_B1FB_TreasurBox(BeginOverlap, table, CanObtainItem, Tre
     CmdFadeIn(EFadingPriorityEventUIBackGround, 0.5)
     CmdEventClosingMessage("NPC_Talk_Edinbear_Castle_B1FB_TreasurBox_10")
     --SetFlag(Flag.FE66, true) -- AP
+    SetFlag(Flag.FAP9, true)
   end
   EventEnd(eventInfo, "")
 end

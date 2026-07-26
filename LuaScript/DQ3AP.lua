@@ -214,7 +214,6 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE79, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true)
     SetFlag(Flag.FD26, true)
-    --SetFlag(Flag.FE90, true) -- not needed? baramos defeated flag
   elseif ItemId == "ITEM_IMPORTANT_RAINBOW_DROP" then
     SetFlag(Flag.FE88, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_HOLYSHRINE_GetRainbowDrop, true)

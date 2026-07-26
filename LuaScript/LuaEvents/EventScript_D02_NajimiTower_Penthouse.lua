@@ -81,13 +81,13 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     -- AP
     AP.Log("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010 called (Dreamer's Tower - Old man that gives the Thief's Key)")
     AP.CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
+    SetFlag(Flag.FF1, true)
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      SetFlag(Flag.FF1, true)
+      SetFlag(Flag.FAP8, true)
     else
       AddItem("ITEM_IMPORTANT_THIEFS_KEY")
       SetFlag(Flag.FE54, true)
-      SetFlag(Flag.FF1, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
     end
     -- AP end
@@ -107,9 +107,12 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
 end
 
 function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP8) then
+    NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   local OldMan_Najimi
@@ -139,5 +142,4 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
     end
   end
   EventEnd(eventInfo, "")
-  ]]
 end

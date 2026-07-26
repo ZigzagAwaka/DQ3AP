@@ -137,6 +137,7 @@ function HolyShrine2FPriest(targetActorId)
     AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
+      SetFlag(Flag.FAP4, true)
     else
       AddItem(itemImportantRainbowDrop)
       SetFlag(Flag.FE88, true)
@@ -211,24 +212,31 @@ function HolyShrine_2F_MAIN_0_ACTOR_0120_030(BeginOverlap, table, ...)
 end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0120_040(BeginOverlap, table, ...)
-  eventInfo = EventStart(table, false)
-  targetActorId = eventInfo[1]
-  HolyShrine2FPriest(targetActorId)
-  EventEnd(eventInfo, "")
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP4) then
+    eventInfo = EventStart(table, false)
+    targetActorId = eventInfo[1]
+    HolyShrine2FPriest(targetActorId)
+    EventEnd(eventInfo, "")
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdEventClosingMessage("NPC_Talk_HolyShrine_2F_MAIN_0_ACTOR_0120_040_1")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
-  eventInfo = EventStart(table, false)
-  targetActorId = eventInfo[1]
-  HolyShrine2FPriest(targetActorId)
-  EventEnd(eventInfo, "")
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP4) then
+    eventInfo = EventStart(table, false)
+    targetActorId = eventInfo[1]
+    HolyShrine2FPriest(targetActorId)
+    EventEnd(eventInfo, "")
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local result = CheckHero()
@@ -239,7 +247,6 @@ function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     CmdEventClosingMessage("NPC_Talk_HolyShrine_2F_MAIN_0_ACTOR_0110_010_4")
   end
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function HolyShrine_2F_SUB_0_MBR_SCOUT_0210_010(BeginOverlap, table, ...)

@@ -16,7 +16,7 @@ end
 function Burg_5_House01_1F_Ground(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  if true--[[GetFlag(Flag.FE77) == false]] then -- AP
+  if GetFlag(Flag.FE77) == false then
     if GetFlag(Flag.FE126) == true then
       SetVisibleActor(eventInfo[1], false)
       SetFlag(Flag.FE77, true)

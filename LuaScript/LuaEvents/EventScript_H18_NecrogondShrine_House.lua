@@ -131,6 +131,7 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("NecrogondShrine_House_MAIN_0_VOLUME_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
+    SetFlag(Flag.FAP6, true)
   else
     AddItem("ITEM_IMPORTANT_SILVER_ORB")
   end
@@ -161,23 +162,23 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
 end
 
 function NecrogondShrine_House_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
-  --[[
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_NecrogondShrine_House_MAIN_0_ACTOR_0110_010_2_1")
   CmdEventClosingMessage("NPC_Talk_NecrogondShrine_House_MAIN_0_ACTOR_0110_010_2_2")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function NecrogondShrine_House_MAIN_0_ACTOR_0110_030(BeginOverlap, table, ...)
-  NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP6) then
+    NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_NecrogondShrine_House_MAIN_0_ACTOR_0110_030_1")
   CmdEventClosingMessage("NPC_Talk_NecrogondShrine_House_MAIN_0_ACTOR_0110_030_2")
   EventEnd(eventInfo, "")
-  ]]
 end

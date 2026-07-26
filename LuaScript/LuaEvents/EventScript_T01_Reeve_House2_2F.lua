@@ -1,8 +1,6 @@
 print("Load Script EventScript_T01_Reeve_House2_2F")
 
 local AP = require("Src/DQ3AP") -- AP
-local GetItemFlagAP = false -- AP
-local GetItemFlagAP2 = false -- AP
 
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
@@ -13,19 +11,6 @@ end
 function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  -- AP
-  if GetItemFlagAP then
-    if GetFlag(Flag.FE90) then
-      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
-    elseif GetFlag(Flag.FE57) and GetFlag(Flag.FE216) then
-      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
-    else
-      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_020_1")
-    end
-    EventEnd(eventInfo, "")
-    return
-  end
-  -- AP end
   local MapTime = GetMapTimeFrame()
   local Oldman_Reeve
   if MapTime == MAPTIME_NIGHT then
@@ -69,7 +54,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    GetItemFlagAP = true
+    SetFlag(Flag.FAP1, true)
   else
     AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     SetFlag(Flag.FE57, true)
@@ -83,54 +68,48 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP1) then
+    Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_020_1")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
-  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP1) then
+    Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_035(BeginOverlap, table, ...)
-  Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP1) then
+    Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  -- AP
-  if GetItemFlagAP2 then
-    if GetFlag(Flag.FE859) then
-      CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
-      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
-    else
-      CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
-    end
-    EventEnd(eventInfo, "")
-    return
-  end
-  -- AP end
   local MapTime = GetMapTimeFrame()
   local Oldman_Reeve
   if MapTime == MAPTIME_NIGHT then
@@ -141,7 +120,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   SetNicolaApertureRate(100, 0)
   SetDispMiniMap(false)
   SetTagItemId("ITEM_IMPORTANT_WRECKING_BALL")
-  if false--[[GetFlag(Flag.FE837) == true]] then -- AP
+  if GetFlag(Flag.FAP2) --[[GetFlag(Flag.FE837) == true]] then -- AP
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
   else
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
@@ -155,7 +134,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_040\nReeve_House2_1F_SUB_0_ACTOR_0110_010")
     local ItemId = "ITEM_ARCHIPELAGO"
     if ItemId == "ITEM_ARCHIPELAGO" then
-      GetItemFlagAP2 = true
+      SetFlag(Flag.FAP2, true)
     else
       AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     end
@@ -179,14 +158,17 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
-  Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...) -- AP
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP2) then
+    Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_1")
   CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_030_2")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0220_010(BeginOverlap, table, ...)

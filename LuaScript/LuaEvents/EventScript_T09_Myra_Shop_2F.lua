@@ -351,6 +351,7 @@ function SwordSmithEvent(targetActorId)
       AP.CheckLocation("Myra_Shop_2F_SUB_0_ACTOR_0120_010")
       local apItemId = "ITEM_ARCHIPELAGO"
       if apItemId == "ITEM_ARCHIPELAGO" then
+        SetFlag(Flag.FAP5, true)
       else
         AddItem("ITEM_EQUIP_WEAPON_SWORD_OF_KINGS")
       end
@@ -374,7 +375,7 @@ function SwordSmithEvent(targetActorId)
       CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_040_19")
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_TalkBrokenSword, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_TalkOrichalcum, true)
-      --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetKingSword, true)
+      --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetKingSword, true) -- AP
       eventCamera = true
       callShopUI = false
     end
@@ -532,7 +533,12 @@ end
 function Myra_Shop_2F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  SwordSmithEvent(targetActorId)
-  --CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0110_010_1")
+  -- AP
+  if not GetFlag(Flag.FAP5) then
+    SwordSmithEvent(targetActorId)
+  else
+    CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0110_010_1")
+  end
+  -- AP end
   EventEnd(eventInfo, "")
 end

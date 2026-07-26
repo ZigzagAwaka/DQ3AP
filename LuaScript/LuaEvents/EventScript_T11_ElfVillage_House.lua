@@ -1,7 +1,6 @@
 print("Load Script EventScript_T11_ElfVillage_House")
 
 local AP = require("Src/DQ3AP") -- AP
-local GetItemFlagAP = false -- AP
 
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
@@ -171,32 +170,6 @@ end
 function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  -- AP
-  if GetItemFlagAP then
-    if GetFlag(Flag.FE132) and GetFlag(Flag.FE34) then
-      if CheckTransform() == true then
-        CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_4")
-      end
-      if CheckFadingJenny() == true then
-        CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_4")
-      end
-      CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_1")
-      CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_2")
-      CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_3")
-    else
-      if CheckTransform() == true then
-        CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_3")
-      end
-      if CheckFadingJenny() == true then
-        CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_3")
-      end
-      CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_1")
-      CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_2")
-    end
-    EventEnd(eventInfo, "")
-    return
-  end
-  -- AP end
   SetTagItemId("ITEM_IMPORTANT_DREAMSTONE")
   SetTagItemId2("ITEM_IMPORTANT_WAKEY_DUST")
   MapTime = GetMapTimeFrame()
@@ -304,7 +277,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   AP.CheckLocation("ElfVillage_House_SUB_0_VOLUME_0110_030")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
-    GetItemFlagAP = true
+    SetFlag(Flag.FAP3, true)
   else
     AddItem("ITEM_IMPORTANT_WAKEY_DUST")
     SetFlag(Flag.FE61, true)
@@ -337,9 +310,12 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
 end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
-  ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP3) then
+    ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   if CheckTransform() == true then
@@ -351,13 +327,15 @@ function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_1")
   CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_040_2")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
-  ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
-  return
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP3) then
+    ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   if CheckTransform() == true then
@@ -370,5 +348,4 @@ function ElfVillage_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_2")
   CmdEventClosingMessage("NPC_Talk_ElfVillage_House_SUB_0_ACTOR_0110_050_3")
   EventEnd(eventInfo, "")
-  ]]
 end

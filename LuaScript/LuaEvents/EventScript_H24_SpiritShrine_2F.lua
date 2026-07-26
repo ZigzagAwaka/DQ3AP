@@ -484,15 +484,11 @@ function SpiritShrine_2F_MAIN_0_ACTOR_0210_010(BeginOverlap, table, ...)
   if GetFlag(Flag.FE87) == false then
     SpiritShrineEventStart()
   else
-    DisableEventFastForwardUI()
-    CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, 0.5, GetCurrentMapId())
+    if CheckModRod() == true or CheckFadingJenny() == true then
+      CmdMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_0")
+    end
+    CmdMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_1")
+    CmdEventClosingMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_2")
   end
-  --[[
-  if CheckModRod() == true or CheckFadingJenny() == true then
-    CmdMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_0")
-  end
-  CmdMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_1")
-  CmdEventClosingMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0210_010_2")
-  ]]
   EventEnd(eventInfo, "")
 end

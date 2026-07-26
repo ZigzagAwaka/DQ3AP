@@ -80,6 +80,7 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
+    SetFlag(Flag.FAP11, true)
   else
     AddItem("ITEM_IMPORTANT_ROYAL_MISSIVE")
     SetFlag(Flag.FE63, true)
@@ -168,6 +169,7 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020\nPortoga_Castle_1F_MAIN_0_VOLUME_0010_010")
   local ItemId = "ITEM_ARCHIPELAGO"
   if ItemId == "ITEM_ARCHIPELAGO" then
+    SetFlag(Flag.FAP12, true)
   else
     SetFlag(Flag.FE106, true)
   end
@@ -324,22 +326,17 @@ function Portoga_Castle_1F_MAIN_0_SCENE_0000_010(BeginOverlap, table, ...)
   EventEnd(eventInfo, "")
 end
 
--- AP
-
-function ManageKingRewardsForAP(BeginOverlap, table, ...)
-  if GetFlag(Flag.FE64) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-  else
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
-  end
-end
-
--- AP end
-
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_060(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_BLACK_PEPPER")
@@ -350,13 +347,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_060(BeginOverlap, table, ...)
   CmdCloseEventScreenShotUI(EFadingPriorityTopMost, 0.5)
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_060_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_070(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_BLACK_PEPPER")
@@ -367,13 +370,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_070(BeginOverlap, table, ...)
   CmdCloseEventScreenShotUI(EFadingPriorityTopMost, 0.5)
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_070_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_080(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_BLACK_PEPPER")
@@ -382,26 +391,38 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_080(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_080_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_080_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_090(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_090_1")
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_090_2")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_090_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_100(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_100_1")
@@ -410,13 +431,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_100(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_100_4")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_100_5")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_110(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_110_1")
@@ -424,13 +451,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_110(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_110_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_110_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_120(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_120_1")
@@ -439,13 +472,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_120(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_120_4")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_120_5")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_130(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_130_1")
@@ -453,13 +492,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_130(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_130_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_130_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_140(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_140_1")
@@ -467,13 +512,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_140(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_140_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_140_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_150(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_150_1")
@@ -481,13 +532,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_150(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_150_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_150_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_160(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_160_1")
@@ -495,13 +552,19 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_160(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_160_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_160_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_170(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_170_1")
@@ -509,39 +572,57 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_170(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_170_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_170_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_180(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_180_1")
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_180_2")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_180_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_190(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_190_1")
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_190_2")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_190_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_200(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_200_1")
@@ -549,20 +630,25 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_200(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_200_3")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_200_4")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_210(BeginOverlap, table, ...)
-  ManageKingRewardsForAP(BeginOverlap, table, ...) -- AP
-  return
-  --[[
+  -- AP
+  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_210_1")
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_210_2")
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_210_3")
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Portoga_Castle_1F_SUB_0_ACTOR_0210_020(BeginOverlap, table, ...)

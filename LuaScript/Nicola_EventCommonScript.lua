@@ -308,7 +308,6 @@ end
 function Treasure_Important(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   eventInfo = EventStart(table, "")
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
-  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId) -- AP
   EventEnd(eventInfo, "")
 end
 
@@ -326,6 +325,7 @@ function CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, Ite
     CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_3")
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_2")
   end
+  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId) -- AP
 end
 
 function Treasure_Enemy(BeginOverlap, table, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)

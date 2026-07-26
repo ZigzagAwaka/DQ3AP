@@ -31,7 +31,7 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  if GetFlag(Flag.FE70) == true then
+  if GetFlag(Flag.FAP7) --[[GetFlag(Flag.FE70) == true]] then
     CmdEventClosingMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_020_5")
   else
     local itemId1 = "ITEM_IMPORTANT_MOD_ROD"
@@ -51,6 +51,7 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
       AP.CheckLocation("Greenlad_House_SUB_0_ACTOR_0110_020")
       local ItemId = "ITEM_ARCHIPELAGO"
       if ItemId == "ITEM_ARCHIPELAGO" then
+        SetFlag(Flag.FAP7, true)
       else
         AddItem("ITEM_IMPORTANT_BOATMANS_BONE")
         SetFlag(Flag.FE70, true)
@@ -76,9 +77,13 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
 end
 
 function Greenlad_House_SUB_0_SCENE_0010_010(BeginOverlap, table, ...)
+  -- AP
+  if not GetFlag(Flag.FAP7) then
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  --[[
   if GetFlag(Flag.FS0) == false then
     local n = math.random(100, 1799)
     n = n / 100
@@ -192,13 +197,16 @@ function Greenlad_House_SUB_0_SCENE_0010_010(BeginOverlap, table, ...)
   end
   DisableEventFastForwardUI()
   CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, 0.5, GetCurrentMapId())
-  ]]
   EventEnd(eventInfo, "")
 end
 
 function Greenlad_House_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
-  Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP7) then
+    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   if GetSysGlobal(SysGlobal.VD0) == 1 then
@@ -215,12 +223,15 @@ function Greenlad_House_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_030_1")
   ChangeForm()
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Greenlad_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
-  Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP7) then
+    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   if GetSysGlobal(SysGlobal.VD0) == 5 then
@@ -253,12 +264,15 @@ function Greenlad_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_040_1")
   ChangeForm()
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Greenlad_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
-  Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP7) then
+    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   if GetSysGlobal(SysGlobal.VD0) == 11 then
@@ -284,12 +298,15 @@ function Greenlad_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   CmdMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_050_1")
   ChangeForm()
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function Greenlad_House_SUB_0_ACTOR_0110_060(BeginOverlap, table, ...)
-  Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
-  --[[
+  -- AP
+  if not GetFlag(Flag.FAP7) then
+    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   if GetSysGlobal(SysGlobal.VD0) == 15 then
@@ -311,7 +328,6 @@ function Greenlad_House_SUB_0_ACTOR_0110_060(BeginOverlap, table, ...)
   end
   ChangeForm()
   EventEnd(eventInfo, "")
-  ]]
 end
 
 function ChangeForm()
