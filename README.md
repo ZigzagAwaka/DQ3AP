@@ -26,11 +26,17 @@ When the setup is finished, you can open the game on Steam to see a new separate
 
 In Dragon Quest III HD-2D Remake, all obtainable items (usable items, equipment, gold, ...) are shuffled into the multiworld. From chests to barrels, pots, bookshelves and important NPC events, you'll have a great time figuring out a route to complete your goal !
 
+Options to choose which locations are randomized, excluded or vanilla are available for those who want to configure some things before playing. *(planned !)*
+
+**Alpha warning notice: As this integration is currently playable, it's not yet stable (we are still on Alpha) meaning actually playing it might get you some issues!**
+
 ### What is the goal of the game when randomized ?
 
-The end goal of the randomizer is to defeat the final boss of the game.
-
-*Planned : Configurable ways to edit the goal to instead be something else, like a medal hunt.*
+You have multiple options to set the goal of the game, among these:
+- Defeat Zoma, the final boss of the game
+- Defeat the Grand Dragon, the final boss of the postgame
+- Find all 110 mini medals
+- Find all 110 mini medals, with postgame locations included
 
 ### Which items can be in another player's world ?
 
@@ -56,7 +62,7 @@ The game will cache the received items then give them all to the player when one
 - The player successfully defeats an enemy (but not a Cannibox/Mimic/Pandora's Box as those are traps !)
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
-- The player talks to a Priest of any location ; either directly in the game or by loading a save file from the title screen
+- The player talks to a Priest of any location by loading a save file from the title screen
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
 
@@ -91,9 +97,9 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 Other modifications were implemented to nicely integrate Archipelago :
 
 - Parts of the game were patched to skip or ignore some important story flags.
-    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC. This has the effect of NPCs trying to give you their items multiple times but of course it's just for the visuals/cutscene, not for the real gameplay !
+    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC.
     - Some scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
-- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom (or a Chimera Wing) to teleport to a previously explored location and the Ship and Ramia will be teleported near you. *Planned: Maybe make it so the ship/ramia spawn near Aliahan?*
+- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom (or a Chimera Wing) to teleport to a previously explored location and the Ship and Ramia will be teleported near you.
 - Merchantburg is fully excluded from the logic except the containers available in the final stage of the town. This means that the Yellow Orb check is excluded but the Yellow Orb is still randomized. Checking the Yellow Orb at it's vanilla location will give you some gold instead.
 - Gifts from the Aliahan King at the start of the game are not randomized, and receiving those gifts will also give you a pack of 10 Chimera Wings for easier early game progression until you level up and learn Zoom. You can use those to return to previously explored areas or to teleport the Ship/Ramia near you in early Ship/Ramia seeds. Moreover, speaking to the King will also gives you the main World Map and will sets a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
 
@@ -108,4 +114,4 @@ You can report anything in the `Dragon Quest III HD-2D Remake` post in the `futu
 - [APCpp Library: used by the client mod](https://github.com/N00byKing/APCpp)
 - [@mike9k1: for useful modding advices](https://www.nexusmods.com/profile/mike9k1)
 - [@mastermarz: for helping at building the logic in some locations](https://www.twitch.tv/mastermarz)
-- [@seraphin_eveles: for good support](https://www.twitch.tv/seraphin_eveles)
+- [@seraphin_eveles: for good support and testing](https://www.twitch.tv/seraphin_eveles)
