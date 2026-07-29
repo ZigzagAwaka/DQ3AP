@@ -82,6 +82,19 @@ void Commands::Process(const std::string& command)
 
         apClientPtr->Connect(host, player, password);
     }
+    else if (command == "/reconnect")
+    {
+        const auto [host, player, password] = apClientPtr->GetLatestRoomData();
+
+        if (host.empty() || player.empty())
+        {
+            loggerPtr->LogError("Was not able to reconnect to Archipelago: Latest saved room informations were not valid, try /connect instead");
+            PrintHelp();
+            return;
+        }
+
+        apClientPtr->Connect(host, player, password);
+    }
     else if (!command.empty())
     {
         loggerPtr->Log("Unknown command: " + command + " (type '/help' for available commands)");
@@ -134,6 +147,7 @@ void Commands::PrintHelp()
     loggerPtr->LogInConsole("--------------------------------------------- Available Commands ---------------------------------------------");
     loggerPtr->LogInConsole(" /connect <host> <player> [password] - Connect to Archipelago (example: /connect archipelago.gg:67676 Player1)");
     loggerPtr->LogInConsole(" /disconnect                         - Disconnect from Archipelago");
+    loggerPtr->LogInConsole(" /reconnect                          - Try to reconnect to the latest valid connection made with /connect");
     loggerPtr->LogInConsole(" /status                             - Show Archipelago connection status");
     loggerPtr->LogInConsole(" /help                               - Show this message");
     loggerPtr->LogInConsole(" /clear                              - Clear console");

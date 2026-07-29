@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <unordered_map>
+#include <tuple>
 
 
 /// @brief Archipelago client wrapper using APCpp
@@ -19,13 +20,14 @@ public:
     /// @param itemPath Path to AP items data file
     /// @param locationPath Path to AP locations data file
     /// @param optionPath Path to AP options data file
-    /// @param hostPath Path to AP host information data file
+    /// @param roomPath Path to AP current room informations data file
+    /// @param medalsPath Path to AP stored medals data file
     APClient(
         Logger& logger,
         const std::string& itemPath,
         const std::string& locationPath,
         const std::string& optionPath,
-        const std::string& hostPath,
+        const std::string& roomPath,
         const std::string& medalsPath
     );
 
@@ -59,6 +61,10 @@ public:
     /// @brief Clear and reset AP related data files
     void ClearData();
 
+    /// @brief Read AP room data file and gets the latest values in it
+    /// @return A tuple for the saved host, player and password
+    std::tuple<std::string, std::string, std::string> GetLatestRoomData();
+
     /// @brief Disconnect from Archipelago
     void Disconnect();
 
@@ -72,11 +78,14 @@ private:
     const std::string itemDataPath;
     const std::string locationDataPath;
     const std::string optionDataPath;
-    const std::string hostDataPath;
+    const std::string roomDataPath;
     const std::string medalsDataPath;
 
-    std::filesystem::file_time_type locationDataLastCheckTime;
     std::string currentHost = "";
+    std::string currentPlayer = "";
+    std::string currentPassword = "";
+
+    std::filesystem::file_time_type locationDataLastCheckTime;
     bool triggerEventOnOptionReceived = false;
     std::unordered_map<std::string, int> hostToMedalsMap;
 
@@ -96,10 +105,10 @@ private:
     /// @param clear Set to true to clear the file, default to true
     void CreateOrClearFile(const std::string& filePath, bool create = true, bool clear = true);
 
-    /// @brief Write the current host value to AP host data file
-    void SetLastHost();
+    /// @brief Write the current rooms values to AP room data file
+    void SetLatestRoomData();
 
-    /// @brief Reads the host value from AP host data file and returns if it is the current host
+    /// @brief Checks if the latest host is also the current host
     /// @return True if the latest host is also the current host
     bool IsKnownHost();
 

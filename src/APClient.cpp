@@ -8,7 +8,7 @@ APClient::APClient(Logger& logger, const std::string& itemPath, const std::strin
     itemDataPath(itemPath),
     locationDataPath(locationPath),
     optionDataPath(optionPath),
-    hostDataPath(hostPath),
+    roomDataPath(hostPath),
     medalsDataPath(medalsPath)
 {
     ClearData();
@@ -39,6 +39,8 @@ void APClient::Connect(const std::string& host, const std::string& player, const
         });
 
         currentHost = host;
+        currentPlayer = player;
+        currentPassword = password;
         RegisterAllOptionsCallbacks();
         AP_EnableQueueItemRecvMsgs(true);
         AP_Start();
@@ -284,8 +286,8 @@ void APClient::ClearData()
     {
         // Only clear item data if connected to an unknown host or if the file does not exist
         CreateOrClearFile(itemDataPath, true, !IsKnownHost());
-        // Then save current host data
-        SetLastHost();
+        // Then set the latest room data to be the current room data
+        SetLatestRoomData();
     }
     // Always clear location data
     CreateOrClearFile(locationDataPath);
@@ -307,16 +309,41 @@ void APClient::CreateOrClearFile(const std::string& filePath, bool create, bool 
 }
 
 
-void APClient::SetLastHost()
+std::tuple<std::string, std::string, std::string> APClient::GetLatestRoomData()
 {
-    if (currentHost.empty())
+    if (!std::filesystem::exists(roomDataPath))
+    {
+        return std::make_tuple("", "", "");
+    }
+    std::ifstream file(roomDataPath);
+    std::string line, host, player, password;
+    if (std::getline(file, line) && !line.empty())
+    {
+        host = line;
+    }
+    if (std::getline(file, line) && !line.empty())
+    {
+        player = line;
+    }
+    if (std::getline(file, line) && !line.empty())
+    {
+        password = line;
+    }
+    file.close();
+    return std::make_tuple(host, player, password);
+}
+
+
+void APClient::SetLatestRoomData()
+{
+    if (currentHost.empty() || currentPlayer.empty())
     {
         return;
     }
-    CreateOrClearFile(hostDataPath);
+    CreateOrClearFile(roomDataPath);
     std::ofstream file;
-    file.open(hostDataPath, std::ios::app);
-    file << currentHost << '\n';
+    file.open(roomDataPath, std::ios::app);
+    file << currentHost << '\n' << currentPlayer << '\n' << currentPassword << '\n';
     file.flush();
     file.close();
 }
@@ -324,19 +351,10 @@ void APClient::SetLastHost()
 
 bool APClient::IsKnownHost()
 {
-    if (!std::filesystem::exists(hostDataPath))
-    {
+    std::string lastHost = std::get<0>(GetLatestRoomData());
+    if (lastHost.empty())
         return false;
-    }
-    std::ifstream file(hostDataPath);
-    std::string line;
-    std::string result;
-    if (std::getline(file, line) && !line.empty())
-    {
-        result = line;
-    }
-    file.close();
-    return result == currentHost;
+    return lastHost == currentHost;
 }
 
 

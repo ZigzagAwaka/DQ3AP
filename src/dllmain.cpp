@@ -92,7 +92,7 @@ static DWORD WINAPI MainThread(LPVOID)
 
     // Create Archipelago client and initialize command system
     APClient apClient(logger, "Archipelago/items.data", "Archipelago/locations.data", "Archipelago/options.data",
-                      "Archipelago/host.data", "Archipelago/medals.data");
+                      "Archipelago/room.data", "Archipelago/medals.data");
     Commands::Initialize(apClient, logger);
 
     // Create input thread
