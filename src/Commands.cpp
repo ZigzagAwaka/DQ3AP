@@ -33,25 +33,32 @@ void Commands::ProcessQueue()
 
 void Commands::Process(const std::string& command)
 {
-    loggerPtr->LogInFile(command);
-    if (command == "/help")
+    std::string commandWord = command;
+    const std::size_t firstSpace = command.find(' ');
+
+    if (firstSpace != std::string::npos) {
+        commandWord = commandWord.substr(0, firstSpace);
+    }
+    loggerPtr->LogInFile(commandWord);
+
+    if (commandWord == "/help")
     {
         PrintHelp();
     }
-    else if (command == "/status")
+    else if (commandWord == "/status")
     {
         bool connected = apClientPtr->IsConnected();
         loggerPtr->Log(std::string("Archipelago status: ") + (connected ? "Connected" : "Not connected"));
     }
-    else if (command == "/clear")
+    else if (commandWord == "/clear")
     {
         system("cls");
     }
-    else if (command == "/disconnect")
+    else if (commandWord == "/disconnect")
     {
         apClientPtr->Disconnect();
     }
-    else if (command.rfind("/connect", 0) == 0)
+    else if (commandWord == "/connect")
     {
         std::string input = command.substr(8);
         while (!input.empty() && std::isspace(static_cast<unsigned char>(input[0])))
@@ -82,7 +89,7 @@ void Commands::Process(const std::string& command)
 
         apClientPtr->Connect(host, player, password);
     }
-    else if (command == "/reconnect")
+    else if (commandWord == "/reconnect")
     {
         const auto [host, player, password] = apClientPtr->GetLatestRoomData();
 
