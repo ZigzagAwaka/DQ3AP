@@ -192,7 +192,7 @@ const std::unordered_map<std::string, int> WorldData::locations =
     {"SEARCH_ElfVillage_Out_POT_0", 161},
     {"SEARCH_ElfVillage_Out_POT_1", 162},
     {"SEARCH_ElfVillage_Out_POT_2", 163},
-    {"SEARCH_ElfVillage_House_GROUND_0", 164},
+    //{"SEARCH_ElfVillage_House_GROUND_0", 164},
     {"ElfVillage_House_SUB_0_VOLUME_0110_030", 165},
     // ----- Underground Lake -----
     {"SEARCH_UndergroundLake_B1F_TREASURE_NORMAL_0", 166},

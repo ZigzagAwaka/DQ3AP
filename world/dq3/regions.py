@@ -222,7 +222,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Manoza Cave"),
     ],
     "Manoza": [
-        Connect("Manoza Castle"),
+        Connect("Manoza Castle", rules.HAS_MAGIC_KEY),
     ],
     "Manoza Castle": [],
     "Manoza Cave": [],
@@ -232,7 +232,6 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Grimland", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Lozamii", rules.HAS_SHIP),
         Connect("Lanson", rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Gaia's Navel", rules.HAS_BIRD),
         Connect("Shallows Shrine", rules.HAS_SHIP & rules.HAS_BOTTOMLESS_POT),
         Connect("Ghost Ship", rules.HAS_SHIP & rules.HAS_BOATMANS_BONE),
         Connect("Shrine of Shackles", ((rules.HAS_SHIP & rules.HAS_LOVERS_LOCKET) | rules.HAS_BIRD) & rules.HAS_ULTIMATE_KEY),

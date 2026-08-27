@@ -205,7 +205,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Faerie Village] Pot near right entrance": Info(161), #SEARCH_ElfVillage_Out_POT_0
     "[Faerie Village] Pot near lake": Info(162), #SEARCH_ElfVillage_Out_POT_1
     "[Faerie Village] Pot right of the Item Shop": Info(163), #SEARCH_ElfVillage_Out_POT_2
-    "[Faerie Village] Hidden Ground in Faerie Queen house": Info(164), #SEARCH_ElfVillage_House_GROUND_0
+    #"[Faerie Village] Hidden Ground in Faerie Queen house": Info(164), #SEARCH_ElfVillage_House_GROUND_0  # does not exist in the game
     "[Faerie Village] Reward from Faerie Queen after giving the Dreamstone": Info(165, rules.HAS_DREAMSTONE), #ElfVillage_House_SUB_0_VOLUME_0110_030
     # ----- Underground Lake -----
     "[Underground Lake] Chest at the dead end near the entrance": Info(166), #SEARCH_UndergroundLake_B1F_TREASURE_NORMAL_0
@@ -253,11 +253,11 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Asham] Hidden Ground on top right square tile floor in top left house": Info(205, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_2F_GROUND_0
     "[Asham] Bookshelf in locked room in top left house": Info(206, rules.HAS_MAGIC_KEY & rules.HAS_THIEF_KEY), #SEARCH_Ashalam_House02_2F_BOOKSHELF_0
     "[Asham] Pot in right house": Info(207), #SEARCH_Ashalam_House03_POT_0
-    "[Asham] Storage in Hotel": Info(208), #SEARCH_Ashalam_Hotel_STORAGE_0
-    "[Asham] Pot in Hotel": Info(209), #SEARCH_Ashalam_Hotel_POT_0
+    "[Asham] Storage in Hotel": Info(208, rules.HAS_THIEF_KEY), #SEARCH_Ashalam_Hotel_STORAGE_0
+    "[Asham] Pot in Hotel": Info(209, rules.HAS_THIEF_KEY), #SEARCH_Ashalam_Hotel_POT_0
     "[Asham] Hidden Ground near bottom chair in Theather back room": Info(210, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_Theater_GROUND_0
     #"[Asham] Event": Info(211), #SEARCH_Ashalam_Theater_EVENT_0 # no items here
-    "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn": Info(730, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT), #Ashalam_Theater_SUB_0_ACTOR_0520_020
+    "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn": Info(730, rules.HAS_MAGIC_KEY & rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT), #Ashalam_Theater_SUB_0_ACTOR_0520_020
     # ----- Desert Shrine -----
     "[Desert Shrine] Pot in the top left corner": Info(212), #SEARCH_DesertShrine_1F_POT_0
     "[Desert Shrine] Bookshelf in top right corner": Info(213), #SEARCH_DesertShrine_1F_BOOKSHELF_0
@@ -437,10 +437,10 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Mur] Pot in Inn": Info(376), #SEARCH_Muor_Inn_1F_POT_0
     "[Mur] Hidden Ground at the back of the locked room in Market": Info(377, rules.HAS_ULTIMATE_KEY), #SEARCH_Muor_Market_1F_GROUND_0
     #"[Mur] Event": Info(378), #SEARCH_Muor_Market_1F_EVENT_0 # no items here
-    "[Mur] Pot 1 in the back room of the Market": Info(379), #SEARCH_Muor_Market_2F_POT_0
-    "[Mur] Pot 2 in the back room of the Market": Info(380), #SEARCH_Muor_Market_2F_POT_1
+    "[Mur] Pot 1 in the back room of the Market": Info(379, rules.HAS_THIEF_KEY), #SEARCH_Muor_Market_2F_POT_0
+    "[Mur] Pot 2 in the back room of the Market": Info(380, rules.HAS_THIEF_KEY), #SEARCH_Muor_Market_2F_POT_1
     "[Mur] Pot in the small island house": Info(381), #SEARCH_Muor_House1_1F_POT_0
-    "[Mur] Gift from Old Man in the back room of the Market": Info(382), #Muor_Market_1F_SUB_0_SCENE_0610_010
+    "[Mur] Gift from Old Man in the back room of the Market": Info(382, rules.HAS_THIEF_KEY), #Muor_Market_1F_SUB_0_SCENE_0610_010
     # ----- Tower of Transcendence -----
     "[Tower of Transcendence] Chest in middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
     "[Tower of Transcendence] Pot 1 in middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
@@ -626,7 +626,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Edina Castle] Hidden Ground near the top right corner unicorn's statue at the top of the castle": Info(547), #SEARCH_Edinbear_Castle_Out_GROUND_0
     "[Edina Castle] Hidden Ground in the bottom left corner of the right garden": Info(548), #SEARCH_Edinbear_Castle_Out_GROUND_1
     "[Edina Castle] Pot in the bottom left corner of the left garden": Info(549), #SEARCH_Edinbear_Castle_Out_POT_0
-    "[Edina Castle] Pot near the left garden entrance": Info(550), #SEARCH_Edinbear_Castle_Out_POT_1
+    "[Edina Castle] Pot near the right garden entrance": Info(550), #SEARCH_Edinbear_Castle_Out_POT_1
     "[Edina Castle] Barrel 1 at the top of the castle": Info(551), #SEARCH_Edinbear_Castle_Out_BARREL_0
     "[Edina Castle] Barrel 2 at the top of the castle": Info(552), #SEARCH_Edinbear_Castle_Out_BARREL_1
     "[Edina Castle] Bookshelf in the top right room": Info(553, rules.HAS_MAGIC_KEY), #SEARCH_Edinbear_Castle_1F_BOOKSHELF_0
@@ -677,20 +677,20 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Manoza] Barrel 1 on the right in Monster Arena": Info(590), #SEARCH_Samanosa_BattleRoad_BARREL_0
     "[Manoza] Barrel 2 on the right in Monster Arena": Info(591), #SEARCH_Samanosa_BattleRoad_BARREL_1
     # ----- Manoza Castle -----
-    "[Manoza Castle] Barrel in kitchen room": Info(592, rules.HAS_MAGIC_KEY | rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_1F_BARREL_0
-    "[Manoza Castle] Hidden Ground on flower pot statue in top garden": Info(593), #SEARCH_Samanosa_Castle_1F_GROUND_0
-    "[Manoza Castle] Pot in central left locked room": Info(594, rules.HAS_MAGIC_KEY), #SEARCH_Samanosa_Castle_1F_POT_0
-    "[Manoza Castle] Pot 1 in East Tower": Info(595), #SEARCH_Samanosa_Castle_2F_POT_0
-    "[Manoza Castle] Pot 2 in East Tower": Info(596), #SEARCH_Samanosa_Castle_2F_POT_1
-    "[Manoza Castle] Bookshelf in the king's bedroom": Info(597), #SEARCH_Samanosa_Castle_2F_BedRoom_BOOKSHELF_0
-    "[Manoza Castle] Drawer in the king's bedroom": Info(598), #SEARCH_Samanosa_Castle_2F_BedRoom_DRAWER_0
-    #"[Manoza Castle] Chest in the king's bedroom": Info(599), #SEARCH_Samanosa_Castle_2F_BedRoom_TREASURE_IMPORTANT_0 # does not exist in the game
+    "[Manoza Castle] Barrel in kitchen room": Info(592), #SEARCH_Samanosa_Castle_1F_BARREL_0
+    "[Manoza Castle] Hidden Ground on flower pot statue in top garden": Info(593, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_1F_GROUND_0
+    "[Manoza Castle] Pot in central left locked room": Info(594, rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_1F_POT_0
+    "[Manoza Castle] Pot 1 in East Tower": Info(595, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_2F_POT_0
+    "[Manoza Castle] Pot 2 in East Tower": Info(596, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_2F_POT_1
+    "[Manoza Castle] Bookshelf in the king's bedroom": Info(597, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_2F_BedRoom_BOOKSHELF_0
+    "[Manoza Castle] Drawer in the king's bedroom": Info(598, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_2F_BedRoom_DRAWER_0
+    #"[Manoza Castle] Chest in the king's bedroom": Info(599, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_2F_BedRoom_TREASURE_IMPORTANT_0 # does not exist in the game
     "[Manoza Castle] Pot in top left jail B1": Info(600, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_B1_POT_0
     "[Manoza Castle] Hidden Ground near the right wall in left jail B2": Info(601, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_B2_A_GROUND_0
-    "[Manoza Castle] Pot in right jail B2": Info(602), #SEARCH_Samanosa_Castle_B2_A_POT_0
-    "[Manoza Castle] Guard reward 1 for defeating Boss Troll (night)": Info(603, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_1
-    "[Manoza Castle] Guard reward 2 for defeating Boss Troll (night)": Info(604, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_2
-    "[Manoza Castle] Main reward for defeating Boss Troll (night)": Info(605, rules.HAS_RAS_MIRROR), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Main
+    "[Manoza Castle] Pot in right jail B2": Info(602, rules.HAS_ULTIMATE_KEY), #SEARCH_Samanosa_Castle_B2_A_POT_0
+    "[Manoza Castle] Guard reward 1 for defeating Boss Troll (night)": Info(603, rules.HAS_RAS_MIRROR & rules.HAS_ULTIMATE_KEY), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_1
+    "[Manoza Castle] Guard reward 2 for defeating Boss Troll (night)": Info(604, rules.HAS_RAS_MIRROR & rules.HAS_ULTIMATE_KEY), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_2
+    "[Manoza Castle] Main reward for defeating Boss Troll (night)": Info(605, rules.HAS_RAS_MIRROR & rules.HAS_ULTIMATE_KEY), #Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Main
     # ----- Manoza Cave -----
     "[Manoza Cave] Chest on the left loop path B1": Info(606), #SEARCH_RaCave_B1_TREASURE_NORMAL_0
     "[Manoza Cave] Chest near the top B1": Info(607), #SEARCH_RaCave_B1_TREASURE_NORMAL_1
@@ -728,7 +728,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Ghost Ship] Chest 3 in treasure room B1": Info(638, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_2
     "[Ghost Ship] Chest 4 in treasure room B1": Info(639, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_ENEMY_3
     "[Ghost Ship] Chest 5 in treasure room B1": Info(640, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_TREASURE_NORMAL_4
-    "[Ghost Ship] On ground in bottom room": Info(641), #SEARCH_GhostShip_B1_EVENT_0
+    "[Ghost Ship] Wooden Box in bottom room": Info(641), #SEARCH_GhostShip_B1_EVENT_0
     "[Ghost Ship] Barrel in treasure room B1": Info(642, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_BARREL_0
     "[Ghost Ship] Pot in treasure room B1": Info(643, rules.HAS_THIEF_KEY), #SEARCH_GhostShip_B1_POT_0
     # ----- Shrine of Shackles -----
@@ -756,8 +756,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Maw of the Necrogond] Chest at the top dead end between the central and the right rivers 4F": Info(664), #SEARCH_NecrogondCave_4F_TREASURE_NORMAL_5
     # ----- Necrogond Shrine -----
     "[Necrogond Shrine] Hidden Ground near the top windows in the shrine": Info(665), #SEARCH_NecrogondShrine_House_GROUND_0
-    "[Necrogond Shrine] Hidden Ground 1 somewhere in the shrine": Info(666), #SEARCH_NecrogondShrine_House_GROUND_1
-    "[Necrogond Shrine] Hidden Ground 2 somewhere in the shrine": Info(667), #SEARCH_NecrogondShrine_House_GROUND_2
+    "[Necrogond Shrine] Hidden Ground 1 behind the Priest": Info(666), #SEARCH_NecrogondShrine_House_GROUND_1
+    "[Necrogond Shrine] Hidden Ground 2 behind the Priest": Info(667), #SEARCH_NecrogondShrine_House_GROUND_2
     "[Necrogond Shrine] Barrel near the right side of the shrine": Info(668), #SEARCH_NecrogondShrine_Out_BARREL_0
     "[Necrogond Shrine] Gift from Priest": Info(669), #NecrogondShrine_House_MAIN_0_VOLUME_0110_010
     # ----- Pit of Giaga -----
@@ -867,7 +867,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Cantlin] On table in left house": Info(765), #Mercado_Shop02_2F_RotoSword_02_0
     # ----- Shrine of the Spirit -----
     "[Shrine of the Spirit] Hidden Ground in the center of the room": Info(766), #SEARCH_SpiritShrine_2F_GROUND_0
-    "[Shrine of the Spirit] Hidden Ground somewhere in the shrine": Info(767), #SEARCH_SpiritShrine_2F_GROUND_1
+    "[Shrine of the Spirit] Hidden Ground in the top right corner": Info(767), #SEARCH_SpiritShrine_2F_GROUND_1
     "[Shrine of the Spirit] Gift from Faerie": Info(768), #SpiritShrine_2F_SUB_0_SCENE_0010_010
     # ----- Rimuldar -----
     "[Rimuldar] Barrel 1 near Equipment Shop": Info(769), #SEARCH_Rimuldar_Out_BARREL_0
@@ -1083,7 +1083,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Central Overworld] Secret Spot south-east of Baharata: Sack": Info(968), #SEARCH_GranDragon_SecretPlain_06_SACK_0
     "[Central Overworld] Secret Spot near Kidnapper's Cave: Barrel 1": Info(969), #SEARCH_GranDragon_SecretForest_06_BARREL_0
     "[Central Overworld] Secret Spot near Kidnapper's Cave: Barrel 2": Info(970), #SEARCH_GranDragon_SecretForest_06_BARREL_1
-    "[Central Overworld] Secret Spot near Alltrades Abbey: Barrel": Info(971), #SEARCH_GranDragon_SecretPlain_07_BARREL_0
+    "[Central Overworld] Secret Spot east of Alltrades Abbey: Barrel": Info(971), #SEARCH_GranDragon_SecretPlain_07_BARREL_0
     "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 1": Info(972, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_0
     "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 2": Info(973, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_1
     "[Central Overworld] Secret Spot on the island north of Orochi's Lair: Pot 3": Info(974, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_05_POT_2
@@ -1154,7 +1154,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Ocean Overworld] Secret Spot near Shrine of the Everbird: Pot": Info(1035, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretSnow_31_POT_0
     "[Ocean Overworld] Secret Spot east of Shrine of the Everbird: Chest": Info(1036, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_64_TREASURE_NORMAL_1
     "[Ocean Overworld] Secret Spot south of Lanson: Chest": Info(1037, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_91_TREASURE_NORMAL_1
-    "[Ocean Overworld] Secret Spot near Gaia's Navel: Chest": Info(1038, (rules.HAS_SHIP & rules.HAS_ULTIMATE_KEY) | rules.HAS_BIRD), #SEARCH_GranDragon_SecretDesert_05_TREASURE_NORMAL_0
+    "[Ocean Overworld] Secret Spot near Gaia's Navel: Chest": Info(1038, (rules.HAS_SHIP | rules.HAS_BIRD) & rules.HAS_ULTIMATE_KEY), #SEARCH_GranDragon_SecretDesert_05_TREASURE_NORMAL_0
     "[Ocean Overworld] Secret Spot north-west of Lanson: Pot 1": Info(1039, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_36_POT_0
     "[Ocean Overworld] Secret Spot north-west of Lanson: Pot 2": Info(1040, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_36_POT_1
     "[Ocean Overworld] Secret Spot south-west of Promontory Passage: Hidden Ground behind the central rocks": Info(1041, rules.HAS_SHIP), #SEARCH_GranDragon_SecretSea_37_GROUND_0
