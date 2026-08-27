@@ -1,0 +1,14 @@
+- Mod client (C++ .dll renamed to .asi)
+Compiled with classic C++ dev environment (CMakeLists.txt)
+Loads external libraries dynamically (.dll files)
+Is loaded by an ASI Loader when the game is launched
+
+- Mod data (edited .ueassets and .lua files)
+Reversed engineered UE files with FModel and UAssetGUI
+Lua files are decompiled, edited then recompiled with unlac and luac
+Compressed into .pak file with UnrealPak
+
+- Apworld (python files for archipelago)
+Files are written in a forked Archipelago project
+Compressed into .zip, renamed to .apworld
+Loaded by Archipelago Launcher for generation

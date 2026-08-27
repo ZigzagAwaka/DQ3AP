@@ -11,14 +11,8 @@ function PiratesBase_Secret_RedOrb(BeginOverlap, table, CanObtainItem, TreasureI
   SetVisibleActorsTag("RedOrb", false)
   SearchObject_Important(eventInfo, TreasureId, ItemId)
   SetFlag(Flag.FE75, true) -- item flag can't be set, check for item in inventory instead
-  -- AP
-  ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PIRATESBASE_GetRedOrb, true)
-    CheckGopEnum_MAIN_MULTI_GetAllOrb()
-  end
-  -- AP end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PIRATESBASE_GetRedOrb, true) -- AP
+  --CheckGopEnum_MAIN_MULTI_GetAllOrb() -- AP
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")
 end

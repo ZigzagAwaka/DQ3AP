@@ -80,12 +80,8 @@ function ShallowShrine_B1F_Treasure_Important(BeginOverlap, table, CanObtainItem
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_1")
     SearchObject_ShowMessage(GetTargetActorIdFromEventInfo(eventInfo), TreasureId, ItemId, ItemCount, Gold)
     -- AP
-    ItemId = "ITEM_ARCHIPELAGO"
-    if ItemId == "ITEM_ARCHIPELAGO" then
-    else
-      SetFlag(Flag.FE56, true)
-      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHALLOWSHRINE_GetLastKey, true)
-    end
+    --SetFlag(Flag.FE56, true)
+    --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHALLOWSHRINE_GetLastKey, true)
     -- AP end
     RequestAutoSaveFromEvent()
   else

@@ -554,7 +554,7 @@ function SEARCH_Reiamuland_Out_EVENT_4(BeginOverlap, table, ...)
   CloseMessage()
   SetSysInfo(SysInfo.VA0, 0)
   --if GetFlag(Flag.FE74) == true and GetSysGlobal(SysGlobal.ORB3) == 0 then
-  if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") and GetSysGlobal(SysGlobal.ORB0) == 0 then -- AP: orbs flag can't be used
+  if IsHaveItem("ITEM_IMPORTANT_BLUE_ORB") and GetSysGlobal(SysGlobal.ORB3) == 0 then -- AP: orbs flag can't be used
     SetTagItemId(_itemOrbs[4])
     local result = CmdChoiceMessage("NPC_Talk_Reiamuland_Out_SUB_0_VOLUME_0310_020_1")
     if result == true then
@@ -646,7 +646,7 @@ function CheckPedestalOrbOffered(index)
     AP.Log("EVESE_REIAMULAND_ORB_SHINE_ALL - All 6 orbs offered at Shrine of the Everbird")
     AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
     local ItemId = "ITEM_ARCHIPELAGO"
-    if ItemId == "ITEM_ARCHIPELAGO" then
+    if true then
       SetTagItemId(ItemId)
       CmdLoadItemIcon(ItemId)
       PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)

@@ -11,7 +11,6 @@ function RaCave_B3_Treasure_Important(BeginOverlap, table, CanObtainItem, Treasu
   targetActorId = eventInfo[1]
   -- AP
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
-  -- AP end
   --[[
   if GetFlag(Flag.FE68) == true then
     CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
@@ -21,5 +20,6 @@ function RaCave_B3_Treasure_Important(BeginOverlap, table, CanObtainItem, Treasu
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_RACAVE_GetRaMirror, true)
   end
   ]]
+  -- AP end
   EventEnd(eventInfo, "")
 end

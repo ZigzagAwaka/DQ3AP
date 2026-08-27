@@ -175,13 +175,9 @@ function Samanosa_Castle_1F_MAIN_0_SCENE_0010_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("Samanosa_Castle_1F_MAIN_0_SCENE_0010_010 called (Manoza - Rewards for defeating Boss Troll)")
   AP.CheckLocation("Samanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_1\nSamanosa_Castle_1F_MAIN_0_SCENE_0010_010_Sub_2\nSamanosa_Castle_1F_MAIN_0_SCENE_0010_010_Main")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem("ITEM_IMPORTANT_MOD_ROD")
-    AddItem("ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET")
-    AddItem("ITEM_USE_ITEM_ELFIN_ELIXIR")
-  end
+  --AddItem("ITEM_IMPORTANT_MOD_ROD")
+  --AddItem("ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET")
+  --AddItem("ITEM_USE_ITEM_ELFIN_ELIXIR")
   -- AP end
   DestroyPartyClone()
   SetActorRotation("PLAYER", {

@@ -28,8 +28,7 @@ function Edinbear_Castle_B1FB_TreasurBox(BeginOverlap, table, CanObtainItem, Tre
     CloseMessage()
     CmdFadeIn(EFadingPriorityEventUIBackGround, 0.5)
     CmdEventClosingMessage("NPC_Talk_Edinbear_Castle_B1FB_TreasurBox_10")
-    --SetFlag(Flag.FE66, true) -- AP
-    SetFlag(Flag.FAP9, true)
+    SetFlag(Flag.FAP9, true) --SetFlag(Flag.FE66, true) -- AP
   end
   EventEnd(eventInfo, "")
 end

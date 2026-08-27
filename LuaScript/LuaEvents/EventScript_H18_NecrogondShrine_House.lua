@@ -129,12 +129,8 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("NecrogondShrine_House_MAIN_0_VOLUME_0110_010 called (Necrogond Shrine - Priest giving the silver orb)")
   AP.CheckLocation("NecrogondShrine_House_MAIN_0_VOLUME_0110_010")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-    SetFlag(Flag.FAP6, true)
-  else
-    AddItem("ITEM_IMPORTANT_SILVER_ORB")
-  end
+  SetFlag(Flag.FAP6, true)
+  --AddItem("ITEM_IMPORTANT_SILVER_ORB")
   -- AP end
   SetFlag(Flag.FE78, true) -- item flag can't be set, check for item in inventory instead
   CmdMoveNpcRelativeDetail("Party1", {
@@ -151,11 +147,8 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   SoundTransitionVolumeRateByCategory(ENicolaSoundCategoryAMBIENT, 1, 0.5)
   SetDispMiniMap(true)
   -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NECROGONDSHRINE_GetSilverOrb, true)
-    CheckGopEnum_MAIN_MULTI_GetAllOrb()
-  end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NECROGONDSHRINE_GetSilverOrb, true)
+  --CheckGopEnum_MAIN_MULTI_GetAllOrb()
   -- AP end
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")

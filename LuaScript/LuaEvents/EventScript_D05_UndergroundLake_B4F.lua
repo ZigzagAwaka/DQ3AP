@@ -45,12 +45,8 @@ function UndergroundLake_B4F_Treasure(BeginOverlap, table, CanObtainItem, Treasu
     Wait(0.5)
     SetVisibleActor(eventInfo[1], false)
     -- AP
-    ItemId = "ITEM_ARCHIPELAGO"
-    if ItemId == "ITEM_ARCHIPELAGO" then
-    else
-      SetFlag(Flag.FE60, true)
-      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true)
-    end
+    --SetFlag(Flag.FE60, true)
+    --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true)
     -- AP end
     SoundTransitionVolumeRateByCategory(ENicolaSoundCategoryAMBIENT, 1, 0.5)
     RequestAutoSaveFromEvent()

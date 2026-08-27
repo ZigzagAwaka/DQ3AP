@@ -9,6 +9,12 @@ function EventTemplate(BeginOverlap, table, ...)
 end
 
 function ElfVillage_House_SUB_0_VOLUME_0110_010(BeginOverlap, table, ...)
+  -- AP
+  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+    ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_DREAMSTONE")
@@ -78,6 +84,12 @@ function ElfVillage_House_SUB_0_VOLUME_0110_010(BeginOverlap, table, ...)
 end
 
 function ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
+  -- AP
+  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+    ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_DREAMSTONE")
@@ -275,13 +287,9 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   -- AP
   AP.Log("ElfVillage_House_SUB_0_VOLUME_0110_030 called (Faerie Village - Faerie Queen giving the Wakey Dust)")
   AP.CheckLocation("ElfVillage_House_SUB_0_VOLUME_0110_030")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-    SetFlag(Flag.FAP3, true)
-  else
-    AddItem("ITEM_IMPORTANT_WAKEY_DUST")
-    SetFlag(Flag.FE61, true)
-  end
+  SetFlag(Flag.FAP3, true)
+  --AddItem("ITEM_IMPORTANT_WAKEY_DUST")
+  --SetFlag(Flag.FE61, true)
   -- AP end
   if IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then -- AP
     RemoveItem("ITEM_IMPORTANT_DREAMSTONE")
@@ -296,12 +304,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     Z = pos_z
   })
   SetNpcAnimation(Queen_Elf, AnimationType.Act6, 1, EFlipbookPlayTypeStopEnd, true)
-  -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_ELFVILLAGE_GetWakeyDust, true)
-  end
-  -- AP end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_ELFVILLAGE_GetWakeyDust, true) -- AP
   SetEventVolumeEnabled("ElfVillage_House_Queen", false)
   SetDispMiniMap(true)
   RequestAutoSaveFromEvent()
@@ -311,7 +314,7 @@ end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) then
+  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end
@@ -331,7 +334,7 @@ end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) then
+  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end

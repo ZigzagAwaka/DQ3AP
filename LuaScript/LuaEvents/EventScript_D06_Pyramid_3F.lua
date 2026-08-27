@@ -268,12 +268,8 @@ function Pyramid_3F_IMPORTANT_MAGIC_KEY(BeginOverlap, table, CanObtainItem, Trea
   eventInfo = EventStart(table, "")
   CmdTreasure_Important(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   -- AP
-  ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlag(Flag.FE55, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PYRAMID_GetMagicKey, true)
-  end
+  --SetFlag(Flag.FE55, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PYRAMID_GetMagicKey, true)
   -- AP end
   EventEnd(eventInfo, "")
 end

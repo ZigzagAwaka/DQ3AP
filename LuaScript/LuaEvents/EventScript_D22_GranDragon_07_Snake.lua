@@ -359,11 +359,7 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
       AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
-      end
+      --AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       -- AP end
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_11")
       SetFlag(Flag.FE704, true)
@@ -394,11 +390,7 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
       AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
-      end
+      --AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       -- AP end
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_27")
       Wait(0.1)

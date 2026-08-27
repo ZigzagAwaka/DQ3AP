@@ -398,19 +398,12 @@ function GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020(BeginOverlap, table, ...)
   -- AP
   AP.Log("GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020 called (Gaia's Navel - Get blue orb boss event)")
   AP.CheckLocation("GaiaNavel_B3F_MAIN_0_BATTLE_END_0020_020")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem("ITEM_IMPORTANT_BLUE_ORB")
-  end
+  --AddItem("ITEM_IMPORTANT_BLUE_ORB")
   -- AP end
   SetFlag(Flag.FE74, true) -- blue orb flag is not possible to skip or else it will softlock the player into an infinite boss battle
   -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueOrb, true)
-    CheckGopEnum_MAIN_MULTI_GetAllOrb()
-  end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueOrb, true)
+  --CheckGopEnum_MAIN_MULTI_GetAllOrb()
   -- AP end
   SetDispMiniMap(true)
   RequestAutoSaveFromEvent()

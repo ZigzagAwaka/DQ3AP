@@ -31,7 +31,7 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  if GetFlag(Flag.FAP7) --[[GetFlag(Flag.FE70) == true]] then
+  if GetFlag(Flag.FAP7) --[[GetFlag(Flag.FE70) == true]] then -- AP
     CmdEventClosingMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_020_5")
   else
     local itemId1 = "ITEM_IMPORTANT_MOD_ROD"
@@ -49,25 +49,16 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
       -- AP
       AP.Log("Greenlad_House_SUB_0_ACTOR_0110_020 called (Grimland - Old Man giving the Boatman's Bone)")
       AP.CheckLocation("Greenlad_House_SUB_0_ACTOR_0110_020")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-        SetFlag(Flag.FAP7, true)
-      else
-        AddItem("ITEM_IMPORTANT_BOATMANS_BONE")
-        SetFlag(Flag.FE70, true)
-      end
+      SetFlag(Flag.FAP7, true)
+      --AddItem("ITEM_IMPORTANT_BOATMANS_BONE")
+      --SetFlag(Flag.FE70, true)
       -- AP end
       if IsHaveItem("ITEM_IMPORTANT_MOD_ROD") then -- AP
         RemoveItem("ITEM_IMPORTANT_MOD_ROD")
       end
       SetFlag(Flag.FE99, true)
       SetFlag(Flag.FD9, true)
-      -- AP
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GREENLAD_GetBoatmanBone, true)
-      end
-      -- AP end
+      --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GREENLAD_GetBoatmanBone, true) -- AP
       RequestAutoSaveFromEvent()
     else
       CmdEventClosingMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_020_6")
@@ -77,13 +68,23 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
 end
 
 function Greenlad_House_SUB_0_SCENE_0010_010(BeginOverlap, table, ...)
+  eventInfo = EventStart(table, false)
+  targetActorId = eventInfo[1]
   -- AP
   if not GetFlag(Flag.FAP7) then
+    local actorId = ""
+    if GetMapTimeFrame() == MAPTIME_NIGHT then
+      actorId = "Greenlad_House_OldMan_Greenlad_01_L3"
+    else
+      actorId = "Greenlad_House_OldMan_Greenlad_01_L1"
+    end
+    SpawnNpc(actorId)
+    DisableEventFastForwardUI()
+    CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, 0.5, GetCurrentMapId())
+    EventEnd(eventInfo, "")
     return
   end
   -- AP end
-  eventInfo = EventStart(table, false)
-  targetActorId = eventInfo[1]
   if GetFlag(Flag.FS0) == false then
     local n = math.random(100, 1799)
     n = n / 100
@@ -203,7 +204,11 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP7) then
-    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    if GetFlag(Flag.FE69) then
+      Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    else
+      Greenlad_House_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    end
     return
   end
   -- AP end
@@ -228,7 +233,11 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP7) then
-    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    if GetFlag(Flag.FE69) then
+      Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    else
+      Greenlad_House_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    end
     return
   end
   -- AP end
@@ -269,7 +278,11 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP7) then
-    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    if GetFlag(Flag.FE69) then
+      Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    else
+      Greenlad_House_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    end
     return
   end
   -- AP end
@@ -303,7 +316,11 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_060(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP7) then
-    Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    if GetFlag(Flag.FE69) then
+      Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
+    else
+      Greenlad_House_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
+    end
     return
   end
   -- AP end

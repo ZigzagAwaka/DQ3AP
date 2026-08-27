@@ -214,8 +214,8 @@ function Domdora_Out_SearchEvent_Orichalcum(BeginOverlap, table, CanObtainItem, 
   SetVisibleActor(targetActorId, false)
   CmdMessage("NPC_Talk_Common_SEARCHOBJECT_GROUND_1")
   SearchObject_Important(eventInfo, TreasureId, ItemId)
-  --SetFlag(Flag.FE82, true)
-  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DOMDORA_GetOrichalcum, true)
+  --SetFlag(Flag.FE82, true) -- AP
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DOMDORA_GetOrichalcum, true) -- AP
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")
 end

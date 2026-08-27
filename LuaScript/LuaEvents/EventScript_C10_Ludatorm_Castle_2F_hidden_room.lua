@@ -19,7 +19,7 @@ function Ludatorm_Castle_2F_hidden_room_Treasure_Important(BeginOverlap, table, 
     CmdPlayOpenAnimSearchObj(eventInfo[1])
     CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_1")
     SearchObject_ShowMessage(GetTargetActorIdFromEventInfo(eventInfo), TreasureId, ItemId, ItemCount, Gold)
-    --[[
+    --[[ -- AP
     SetFlag(Flag.FE85, true)
     if GetFlag(Flag.FE87) == true then
       SetFlag(Flag.FE880, true)

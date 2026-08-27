@@ -47,12 +47,8 @@ function Jipang_House3_Ground_00(BeginOverlap, table, CanObtainItem, TreasureId,
   SetVisibleActor(targetActorId, false)
   SearchObject_Important(eventInfo, TreasureId, ItemId)
   -- AP
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlag(Flag.FE841, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
-  end
+  --SetFlag(Flag.FE841, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
   -- AP end
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")

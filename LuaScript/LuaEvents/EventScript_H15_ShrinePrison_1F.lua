@@ -546,11 +546,7 @@ function ShrinePrison_1F_MAIN_3_After_Reminiscence()
   -- AP
   AP.Log("ShrinePrison_1F_MAIN_3_After_Reminiscence called (Shrine of Shackles - Getting the Mountaincleaver)")
   AP.CheckLocation("ShrinePrison_1F_MAIN_3_After_Reminiscence")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem("ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER")
-  end
+  --AddItem("ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER")
   -- AP end
   local GhostRed02 = ""
   if GetMapTimeFrame() == MAPTIME_NIGHT then
@@ -569,11 +565,8 @@ function ShrinePrison_1F_MAIN_3_After_Reminiscence()
   CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
   SetDispMiniMap(true)
   -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlag(Flag.FE72, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHRINEPRISON_GetGaiaSword, true)
-  end
+  --SetFlag(Flag.FE72, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SHRINEPRISON_GetGaiaSword, true)
   -- AP end
   SetFlag(Flag.FD9, false)
   SetFlag(Flag.FE848, true)

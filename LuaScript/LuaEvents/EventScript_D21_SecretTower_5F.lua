@@ -739,11 +739,7 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
         -- AP
         AP.Log("SecretTower_5F_MAIN_0_BATTLE_END_0100_010 called (Citadel Tower - Xenion wish: Guns N' Buns)")
         AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_BOOK_1")
-        local ItemId = "ITEM_ARCHIPELAGO"
-        if ItemId == "ITEM_ARCHIPELAGO" then
-        else
-          AddItem("ITEM_USE_ITEM_NAUGHTY_BOOK")
-        end
+        --AddItem("ITEM_USE_ITEM_NAUGHTY_BOOK")
         -- AP end
         CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0120_010_2")
         CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0120_010_3")
@@ -762,12 +758,8 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
       -- AP
       AP.Log("SecretTower_5F_MAIN_0_BATTLE_END_0100_010 called (Citadel Tower - Xenion wish: More Buns N' Guns)")
       AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_BOOK_2")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        SetFlag(Flag.FE344, true)
-        AddItem("ITEM_IMPORTANT_VERY_NAUGHTY_BOOK")
-      end
+      --SetFlag(Flag.FE344, true)
+      --AddItem("ITEM_IMPORTANT_VERY_NAUGHTY_BOOK")
       -- AP end
       CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0130_010_2")
       CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0130_010_3")
@@ -796,11 +788,7 @@ function SecretTower_5F_MAIN_0_BATTLE_END_0100_010(BeginOverlap, table, ...)
       -- AP
       AP.Log("SecretTower_5F_MAIN_0_BATTLE_END_0100_010 called (Citadel Tower - Xenion wish: Powerful Weapon)")
       AP.CheckLocation("SecretTower_5F_MAIN_0_BATTLE_END_0100_010_WISH_SWORD")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_EQUIP_WEAPON_RUBISSS_SWORD")
-      end
+      --AddItem("ITEM_EQUIP_WEAPON_RUBISSS_SWORD")
       -- AP end
       CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0160_010_2")
       CmdMessage("NPC_Talk_SecretTower_5F_MAIN_0_BATTLE_END_0160_010_3")

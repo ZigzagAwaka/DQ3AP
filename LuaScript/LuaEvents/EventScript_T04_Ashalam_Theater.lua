@@ -133,11 +133,7 @@ function Ashalam_Theater_SUB_0_ACTOR_0520_020(BeginOverlap, table, ...)
   -- AP
   AP.Log("Ashalam_Theater_SUB_0_ACTOR_0520_020 called (Asham - Manager giving the Magic Bikini)")
   AP.CheckLocation("Ashalam_Theater_SUB_0_ACTOR_0520_020")
-  local APid = "ITEM_ARCHIPELAGO"
-  if APid == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem(itemId)
-  end
+  --AddItem(itemId)
   -- AP end
   SetFlag(Flag.FE136, true)
   CmdMessage("NPC_Talk_Ashalam_Theater_SUB_0_ACTOR_0520_030_1")

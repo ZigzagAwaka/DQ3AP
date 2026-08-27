@@ -65,21 +65,12 @@ function RubissTower_5FA_RubissStatue_00(BeginOverlap, table, CanObtainItem, Tre
       -- AP
       AP.Log("RubissTower_5FA_RubissStatue_00 called (Tower of Rubiss - Getting the Sacred Amulet)")
       AP.CheckLocation("RubissTower_5FA_RubissStatue_00")
-      local apItemId = "ITEM_ARCHIPELAGO"
-      if apItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET")
-      end
+      --AddItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET")
       -- AP end
       SetVisibleActor("BP_SearchEvent_Ground_Box_01", false)
       SetVisibleActorsTag("RubissStatue", false)
       SetFlag(Flag.FE230, true)
-      -- AP
-      if apItemId == "ITEM_ARCHIPELAGO" then
-      else
-        SetFlag(Flag.FE81, true)
-      end
-      -- AP end
+      --SetFlag(Flag.FE81, true) -- AP
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_RUBISSTOWER_Dispel, true)
       PlayBGM(GetCurrentMapBgmId(), 0)
       CmdFadeIn(EFadingPriorityTopMost, 0.5)

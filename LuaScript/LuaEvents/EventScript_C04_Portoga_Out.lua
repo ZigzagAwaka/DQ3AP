@@ -260,11 +260,7 @@ function Portoga_Out_SUB_0_ACTOR_1010_010(BeginOverlap, table, ...)
     -- AP
     AP.Log("Portoga_Out_SUB_0_ACTOR_1010_010 called (Portoga - Woman giving the Siren Sword)")
     AP.CheckLocation("Portoga_Out_SUB_0_ACTOR_1010_010")
-    local ItemId = "ITEM_ARCHIPELAGO"
-    if ItemId == "ITEM_ARCHIPELAGO" then
-    else
-      AddItem("ITEM_EQUIP_WEAPON_SIREN_SWORD")
-    end
+    --AddItem("ITEM_EQUIP_WEAPON_SIREN_SWORD")
     -- AP end
     SetFlag(Flag.FE108, true)
     RequestAutoSaveFromEvent()

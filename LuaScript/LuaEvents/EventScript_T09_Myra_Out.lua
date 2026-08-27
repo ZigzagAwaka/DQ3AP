@@ -207,8 +207,8 @@ function Myra_Out_SearchEvent_FaerieFlute(BeginOverlap, table, CanObtainItem, Tr
   SetVisibleActor(targetActorId, false)
   CmdMessage("NPC_Talk_Common_SEARCHOBJECT_GROUND_1")
   SearchObject_Important(eventInfo, TreasureId, ItemId)
-  --SetFlag(Flag.FE86, true)
-  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetFairyFlute, true)
+  --SetFlag(Flag.FE86, true) -- AP
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetFairyFlute, true) -- AP
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")
 end

@@ -239,8 +239,6 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE86, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetFairyFlute, true)
   elseif ItemId == "ITEM_EQUIP_WEAPON_SWORD_OF_KINGS" then
-    --SetFlag(Flag.FE875, true) -- npc talk flag, not needed
-    --SetFlag(Flag.FE876, true) -- npc talk flag, not needed
     --SetFlag(Flag.FE83, true) -- sword flag, not needed unless the sword is used for progression
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetKingSword, true)
   elseif ItemId == "ITEM_EQUIP_ACCESSORY_SACRED_AMULET" then
@@ -375,7 +373,7 @@ function AP.GetOption(OptionName)
     return nil
   end
   for line in file:lines() do
-    local key, value = string.match(line, "^([^:]+):%s*(.+)$")
+    local key, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "key : value"
     if key == OptionName then
       value = tonumber(value)
       client_options[OptionName] = value
@@ -387,7 +385,7 @@ function AP.GetOption(OptionName)
   return nil
 end
 
--- list of all predefined non randomized locations
+-- list of all predefined non randomized locations (not important for AP)
 local predefined_excluded_locations = {
   SEARCH_Aliahan_House3_1F_BOOKSHELF_0 = true,
   SEARCH_Reeve_House2_1F_EVENT_0 = true,

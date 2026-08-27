@@ -51,6 +51,15 @@ function Portoga_Castle_1F_MAIN_0_SCENE_0000_020(BeginOverlap, table, ...)
 end
 
 function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+  -- AP
+  if not GetFlag(Flag.FAP12) and GetFlag(Flag.FE64) and GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) then
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local pos_x = 5000
@@ -78,13 +87,9 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010 called (Portoga - King giving the Royal Missive)")
   AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_010")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-    SetFlag(Flag.FAP11, true)
-  else
-    AddItem("ITEM_IMPORTANT_ROYAL_MISSIVE")
-    SetFlag(Flag.FE63, true)
-  end
+  SetFlag(Flag.FAP11, true)
+  --AddItem("ITEM_IMPORTANT_ROYAL_MISSIVE")
+  --SetFlag(Flag.FE63, true)
   -- AP end
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_6")
   CmdMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_7")
@@ -97,12 +102,7 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
   CmdEventClosingMessage("NPC_Talk_Portoga_Castle_1F_MAIN_0_ACTOR_0110_010_11")
   ChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
   AudienceFinish(pos_x, pos_y, pos_z, offset)
-  -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_GetLetter, true)
-  end
-  -- AP end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_GetLetter, true) -- AP
   _retry(SYS_WaitStageCameraBlend)
   SetDispMiniMap(true)
   RequestAutoSaveFromEvent()
@@ -110,6 +110,15 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
 end
 
 function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
+  -- AP
+  if not GetFlag(Flag.FAP11) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP12) then
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   local pos_x = 5000
@@ -166,13 +175,9 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
   end
   -- AP
   AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 called (Portoga - King giving the Ship)")
-  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020\nPortoga_Castle_1F_MAIN_0_VOLUME_0010_010")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-    SetFlag(Flag.FAP12, true)
-  else
-    SetFlag(Flag.FE106, true)
-  end
+  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020")
+  SetFlag(Flag.FAP12, true)
+  --SetFlag(Flag.FE106, true)
   -- AP end
   ChangeMap("MAPLIST_C04R0501", "FromReality", ORIENTATION_DOWN)
   EventEnd(eventInfo, "")
@@ -313,12 +318,8 @@ function Portoga_Castle_1F_MAIN_0_SCENE_0000_010(BeginOverlap, table, ...)
   ChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
   AudienceFinish(pos_x, pos_y, pos_z, offset)
   -- AP
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlag(Flag.FE734, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_TalkWithPepper, true)
-  end
+  --SetFlag(Flag.FE734, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_TalkWithPepper, true)
   -- AP end
   _retry(SYS_WaitStageCameraBlend)
   SetDispMiniMap(true)
@@ -328,12 +329,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_060(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -351,12 +352,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_070(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -374,12 +375,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_080(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -395,12 +396,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_090(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -414,12 +415,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_100(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -435,12 +436,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_110(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -455,12 +456,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_120(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -476,12 +477,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_130(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -496,12 +497,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_140(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -516,12 +517,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_150(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -536,12 +537,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_160(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -556,12 +557,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_170(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -576,12 +577,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_180(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -595,12 +596,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_190(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -614,12 +615,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_200(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -634,12 +635,12 @@ end
 
 function Portoga_Castle_1F_MAIN_0_ACTOR_0110_210(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
-    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
-    return
-  end
   if not GetFlag(Flag.FAP11) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
+    return
+  end
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+    Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
   -- AP end

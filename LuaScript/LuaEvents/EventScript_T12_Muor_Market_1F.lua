@@ -334,12 +334,8 @@ function Muor_Market_1F_SUB_0_SCENE_0610_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("Muor_Market_1F_SUB_0_SCENE_0610_010 called (NPC giving Ortega's Helm)")
   AP.CheckLocation("Muor_Market_1F_SUB_0_SCENE_0610_010")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
-    CheckCreateLightHelm()
-  end
+  --AddItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
+  --CheckCreateLightHelm()
   -- AP end
   SetFlag(Flag.FE67, true) -- item flag can't be set, check for item in inventory instead
   SetFlag(Flag.FD10, false)

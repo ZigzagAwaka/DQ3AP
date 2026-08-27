@@ -123,20 +123,11 @@ function Mercado_Shop02_2F_RotoSword_02_0(BeginOverlap, table, ...)
   -- AP
   AP.Log("Mercado_Shop02_2F_RotoSword_02_0 called (Cantlin - Found Broken Sword)")
   AP.CheckLocation("Mercado_Shop02_2F_RotoSword_02_0")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem("ITEM_IMPORTANT_BROKEN_SWORD")
-    SetFlag(Flag.FE877, true)
-  end
+  --AddItem("ITEM_IMPORTANT_BROKEN_SWORD")
+  --SetFlag(Flag.FE877, true)
   -- AP end
   CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
-  -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MERCADO_GetBrokenSword, true)
-  end
-  -- AP end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MERCADO_GetBrokenSword, true) -- AP
   RequestAutoSaveFromEvent()
   EventEnd(eventInfo, "")
 end

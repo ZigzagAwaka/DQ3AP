@@ -408,14 +408,12 @@ function SpiritShrineEventStart()
   AP.Log("SpiritShrine_2F_SUB_0_SCENE_0010_010 called (Shrine of the Spirit - Faerie giving the Staff of Rain)")
   AP.CheckLocation("SpiritShrine_2F_SUB_0_SCENE_0010_010")
   SetFlag(Flag.FE87, true) -- can't be skiped or it will play the cutscene multiple times and can be avoided easily
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    AddItem(tagItemId2)
-    if GetFlag(Flag.FE85) == true then
-      SetFlag(Flag.FE880, true)
-    end
+  --[[
+  AddItem(tagItemId2)
+  if GetFlag(Flag.FE85) == true then
+    SetFlag(Flag.FE880, true)
   end
+  ]]
   -- AP end
   CmdSetNpcAnimation(faerie01, AnimationType.Act9, 1, EFlipbookPlayTypeStopEnd, true)
   HideMessageWindowPageFeedIcon()
@@ -449,12 +447,7 @@ function SpiritShrineEventStart()
   CmdSetNpcAnimation(faerie01, AnimationType.Act14, 1, EFlipbookPlayTypeStopEnd, true)
   CmdEventClosingMessage("NPC_Talk_SpiritShrine_2F_MAIN_0_ACTOR_0220_010_19")
   CmdSetNpcAnimation(faerie01, AnimationType.Act15, 1, EFlipbookPlayTypeStopEnd, true)
-  -- AP
-  if ItemId == "ITEM_ARCHIPELAGO" then
-  else
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SPIRITSHRINE_GetRainStick, true)
-  end
-  -- AP end
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SPIRITSHRINE_GetRainStick, true) -- AP
   SetPlayerLocation(moveParty1Pos2)
   Wait(0.1)
   TurnParty(1, 0)

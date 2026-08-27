@@ -45,26 +45,16 @@ function GaiaNavel_B4F_blue(BeginOverlap, table, ...)
       -- AP
       AP.Log("GaiaNavel_B4F_blue called (Gaia's Navel - Getting Zenithium)")
       AP.CheckLocation("GaiaNavel_B4F_blue")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_IMPORTANT_BLUE_METAL")
-      end
+      --AddItem("ITEM_IMPORTANT_BLUE_METAL")
       -- AP end
       if IsHaveItem("ITEM_IMPORTANT_WRECKING_BALL") then -- AP
         RemoveItem("ITEM_IMPORTANT_WRECKING_BALL")
       end
       SetFlag(Flag.FE859, true) -- item flag can't be set, check for item in inventory instead
       -- AP
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        CheckCreateLightHelm()
-      end
+      --CheckCreateLightHelm()
       if GetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal) == false then
-        if ItemId == "ITEM_ARCHIPELAGO" then
-        else
-          SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal, true)
-        end
+        --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal, true)
       end
       -- AP end
       RequestAutoSaveFromEvent()

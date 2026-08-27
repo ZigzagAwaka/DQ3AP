@@ -12,8 +12,9 @@ function HolyShrine2FPriest(targetActorId)
   local itemImportantRainbowDrop = "ITEM_IMPORTANT_RAINBOW_DROP"
   local itemImportantSunStone = "ITEM_IMPORTANT_SUNSTONE"
   local itemEquipWeaponStaffOfRain = "ITEM_EQUIP_WEAPON_STAFF_OF_RAIN"
+  -- AP: some GetFlag replaced with their IsHaveItem equivalent
   local result = GetFlag(Flag.FE81) and GetFlag(Flag.FE85) --[[and GetFlag(Flag.FE87)]] and IsHaveItem(itemEquipWeaponStaffOfRain)
-  if result == true then
+  if result == true and not GetFlag(Flag.FAP4) then -- AP
     RequestPreloadEventScreenShot("EVENTSCREENSHOT_RubissTower002")
     local partyLivingNum = CheckLivingMemberNum()
     local npcPos = GetNpcLocation(targetActorId)
@@ -135,13 +136,9 @@ function HolyShrine2FPriest(targetActorId)
     -- AP
     AP.Log("HolyShrine_2F_MAIN_0_ACTOR_0120_010 called (Sanctum - Priest giving the Rainbow Drop)")
     AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
-    local ItemId = "ITEM_ARCHIPELAGO"
-    if ItemId == "ITEM_ARCHIPELAGO" then
-      SetFlag(Flag.FAP4, true)
-    else
-      AddItem(itemImportantRainbowDrop)
-      SetFlag(Flag.FE88, true)
-    end
+    SetFlag(Flag.FAP4, true)
+    --AddItem(itemImportantRainbowDrop)
+    --SetFlag(Flag.FE88, true)
     -- AP end
     Wait(0.5)
     CmdMoveNpcRelativeDetail("Party1", {
@@ -170,12 +167,7 @@ function HolyShrine2FPriest(targetActorId)
     CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
     SetDispMiniMap(true)
     SetVisibleCoffin(true)
-    -- AP
-    if ItemId == "ITEM_ARCHIPELAGO" then
-    else
-      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_HOLYSHRINE_GetRainbowDrop, true)
-    end
-    -- AP end
+    --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_HOLYSHRINE_GetRainbowDrop, true) -- AP
     RequestAutoSaveFromEvent()
   else
     CmdTurnNpc(targetActorId, NPC_D_TO_PLAYER)
@@ -213,11 +205,8 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0120_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) then
-    eventInfo = EventStart(table, false)
-    targetActorId = eventInfo[1]
-    HolyShrine2FPriest(targetActorId)
-    EventEnd(eventInfo, "")
+  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") then
+    HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end
   -- AP end
@@ -229,11 +218,8 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) then
-    eventInfo = EventStart(table, false)
-    targetActorId = eventInfo[1]
-    HolyShrine2FPriest(targetActorId)
-    EventEnd(eventInfo, "")
+  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") then
+    HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end
   -- AP end

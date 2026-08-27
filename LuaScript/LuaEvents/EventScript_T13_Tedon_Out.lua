@@ -166,15 +166,11 @@ function Tedon_Out_MAIN_0_BATTLE_END_0120_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("Tedon_Out_MAIN_0_BATTLE_END_0120_010 called (Get Green orb boss event)")
   AP.CheckLocation("Tedon_Out_MAIN_0_BATTLE_END_0120_010")
-  local ItemId = "ITEM_ARCHIPELAGO"
-  if ItemId == "ITEM_ARCHIPELAGO" then
-    SetFlag(Flag.FE73, true) -- green orb flag is not possible to skip or else it will softlock the player into an infinite boss battle
-  else
-    AddItem("ITEM_IMPORTANT_GREEN_ORB")
-    SetFlag(Flag.FE73, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
-    CheckGopEnum_MAIN_MULTI_GetAllOrb()
-  end
+  SetFlag(Flag.FE73, true) -- green orb flag is not possible to skip or else it will softlock the player into an infinite boss battle
+  --AddItem("ITEM_IMPORTANT_GREEN_ORB")
+  --SetFlag(Flag.FE73, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
+  --CheckGopEnum_MAIN_MULTI_GetAllOrb()
   -- AP end
   SetEventVolumeEnabled("Tedon_Out_Prisoner_01_L3_Volume", false)
   DestroyPartyClone()

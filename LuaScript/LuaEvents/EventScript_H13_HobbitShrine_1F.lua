@@ -501,11 +501,7 @@ function HobbitShrine_1F_SUB_0_SCENE_0020_010(BeginOverlap, table, ...)
       -- AP
       AP.Log("HobbitShrine_1F_SUB_0_SCENE_0020_010 called (Shrine of the Dwarf - Dwarf giving the Auroral Helm)")
       AP.CheckLocation("HobbitShrine_1F_SUB_0_SCENE_0020_010")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      if ItemId == "ITEM_ARCHIPELAGO" then
-      else
-        AddItem("ITEM_EQUIP_HELMET_LIGHT_HELM")
-      end
+      --AddItem("ITEM_EQUIP_HELMET_LIGHT_HELM")
       -- AP end
       RemoveItem("ITEM_EQUIP_HELMET_ORTEGAS_HELM")
       RemoveItem("ITEM_IMPORTANT_BLUE_METAL")

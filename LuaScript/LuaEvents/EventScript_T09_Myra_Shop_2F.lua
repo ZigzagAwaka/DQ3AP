@@ -349,12 +349,8 @@ function SwordSmithEvent(targetActorId)
       -- AP
       AP.Log("Myra_Shop_2F_SUB_0_ACTOR_0120_010 called (Kol - Blacksmith giving the Sword of Kings)")
       AP.CheckLocation("Myra_Shop_2F_SUB_0_ACTOR_0120_010")
-      local apItemId = "ITEM_ARCHIPELAGO"
-      if apItemId == "ITEM_ARCHIPELAGO" then
-        SetFlag(Flag.FAP5, true)
-      else
-        AddItem("ITEM_EQUIP_WEAPON_SWORD_OF_KINGS")
-      end
+      SetFlag(Flag.FAP5, true)
+      --AddItem("ITEM_EQUIP_WEAPON_SWORD_OF_KINGS")
       -- AP end
       RemoveItem("ITEM_IMPORTANT_BROKEN_SWORD")
       RemoveItem("ITEM_IMPORTANT_ORICHALCUM")
@@ -534,7 +530,7 @@ function Myra_Shop_2F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   -- AP
-  if not GetFlag(Flag.FAP5) then
+  if not GetFlag(Flag.FAP5) then -- if IsHaveItem is added in SwordSmithEvent condition to get the sword of kings then also add the check here!
     SwordSmithEvent(targetActorId)
   else
     CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0110_010_1")
