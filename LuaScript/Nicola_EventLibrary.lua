@@ -609,7 +609,6 @@ end
 function CmdCallChurchUI(ChurchId)
   CallChurchUI(ChurchId, -1)
   _retry(SYS_WaitChurchUI)
-  AP.GiveItemsIfAvailable() -- AP
 end
 
 function StartChurchRestartGame()

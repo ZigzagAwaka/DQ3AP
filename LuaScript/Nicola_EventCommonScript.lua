@@ -342,6 +342,9 @@ function CmdTreasure_Enemy(eventInfo, CanObtainItem, TreasureId, ItemId, ItemCou
     AP.Log("CmdTreasure_Enemy called with TreasureId : " .. tostring(TreasureId) .. ", Item : " .. tostring(ItemId) .. ", Count : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))
     if not AP.IsLocationExcluded(TreasureId) then
       AP.CheckLocation(TreasureId)
+      PlaySEUI("SYSSE_TD_TREASURE_BOX")
+      CmdPlayOpenAnimSearchObj(eventInfo[1])
+      CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_1")
       ItemId = "ITEM_ARCHIPELAGO"
       SetTagItemId(ItemId)
       CmdLoadItemIcon(ItemId)

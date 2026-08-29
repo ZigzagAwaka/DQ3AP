@@ -96,12 +96,10 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 
 Other modifications were implemented to nicely integrate Archipelago :
 
-- Parts of the game were patched to skip or ignore some important story flags.
-    - Some major NPC (that gives an important item) may be available to speak with multiple times instead of just once so you'll not miss the check from this NPC.
-    - Some scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
-- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom (or a Chimera Wing) to teleport to a previously explored location and the Ship and Ramia will be teleported near you.
+- Some story scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
+- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom (or a Chimera Wing) to warp to a previously explored location and the Ship and Ramia will be teleported near you.
 - Merchantburg is fully excluded from the logic except the containers available in the final stage of the town. This means that the Yellow Orb check is excluded but the Yellow Orb is still randomized. Checking the Yellow Orb at it's vanilla location will give you some gold instead.
-- Gifts from the Aliahan King at the start of the game are not randomized, and receiving those gifts will also give you a pack of 10 Chimera Wings for easier early game progression until you level up and learn Zoom. You can use those to return to previously explored areas or to teleport the Ship/Ramia near you in early Ship/Ramia seeds. Moreover, speaking to the King will also gives you the main World Map and will sets a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
+- Gifts from the Aliahan King at the start of the game are not randomized, and receiving those gifts will also give you a pack of 10 Chimera Wings for easier early game progression until you level up and learn Zoom. You can use those to return to previously explored areas or to teleport the Ship/Ramia near you in early Ship/Ramia seeds. Moreover, speaking to the King will also gives you the main World Map and will set a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
 
 ## Feedbacks and issues
 
