@@ -579,8 +579,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   if battleEventId ~= nil and battleEventId ~= "" and bDoRetry == false and (isLose == false or isBattleRoad == true or battleEventId == lancelLoseEventId) then
     print("OnEventBattleEnd " .. battleEventId)
     -- AP
-    if isEnemyTrapFromAP then
-    else
+    if not isEnemyTrapFromAP then
       isPlayEvent = CallBattleEndEvent(battleEventId)
     end
     -- AP end
@@ -615,7 +614,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  if not bDoRetry and not isEnemyTrapFromAP then
+  if not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent and not isEnemyTrapFromAP then
     AP.GiveItemsIfAvailable()
   end
   -- AP end

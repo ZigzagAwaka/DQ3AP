@@ -53,9 +53,9 @@ function GaiaNavel_B4F_blue(BeginOverlap, table, ...)
       SetFlag(Flag.FE859, true) -- item flag can't be set, check for item in inventory instead
       -- AP
       --CheckCreateLightHelm()
-      if GetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal) == false then
+      --if GetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal) == false then
         --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GAIANAVEL_GetBlueMetal, true)
-      end
+      --end
       -- AP end
       RequestAutoSaveFromEvent()
     else

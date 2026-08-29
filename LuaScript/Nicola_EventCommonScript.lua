@@ -91,7 +91,6 @@ function SearchObject_Important(eventInfo, TreasureId, ItemId, bgmJingleId)
     CmdPlayItemGetNoWait(eventInfo[1], TreasureId)
     PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-    AP.GiveItemsIfAvailable(eventInfo[1], TreasureId)
     return
   end
   -- AP end
