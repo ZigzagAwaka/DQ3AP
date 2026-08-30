@@ -353,7 +353,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Pyramid] Pot at the start of the loop path B1": Info(300), #SEARCH_Pyramid_B1F_POT_0
     "[Pyramid] Pot in the top right corner of the loop path B1": Info(301), #SEARCH_Pyramid_B1F_POT_1
     #"[Pyramid] Event": Info(302), #SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0 # no items here
-    "[Pyramid] Coffin in the secret underground room B2": Info(303), #SEARCH_Pyramid_B2FEVENT_COFFIN_0
+    "[Pyramid] Coffin in the secret underground room B2": Info(303), #Pyramid_B2F_Coffin_00
     "[Pyramid] Hidden Ground at the top of the Pyramid": Info(304, rules.HAS_MAGIC_KEY), #SEARCH_Pyramid_out_GROUND_0
     # ----- Portoga -----
     "[Portoga] Hidden Ground at the back of the Item Shop": Info(305, rules.HAS_THIEF_KEY), #SEARCH_Portoga_Out_GROUND_0
@@ -467,7 +467,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Wayfarer's Shrine] Pot in the bottom left corner": Info(401), #SEARCH_TravelersShrine_1F_POT_0
     # ----- Theddon -----
     "[Theddon] Hidden Ground in the middle of the right big poison marsh": Info(402), #SEARCH_Tedon_Out_GROUND_0
-    "[Theddon] Hidden Ground on the cross in the bottom right area": Info(403, rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Tedon_Out_GROUND_1
+    "[Theddon] Hidden Ground on the cross in the bottom right area": Info(403, rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Tedon_Out_GROUND_1
     "[Theddon] Pot on the right of the right big poison marsh": Info(404), #SEARCH_Tedon_Out_POT_0
     "[Theddon] Storage in the bottom left house (day)": Info(405), #SEARCH_Tedon_Out_STORAGE_0
     "[Theddon] Chest in the bottom left house (day)": Info(406), #SEARCH_Tedon_Out_TREASURE_IMPORTANT_0
@@ -499,11 +499,11 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Jipang] On ground in top left house after talking to Kol's blacksmith": Info(430, rules.HAS_SHIP & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_BIRD), #SEARCH_Jipang_House3_GROUND_0
     "[Jipang] Pot 1 in basement room near the top left house": Info(431), #SEARCH_Jipang_Storehouse_POT_0
     "[Jipang] Pot 2 in basement room near the top left house": Info(432), #SEARCH_Jipang_Storehouse_POT_1
-    "[Jipang] Pot 3 in basement room near the top left house": Info(433), #SEARCH_Jipang_Storehouse_POT_2
+    "[Jipang] Pot 3 in basement room near the top left house after defeating Orochi": Info(433), #SEARCH_Jipang_Storehouse_POT_2
     #"[Jipang] Pot 4 in basement room near the top left house": Info(434), #SEARCH_Jipang_Storehouse_POT_3 # no items here
     "[Jipang] Hidden Ground near the right in the well": Info(435), #SEARCH_Jipang_Well_GROUND_0
-    "[Jipang] Barrel on the back right side of the Monster Arena": Info(436, rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Jipang_BattleRoad_BARREL_0
-    "[Jipang] Pot near stairs in Monster Arena": Info(437, rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Jipang_BattleRoad_POT_0
+    "[Jipang] Barrel on the back right side of the Monster Arena": Info(436, rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Jipang_BattleRoad_BARREL_0
+    "[Jipang] Pot near stairs in Monster Arena": Info(437, rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Jipang_BattleRoad_POT_0
     # ----- Pimiko's Palace -----
     "[Pimiko's Palace] Pot in top left room": Info(438), #SEARCH_Jipang_Castle_Room_POT_0
     "[Pimiko's Palace] Pot 1 in right room": Info(439), #SEARCH_Jipang_Castle_Room_POT_1
@@ -566,7 +566,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Lozamii] Bookshelf 4 in right house": Info(490), #SEARCH_Luzami_House1_1F_BOOKSHELF_3
     "[Lozamii] Bookshelf 5 in right house": Info(491), #SEARCH_Luzami_House1_1F_BOOKSHELF_4
     "[Lozamii] Drawer in right house": Info(492), #SEARCH_Luzami_House1_1F_DRAWER_0
-    "[Lozamii] Hidden Ground near the telescope in right house": Info(493, rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Luzami_House1_2F_GROUND_0
+    "[Lozamii] Hidden Ground near the telescope in right house": Info(493, rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Luzami_House1_2F_GROUND_0
     "[Lozamii] Bookshelf 1 in top house": Info(494), #SEARCH_Luzami_House2_BOOKSHELF_0
     "[Lozamii] Bookshelf 2 in top house": Info(495), #SEARCH_Luzami_House2_BOOKSHELF_1
     # ----- Merchantburg -----
@@ -846,7 +846,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Cantlin] Hidden Ground in top left corner": Info(744), #SEARCH_Mercado_Out_GROUND_0
     "[Cantlin] Hidden Ground in bottom left area": Info(745), #SEARCH_Mercado_Out_GROUND_1
     "[Cantlin] Hidden Ground in bottom right area behind the big torch pot": Info(746), #SEARCH_Mercado_Out_GROUND_2
-    "[Cantlin] Hidden Ground near flowers of left house": Info(747, rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Mercado_Out_GROUND_3
+    "[Cantlin] Hidden Ground near flowers of left house": Info(747, rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY), #SEARCH_Mercado_Out_GROUND_3
     "[Cantlin] Barrel near bottom left area": Info(748), #SEARCH_Mercado_Out_BARREL_0
     "[Cantlin] Pot near bottom right area": Info(749), #SEARCH_Mercado_Out_POT_1
     "[Cantlin] Pot in top left corner": Info(750), #SEARCH_Mercado_Out_POT_2

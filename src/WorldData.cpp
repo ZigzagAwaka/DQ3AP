@@ -340,7 +340,7 @@ const std::unordered_map<std::string, int> WorldData::locations =
     {"SEARCH_Pyramid_B1F_POT_0", 300},
     {"SEARCH_Pyramid_B1F_POT_1", 301},
     //{"SEARCH_Pyramid_B2FEVENT_BROKENPILLAR_0", 302},
-    {"SEARCH_Pyramid_B2FEVENT_COFFIN_0", 303},
+    {"Pyramid_B2F_Coffin_00", 303},
     {"SEARCH_Pyramid_out_GROUND_0", 304},
     // ----- Portoga -----
     {"SEARCH_Portoga_Out_GROUND_0", 305},

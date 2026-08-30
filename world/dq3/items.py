@@ -224,17 +224,17 @@ ALL_ITEMS: dict[str, Info] = {
     "Sizeable Scissors": Info(245), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
     "Mountaincleaver": Info(250, ItemClassification.progression, quantity=2), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
     "Thunderbolt Blade": Info(252), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
-    "Headsman's Axe": Info(260, quantity=2), #ITEM_EQUIP_WEAPON_HEADSMANS_AXE
+    "Headsman's Axe": Info(260, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_HEADSMANS_AXE
     "Staff of Rain": Info(282, ItemClassification.progression), #ITEM_EQUIP_WEAPON_STAFF_OF_RAIN
     "Sword of Kings": Info(287, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_SWORD_OF_KINGS
     "Sword of Ruin": Info(288), #ITEM_EQUIP_WEAPON_SWORD_OF_RUIN
     "Demon Spear": Info(290), #ITEM_EQUIP_WEAPON_DEMON_SPEAR
     "Blizzard Blade": Info(293, quantity=3), #ITEM_EQUIP_WEAPON_BLIZZARD_BLADE
     "Staff of Sentencing": Info(297, quantity=2), #ITEM_EQUIP_WEAPON_STAFF_OF_SENTENCING
-    "Stormlord's Sword": Info(299), #ITEM_EQUIP_WEAPON_STORMLORDS_SWORD
+    "Stormlord's Sword": Info(299, ItemClassification.useful), #ITEM_EQUIP_WEAPON_STORMLORDS_SWORD
     "Scourge Whip": Info(302, quantity=2), #ITEM_EQUIP_WEAPON_SCOURGE_WHIP
     "Double-Edged Sword": Info(304), #ITEM_EQUIP_WEAPON_DOUBLE-EDGED_SWORD
-    "Bastard Sword": Info(306, quantity=2), #ITEM_EQUIP_WEAPON_BASTARD_SWORD
+    "Bastard Sword": Info(306, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_BASTARD_SWORD
     "Staff of Strife": Info(308, quantity=2), #ITEM_EQUIP_WEAPON_STAFF_OF_STRIFE
     "Empress' Whip": Info(309), #ITEM_EQUIP_WEAPON_EMPRESSS_WHIP
     "Poker": Info(314), #ITEM_EQUIP_WEAPON_GODLY_POKER
@@ -262,7 +262,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Ice Shield": Info(239, quantity=3), #ITEM_EQUIP_SHIELD_ICE_SHIELD
     "Magic Shield": Info(255, quantity=2), #ITEM_EQUIP_SHIELD_MAGIC_SHIELD
     "Hero's Shield": Info(294, ItemClassification.useful), #ITEM_EQUIP_SHIELD_HEROS_SHIELD
-    "Silver Shield": Info(298), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
+    "Silver Shield": Info(298, ItemClassification.useful), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
     "Shield of Shame": Info(312), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
     "Dragon Shield": Info(325, quantity=2), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
     "Goddess Shield": Info(327, ItemClassification.useful), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
@@ -284,14 +284,14 @@ ALL_ITEMS: dict[str, Info] = {
     "Scholar's Cap": Info(204, quantity=2), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
     "Thief's Turban": Info(226, quantity=3), #ITEM_EQUIP_HELMET_THIEFS_TURBAN
     "Iron Mask": Info(237), #ITEM_EQUIP_HELMET_IRON_MASK
-    "Mythril Helm": Info(254), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
+    "Mythril Helm": Info(254, ItemClassification.useful), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
     "Thinking Cap": Info(257, quantity=3), #ITEM_EQUIP_HELMET_THINKING_CAP
     "Hapless Helm": Info(261, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
     "Rabbit Ears": Info(275, quantity=2), #ITEM_EQUIP_HELMET_BUNNY_EARS
     "Auroral Helm": Info(284, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_HELMET_LIGHT_HELM
     "Heavenly Helm": Info(313), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
     "Duplic Hat": Info(330), #ITEM_EQUIP_HELMET_DUPLIC_HAT
-    "Great Helm": Info(370), #ITEM_EQUIP_HELMET_GREAT_HELM
+    "Great Helm": Info(370, ItemClassification.useful), #ITEM_EQUIP_HELMET_GREAT_HELM
     # EQUIPMENT ARMORS
     "Training Togs": Info(5, quantity=6), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
     "Wayfarer's Clothes": Info(29, quantity=4), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
@@ -320,7 +320,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Flowing Dress": Info(259, quantity=2), #ITEM_EQUIP_ARMOR_FLOWING_DRESS
     "Dragon Mail": Info(262), #ITEM_EQUIP_ARMOR_DRAGON_MAIL
     "Chain Mail": Info(265, quantity=2), #ITEM_EQUIP_ARMOR_CHAIN_MAIL
-    "Magic Bikini": Info(272), #ITEM_EQUIP_ARMOR_MAGIC_BIKINI
+    "Magic Bikini": Info(272, ItemClassification.useful), #ITEM_EQUIP_ARMOR_MAGIC_BIKINI
     "Dark Robe": Info(278, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DARK_ROBE
     "Hate Mail": Info(289), #ITEM_EQUIP_ARMOR_INFERNAL_ARMOUR
     "Angel's Robe": Info(300, quantity=2), #ITEM_EQUIP_ARMOR_ANGELS_ROBE
@@ -332,7 +332,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Stealth Suit": Info(354, quantity=2), #ITEM_EQUIP_ARMOR_STEALTH_SUIT
     "Garish Garb": Info(360), #ITEM_EQUIP_ARMOR_GARISH_GARB
     "Wizard's Robe": Info(362, quantity=2), #ITEM_EQUIP_ARMOR_WIZARDS_ROBE
-    "Dragon Robe": Info(366), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
+    "Dragon Robe": Info(366, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
     "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
     "Blessed Bikini": Info(371, ItemClassification.useful), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
     # EQUIPMENT ACCESSORIES
