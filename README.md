@@ -63,6 +63,7 @@ The game will cache the received items then give them all to the player when one
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
 - The player talks to a Priest of any location by loading a save file from the title screen
+- The player uses the spell "Peep" when not being next to a chest [check mods compatibility for this one!]
 
 *Planned : Some other ways to give items are being considered and will be work on in future releases.*
 
@@ -91,6 +92,10 @@ If you don't want to walk back to previous areas, then you can collect and use a
 ### Is there a location tracker available ?
 
 For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker).
+
+### What about other mods compatibility ?
+
+Most other mods should be compatible, but if you want to learn more about this please check [this document here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/ModsCompatibility.md) describing mods compatibility in details.
 
 ### What other modifications are being made to the game ?
 
