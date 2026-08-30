@@ -60,28 +60,6 @@ local random_pandora = {
   "BATTLE_EVENT_GRANDRAGON_PANDORABOX_2",
 }
 
-function AP.IsBattleIdEnemyTrap(BattleId)
-  if BattleId == nil or BattleId == "" then
-    return false
-  end
-  for _, canniboxId in ipairs(random_cannibox) do
-    if canniboxId == BattleId then
-      return true
-    end
-  end
-  for _, mimicId in ipairs(random_mimic) do
-    if mimicId == BattleId then
-      return true
-    end
-  end
-  for _, pandoraId in ipairs(random_pandora) do
-    if pandoraId == BattleId then
-      return true
-    end
-  end
-  return false
-end
-
 -- returns a possible enemy battle id corresponding to the given enemy name
 function AP.GetBattleIdFromEnemyName(enemyName)
   if enemyName == "CANNIBOX" then

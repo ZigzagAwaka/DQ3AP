@@ -497,7 +497,6 @@ end
 function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   print("TransitionBattleToLevel Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, _orientation, isLose, isLoad, bDoAutoSave, bDoRetry, battleEventId = ...
-  local isEnemyTrapFromAP = AP.IsBattleIdEnemyTrap(battleEventId) -- AP
   StartTransition(_mapId)
   local isBattleRoad = IsBattleRoad()
   MapTimeNotifyStartSystemProcessing()
@@ -578,11 +577,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   local isPlayEvent = false
   if battleEventId ~= nil and battleEventId ~= "" and bDoRetry == false and (isLose == false or isBattleRoad == true or battleEventId == lancelLoseEventId) then
     print("OnEventBattleEnd " .. battleEventId)
-    -- AP
-    if not isEnemyTrapFromAP then
-      isPlayEvent = CallBattleEndEvent(battleEventId)
-    end
-    -- AP end
+    isPlayEvent = CallBattleEndEvent(battleEventId)
   end
   local isPlayLancelLoseEvent = isPlayEvent and battleEventId == lancelLoseEventId
   local isCallChurchUI = isLose == true and isBattleRoad == false and bDoRetry == false and isPlayLancelLoseEvent == false
@@ -614,7 +609,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  if not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent and not isEnemyTrapFromAP and not isPlayEvent then
+  if not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent and not isPlayEvent then
     AP.GiveItemsIfAvailable()
   end
   -- AP end

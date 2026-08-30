@@ -372,7 +372,9 @@ end
 function Treasure_EnemyEnd(BeginOverlap, table, SearchObjectName, TreasureId, ItemId, ItemCount, Gold, EnemyId)
   local eventInfo = EventStart(table, "")
   print("TreasureEnemyEnd execute, SearchObjectName : " .. tostring(SearchObjectName) .. ", TreasureId : " .. tostring(TreasureId) .. ", ItemId : " .. tostring(ItemId) .. ", ItemCount : " .. tostring(ItemCount) .. ", Gold : " .. tostring(Gold) .. ", EnemyId : " .. tostring(EnemyId))
-  CmdPlayOpenAnimSearchObj(SearchObjectName)
+  if SearchObjectName ~= nil and SearchObjectName ~= "" then -- AP: only call CmdPlayOpenAnimSearchObj for valid SearchObjectName!
+    CmdPlayOpenAnimSearchObj(SearchObjectName)
+  end
   CmdFadeInAfterEventBattle()
   EventEnd(eventInfo, "")
 end
