@@ -208,19 +208,19 @@ function AP.SetSpecialFlags(ItemId)
     --SetFlag(Flag.FE877, true) -- can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MERCADO_GetBrokenSword, true)
   elseif ItemId == "ITEM_EQUIP_WEAPON_STAFF_OF_RAIN" then
-    --SetFlag(Flag.FE87, true) -- can't be set, check for item in inventory instead
+    --SetFlag(Flag.FE87, true) -- can be avoid easily, check for item in inventory instead
     if GetFlag(Flag.FE85) == true then
       SetFlag(Flag.FE880, true)
     end
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_SPIRITSHRINE_GetRainStick, true)
   elseif ItemId == "ITEM_IMPORTANT_FAERIE_FLUTE" then
-    SetFlag(Flag.FE86, true)
+    --SetFlag(Flag.FE86, true) -- can be avoid easily, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetFairyFlute, true)
   elseif ItemId == "ITEM_EQUIP_WEAPON_SWORD_OF_KINGS" then
     --SetFlag(Flag.FE83, true) -- sword flag, not needed unless the sword is used for progression
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_GetKingSword, true)
   elseif ItemId == "ITEM_EQUIP_ACCESSORY_SACRED_AMULET" then
-    SetFlag(Flag.FE81, true)
+    --SetFlag(Flag.FE81, true) -- can be avoid easily, check for item in inventory instead
   elseif ItemId == "ITEM_IMPORTANT_VERY_NAUGHTY_BOOK" then
     SetFlag(Flag.FE344, true)
   end

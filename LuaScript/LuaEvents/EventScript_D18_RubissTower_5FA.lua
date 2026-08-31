@@ -43,7 +43,8 @@ function RubissTower_5FA_RubissStatue_00(BeginOverlap, table, CanObtainItem, Tre
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
   TurnParty(1, 0)
-  if GetFlag(Flag.FE86) == true then
+  --if GetFlag(Flag.FE86) == true then
+  if IsHaveItem("ITEM_IMPORTANT_FAERIE_FLUTE") then -- AP
     CmdMessage("NPC_Talk_RubissTower_5FA_SearchObj_RubissStatue_1")
     CmdMessage("NPC_Talk_RubissTower_5FA_SearchObj_RubissStatue_2")
     SetTagItemId("ITEM_IMPORTANT_FAERIE_FLUTE")
@@ -70,7 +71,7 @@ function RubissTower_5FA_RubissStatue_00(BeginOverlap, table, CanObtainItem, Tre
       SetVisibleActor("BP_SearchEvent_Ground_Box_01", false)
       SetVisibleActorsTag("RubissStatue", false)
       SetFlag(Flag.FE230, true)
-      --SetFlag(Flag.FE81, true) -- AP
+      SetFlag(Flag.FE81, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_RUBISSTOWER_Dispel, true)
       PlayBGM(GetCurrentMapBgmId(), 0)
       CmdFadeIn(EFadingPriorityTopMost, 0.5)

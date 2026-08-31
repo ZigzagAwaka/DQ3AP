@@ -13,7 +13,8 @@ function HolyShrine2FPriest(targetActorId)
   local itemImportantSunStone = "ITEM_IMPORTANT_SUNSTONE"
   local itemEquipWeaponStaffOfRain = "ITEM_EQUIP_WEAPON_STAFF_OF_RAIN"
   -- AP: some GetFlag replaced with their IsHaveItem equivalent
-  local result = GetFlag(Flag.FE81) and GetFlag(Flag.FE85) --[[and GetFlag(Flag.FE87)]] and IsHaveItem(itemEquipWeaponStaffOfRain)
+  --local result = GetFlag(Flag.FE81) and GetFlag(Flag.FE85) --[[and GetFlag(Flag.FE87)]] and IsHaveItem(itemEquipWeaponStaffOfRain)
+  local result = IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") -- AP
   if result == true and not GetFlag(Flag.FAP4) then -- AP
     RequestPreloadEventScreenShot("EVENTSCREENSHOT_RubissTower002")
     local partyLivingNum = CheckLivingMemberNum()
@@ -205,7 +206,7 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0120_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") then
+  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
     HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end
@@ -218,7 +219,7 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") then
+  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
     HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end
