@@ -142,7 +142,8 @@ function SwordSmithEvent(targetActorId)
   local callShopUI = false
   if GetFlag(Flag.FE83) == true then
     callShopUI = true
-  elseif GetFlag(Flag.FE841) == true then
+  --elseif GetFlag(Flag.FE841) == true then
+  elseif IsHaveItem("ITEM_IMPORTANT_HAMMER_OF_GAIA") or GetFlag(Flag.FE854) then -- AP: blacksmith event starts if you have the hammer in your inventory or if the hammer was already given to the blacksmit(FE854)
     if GetFlag(Flag.FE854) == false then
       local itemId = "ITEM_IMPORTANT_HAMMER_OF_GAIA"
       SwordSmithSetEventStart(false, true)
@@ -168,14 +169,17 @@ function SwordSmithEvent(targetActorId)
       SetTagItemId(itemId)
       CmdMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_020_6")
       CmdSetNpcAnimation(targetActorId, AnimationType.Act3, 1, EFlipbookPlayTypeStopEnd, true)
-      if GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE82) == true then
+      --if GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE82) == true then
+      if GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") and IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") then -- AP
         CmdMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_020_7")
         CloseMessage()
       else
         CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_020_7")
       end
       CmdSetNpcAnimation(targetActorId, AnimationType.Act4, 1, EFlipbookPlayTypeAutoResetIdle, false)
-      RemoveItem(itemId)
+      if IsHaveItem(itemId) then -- AP
+        RemoveItem(itemId)
+      end
       SetFlag(Flag.FE854, true)
       SetFlag(Flag.FF0, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MYRA_ChangeShopItem, true)
@@ -184,7 +188,8 @@ function SwordSmithEvent(targetActorId)
     else
       callShopUI = true
     end
-    if CheckHeroLiving() == true and GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE82) == true then
+    --if CheckHeroLiving() == true and GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE82) == true then
+    if CheckHeroLiving() == true and GetFlag(Flag.FE876) == false and GetFlag(Flag.FE875) == false and IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") and IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") then -- AP
       local isSwordSmithSetEventStart = false
       if GetFlag(Flag.FF0) == false then
         isSwordSmithSetEventStart = true
@@ -349,11 +354,14 @@ function SwordSmithEvent(targetActorId)
       -- AP
       AP.Log("Myra_Shop_2F_SUB_0_ACTOR_0120_010 called (Kol - Blacksmith giving the Sword of Kings)")
       AP.CheckLocation("Myra_Shop_2F_SUB_0_ACTOR_0120_010")
-      SetFlag(Flag.FAP5, true)
       --AddItem("ITEM_EQUIP_WEAPON_SWORD_OF_KINGS")
       -- AP end
-      RemoveItem("ITEM_IMPORTANT_BROKEN_SWORD")
-      RemoveItem("ITEM_IMPORTANT_ORICHALCUM")
+      if IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") then -- AP
+        RemoveItem("ITEM_IMPORTANT_BROKEN_SWORD")
+      end
+      if IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") then -- AP
+        RemoveItem("ITEM_IMPORTANT_ORICHALCUM")
+      end
       SetFlag(Flag.FE875, true)
       SetFlag(Flag.FE876, true)
       SetFlag(Flag.FE83, true)
@@ -376,7 +384,8 @@ function SwordSmithEvent(targetActorId)
       callShopUI = false
     end
     if GetFlag(Flag.FE83) == false then
-      if GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == false then
+      --if GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == true and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == false then
+      if GetFlag(Flag.FE876) == false and IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") and GetFlag(Flag.FE875) == false and not IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") then -- AP
         if GetFlag(Flag.FE856) == true then
           local tagItemId = "ITEM_IMPORTANT_ORICHALCUM"
           local tagItemId2 = "ITEM_IMPORTANT_HAMMER_OF_GAIA"
@@ -411,7 +420,8 @@ function SwordSmithEvent(targetActorId)
           eventCamera = true
           callShopUI = false
         end
-      elseif GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == true and GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == false then
+      --elseif GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == true and GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == false then
+      elseif GetFlag(Flag.FE875) == false and IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") and GetFlag(Flag.FE876) == false and not IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") then -- AP
         if GetFlag(Flag.FE855) == true then
           CmdMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_030_17")
           CmdMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_030_18")
@@ -433,7 +443,8 @@ function SwordSmithEvent(targetActorId)
           eventCamera = true
           callShopUI = false
         end
-      elseif GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == false then
+      --elseif GetFlag(Flag.FE876) == false and GetFlag(Flag.FE877) == false and GetFlag(Flag.FE875) == false and GetFlag(Flag.FE82) == false then
+      elseif GetFlag(Flag.FE876) == false and not IsHaveItem("ITEM_IMPORTANT_BROKEN_SWORD") and GetFlag(Flag.FE875) == false and not IsHaveItem("ITEM_IMPORTANT_ORICHALCUM") then -- AP
         if GetFlag(Flag.FF0) == false then
           if GetFlag(Flag.FE746) == false then
             CmdMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0120_030_1")
@@ -530,7 +541,7 @@ function Myra_Shop_2F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   -- AP
-  if not GetFlag(Flag.FAP5) then -- if IsHaveItem is added in SwordSmithEvent condition to get the sword of kings then also add the check here!
+  if not GetFlag(Flag.FE83) then
     SwordSmithEvent(targetActorId)
   else
     CmdEventClosingMessage("NPC_Talk_Myra_Shop_2F_SUB_0_ACTOR_0110_010_1")

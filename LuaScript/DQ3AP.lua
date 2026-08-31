@@ -141,7 +141,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REIAMULAND_RevivalLamia, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_RAMIA, true)
   elseif ItemId == "ITEM_IMPORTANT_HAMMER_OF_GAIA" then
-    SetFlag(Flag.FE841, true)
+    --SetFlag(Flag.FE841, true) -- can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
   elseif ItemId == "ITEM_IMPORTANT_PURPLE_ORB" then
     --SetFlag(Flag.FE76, true) -- orbs flags can't be set, check for item in inventory instead
@@ -202,10 +202,10 @@ function AP.SetSpecialFlags(ItemId)
     end
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_LUDATORM_GetSunStone, true)
   elseif ItemId == "ITEM_IMPORTANT_ORICHALCUM" then
-    SetFlag(Flag.FE82, true)
+    --SetFlag(Flag.FE82, true) -- can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DOMDORA_GetOrichalcum, true)
   elseif ItemId == "ITEM_IMPORTANT_BROKEN_SWORD" then
-    SetFlag(Flag.FE877, true)
+    --SetFlag(Flag.FE877, true) -- can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_MERCADO_GetBrokenSword, true)
   elseif ItemId == "ITEM_EQUIP_WEAPON_STAFF_OF_RAIN" then
     --SetFlag(Flag.FE87, true) -- can't be set, check for item in inventory instead
