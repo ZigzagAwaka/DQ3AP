@@ -486,6 +486,7 @@ local predefined_excluded_locations = {
   SEARCH_GranDragon_SecretSea_34_POT_0 = true,
   SEARCH_GranDragon_SecretSea_34_GROUND_0 = true,
   SEARCH_GranDragon_SecretSea_34_GROUND_1 = true,
+  SEARCH_ElfVillage_House_GROUND_0 = true,
 }
 
 -- check if the given location is a excluded from the randomization
