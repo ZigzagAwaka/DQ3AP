@@ -144,6 +144,7 @@ function SwordSmithEvent(targetActorId)
     callShopUI = true
   --elseif GetFlag(Flag.FE841) == true then
   elseif IsHaveItem("ITEM_IMPORTANT_HAMMER_OF_GAIA") or GetFlag(Flag.FE854) then -- AP: blacksmith event starts if you have the hammer in your inventory or if the hammer was already given to the blacksmit(FE854)
+    SetFlag(Flag.FE853, true) -- AP: fix the skip of FE853 scene if all sword items already found before ever talking to the blacksmith
     if GetFlag(Flag.FE854) == false then
       local itemId = "ITEM_IMPORTANT_HAMMER_OF_GAIA"
       SwordSmithSetEventStart(false, true)
