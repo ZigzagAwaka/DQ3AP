@@ -176,16 +176,16 @@ function DragonQueen_Queen_room_MAIN_0_SCENE_0110_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("DragonQueen_Queen_room_MAIN_0_SCENE_0110_010 called (Castle of the Dragon Queen - Dragon Queen giving the Light Orb)")
   AP.CheckLocation("DragonQueen_Queen_room_MAIN_0_SCENE_0110_010")
-  --SetFlag(Flag.FE184, true)
-  --AddItem("ITEM_USE_ITEM_SPHERE_OF_LIGHT")
-  --SetFlag(Flag.FE79, true)
-  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true)
   -- AP end
+  SetFlag(Flag.FE184, true)
+  --AddItem("ITEM_USE_ITEM_SPHERE_OF_LIGHT") -- AP
+  SetFlag(Flag.FE79, true)
+  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true) -- AP
   FadeIn(EFadingPriorityTopMost, 0)
   CmdPlayEventSequence(1, EFadingPriorityUIBackGround, nil, false)
   SetDispMiniMap(false)
   CloseMessage()
-  --SetFlag(Flag.FD26, true) -- AP
+  SetFlag(Flag.FD26, true)
   CmdMessageDetail("NPC_Talk_DragonQueen_Queen_room_MAIN_0_SCENE_0110_010_19", MESSAGE_WINDOW_PERSONALITY_TEST, MESSAGE_POSITION_CENTER)
   CmdMessageDetail("NPC_Talk_DragonQueen_Queen_room_MAIN_0_SCENE_0110_010_20", MESSAGE_WINDOW_PERSONALITY_TEST, MESSAGE_POSITION_CENTER)
   CmdEventClosingMessageDetail("NPC_Talk_DragonQueen_Queen_room_MAIN_0_SCENE_0110_010_21", MESSAGE_WINDOW_PERSONALITY_TEST, MESSAGE_POSITION_CENTER)
@@ -273,10 +273,6 @@ function SEARCH_DragonQueen_Queen_room_EVENT_0(BeginOverlap, table, ...)
   targetActorId = eventInfo[1]
   CmdMessage("NPC_Talk_DragonQueen_Queen_room_SUB_0_ACTOR_0210_010_1")
   CmdEventClosingMessage("NPC_Talk_DragonQueen_Queen_room_SUB_0_ACTOR_0210_010_2")
-  -- AP
-  AP.Log("SEARCH_DragonQueen_Queen_room_EVENT_0 called : sending DragonQueen_Queen_room_MAIN_0_SCENE_0110_010")
-  AP.CheckLocation("DragonQueen_Queen_room_MAIN_0_SCENE_0110_010") -- sending the location here for security progress for AP
-  -- AP end
   EventEnd(eventInfo, "")
 end
 

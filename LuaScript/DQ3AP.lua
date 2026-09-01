@@ -188,10 +188,8 @@ function AP.SetSpecialFlags(ItemId)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NECROGONDSHRINE_GetSilverOrb, true)
     CheckGopEnum_MAIN_MULTI_GetAllOrb()
   elseif ItemId == "ITEM_USE_ITEM_SPHERE_OF_LIGHT" then
-    SetFlag(Flag.FE184, true)
-    SetFlag(Flag.FE79, true)
+    --SetFlag(Flag.FE79, true) -- can be avoid easily, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_DRAGONQUEEN_GetShineBall, true)
-    SetFlag(Flag.FD26, true)
   elseif ItemId == "ITEM_IMPORTANT_RAINBOW_DROP" then
     SetFlag(Flag.FE88, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_HOLYSHRINE_GetRainbowDrop, true)
