@@ -184,7 +184,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   if not IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     if GetFlag(Flag.FAP3) then
       ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
-    elseif
+    else
       ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
     end
     return
