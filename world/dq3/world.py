@@ -17,9 +17,8 @@ class DQ3World(World):
 
     game = "Dragon Quest III HD-2D Remake"
 
-    web = dq3_options.DQ3WebWorld() #not used
-
     # Associate options
+    web = dq3_options.DQ3WebWorld()
     options_dataclass = dq3_options.DQ3Options
     options: dq3_options.DQ3Options
 

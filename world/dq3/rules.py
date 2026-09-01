@@ -73,5 +73,7 @@ def set_completion_condition(world: DQ3World) -> None:
         world.set_completion_rule(CAN_ACCESS_ZOMA)
     elif world.options.victory_goal == "grand_dragon":
         world.set_completion_rule(CAN_ACCESS_GRAND_DRAGON)
+    elif world.options.victory_goal == "baramos":
+        world.set_completion_rule(HAS_BIRD)
     else: # medals or medals_postgame
         world.set_completion_rule(HAS_ALL_MEDALS)

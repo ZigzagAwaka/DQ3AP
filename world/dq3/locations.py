@@ -180,8 +180,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Khoryv] Chest 2 in Item Shop (night)": Info(138, rules.HAS_THIEF_KEY), #SEARCH_Kazave_Shop_TREASURE_NORMAL_1
     "[Khoryv] Drawer in Item Shop": Info(139, rules.HAS_THIEF_KEY), #SEARCH_Kazave_Shop_DRAWER_0
     "[Khoryv] Barrel in Bar (day)": Info(140), #SEARCH_Kazave_Bar_1F_BARREL_0
-    "[Khoryv] Drawer in back Bar": Info(141), #SEARCH_Kazave_Bar_2F_DRAWER_0
-    "[Khoryv] Barrel in back Bar": Info(142), #SEARCH_Kazave_Bar_2F_BARREL_1
+    "[Khoryv] Drawer in back room of Bar": Info(141), #SEARCH_Kazave_Bar_2F_DRAWER_0
+    "[Khoryv] Barrel in back room of Bar": Info(142), #SEARCH_Kazave_Bar_2F_BARREL_1
     "[Khoryv] Drawer 1 in Inn": Info(143), #SEARCH_Kazave_Inn_1F_DRAWER_0
     "[Khoryv] Drawer 2 in Inn": Info(144), #SEARCH_Kazave_Inn_1F_DRAWER_1
     # ----- Norvik -----
@@ -294,7 +294,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Palace of Ibis] Pot in the bottom left room": Info(242, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_1
     "[Palace of Ibis] Hidden Ground on throne (night) 2F": Info(243), #SEARCH_Isis_Castle_2F_GROUND_0
     "[Palace of Ibis] Hidden Ground near top right corner of the balcony 2F": Info(244), #SEARCH_Isis_Castle_2F_Out_GROUND_0
-    "[Palace of Ibis] Hidden Ground at the back of the queen's bed (night) 3F": Info(245, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_3F_GROUND_0
+    "[Palace of Ibis] Hidden Ground behind the queen's bed (night) 3F": Info(245, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_3F_GROUND_0
     "[Palace of Ibis] Chest guarded by ghost after going through the Secret Passage B2": Info(246), #SEARCH_Isis_Castle_B2F_TREASURE_IMPORTANT_0
     # ----- Pyramid -----
     "[Pyramid] Chest at the left of the top left corner room 1F": Info(247), #SEARCH_Pyramid_1F_TREASURE_NORMAL_0
@@ -440,7 +440,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Mur] Pot 1 in the back room of the Market": Info(379, rules.HAS_THIEF_KEY), #SEARCH_Muor_Market_2F_POT_0
     "[Mur] Pot 2 in the back room of the Market": Info(380, rules.HAS_THIEF_KEY), #SEARCH_Muor_Market_2F_POT_1
     "[Mur] Pot in the small island house": Info(381), #SEARCH_Muor_House1_1F_POT_0
-    "[Mur] Gift from Old Man in the back room of the Market": Info(382, rules.HAS_THIEF_KEY), #Muor_Market_1F_SUB_0_SCENE_0610_010
+    "[Mur] Gift from Old Man in the back room of the Market (day)": Info(382, rules.HAS_THIEF_KEY), #Muor_Market_1F_SUB_0_SCENE_0610_010
     # ----- Tower of Transcendence -----
     "[Tower of Transcendence] Chest in middle bottom room": Info(383), #SEARCH_GarunaTower_1F_TREASURE_NORMAL_0
     "[Tower of Transcendence] Pot 1 in middle top room": Info(384), #SEARCH_GarunaTower_1F_POT_0
@@ -775,7 +775,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Baramos' Lair] Hidden Ground on the left of the jail's bed in the bottom right exterior Passageway": Info(680, rules.HAS_ULTIMATE_KEY), #SEARCH_BaramosCastle_B1A_GROUND_0
     "[Baramos' Lair] Chest near the left stairs of the Central Tower Passageway": Info(681), #SEARCH_BaramosCastle_B1B_TREASURE_ENEMY_0
     # ----- Castle of the Dragon Queen -----
-    "[Castle of the Dragon Queen] Hidden Ground at the back in the top room": Info(682), #SEARCH_DragonQueen_back_GROUND_0
+    "[Castle of the Dragon Queen] Hidden Ground at the top of the top room": Info(682), #SEARCH_DragonQueen_back_GROUND_0
     #"[Castle of the Dragon Queen] Event": Info(683), #SEARCH_DragonQueen_1F_EVENT_0 # no items here
     #"[Castle of the Dragon Queen] Event": Info(684), #SEARCH_DragonQueen_Queen_room_EVENT_0 # no items here
     "[Castle of the Dragon Queen] Hidden Ground near the top right corner in the Throne Room": Info(685), #SEARCH_DragonQueen_Queen_room_GROUND_0
@@ -891,7 +891,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Quagmire Cave] Hidden Ground in the bottom right path": Info(786), #SEARCH_SwampCave_1F_GROUND_1
     "[Quagmire Cave] Pot in small room": Info(787), #SEARCH_SwampCave_1F_POT_0
     # ----- Kol -----
-    "[Kol] Hidden Ground in bottom area of hot spring": Info(789), #SEARCH_Myra_Out_EVENT_0
+    "[Kol] On ground in bottom area of hot spring": Info(789), #SEARCH_Myra_Out_EVENT_0
     "[Kol] Hidden Ground near hot spring": Info(790), #SEARCH_Myra_Out_GROUND_1
     "[Kol] Hidden Ground near the top of Kol": Info(791), #SEARCH_Myra_Out_GROUND_2
     "[Kol] Storage in left house": Info(792, rules.HAS_THIEF_KEY), #SEARCH_Myra_House_STORAGE_0
@@ -1254,6 +1254,13 @@ specific_postgame_locations = {"[Cantlin] Hidden Ground near flowers of left hou
                                "[Theddon] Hidden Ground on the cross in the bottom right area"}
 
 
+# Set of before-baramos locations only available after beating Baramos
+specific_baramos_only_locations = {"[Portoga] Gift from woman in the bottom right area after defeating Baramos",
+                                   "[Reeve] Second gift from Old Man in top right house after talking to the man in Quagmire Cave",
+                                   "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn",
+                                   "[Jipang] On ground in top left house after talking to Kol's blacksmith"}
+
+
 class DQ3Location(Location):
     game = "Dragon Quest III HD-2D Remake"
 
@@ -1268,6 +1275,10 @@ class DQ3LocationPriority(DQ3Location):
 def is_postgame_enabled(world: DQ3World) -> bool:
     return world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"
 
+# Checks if the current goal is baramos (exclude after-baramos locations)
+def is_goal_baramos_only(world: DQ3World) -> bool:
+    return world.options.victory_goal == "baramos"
+
 # Helper method that takes a list of location names and returns them as a dict with their IDs
 def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | None]:
     return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name in location_names}
@@ -1278,13 +1289,31 @@ def get_locations_by_prefix(world: DQ3World, prefix: str) -> tuple[list[str], li
     # first, get all valid locations by prefix
     valid_locations = [location_name for location_name in LOCATION_NAME_TO_ID.keys()
                        if location_name.split("]")[0][1:] == prefix]
-    # then return immediatly depending on option values and given prefix
-    if is_postgame_enabled(world) or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon"}:
+    # then return immediatly if postgame is enabled
+    if is_postgame_enabled(world) or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon", "Portoga", "Reeve", "Asham"}:
         return valid_locations, []
-    # or else construct what locations are excluded and return two lists
+    # or else construct what locations are excluded
     excluded_locations = [location_name for location_name in valid_locations if location_name in specific_postgame_locations]
     valid_locations = [location_name for location_name in valid_locations if location_name not in specific_postgame_locations]
+    # checks if baramos only goal is active
+    if is_goal_baramos_only(world):
+        baramos_only_locations_by_prefix = [location_name for location_name in specific_baramos_only_locations
+                                            if location_name.split("]")[0][1:] == prefix]
+        excluded_locations.extend(baramos_only_locations_by_prefix)
+        valid_locations[:] = [location_name for location_name in valid_locations
+                              if location_name not in baramos_only_locations_by_prefix]
+    # then returns the two lists
     return valid_locations, excluded_locations
+
+# Helper method to get the correct Location type (regular or excluded) of the given region
+# based on the current options values
+def get_region_location_type_based_on_options(world: DQ3World, region: str) -> Location:
+    if not is_postgame_enabled(world):
+        if region in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"}:
+            return DQ3LocationExcluded
+        elif is_goal_baramos_only(world) and region in {"Castle of the Dragon Queen", "West Tantegel Harbour", "Galen's House", "Sanctum", "Tantegel", "Tantegel Castle", "Damdara", "Cantlin", "Shrine of the Spirit", "Rimuldar", "Quagmire Cave", "Kol", "Craggy Cave", "Talontear Tunnel", "Tower of Rubiss", "Zoma's Citadel", "Alefgard Overworld"}:
+            return DQ3LocationExcluded
+    return DQ3Location
 
 
 def create_all_locations(world: DQ3World) -> None:
@@ -1296,7 +1325,7 @@ def create_regular_locations(world: DQ3World) -> None:
     # Create all locations based of region prefixes that matches said region values in ALL_REGIONS
     for region_name in regions.ALL_REGIONS:
         # Define if said region should be excluded based on option values
-        valid_location_type: Location = DQ3Location if is_postgame_enabled(world) or region_name not in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"} else DQ3LocationExcluded
+        valid_location_type: Location = get_region_location_type_based_on_options(world, region_name)
         # Get region from name
         region = world.get_region(region_name)
         # Get locations from region

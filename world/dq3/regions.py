@@ -235,7 +235,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Shallows Shrine", rules.HAS_SHIP & rules.HAS_BOTTOMLESS_POT),
         Connect("Ghost Ship", rules.HAS_SHIP & rules.HAS_BOATMANS_BONE),
         Connect("Shrine of Shackles", ((rules.HAS_SHIP & rules.HAS_LOVERS_LOCKET) | rules.HAS_BIRD) & rules.HAS_ULTIMATE_KEY),
-        Connect("Temple of Trials", rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_SHIP & rules.HAS_RAINBOW_DROP & rules.HAS_THIEF_KEY & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY),
+        Connect("Temple of Trials", rules.CAN_ACCESS_ZOMA & rules.HAS_MAGIC_KEY & rules.HAS_ULTIMATE_KEY),
     ],
     "Shrine of the Everbird": [],
     "Grimland": [],

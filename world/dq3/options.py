@@ -11,12 +11,14 @@ class VictoryGoal(Choice):
     - Grand Dragon: Defeat Zoma to gain access to postgame areas then defeat the Grand Dragon, the final boss of the postgame
     - Medals: Find all 110 mini medals in the world to win
     - Medals postgame: Same as Medals but will also include postgame locations in the world
+    - Baramos: Gain access to Baramos Castle then defeat Baramos, for shorter games
     """
     display_name = "Victory Goal"
     option_zoma = 0
     option_grand_dragon = 1
     option_medals = 2
     option_medals_postgame = 3
+    option_baramos = 4
     default = 0
 
 
@@ -35,7 +37,17 @@ class DQ3Options(PerGameCommonOptions):
     #container_sanity: ContainerSanity
 
 
+# Group options by similar type
+# groups = [
+#     OptionGroup(
+#         "Test Options",
+#         [ContainerSanity],
+#     ),
+# ]
+
+
 # Class to display options on the website (not used for this game)
 class DQ3WebWorld(WebWorld):
     game = "Dragon Quest III HD-2D Remake"
     theme = "grassFlowers"
+    #option_groups = groups

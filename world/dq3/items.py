@@ -289,8 +289,8 @@ ALL_ITEMS: dict[str, Info] = {
     "Hapless Helm": Info(261, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
     "Rabbit Ears": Info(275, quantity=2), #ITEM_EQUIP_HELMET_BUNNY_EARS
     "Auroral Helm": Info(284, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_HELMET_LIGHT_HELM
-    "Heavenly Helm": Info(313), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
-    "Duplic Hat": Info(330), #ITEM_EQUIP_HELMET_DUPLIC_HAT
+    "Heavenly Helm": Info(313, ItemClassification.useful), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
+    "Duplic Hat": Info(330, ItemClassification.useful), #ITEM_EQUIP_HELMET_DUPLIC_HAT
     "Great Helm": Info(370, ItemClassification.useful), #ITEM_EQUIP_HELMET_GREAT_HELM
     # EQUIPMENT ARMORS
     "Training Togs": Info(5, quantity=6), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
@@ -432,7 +432,10 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
     classification = ALL_ITEMS[name].classification
 
-    if name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"} and not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"):
+    if not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame") and name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"}:
+        classification = ItemClassification.useful
+
+    if world.options.victory_goal == "baramos" and name in {"Sphere of Light", "Rainbow Drop", "Sacred Amulet", "Staff of Rain", "Forging Hammer", "Sunstone", "Orichalcum", "Broken Blade", "Faerie Flute"}:
         classification = ItemClassification.useful
 
     if name == "Mini Medal" and (world.options.victory_goal == "medals" or world.options.victory_goal == "medals_postgame"):
