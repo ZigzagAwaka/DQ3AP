@@ -60,13 +60,7 @@ void Commands::Process(const std::string& command)
     }
     else if (commandWord == "/connect")
     {
-        std::string input = command.substr(8);
-        while (!input.empty() && std::isspace(static_cast<unsigned char>(input[0])))
-        {
-            input.erase(input.begin()); // remove every spaces between "/connect" and the first argument in the input
-        }
-
-        const std::vector<std::string> arguments = ParseCommandInput(input);
+        const std::vector<std::string> arguments = ParseCommandInput(command.substr(8));
         std::string host, player, password;
 
         if (arguments.size() >= 2)
@@ -102,6 +96,25 @@ void Commands::Process(const std::string& command)
 
         apClientPtr->Connect(host, player, password);
     }
+    else if (commandWord == "/syncmedals")
+    {
+        const std::vector<std::string> arguments = ParseCommandInput(command.substr(11));
+        std::string oldHost;
+
+        if (arguments.size() >= 1)
+        {
+            oldHost = arguments[0];
+        }
+
+        if (oldHost.empty())
+        {
+            loggerPtr->LogError("Medals sync failed: The previous host name must be set");
+            PrintHelp();
+            return;
+        }
+
+        apClientPtr->SyncMedalsDataFromPreviousHost(oldHost);
+    }
     else if (!command.empty())
     {
         loggerPtr->Log("Unknown command: " + command + " (type '/help' for available commands)");
@@ -120,8 +133,16 @@ std::vector<std::string> Commands::ParseCommandInput(const std::string& input)
     std::string argument; // the currently worked on argument
     bool inQuotesMode = false; // define if quotes are used for the current argument and ignore spaces parsing if yes
 
-    for (const char ch : input)
+    std::size_t index = 0;
+    while (index < input.size() && std::isspace(static_cast<unsigned char>(input[index])))
     {
+        ++index; // remove every spaces between input command word and the first argument
+    }
+
+    for (; index < input.size(); ++index)
+    {
+        const char ch = input[index];
+
         if (ch == '"')
         {
             inQuotesMode = !inQuotesMode;
@@ -156,6 +177,7 @@ void Commands::PrintHelp()
     loggerPtr->LogInConsole(" /disconnect                         - Disconnect from Archipelago");
     loggerPtr->LogInConsole(" /reconnect                          - Try to reconnect to the latest valid connection made with /connect");
     loggerPtr->LogInConsole(" /status                             - Show Archipelago connection status");
+    loggerPtr->LogInConsole(" /syncmedals <old_host>              - Transfer medals data from a previous server host to the current host");
     loggerPtr->LogInConsole(" /help                               - Show this message");
     loggerPtr->LogInConsole(" /clear                              - Clear console");
     loggerPtr->LogInConsole("--------------------------------------------------------------------------------------------------------------");

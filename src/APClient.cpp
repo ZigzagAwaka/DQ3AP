@@ -218,7 +218,7 @@ void APClient::ReadMedalsData()
 }
 
 
-void APClient::WriteMedalsData()
+void APClient::WriteMedalsData(int amount)
 {
     int victoryOption = Options::GetOption("victory_goal");
     if ((victoryOption != 2 && victoryOption != 3) || currentHost.empty())
@@ -226,13 +226,22 @@ void APClient::WriteMedalsData()
         return;
     }
 
-    // If the current host exist, increment by 1, else build a new entry with amount of 1
+    // If the current host exist, increment by 1, else build a new entry with given amount (or 1 if not given)
     auto it = hostToMedalsMap.find(currentHost);
     if (it != hostToMedalsMap.end())
         hostToMedalsMap[currentHost]++;
     else
-        hostToMedalsMap.emplace(currentHost, 1);
-        
+        hostToMedalsMap.emplace(currentHost, amount);
+    
+    // Then, send medals victory event if amount is >= 110 (collected all medals)
+    if (hostToMedalsMap[currentHost] >= 110)
+    {
+        logger.LogInFile("Victory got for mini medals");
+        hostToMedalsMap.erase(currentHost);
+        AP_StoryComplete();
+    }
+
+    // Finally, re-write medals data
     std::ofstream file(medalsDataPath, std::ios::trunc);
     for (const auto& [host, amount] : hostToMedalsMap)
     {
@@ -240,13 +249,38 @@ void APClient::WriteMedalsData()
     }
     file.flush();
     file.close();
+}
 
-    // Finally, send medals victory event if amount is >= 110 (collected all medals)
-    if (hostToMedalsMap[currentHost] >= 110)
+
+void APClient::SyncMedalsDataFromPreviousHost(const std::string& previousHost)
+{
+    if (!IsConnected() || currentHost.empty())
     {
-        logger.LogInFile("Victory got for mini medals");
-        AP_StoryComplete();
+        logger.LogError("Medals sync failed: Not connected to Archipelago, please use '/connect' first");
+        return;
     }
+
+    int victoryOption = Options::GetOption("victory_goal");
+    if ((victoryOption != 2 && victoryOption != 3))
+    {
+        logger.LogError("Medals sync failed: The current room is not configured with any of the mini medals victory goal");
+        return;
+    }
+
+    auto itPrev = hostToMedalsMap.find(previousHost);
+    if (itPrev == hostToMedalsMap.end())
+    {
+        logger.LogError("Medals sync failed: The previous server host must be known to have collected some mini medals, the given previous host is either unknown or does not have any medals data available");
+        return;
+    }
+
+    int previousAmount = hostToMedalsMap[previousHost];
+
+    auto itCurr = hostToMedalsMap.find(currentHost);
+    if (itCurr != hostToMedalsMap.end())
+        hostToMedalsMap.erase(currentHost);
+
+    WriteMedalsData(previousAmount);
 }
 
 

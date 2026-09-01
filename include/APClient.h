@@ -65,6 +65,10 @@ public:
     /// @return A tuple for the saved host, player and password
     std::tuple<std::string, std::string, std::string> GetLatestRoomData();
 
+    /// @brief Sync the previousHost's medals data to the current host's medals data
+    /// @param previousHost Previous server host
+    void SyncMedalsDataFromPreviousHost(const std::string& previousHost);
+
     /// @brief Disconnect from Archipelago
     void Disconnect();
 
@@ -93,7 +97,8 @@ private:
     void ReadMedalsData();
 
     /// @brief Override AP medals data with the current values of hostToMedalsMap
-    void WriteMedalsData();
+    /// @param amount Changes the amount to override from the default 1
+    void WriteMedalsData(int amount = 1);
 
     /// @brief Register all AP client options callbacks
     void RegisterAllOptionsCallbacks();

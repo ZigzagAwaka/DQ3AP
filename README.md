@@ -37,6 +37,7 @@ You have multiple options to set the goal of the game, among these:
 - Defeat the Grand Dragon, the final boss of the postgame
 - Find all 110 mini medals
 - Find all 110 mini medals, with postgame locations included
+- Defeat Baramos, for shorter games
 
 ### Which items can be in another player's world ?
 
