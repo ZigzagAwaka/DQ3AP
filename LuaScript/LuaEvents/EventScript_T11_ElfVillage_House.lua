@@ -180,6 +180,16 @@ function ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
 end
 
 function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
+  -- AP
+  if not IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+    if GetFlag(Flag.FAP3) then
+      ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
+    elseif
+      ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
+    end
+    return
+  end
+  -- AP end
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
   SetTagItemId("ITEM_IMPORTANT_DREAMSTONE")

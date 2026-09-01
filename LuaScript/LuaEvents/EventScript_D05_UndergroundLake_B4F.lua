@@ -44,10 +44,8 @@ function UndergroundLake_B4F_Treasure(BeginOverlap, table, CanObtainItem, Treasu
     CmdFadeIn(EFadingPriorityUIBackGround, 1)
     Wait(0.5)
     SetVisibleActor(eventInfo[1], false)
-    -- AP
-    --SetFlag(Flag.FE60, true)
-    --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true)
-    -- AP end
+    SetFlag(Flag.FE60, true)
+    --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true) -- AP
     SoundTransitionVolumeRateByCategory(ENicolaSoundCategoryAMBIENT, 1, 0.5)
     RequestAutoSaveFromEvent()
   else

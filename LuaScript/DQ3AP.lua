@@ -105,7 +105,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE61, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_ELFVILLAGE_GetWakeyDust, true)
   elseif ItemId == "ITEM_IMPORTANT_DREAMSTONE" then
-    SetFlag(Flag.FE60, true)
+    --SetFlag(Flag.FE60, true) -- can be avoided easily, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_UNDERGROUNDLAKE_GetDreamstone, true)
   elseif ItemId == "ITEM_EQUIP_HELMET_KINGS_CROWN" then
     SetFlag(Flag.FE59, true)
