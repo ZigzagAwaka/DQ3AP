@@ -171,7 +171,7 @@ function GhostShip_B1_Treasure_Important(BeginOverlap, table, CanObtainItem, Tre
     CmdMessage("NPC_Talk_Common_SEARCHOBJECT_WOODBOX_1")
     SearchObject_ShowMessage(GetTargetActorIdFromEventInfo(eventInfo), TreasureId, ItemId, ItemCount, Gold)
     SetVisibleActor(eventInfo[1], false)
-    --SetFlag(Flag.FE71, true) -- AP
+    SetFlag(Flag.FE71, true)
     --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_GHOSTSHIP_GetLoveLocket, true) -- AP
     RequestAutoSaveFromEvent()
   else
