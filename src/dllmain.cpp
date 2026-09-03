@@ -12,6 +12,9 @@
 /// @brief Indicates the state of the main thread
 std::atomic<bool> running{ false };
 
+/// @brief Handle for the input thread
+static HANDLE inputThreadHandle = nullptr;
+
 /// @brief Handles unexpected exit points of the game to stop the thread
 static void ExitHandler(int signal)
 {
@@ -76,6 +79,11 @@ static DWORD WINAPI InputThread(LPVOID)
 /// @brief Main thread, initializes console, logger, AP connection and runs the main loop
 static DWORD WINAPI MainThread(LPVOID)
 {
+    // Keep the module loaded while the threads are running
+    HMODULE moduleHandle = nullptr;
+    GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+        reinterpret_cast<LPCSTR>(&MainThread), &moduleHandle);
+
     // Open console
     AllocConsole();
     FILE* fp;
@@ -85,6 +93,11 @@ static DWORD WINAPI MainThread(LPVOID)
 
     // Wait 1s for the game to load
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    if (!running)
+    {
+        return 0;
+    }
 
     // Initialize logger
     std::filesystem::create_directories("Archipelago");
@@ -96,7 +109,7 @@ static DWORD WINAPI MainThread(LPVOID)
     Commands::Initialize(apClient, logger);
 
     // Create input thread
-    HANDLE inputThreadHandle = CreateThread(nullptr, 0, InputThread, nullptr, 0, nullptr);
+    inputThreadHandle = CreateThread(nullptr, 0, InputThread, nullptr, 0, nullptr);
 
     logger.Log("DQ3AP loaded!");
     logger.LogInConsole("Type '/help' for available commands");
@@ -120,17 +133,23 @@ static DWORD WINAPI MainThread(LPVOID)
 
             std::this_thread::sleep_for(std::chrono::milliseconds(250));
         }
-
-        // Cleanup and close files/thread
-        apClient.Disconnect();
-        logger.Close();
-        WaitForSingleObject(inputThreadHandle, 100);
-        CloseHandle(inputThreadHandle);
     }
     catch (const std::exception& e)
     {
         logger.LogError(std::string("Runtime exception: ") + e.what());
     }
+
+    // Stop and join the input thread then cleanup files and AP client
+    running = false;
+    if (inputThreadHandle != nullptr)
+    {
+        WaitForSingleObject(inputThreadHandle, INFINITE);
+        CloseHandle(inputThreadHandle);
+        inputThreadHandle = nullptr;
+    }
+
+    apClient.Disconnect();
+    logger.Close();
     
     return 0;
 }
