@@ -5,6 +5,7 @@
 
 #include <string>
 #include <filesystem>
+#include <system_error>
 #include <fstream>
 #include <vector>
 #include <unordered_map>
@@ -109,6 +110,17 @@ private:
     /// @param create Set to true to create the file, default to true
     /// @param clear Set to true to clear the file, default to true
     void CreateOrClearFile(const std::string& filePath, bool create = true, bool clear = true);
+
+    /// @brief Delete the specified AP data file
+    /// @param filePath Path to the AP data file
+    /// @return True if deleted or if it did not exist, of else false
+    bool DeleteFile(const std::string& filePath);
+
+    /// @brief Rename the specified AP data file to a given name
+    /// @param filePath Path to the AP data file
+    /// @param newName The new name to use
+    /// @return True if renamed, or else false
+    bool RenameFile(const std::string& filePath, const std::string& newName);
 
     /// @brief Write the current rooms values to AP room data file
     void SetLatestRoomData();

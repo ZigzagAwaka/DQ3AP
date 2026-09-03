@@ -71,20 +71,29 @@ void APClient::Update()
     }
 
     // Manage newly checked locations
-    std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath);
 
-    if (lastCheck > locationDataLastCheckTime)
+    std::error_code errEx;
+    bool tmpAlreadyExist = std::filesystem::exists(locationDataPath + ".tmp", errEx);
+    if (errEx)
+        return;
+
+    std::error_code errCh;
+    const std::filesystem::file_time_type lastCheck = std::filesystem::last_write_time(locationDataPath, errCh);
+
+    if ((!errCh && lastCheck > locationDataLastCheckTime) || tmpAlreadyExist)
     {
-        locationDataLastCheckTime = lastCheck;
+        if (!tmpAlreadyExist && !RenameFile(locationDataPath, locationDataPath + ".tmp"))
+            return;
 
-        std::ifstream file(locationDataPath);
+        std::ifstream file(locationDataPath + ".tmp");
         std::string line;
-        bool hasContent = false;
+
+        if (!file.is_open())
+            return;
 
         while (std::getline(file, line))
         {
             if (line.empty()) continue;
-            hasContent = true;
             if (CheckVictoryLocation(line))
             {
                 logger.LogInFile("Victory got for location: " + line);
@@ -102,12 +111,14 @@ void APClient::Update()
                 logger.Log("Unknown location: " + line);
             }
         }
-        file.close();
 
-        if (hasContent)
-        {
-            CreateOrClearFile(locationDataPath, false, true);
-        }
+        if (file.bad())
+            return;
+        else if (!tmpAlreadyExist)
+            locationDataLastCheckTime = lastCheck;
+
+        file.close();
+        DeleteFile(locationDataPath + ".tmp");
     }
 }
 
@@ -151,7 +162,7 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
     }
     else
     {
-        logger.Log("Unknown item Id: " + itemId);
+        logger.Log("Unknown item Id: " + std::to_string(itemId));
     }
 }
 
@@ -340,6 +351,29 @@ void APClient::CreateOrClearFile(const std::string& filePath, bool create, bool 
         std::ofstream clearFile(filePath, std::ios::trunc);
         clearFile.close();
     }
+}
+
+
+bool APClient::DeleteFile(const std::string& filePath)
+{
+    std::error_code err;
+    std::filesystem::remove(filePath, err);
+    return err ? false : true;
+}
+
+
+bool APClient::RenameFile(const std::string& filePath, const std::string& newName)
+{
+    std::error_code errEx;
+    std::error_code errRe;
+    if (!std::filesystem::exists(newName, errEx) && !errEx)
+    {
+        std::filesystem::rename(filePath, newName, errRe);
+        if (errRe)
+            logger.LogError("Could not process the current new locations, retrying...");
+        return errRe ? false : true;
+    }
+    return false;
 }
 
 
