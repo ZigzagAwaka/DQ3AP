@@ -4,6 +4,8 @@ from worlds.AutoWorld import WebWorld
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle, DefaultOnToggle
 
+# todo: traps, container sanity, secret spots, vanilla ramia/ship, starting with ramia
+
 class VictoryGoal(Choice):
     """
     Choose the desired goal to mark the game as completed. Note that if you choose a goal that end the game before the postgame, then this will exclude every postgame locations. 

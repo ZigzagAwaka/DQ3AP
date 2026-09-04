@@ -197,7 +197,6 @@ ALL_ITEMS: dict[str, Info] = {
     "Chain Sickle": Info(54, quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_SICKLE
     "Cypress Stick": Info(58, quantity=2), #ITEM_EQUIP_WEAPON_CYPRESS_STICK
     "Assassin's Dagger": Info(73, quantity=2), #ITEM_EQUIP_WEAPON_ASSASSINS_DAGGER
-    "Poison Needle": Info(78, quantity=3), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
     "Wizard's Staff": Info(83, quantity=4), #ITEM_EQUIP_WEAPON_WIZARDS_STAFF
     "Iron Lance": Info(92, quantity=2), #ITEM_EQUIP_WEAPON_IRON_LANCE
     "Snooze Stick": Info(96, quantity=3), #ITEM_EQUIP_WEAPON_SNOOZE_STICK
@@ -251,6 +250,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Beastly Bullwhip": Info(361), #ITEM_EQUIP_WEAPON_BEASTLY_BULLWHIP
     "Gusterang": Info(364), #ITEM_EQUIP_WEAPON_GUSTERANG
     "Copper Sword": Info(372), #ITEM_EQUIP_WEAPON_COPPER_SWORD
+    "Poison Needle": Info(376, quantity=3), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
     # SHIELDS
     "Pot Lid": Info(27, quantity=3), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44, quantity=3), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
