@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 
-import logging
+import logging, re
 from typing import (Any, TYPE_CHECKING)
 
 from BaseClasses import ItemClassification, Location, LocationProgressType
@@ -1246,6 +1246,9 @@ ALL_LOCATIONS: dict[str, Info] = {
 LOCATION_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_LOCATIONS.items()}
 
 
+# Set of postgame only regions
+all_postgame_regions = {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"}
+
 # Set of postgame locations that are not located in postgame regions, that needs to be excluded based on option values
 specific_postgame_locations = {"[Cantlin] Hidden Ground near flowers of left house",
                                "[Lozamii] Hidden Ground near the telescope in right house",
@@ -1253,12 +1256,17 @@ specific_postgame_locations = {"[Cantlin] Hidden Ground near flowers of left hou
                                "[Jipang] Barrel on the back right side of the Monster Arena",
                                "[Theddon] Hidden Ground on the cross in the bottom right area"}
 
+# Set of regions available after beating Baramos but before the postgame
+all_post_baramos_regions = {"Castle of the Dragon Queen", "West Tantegel Harbour", "Galen's House", "Sanctum", "Tantegel", "Tantegel Castle", "Damdara", "Cantlin", "Shrine of the Spirit", "Rimuldar", "Quagmire Cave", "Kol", "Craggy Cave", "Talontear Tunnel", "Tower of Rubiss", "Zoma's Citadel", "Alefgard Overworld"}
 
-# Set of before-baramos locations only available after beating Baramos
-specific_baramos_only_locations = {"[Portoga] Gift from woman in the bottom right area after defeating Baramos",
+# Set of before-baramos locations only available after beating Baramos, that needs to be excluded based on option values
+specific_post_baramos_locations = {"[Portoga] Gift from woman in the bottom right area after defeating Baramos",
                                    "[Reeve] Second gift from Old Man in top right house after talking to the man in Quagmire Cave",
                                    "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn",
                                    "[Jipang] On ground in top left house after talking to Kol's blacksmith"}
+
+# Set of regions that are related to either specific_postgame_locations or specific_baramos_only_locations
+specific_exclude_goal_regions = {"Cantlin", "Lozamii", "Jipang", "Theddon", "Portoga", "Reeve", "Asham"}
 
 
 class DQ3Location(Location):
@@ -1283,25 +1291,50 @@ def is_goal_baramos_only(world: DQ3World) -> bool:
 def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | None]:
     return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name in location_names}
 
-# Helper method that returns a list of location names whose prefix exactly matches the given prefix,
+# Helper method that exclude some locations that are related to the provided container names,
+# then returns new valid and excluded locations. Also comes with a matched_rule optional parameter
+# that allows to only filter out locations also matching that specific rule
+def exclude_locations_from_containers(valid_locations: list[str], excluded_locations: list[str], container_names: list[str], matched_rule: CollectionRule | Rule[Any] | None = None) -> tuple[list[str], list[str]]:
+    containers_pattern = "|".join(re.escape(name) for name in container_names)
+    pattern = re.compile(rf"(?:\]|:) (?:{containers_pattern})")
+    locations_to_exclude = [location_name for location_name in valid_locations if pattern.search(location_name) and (matched_rule is None or ALL_LOCATIONS[location_name].rule == matched_rule)]
+    excluded_locations.extend(locations_to_exclude)
+    valid_locations = [location_name for location_name in valid_locations if location_name not in locations_to_exclude]
+    return valid_locations, excluded_locations
+
+# Helper method to exclude some locations based on option values and returns new valid and excluded locations
+def exclude_locations_based_on_options(world: DQ3World, region: str, valid_locations: list[str], excluded_locations: list[str]) -> tuple[list[str], list[str]]:
+    if (not world.options.secret_spots_sanity and "Overworld" in region):
+        valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Secret Spot"])
+    elif (not world.options.ocean_secret_spots_sanity and region == "Ocean Overworld"):
+        valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Secret Spot"], matched_rule=rules.HAS_SHIP)
+    if not world.options.container_sanity:
+        valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Barrel", "Pot", "Drawer", "Sack", "Storage", "Bookshelf", "Hidden Ground"])
+    elif not world.options.hidden_ground_sanity:
+        valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Hidden Ground"])
+    return valid_locations, excluded_locations
+
+# Helper method that returns a list of location names that are inside of the given region,
 # also exclude specific locations based on options values and returns them
-def get_locations_by_prefix(world: DQ3World, prefix: str) -> tuple[list[str], list[str]]:
-    # first, get all valid locations by prefix
+def get_locations_from_region(world: DQ3World, region: str) -> tuple[list[str], list[str]]:
+    # first, get all valid locations by region prefix
     valid_locations = [location_name for location_name in LOCATION_NAME_TO_ID.keys()
-                       if location_name.split("]")[0][1:] == prefix]
-    # then return immediatly if postgame is enabled
-    if is_postgame_enabled(world) or prefix not in {"Cantlin", "Lozamii", "Jipang", "Theddon", "Portoga", "Reeve", "Asham"}:
-        return valid_locations, []
-    # or else construct what locations are excluded
-    excluded_locations = [location_name for location_name in valid_locations if location_name in specific_postgame_locations]
-    valid_locations = [location_name for location_name in valid_locations if location_name not in specific_postgame_locations]
-    # checks if baramos only goal is active
-    if is_goal_baramos_only(world):
-        baramos_only_locations_by_prefix = [location_name for location_name in specific_baramos_only_locations
-                                            if location_name.split("]")[0][1:] == prefix]
-        excluded_locations.extend(baramos_only_locations_by_prefix)
-        valid_locations[:] = [location_name for location_name in valid_locations
-                              if location_name not in baramos_only_locations_by_prefix]
+                       if location_name.split("]")[0][1:] == region]
+    excluded_locations = []
+    # then ignore everything else if postgame is enabled
+    if not is_postgame_enabled(world) and region in specific_exclude_goal_regions:
+        # or else construct what locations are excluded
+        excluded_locations = [location_name for location_name in valid_locations if location_name in specific_postgame_locations]
+        valid_locations = [location_name for location_name in valid_locations if location_name not in specific_postgame_locations]
+        # checks if baramos only goal is active
+        if is_goal_baramos_only(world):
+            post_baramos_locations_by_region = [location_name for location_name in specific_post_baramos_locations
+                                                if location_name.split("]")[0][1:] == region]
+            excluded_locations.extend(post_baramos_locations_by_region)
+            valid_locations[:] = [location_name for location_name in valid_locations
+                                if location_name not in post_baramos_locations_by_region]
+    # finally, exclude specific locations based on option values
+    valid_locations, excluded_locations = exclude_locations_based_on_options(world, region, valid_locations, excluded_locations)
     # then returns the two lists
     return valid_locations, excluded_locations
 
@@ -1309,9 +1342,9 @@ def get_locations_by_prefix(world: DQ3World, prefix: str) -> tuple[list[str], li
 # based on the current options values
 def get_region_location_type_based_on_options(world: DQ3World, region: str) -> Location:
     if not is_postgame_enabled(world):
-        if region in {"???", "Cloudsgate Citadel", "Citadel Tower", "Temple of Trials"}:
+        if region in all_postgame_regions:
             return DQ3LocationExcluded
-        elif is_goal_baramos_only(world) and region in {"Castle of the Dragon Queen", "West Tantegel Harbour", "Galen's House", "Sanctum", "Tantegel", "Tantegel Castle", "Damdara", "Cantlin", "Shrine of the Spirit", "Rimuldar", "Quagmire Cave", "Kol", "Craggy Cave", "Talontear Tunnel", "Tower of Rubiss", "Zoma's Citadel", "Alefgard Overworld"}:
+        elif is_goal_baramos_only(world) and region in all_post_baramos_regions:
             return DQ3LocationExcluded
     return DQ3Location
 
@@ -1329,7 +1362,7 @@ def create_regular_locations(world: DQ3World) -> None:
         # Get region from name
         region = world.get_region(region_name)
         # Get locations from region
-        valid_locations, excluded_locations = get_locations_by_prefix(world, region_name)
+        valid_locations, excluded_locations = get_locations_from_region(world, region_name)
         # Add valid locations
         if len(valid_locations) != 0:
             region.add_locations(get_location_names_with_ids(valid_locations), valid_location_type)

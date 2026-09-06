@@ -4,7 +4,7 @@ from worlds.AutoWorld import WebWorld
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle, DefaultOnToggle
 
-# todo: traps, container sanity, secret spots, vanilla ramia/ship, starting with ramia
+# GAME OPTIONS
 
 class VictoryGoal(Choice):
     """
@@ -23,33 +23,140 @@ class VictoryGoal(Choice):
     option_baramos = 4
     default = 0
 
+# LOCATIONS OPTIONS
 
-# class ContainerSanity(DefaultOnToggle):
-#     """
-#     Choose whether to have all the containers in the game to be filled with random items.
-#     If this option is false, then only the chests will be randomized.
-#     """
-#     display_name = "Container Sanity"
+class ContainerSanity(DefaultOnToggle):
+    """
+    Choose if all the containers in the game should be filled with random items (chests, barrels, pots, sacks, storages, ...).
+    If disabled, then only the chests will be randomized, and other containers will be excluded (ie. forced to contain a non important item).
+    Note that story related items not in chests will always be randomized.
+    """
+    display_name = "Container Sanity"
 
+class HiddenGroundSanity(DefaultOnToggle):
+    """
+    Choose if "Hidden Ground" items should be randomized, those are items placed in pretty hard to find locations and are invisible unless you use the spell "Snoop".
+    If disabled, then those items will be excluded and forced to have a non important item.
+    If container_sanity is false, then this option will have no effect.
+    """
+    display_name = "Hidden Ground Sanity"
+
+class SecretSpotsSanity(DefaultOnToggle):
+    """
+    Choose if containers in Secret Spots areas should be filled with random items, those are small hidden areas in the overworld.
+    If disabled, then those areas will be excluded and forced to contain non important items.
+    """
+    display_name = "Secret Spots Sanity"
+
+class OceanSecretSpotsSanity(DefaultOnToggle):
+    """
+    Choose if containers in Secret Spots areas located in the sea/ocean should be filled with random items, those are small hidden areas only accessible with the Ship.
+    If disabled, then those areas will be excluded and forced to contain non important items.
+    If secret_spots_sanity is false, then this option will have no effect.
+    """
+    display_name = "Ocean Secret Spots Sanity"
+
+# ITEMS OPTIONS
+
+class ShipSettings(Choice):
+    """
+    Allows to configure how the Ship is randomized.
+    - Vanilla: The Ship will be rewarded by the Portoga King after giving him the Black Pepper item
+    - Random: The Ship will be randomized anywhere in the multiworld
+    - Start with: You will start the game with the Ship already unlocked near Portoga, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
+    """
+    display_name = "Ship Settings"
+    option_vanilla = 0
+    option_random = 1
+    option_start_with = 2
+    default = 0
+
+class RamiaSettings(Choice):
+    """
+    Allows to configure how Ramia (the bird) is randomized.
+    - Vanilla: Ramia will be obtained by offering the 6 Orbs to the altars in the Shrine of the Everbird
+    - Random: Ramia will be randomized anywhere in the multiworld
+    - Start with: You will start the game with Ramia already unlocked near Alltrades Abbey, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
+    """
+    display_name = "Ramia Settings"
+    option_vanilla = 0
+    option_random = 1
+    option_start_with = 2
+    default = 0
+
+# TRAPS OPTIONS
+
+class ShuffleCanniboxTraps(DefaultOnToggle):
+    """
+    Enable this option to shuffle 7 Cannibox Traps in the item pool.
+    If disabled, it will replace those with random non important items.
+    """
+    display_name = "Shuffle Cannibox Traps"
+
+class ShuffleMimicTraps(DefaultOnToggle):
+    """
+    Enable this option to shuffle 19 Mimic Traps in the item pool.
+    If disabled, it will replace those with random non important items.
+    """
+    display_name = "Shuffle Mimic Traps"
+
+class ShufflePandoraBoxTraps(DefaultOnToggle):
+    """
+    Enable this option to shuffle 10 Pandora's Box Traps in the item pool.
+    If disabled, it will replace those with random non important items.
+    """
+    display_name = "Shuffle Pandora's Box Traps"
+
+# MISC OPTIONS
+
+class AliahanKingSpecialGifts(DefaultOnToggle):
+    """
+    Allows the scene with the Aliahan King at the start of the game to give you additionnal gifts:
+    - A pack of x10 "Chimera Wings" items for easier early game progression
+    - The main World Map if not already obtained
+    - The flag that will allow you to change the Hero's hair color in Alltrades Abbey
+    """
+    display_name = "Aliahan King's special gifts"
 
 # Put all options in a dataclass
 @dataclass
 class DQ3Options(PerGameCommonOptions):
     victory_goal: VictoryGoal
-    #container_sanity: ContainerSanity
+    container_sanity: ContainerSanity
+    hidden_ground_sanity: HiddenGroundSanity
+    secret_spots_sanity: SecretSpotsSanity
+    ocean_secret_spots_sanity: OceanSecretSpotsSanity
+    ship_settings: ShipSettings
+    ramia_settings: RamiaSettings
+    shuffle_cannibox: ShuffleCanniboxTraps
+    shuffle_mimic: ShuffleMimicTraps
+    shuffle_pandorabox: ShufflePandoraBoxTraps
+    aliahan_king_special_gifts: AliahanKingSpecialGifts
 
 
-# Group options by similar type
-# groups = [
-#     OptionGroup(
-#         "Test Options",
-#         [ContainerSanity],
-#     ),
-# ]
+# Group options by similar type (options not in a group will be displayed under the "Game Options" default group)
+groups = [
+    OptionGroup(
+        "Locations Options",
+        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity],
+    ),
+    OptionGroup(
+        "Items Options",
+        [ShipSettings, RamiaSettings],
+    ),
+    OptionGroup(
+        "Traps Options",
+        [ShuffleCanniboxTraps, ShuffleMimicTraps, ShufflePandoraBoxTraps],
+    ),
+    OptionGroup(
+        "Misc Options",
+        [AliahanKingSpecialGifts],
+    ),
+]
 
 
 # Class to display options on the website (not used for this game)
 class DQ3WebWorld(WebWorld):
     game = "Dragon Quest III HD-2D Remake"
     theme = "grassFlowers"
-    #option_groups = groups
+    option_groups = groups
