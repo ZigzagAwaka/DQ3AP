@@ -28,7 +28,7 @@ class VictoryGoal(Choice):
 class ContainerSanity(DefaultOnToggle):
     """
     Choose if all the containers in the game should be filled with random items (chests, barrels, pots, sacks, storages, ...).
-    If disabled, then only the chests will be randomized, and other containers will be excluded (ie. forced to contain a non important item).
+    If disabled, then only the chests will be randomized, and other containers will be excluded (forced to contain filler items). This usually excludes 668 checks.
     Note that story related items not in chests will always be randomized.
     """
     display_name = "Container Sanity"
@@ -36,7 +36,7 @@ class ContainerSanity(DefaultOnToggle):
 class HiddenGroundSanity(DefaultOnToggle):
     """
     Choose if "Hidden Ground" items should be randomized, those are items placed in pretty hard to find locations and are invisible unless you use the spell "Snoop".
-    If disabled, then those items will be excluded and forced to have a non important item.
+    If disabled, then those items will be excluded and forced to have a filler item. This usually excludes 158 checks.
     If container_sanity is false, then this option will have no effect.
     """
     display_name = "Hidden Ground Sanity"
@@ -44,14 +44,14 @@ class HiddenGroundSanity(DefaultOnToggle):
 class SecretSpotsSanity(DefaultOnToggle):
     """
     Choose if containers in Secret Spots areas should be filled with random items, those are small hidden areas in the overworld.
-    If disabled, then those areas will be excluded and forced to contain non important items.
+    If disabled, then those areas will be excluded and forced to contain filler items. This usually excludes 202 checks.
     """
     display_name = "Secret Spots Sanity"
 
 class OceanSecretSpotsSanity(DefaultOnToggle):
     """
     Choose if containers in Secret Spots areas located in the sea/ocean should be filled with random items, those are small hidden areas only accessible with the Ship.
-    If disabled, then those areas will be excluded and forced to contain non important items.
+    If disabled, then those areas will be excluded and forced to contain filler items. This usually excludes 39 checks.
     If secret_spots_sanity is false, then this option will have no effect.
     """
     display_name = "Ocean Secret Spots Sanity"
@@ -89,21 +89,21 @@ class RamiaSettings(Choice):
 class ShuffleCanniboxTraps(DefaultOnToggle):
     """
     Enable this option to shuffle 7 Cannibox Traps in the item pool.
-    If disabled, it will replace those with random non important items.
+    If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Cannibox Traps"
 
 class ShuffleMimicTraps(DefaultOnToggle):
     """
     Enable this option to shuffle 19 Mimic Traps in the item pool.
-    If disabled, it will replace those with random non important items.
+    If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Mimic Traps"
 
 class ShufflePandoraBoxTraps(DefaultOnToggle):
     """
     Enable this option to shuffle 10 Pandora's Box Traps in the item pool.
-    If disabled, it will replace those with random non important items.
+    If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Pandora's Box Traps"
 
@@ -114,7 +114,7 @@ class AliahanKingSpecialGifts(DefaultOnToggle):
     Allows the scene with the Aliahan King at the start of the game to give you additionnal gifts:
     - A pack of x10 "Chimera Wings" items for easier early game progression
     - The main World Map if not already obtained
-    - The flag that will allow you to change the Hero's hair color in Alltrades Abbey
+    - The story flag that will allow you to change the Hero's hair color in Alltrades Abbey
     """
     display_name = "Aliahan King's special gifts"
 

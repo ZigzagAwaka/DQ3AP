@@ -1,5 +1,7 @@
 print("Load Script EventScript_C01_Aliahan_Castle_2F")
 
+local AP = require("Src/DQ3AP") -- AP
+
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
@@ -246,25 +248,21 @@ function Gift()
   AddItem("ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES")
   AddGold(50)
   -- AP
-  -- gives a pack of chimera wing
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-  -- flag that lets you change the hero hair color in alltrades abbey (no need to get this from xenlon in postgame)
-  SetFlag(Flag.FE342, true)
-  SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_Xenlon_Looks, true)
-  -- gives the world map with the world map's flags
-  if not IsHaveItem("ITEM_IMPORTANT_ADVENTURERS_MAP") then
-    AddItem("ITEM_IMPORTANT_ADVENTURERS_MAP")
-    SetFlag(Flag.FE58, true)
-    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_IZANAICAVE_GetWorldMap, true)
+  local special_gifts = AP.GetOption("aliahan_king_special_gifts")
+  if special_gifts ~= nil and special_gifts == 1 then
+    -- gives a pack of chimera wing
+    for i = 0, 9 do
+      AddItem("ITEM_USE_ITEM_CHIMERA_WING")
+    end
+    -- flag that lets you change the hero hair color in alltrades abbey (no need to get this from xenlon in postgame)
+    SetFlag(Flag.FE342, true)
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_Xenlon_Looks, true)
+    -- gives the world map with the world map's flags
+    if not IsHaveItem("ITEM_IMPORTANT_ADVENTURERS_MAP") then
+      AddItem("ITEM_IMPORTANT_ADVENTURERS_MAP")
+      SetFlag(Flag.FE58, true)
+      SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_IZANAICAVE_GetWorldMap, true)
+    end
   end
   -- AP end
   SetFlag(Flag.FE160, true)

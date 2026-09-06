@@ -444,14 +444,23 @@ def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3It
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 
+# Helper method that returns True if the given item is valid based on option values
+def is_item_valid_from_options(world: DQ3World, name: str, info: Info) -> bool:
+    if info.classification == ItemClassification.trap:
+        if (name == "Cannibox Trap" and not world.options.shuffle_cannibox) or (name == "Mimic Trap" and not world.options.shuffle_mimic) or (name == "Pandora's Box Trap" and not world.options.shuffle_pandorabox):
+            return False
+    return True
+
+
 # Create and submit the itempool of all items in the game
 def create_all_items(world: DQ3World) -> None:
     itempool: list[Item] = []
 
-    # Create mandatory items (to be improved)
+    # Create mandatory and valid items
     for item_name, info in ALL_ITEMS.items():
-        for _ in range(info.quantity):
-            itempool.append(world.create_item(item_name))
+        if is_item_valid_from_options(world, item_name, info):
+            for _ in range(info.quantity):
+                itempool.append(world.create_item(item_name))
     
     number_of_items = len(itempool)
 

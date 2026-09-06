@@ -337,6 +337,7 @@ end
 -- contains every options received from the client
 local client_options = {
   victory_goal = nil,
+  aliahan_king_special_gifts = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file

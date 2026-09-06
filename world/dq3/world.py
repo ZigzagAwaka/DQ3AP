@@ -53,5 +53,5 @@ class DQ3World(World):
     # Define which options are going to be sent to the client
     def fill_slot_data(self) -> Mapping[str, Any]:
         return self.options.as_dict(
-            "victory_goal",
+            "victory_goal", "aliahan_king_special_gifts"
         )
