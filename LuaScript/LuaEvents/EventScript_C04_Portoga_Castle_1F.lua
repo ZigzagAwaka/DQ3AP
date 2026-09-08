@@ -115,7 +115,8 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP12) or (ship_settings ~= nil and ship_settings == 0 and GetFlag(Flag.FE106)) then
     return
   end
   -- AP end
@@ -174,10 +175,13 @@ function Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     RemoveItem("ITEM_IMPORTANT_BLACK_PEPPER")
   end
   -- AP
-  AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 called (Portoga - King giving the Ship)")
-  AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020")
-  SetFlag(Flag.FAP12, true)
-  --SetFlag(Flag.FE106, true)
+  if ship_settings == nil or ship_settings ~= 0 then
+    AP.Log("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020 called (Portoga - King giving the Ship)")
+    AP.CheckLocation("Portoga_Castle_1F_MAIN_0_VOLUME_0010_020")
+    SetFlag(Flag.FAP12, true)
+  else
+    SetFlag(Flag.FE106, true) -- give ship flag if ship settings is vanilla
+  end
   -- AP end
   ChangeMap("MAPLIST_C04R0501", "FromReality", ORIENTATION_DOWN)
   EventEnd(eventInfo, "")
@@ -318,8 +322,11 @@ function Portoga_Castle_1F_MAIN_0_SCENE_0000_010(BeginOverlap, table, ...)
   ChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1.5, 2)
   AudienceFinish(pos_x, pos_y, pos_z, offset)
   -- AP
-  --SetFlag(Flag.FE734, true)
-  --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_TalkWithPepper, true)
+  local ship_settings = AP.GetOption("ship_settings")
+  if ship_settings ~= nil and ship_settings == 0 then
+    SetFlag(Flag.FE734, true) -- give ship flag if ship settings is vanilla
+    SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_TalkWithPepper, true)
+  end
   -- AP end
   _retry(SYS_WaitStageCameraBlend)
   SetDispMiniMap(true)
@@ -333,7 +340,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_060(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -356,7 +364,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_070(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -379,7 +388,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_080(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -400,7 +410,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_090(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -419,7 +430,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_100(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -440,7 +452,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_110(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -460,7 +473,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_120(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -481,7 +495,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_130(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -501,7 +516,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_140(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -521,7 +537,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_150(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -541,7 +558,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_160(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -561,7 +579,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_170(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -581,7 +600,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_180(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -600,7 +620,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_190(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -619,7 +640,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_200(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end
@@ -639,7 +661,8 @@ function Portoga_Castle_1F_MAIN_0_ACTOR_0110_210(BeginOverlap, table, ...)
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_010(BeginOverlap, table, ...)
     return
   end
-  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) then
+  local ship_settings = AP.GetOption("ship_settings")
+  if GetFlag(Flag.FAP11) and GetFlag(Flag.FE64) and not GetFlag(Flag.FAP12) and (ship_settings == nil or ship_settings ~= 0 or not GetFlag(Flag.FE106)) then
     Portoga_Castle_1F_MAIN_0_VOLUME_0010_020(BeginOverlap, table, ...)
     return
   end

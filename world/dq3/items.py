@@ -444,11 +444,21 @@ def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3It
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 
+# Define items that are defined "start with" in the options (precollect those items)
+def create_precollected_items(world: DQ3World) -> None:
+    if world.options.ship_settings == "start_with":
+        world.push_precollected(world.create_item("Ship"))
+    if world.options.ramia_settings == "start_with":
+        world.push_precollected(world.create_item("Ramia"))
+
+
 # Helper method that returns True if the given item is valid based on option values
 def is_item_valid_from_options(world: DQ3World, name: str, info: Info) -> bool:
     if info.classification == ItemClassification.trap:
         if (name == "Cannibox Trap" and not world.options.shuffle_cannibox) or (name == "Mimic Trap" and not world.options.shuffle_mimic) or (name == "Pandora's Box Trap" and not world.options.shuffle_pandorabox):
             return False
+    if (name == "Ship" and world.options.ship_settings != "random") or (name == "Ramia" and world.options.ramia_settings != "random") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
+        return False
     return True
 
 

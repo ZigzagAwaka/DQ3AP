@@ -84,6 +84,14 @@ class RamiaSettings(Choice):
     option_start_with = 2
     default = 0
 
+class RainbowDropShuffle(Toggle):
+    """
+    The Rainbow Drop is an important item that allows you to create the rainbow bridge to Zoma's Castle, where the final boss of the game resides.
+    Enable this option to have it be randomized anywhere in the multiworld.
+    If disabled, it will instead be placed in it's vanilla location, which is the reward from Sanctum's priest after giving him the Sacred Amulet, the Staff of Rain and the Sunstone.
+    """
+    display_name = "Shuffle Rainbow Drop"
+
 # TRAPS OPTIONS
 
 class ShuffleCanniboxTraps(DefaultOnToggle):
@@ -128,6 +136,7 @@ class DQ3Options(PerGameCommonOptions):
     ocean_secret_spots_sanity: OceanSecretSpotsSanity
     ship_settings: ShipSettings
     ramia_settings: RamiaSettings
+    shuffle_rainbow_drop: RainbowDropShuffle
     shuffle_cannibox: ShuffleCanniboxTraps
     shuffle_mimic: ShuffleMimicTraps
     shuffle_pandorabox: ShufflePandoraBoxTraps
@@ -142,7 +151,7 @@ groups = [
     ),
     OptionGroup(
         "Items Options",
-        [ShipSettings, RamiaSettings],
+        [ShipSettings, RamiaSettings, RainbowDropShuffle],
     ),
     OptionGroup(
         "Traps Options",

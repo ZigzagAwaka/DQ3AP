@@ -1287,9 +1287,22 @@ def is_postgame_enabled(world: DQ3World) -> bool:
 def is_goal_baramos_only(world: DQ3World) -> bool:
     return world.options.victory_goal == "baramos"
 
+
 # Helper method that takes a list of location names and returns them as a dict with their IDs
 def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | None]:
     return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name in location_names}
+
+
+# Helper method that remove (real removal, not excluding!) some locations based on option values and returns the modified locations list
+def remove_locations_based_on_options(world: DQ3World, region: str, locations: list[str]) -> list[str]:
+    if world.options.ship_settings == "vanilla" and region == "Portoga Castle":
+        locations.remove("[Portoga Castle] Reward from Portoga King after giving the Black Pepper")
+    elif world.options.ramia_settings == "vanilla" and region == "Shrine of the Everbird":
+        locations.remove("[Shrine of the Everbird] Reward for offering the 6 orbs")
+    elif not world.options.shuffle_rainbow_drop and region == "Sanctum":
+        locations.remove("[Sanctum] Reward from Priest after giving the Sacred Amulet, Staff of Rain and Sunstone")
+    return locations
+
 
 # Helper method that exclude some locations that are related to the provided container names,
 # then returns new valid and excluded locations. Also comes with a matched_rule optional parameter
@@ -1301,6 +1314,7 @@ def exclude_locations_from_containers(valid_locations: list[str], excluded_locat
     excluded_locations.extend(locations_to_exclude)
     valid_locations = [location_name for location_name in valid_locations if location_name not in locations_to_exclude]
     return valid_locations, excluded_locations
+
 
 # Helper method to exclude some locations based on option values and returns new valid and excluded locations
 def exclude_locations_based_on_options(world: DQ3World, region: str, valid_locations: list[str], excluded_locations: list[str]) -> tuple[list[str], list[str]]:
@@ -1314,6 +1328,7 @@ def exclude_locations_based_on_options(world: DQ3World, region: str, valid_locat
         valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Hidden Ground"])
     return valid_locations, excluded_locations
 
+
 # Helper method that returns a list of location names that are inside of the given region,
 # also exclude specific locations based on options values and returns them
 def get_locations_from_region(world: DQ3World, region: str) -> tuple[list[str], list[str]]:
@@ -1321,6 +1336,8 @@ def get_locations_from_region(world: DQ3World, region: str) -> tuple[list[str], 
     valid_locations = [location_name for location_name in LOCATION_NAME_TO_ID.keys()
                        if location_name.split("]")[0][1:] == region]
     excluded_locations = []
+    # and directly removes some locations depending on option values
+    valid_locations = remove_locations_based_on_options(world, region, valid_locations)
     # then ignore everything else if postgame is enabled
     if not is_postgame_enabled(world) and region in specific_exclude_goal_regions:
         # or else construct what locations are excluded
@@ -1335,8 +1352,9 @@ def get_locations_from_region(world: DQ3World, region: str) -> tuple[list[str], 
                                 if location_name not in post_baramos_locations_by_region]
     # finally, exclude specific locations based on option values
     valid_locations, excluded_locations = exclude_locations_based_on_options(world, region, valid_locations, excluded_locations)
-    # then returns the two lists
+    # and returns the two lists
     return valid_locations, excluded_locations
+
 
 # Helper method to get the correct Location type (regular or excluded) of the given region
 # based on the current options values

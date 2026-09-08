@@ -6,6 +6,7 @@ from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
 
 from . import locations
+from .options import ShipSettings, RamiaSettings, RainbowDropShuffle
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -19,9 +20,9 @@ HAS_ULTIMATE_KEY = Has("Progressive Key", count=3)
 HAS_DREAMSTONE = Has("Dreamstone")
 HAS_ROYAL_MISSIVE = Has("Royal Missive")
 HAS_BLACK_PEPPER = Has("Black Pepper")
-HAS_SHIP = Has("Ship")
 HAS_ALL_ORBS = HasAll("Green Orb", "Red Orb", "Purple Orb", "Yellow Orb", "Silver Orb", "Blue Orb")
-HAS_BIRD = Has("Ramia")
+HAS_SHIP = OptionFilter(ShipSettings, "start_with") | (OptionFilter(ShipSettings, "vanilla") & HAS_BLACK_PEPPER & ((HAS_MAGIC_KEY & HAS_THIEF_KEY & HAS_WRECKING_BALL) | OptionFilter(RamiaSettings, "start_with") | (OptionFilter(RamiaSettings, "random") & Has("Ramia")))) | (OptionFilter(ShipSettings, "random") & Has("Ship"))
+HAS_BIRD = OptionFilter(RamiaSettings, "start_with") | (OptionFilter(RamiaSettings, "vanilla") & HAS_ALL_ORBS & HAS_SHIP) | (OptionFilter(RamiaSettings, "random") & Has("Ramia"))
 HAS_MOD_ROD = Has("Mod Rod")
 HAS_BOATMANS_BONE = Has("Boatman's Bone")
 HAS_RAS_MIRROR = Has("Ra's Mirror")
@@ -39,7 +40,7 @@ HAS_FAERIE_FLUTE = Has("Faerie Flute")
 HAS_SACRED_AMULET = Has("Sacred Amulet")
 HAS_STAFF_OF_RAIN = Has("Staff of Rain")
 HAS_SUNSTONE = Has("Sunstone")
-HAS_RAINBOW_DROP = Has("Rainbow Drop")
+HAS_RAINBOW_DROP = (OptionFilter(RainbowDropShuffle, True) & Has("Rainbow Drop")) | (OptionFilter(RainbowDropShuffle, False) & HAS_SACRED_AMULET & HAS_STAFF_OF_RAIN & HAS_SUNSTONE & HAS_SHIP)
 HAS_SWORD_OF_KINGS = Has("Sword of Kings")
 HAS_AURORAL_HELM = Has("Auroral Helm")
 HAS_GRINGHAM_WHIP = Has("Gringham Whip")

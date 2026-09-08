@@ -12,7 +12,8 @@ from . import options as dq3_options
 # Main Apworld class
 class DQ3World(World):
     """
-    Dragon Quest III HD-2D Remake is a recreation of the classic 8-bit RPG and the starting point of the Elric trilogy.
+    Dragon Quest III HD-2D Remake is the most recent release of the classic RPG Dragon Quest III,
+    and the starting point of the Elric trilogy.
     """
 
     game = "Dragon Quest III HD-2D Remake"
@@ -41,6 +42,7 @@ class DQ3World(World):
     # Called by the generator to create all items
     def create_items(self) -> None:
         items.create_all_items(self)
+        items.create_precollected_items(self)
 
     # Called by the generator to create a specific given item
     def create_item(self, name: str) -> items.DQ3Item:
@@ -53,5 +55,6 @@ class DQ3World(World):
     # Define which options are going to be sent to the client
     def fill_slot_data(self) -> Mapping[str, Any]:
         return self.options.as_dict(
-            "victory_goal", "aliahan_king_special_gifts"
+            "victory_goal", "aliahan_king_special_gifts", "ship_settings",
+            "ramia_settings", "shuffle_rainbow_drop"
         )

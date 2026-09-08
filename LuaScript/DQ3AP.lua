@@ -338,6 +338,9 @@ end
 local client_options = {
   victory_goal = nil,
   aliahan_king_special_gifts = nil,
+  ship_settings = nil,
+  ramia_settings = nil,
+  shuffle_rainbow_drop = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file

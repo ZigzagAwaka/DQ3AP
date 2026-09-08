@@ -643,10 +643,11 @@ function CheckPedestalOrbOffered(index)
   SetFlag(_orbFlags[index], true)
   if CheckOfferedAllOrbs() == true then
     -- AP
-    AP.Log("EVESE_REIAMULAND_ORB_SHINE_ALL - All 6 orbs offered at Shrine of the Everbird")
-    AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
-    local ItemId = "ITEM_ARCHIPELAGO"
-    if true then
+    local ramia_settings = AP.GetOption("ramia_settings")
+    if ramia_settings == nil or ramia_settings ~= 0 then -- give AP item if ramia settings is not vanilla
+      AP.Log("EVESE_REIAMULAND_ORB_SHINE_ALL - All 6 orbs offered at Shrine of the Everbird")
+      AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
+      local ItemId = "ITEM_ARCHIPELAGO"
       SetTagItemId(ItemId)
       CmdLoadItemIcon(ItemId)
       PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)

@@ -300,8 +300,10 @@ std::unordered_map<std::string, int> APClient::Options::allOptions;
 void APClient::RegisterAllOptionsCallbacks()
 {
     // All options that will be registered needs to be added in this vector
-    const std::vector<std::string> optionNames = {"victory_goal", "aliahan_king_special_gifts"};
-
+    const std::vector<std::string> optionNames = {
+        "victory_goal", "aliahan_king_special_gifts",
+        "ship_settings", "ramia_settings", "shuffle_rainbow_drop"
+    };
     for (int i = 0; i < optionNames.size(); i++)
     {
         std::string name = optionNames[i];
