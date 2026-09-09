@@ -304,9 +304,10 @@ function TransitionLevel(BeginOverlap, table, ...)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
     -- AP
+    --AP.Log(prevMapId)
     -- prevent some maps to receive items because they can play cutscenes at the same time
-    -- current maps in order: Mt. Necrogond, Talontear Tunnel
-    if prevMapId == "MAPLIST_H26F0101" or prevMapId == "MAPLIST_D16R0101" then
+    -- current maps in order: Mt. Necrogond, Talontear Tunnel, Shrine of the Everbird
+    if prevMapId == "MAPLIST_H26F0101" or prevMapId == "MAPLIST_D16R0101" or prevMapId == "MAPLIST_H16R0101" then
       fromValidMap = false
     end
     -- AP end
