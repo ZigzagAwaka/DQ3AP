@@ -444,31 +444,44 @@ def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3It
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 
-# Define items that are defined "start with" in the options (precollect those items)
-def create_precollected_items(world: DQ3World) -> None:
+# Create some items based on option values (start_with items and vanilla placed items)
+def create_starting_and_locked_items(world: DQ3World) -> None:
     if world.options.ship_settings == "start_with":
         world.push_precollected(world.create_item("Ship"))
+    elif world.options.ship_settings == "vanilla":
+        world.get_location("[Portoga Castle] Reward from Portoga King after giving the Black Pepper").place_locked_item(world.create_item("Ship"))
+
     if world.options.ramia_settings == "start_with":
         world.push_precollected(world.create_item("Ramia"))
+    elif world.options.ramia_settings == "vanilla":
+        world.get_location("[Shrine of the Everbird] Reward for offering the 6 orbs").place_locked_item(world.create_item("Ramia"))
+
+    if not world.options.shuffle_rainbow_drop:
+        world.get_location("[Sanctum] Reward from Priest after giving the Sacred Amulet, Staff of Rain and Sunstone").place_locked_item(world.create_item("Rainbow Drop"))
 
 
 # Helper method that returns True if the given item is valid based on option values
-def is_item_valid_from_options(world: DQ3World, name: str, info: Info) -> bool:
+# Non valid items are supposed to be missing from the random itempool
+def is_item_valid_for_itempool(world: DQ3World, name: str, info: Info) -> bool:
     if info.classification == ItemClassification.trap:
         if (name == "Cannibox Trap" and not world.options.shuffle_cannibox) or (name == "Mimic Trap" and not world.options.shuffle_mimic) or (name == "Pandora's Box Trap" and not world.options.shuffle_pandorabox):
             return False
-    if (name == "Ship" and world.options.ship_settings != "random") or (name == "Ramia" and world.options.ramia_settings != "random") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
+    if (name == "Ship" and world.options.ship_settings != "anywhere") or (name == "Ramia" and world.options.ramia_settings != "anywhere") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
         return False
     return True
 
 
 # Create and submit the itempool of all items in the game
 def create_all_items(world: DQ3World) -> None:
+    # First, create all starting and locked items
+    create_starting_and_locked_items(world)
+
+    # Then create the itempool to be filled
     itempool: list[Item] = []
 
     # Create mandatory and valid items
     for item_name, info in ALL_ITEMS.items():
-        if is_item_valid_from_options(world, item_name, info):
+        if is_item_valid_for_itempool(world, item_name, info):
             for _ in range(info.quantity):
                 itempool.append(world.create_item(item_name))
     

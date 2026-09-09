@@ -1294,14 +1294,8 @@ def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | No
 
 
 # Helper method that remove (real removal, not excluding!) some locations based on option values and returns the modified locations list
-def remove_locations_based_on_options(world: DQ3World, region: str, locations: list[str]) -> list[str]:
-    if world.options.ship_settings == "vanilla" and region == "Portoga Castle":
-        locations.remove("[Portoga Castle] Reward from Portoga King after giving the Black Pepper")
-    elif world.options.ramia_settings == "vanilla" and region == "Shrine of the Everbird":
-        locations.remove("[Shrine of the Everbird] Reward for offering the 6 orbs")
-    elif not world.options.shuffle_rainbow_drop and region == "Sanctum":
-        locations.remove("[Sanctum] Reward from Priest after giving the Sacred Amulet, Staff of Rain and Sunstone")
-    return locations
+def remove_locations_based_on_options(world: DQ3World, region: str, location_names: list[str]) -> list[str]:
+    return location_names # Nothing to do for now
 
 
 # Helper method that exclude some locations that are related to the provided container names,
@@ -1390,4 +1384,5 @@ def create_regular_locations(world: DQ3World) -> None:
 
 
 def create_events(world: DQ3World) -> None:
-    pass
+    completion_event_region, completion_event_name, _ = rules.get_completion_event_parameters(world)
+    world.get_region(completion_event_region).add_event(completion_event_name, "Victory", location_type=DQ3Location, item_type=items.DQ3Item)

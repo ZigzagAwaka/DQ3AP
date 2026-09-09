@@ -42,7 +42,6 @@ class DQ3World(World):
     # Called by the generator to create all items
     def create_items(self) -> None:
         items.create_all_items(self)
-        items.create_precollected_items(self)
 
     # Called by the generator to create a specific given item
     def create_item(self, name: str) -> items.DQ3Item:
