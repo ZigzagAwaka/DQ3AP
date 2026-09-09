@@ -249,7 +249,7 @@ function Gift()
   AddGold(50)
   -- AP
   local special_gifts = AP.GetOption("aliahan_king_special_gifts")
-  if special_gifts ~= nil and special_gifts == 1 then
+  if special_gifts == nil or special_gifts == 1 then
     -- gives a pack of chimera wing
     for i = 0, 9 do
       AddItem("ITEM_USE_ITEM_CHIMERA_WING")

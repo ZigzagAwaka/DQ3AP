@@ -15,8 +15,7 @@ function HolyShrine2FPriest(targetActorId)
   -- AP: some GetFlag replaced with their IsHaveItem equivalent
   --local result = GetFlag(Flag.FE81) and GetFlag(Flag.FE85) --[[and GetFlag(Flag.FE87)]] and IsHaveItem(itemEquipWeaponStaffOfRain)
   local result = IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") -- AP
-  local shuffle_rainbow_drop = AP.GetOption("shuffle_rainbow_drop") -- AP
-  if result == true and ((shuffle_rainbow_drop ~= nil and shuffle_rainbow_drop == 0 and not GetFlag(Flag.FE88)) or ((shuffle_rainbow_drop == nil or shuffle_rainbow_drop == 1) and not GetFlag(Flag.FAP4))) then -- AP
+  if result == true and not GetFlag(Flag.FAP4) then -- AP
     RequestPreloadEventScreenShot("EVENTSCREENSHOT_RubissTower002")
     local partyLivingNum = CheckLivingMemberNum()
     local npcPos = GetNpcLocation(targetActorId)
@@ -136,14 +135,11 @@ function HolyShrine2FPriest(targetActorId)
     SetTagItemId(itemImportantRainbowDrop)
     ItemGetMessageToActor("NPC_Talk_HolyShrine_2F_MAIN_0_ACTOR_0120_030_4", "ITEM_ARCHIPELAGO"--[[itemImportantRainbowDrop]], targetActorId) -- AP
     -- AP
-    if shuffle_rainbow_drop == nil or shuffle_rainbow_drop == 1 then
-      AP.Log("HolyShrine_2F_MAIN_0_ACTOR_0120_010 called (Sanctum - Priest giving the Rainbow Drop)")
-      AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
-      SetFlag(Flag.FAP4, true)
-    else
-      AddItem(itemImportantRainbowDrop)
-      SetFlag(Flag.FE88, true)
-    end
+    AP.Log("HolyShrine_2F_MAIN_0_ACTOR_0120_010 called (Sanctum - Priest giving the Rainbow Drop)")
+    AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
+    SetFlag(Flag.FAP4, true)
+    --AddItem(itemImportantRainbowDrop)
+    --SetFlag(Flag.FE88, true)
     -- AP end
     Wait(0.5)
     CmdMoveNpcRelativeDetail("Party1", {
@@ -211,11 +207,8 @@ end
 function HolyShrine_2F_MAIN_0_ACTOR_0120_040(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
-    local shuffle_rainbow_drop = AP.GetOption("shuffle_rainbow_drop")
-    if shuffle_rainbow_drop == nil or shuffle_rainbow_drop == 1 or not GetFlag(Flag.FE88) then
-      HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
-      return
-    end
+    HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
+    return
   end
   -- AP end
   eventInfo = EventStart(table, true)
@@ -227,11 +220,8 @@ end
 function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
   if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
-    local shuffle_rainbow_drop = AP.GetOption("shuffle_rainbow_drop")
-    if shuffle_rainbow_drop == nil or shuffle_rainbow_drop == 1 or not GetFlag(Flag.FE88) then
-      HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
-      return
-    end
+    HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
+    return
   end
   -- AP end
   eventInfo = EventStart(table, true)

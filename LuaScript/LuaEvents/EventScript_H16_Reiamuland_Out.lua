@@ -644,15 +644,15 @@ function CheckPedestalOrbOffered(index)
   if CheckOfferedAllOrbs() == true then
     -- AP
     local ramia_settings = AP.GetOption("ramia_settings")
-    if ramia_settings == nil or ramia_settings ~= 0 then -- give AP item if ramia settings is not vanilla
-      AP.Log("EVESE_REIAMULAND_ORB_SHINE_ALL - All 6 orbs offered at Shrine of the Everbird")
-      AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
-      local ItemId = "ITEM_ARCHIPELAGO"
-      SetTagItemId(ItemId)
-      CmdLoadItemIcon(ItemId)
-      PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)
-      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
-      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    AP.Log("EVESE_REIAMULAND_ORB_SHINE_ALL - All 6 orbs offered at Shrine of the Everbird")
+    AP.CheckLocation("EVESE_REIAMULAND_ORB_SHINE_ALL")
+    local ItemId = "ITEM_ARCHIPELAGO"
+    SetTagItemId(ItemId)
+    CmdLoadItemIcon(ItemId)
+    PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    if ramia_settings == nil or ramia_settings ~= 0 then
       RequestAutoSaveFromEvent()
       return
     end
