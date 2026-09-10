@@ -432,12 +432,6 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
     classification = ALL_ITEMS[name].classification
 
-    if not (world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame") and name in {"Sword of Kings", "Gringham Whip", "Auroral Helm"}:
-        classification = ItemClassification.useful
-
-    if world.options.victory_goal == "baramos" and name in {"Sphere of Light", "Rainbow Drop", "Sacred Amulet", "Staff of Rain", "Forging Hammer", "Sunstone", "Orichalcum", "Broken Blade", "Faerie Flute"}:
-        classification = ItemClassification.useful
-
     if name == "Mini Medal" and (world.options.victory_goal == "medals" or world.options.victory_goal == "medals_postgame"):
         classification = ItemClassification.progression_skip_balancing | ItemClassification.useful
 
