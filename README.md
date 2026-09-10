@@ -26,9 +26,7 @@ When the setup is finished, you can open the game on Steam to see a new separate
 
 In Dragon Quest III HD-2D Remake, all obtainable items (usable items, equipment, gold, ...) are shuffled into the multiworld. From chests to barrels, pots, bookshelves and important NPC events, you'll have a great time figuring out a route to complete your goal !
 
-Options to choose which locations are randomized, excluded or vanilla are available for those who want to configure some things before playing. *(planned !)*
-
-**Alpha warning notice: As this integration is currently playable, it's not yet stable (we are still on Alpha) meaning actually playing it might get you some issues!**
+Options to choose which locations are randomized, excluded or vanilla are available for those who want to configure some things before playing.
 
 ### What is the goal of the game when randomized ?
 
@@ -66,8 +64,6 @@ The game will cache the received items then give them all to the player when one
 - The player talks to a Priest of any location by loading a save file from the title screen
 - The player uses the spell "Peep" when not being next to a chest [check mods compatibility for this one!]
 
-*Planned : Some other ways to give items are being considered and will be work on in future releases.*
-
 Once items are received, the game will display a message to show what's been received for each items (except for the Ship and Ramia since those are not real items in the game, but are progression checks/items for Archipelago).
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
@@ -80,11 +76,11 @@ As items are all remotely implemented for now, you will still find multiworld it
 
 Make sure to always save the game before turning it off !
 
-If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to check again but actually checking it will have no effect since it was already checked by the Archipelago server.
+If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to check again but actually checking it will have no effect since it was already registered by the Archipelago server.
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
-The game already perform some auto saves automatically when entering an area, so you can also reload the last auto save if you need it.
+The game already perform some auto saves automatically when you receive an item, so you can also reload the last auto save if you need it.
 
 ### Can I go back to previously explored areas ?
 
@@ -117,5 +113,5 @@ You can report anything in the `Dragon Quest III HD-2D Remake` post in the `futu
 - [Game Interactive Maps by th3blackb3rry](https://gamefaqs.gamespot.com/pc/466975-dragon-quest-iii-hd-2d-remake/faqs)
 - [APCpp Library: used by the client mod](https://github.com/N00byKing/APCpp)
 - [@mike9k1: for useful modding advices](https://www.nexusmods.com/profile/mike9k1)
-- [@mastermarz: for helping at building the logic in some locations](https://www.twitch.tv/mastermarz)
+- [@mastermarz: for helping at figuring out the logic in some locations](https://www.twitch.tv/mastermarz)
 - [@seraphin_eveles: for good support and testing](https://www.twitch.tv/seraphin_eveles)
