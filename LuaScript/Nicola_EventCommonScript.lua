@@ -654,25 +654,29 @@ function SearchObject_Shine_Sea(BeginOverlap, table, CanObtainItem, TreasureId, 
   -- AP
   local checkName = ""
   local isExcluded = AP.IsLocationExcluded(TreasureId)
+  local shiny_spots_sanity = AP.GetOption("shiny_spots_sanity")
+  local sanity_one = shiny_spots_sanity == nil or shiny_spots_sanity == 1
+  local sanity_max = shiny_spots_sanity == nil or shiny_spots_sanity == 2
+  isExcluded = isExcluded or (not sanity_one and not sanity_max)
   AP.Log("SearchObject_Shine_Sea called with TreasureId: " .. tostring(TreasureId))
   if not isExcluded then
     if 0 < ItemCount1 or 0 < Gold1 then
       checkName = checkName .. TreasureId .. "_1"
     end
-    if 0 < ItemCount2 or 0 < Gold2 then
+    if (0 < ItemCount2 or 0 < Gold2) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_2"
     end
-    if 0 < ItemCount3 or 0 < Gold3 then
+    if (0 < ItemCount3 or 0 < Gold3) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_3"
     end
     AP.CheckLocation(checkName)
   end
   SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1, isExcluded)
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
-  if not isExcluded then
-    AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+  if isExcluded or sanity_max then
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
   end
+  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
   -- AP end
   EventEnd(eventInfo, "")
 end
@@ -683,25 +687,29 @@ function SearchObject_Shine_Ground(BeginOverlap, table, CanObtainItem, TreasureI
   -- AP
   local checkName = ""
   local isExcluded = AP.IsLocationExcluded(TreasureId)
+  local shiny_spots_sanity = AP.GetOption("shiny_spots_sanity")
+  local sanity_one = shiny_spots_sanity == nil or shiny_spots_sanity == 1
+  local sanity_max = shiny_spots_sanity == nil or shiny_spots_sanity == 2
+  isExcluded = isExcluded or (not sanity_one and not sanity_max)
   AP.Log("SearchObject_Shine_Ground called with TreasureId: " .. tostring(TreasureId))
   if not isExcluded then
     if 0 < ItemCount1 or 0 < Gold1 then
       checkName = checkName .. TreasureId .. "_1"
     end
-    if 0 < ItemCount2 or 0 < Gold2 then
+    if (0 < ItemCount2 or 0 < Gold2) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_2"
     end
-    if 0 < ItemCount3 or 0 < Gold3 then
+    if (0 < ItemCount3 or 0 < Gold3) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_3"
     end
     AP.CheckLocation(checkName)
   end
   SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1, isExcluded)
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
-  if not isExcluded then
-    AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+  if isExcluded or sanity_max then
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
   end
+  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
   -- AP end
   EventEnd(eventInfo, "")
 end

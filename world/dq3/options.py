@@ -56,6 +56,19 @@ class OceanSecretSpotsSanity(DefaultOnToggle):
     """
     display_name = "Ocean Secret Spots Sanity"
 
+class ShinySpotsSanity(Choice):
+    """
+    Allows to choose how Shiny Spots locations are randomized, those are small shiny places in the overworld giving a pack of items when checked.
+    - Vanilla: Shiny Spots in the overworld will not be randomized and will instead be vanilla
+    - One check: Shiny Spots will contain 1 random item check. This adds around 344 more checks in the game.
+    - Max checks: Shiny Spots will contain as many items checks as in vanilla (between 1 and 3). This adds around +1000 more checks in the game.
+    """
+    display_name = "Shiny Spots Sanity"
+    option_vanilla = 0
+    option_one_check = 1
+    option_max_checks = 2
+    default = 0
+
 # ITEMS OPTIONS
 
 class ShipSettings(Choice):
@@ -134,6 +147,7 @@ class DQ3Options(PerGameCommonOptions):
     hidden_ground_sanity: HiddenGroundSanity
     secret_spots_sanity: SecretSpotsSanity
     ocean_secret_spots_sanity: OceanSecretSpotsSanity
+    shiny_spots_sanity: ShinySpotsSanity
     ship_settings: ShipSettings
     ramia_settings: RamiaSettings
     shuffle_rainbow_drop: RainbowDropShuffle
@@ -147,7 +161,7 @@ class DQ3Options(PerGameCommonOptions):
 groups = [
     OptionGroup(
         "Locations Options",
-        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity],
+        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity, ShinySpotsSanity],
     ),
     OptionGroup(
         "Items Options",

@@ -301,7 +301,8 @@ void APClient::RegisterAllOptionsCallbacks()
 {
     // All options that will be registered needs to be added in this vector
     const std::vector<std::string> optionNames = {
-        "victory_goal", "aliahan_king_special_gifts", "ramia_settings"
+        "victory_goal", "aliahan_king_special_gifts", "ramia_settings",
+        "shiny_spots_sanity"
     };
     for (int i = 0; i < optionNames.size(); i++)
     {

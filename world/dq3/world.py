@@ -55,4 +55,5 @@ class DQ3World(World):
     def fill_slot_data(self) -> Mapping[str, Any]:
         return self.options.as_dict(
             "victory_goal", "aliahan_king_special_gifts", "ramia_settings",
+            "shiny_spots_sanity",
         )
