@@ -23,13 +23,15 @@ public:
     /// @param optionPath Path to AP options data file
     /// @param roomPath Path to AP current room informations data file
     /// @param medalsPath Path to AP stored medals data file
+    /// @param flagPath Path to AP related flags data file
     APClient(
         Logger& logger,
         const std::string& itemPath,
         const std::string& locationPath,
         const std::string& optionPath,
         const std::string& roomPath,
-        const std::string& medalsPath
+        const std::string& medalsPath,
+        const std::string& flagPath
     );
 
     /// @brief Connect to Archipelago
@@ -85,6 +87,7 @@ private:
     const std::string optionDataPath;
     const std::string roomDataPath;
     const std::string medalsDataPath;
+    const std::string flagDataPath;
 
     std::string currentHost = "";
     std::string currentPlayer = "";

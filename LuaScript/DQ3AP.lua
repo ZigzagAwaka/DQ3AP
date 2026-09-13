@@ -352,7 +352,7 @@ function AP.GetOption(OptionName)
     return nil
   end
   for line in file:lines() do
-    local key, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "key : value"
+    local key, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "key: value"
     if key == OptionName then
       value = tonumber(value)
       client_options[OptionName] = value
@@ -362,6 +362,60 @@ function AP.GetOption(OptionName)
   end
   file:close()
   return nil
+end
+
+-- contains every AP related flags value
+local progress_flags = {
+  reeve_old_man_1 = nil, -- AP1
+  reeve_old_man_2 = nil, -- AP2
+  elfvillage_queen = nil, -- AP3
+  holyshrine_priest = nil, -- AP4
+  necrogondshrine_priest = nil, -- AP6
+  greenlad_old_man = nil, -- AP7
+  najimitower_old_man = nil, -- AP8
+  edinbearcastle_chest = nil, -- AP9
+  dharma_trader = nil, -- AP10
+  portoga_king_1 = nil, -- AP11
+  portoga_king_2 = nil, -- AP12
+}
+
+-- Gets the value of the given AP related flag
+function AP.GetFlag(FlagName)
+  if progress_flags[FlagName] ~= nil then
+    return progress_flags[FlagName]
+  end
+  local file = io.open("Archipelago/flags.data", "r")
+  if not file then
+    return false
+  end
+  for line in file:lines() do
+    local flag, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "flag: value"
+    if flag == FlagName then
+      local value_bool = value == "true"
+      progress_flags[FlagName] = value_bool
+      file:close()
+      return value_bool
+    end
+  end
+  file:close()
+  return false
+end
+
+-- Sets the given value to the given AP related flag
+function AP.SetFlag(FlagName, FlagValue)
+  local previous = progress_flags[FlagName]
+  progress_flags[FlagName] = FlagValue
+  if previous == nil or previous ~= FlagValue then
+    local file = io.open("Archipelago/flags.data", "w")
+    if file then
+      for name, value in pairs(progress_flags) do
+        if value ~= nil then
+          file:write(name .. ": " .. tostring(value) .. "\n")
+        end
+      end
+      file:close()
+    end
+  end
 end
 
 -- list of all predefined non randomized locations (not important for AP)

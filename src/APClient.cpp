@@ -2,14 +2,15 @@
 #include "Archipelago.h"
 
 
-APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath,
-                   const std::string& optionPath, const std::string& hostPath, const std::string& medalsPath)
+APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath,
+                   const std::string& roomPath, const std::string& medalsPath, const std::string& flagPath)
     : logger(logger),
     itemDataPath(itemPath),
     locationDataPath(locationPath),
     optionDataPath(optionPath),
-    roomDataPath(hostPath),
-    medalsDataPath(medalsPath)
+    roomDataPath(roomPath),
+    medalsDataPath(medalsPath),
+    flagDataPath(flagPath)
 {
     ClearData();
 }
@@ -331,10 +332,14 @@ void APClient::ClearData()
 {
     if (!currentHost.empty())
     {
+        bool isHostKnown = IsKnownHost();
         // Only clear item data if connected to an unknown host or if the file does not exist
-        CreateOrClearFile(itemDataPath, true, !IsKnownHost());
+        CreateOrClearFile(itemDataPath, true, !isHostKnown);
         // Then set the latest room data to be the current room data
         SetLatestRoomData();
+        // And finally, clear flags if connected to an unknown host
+        if (!isHostKnown)
+            DeleteFile(flagDataPath);
     }
     // Always clear location data
     CreateOrClearFile(locationDataPath);

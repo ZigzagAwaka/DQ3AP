@@ -10,7 +10,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FAP1) then
+  if AP.GetFlag("reeve_old_man_1") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
     return
   end
@@ -58,7 +58,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_010 called (Reeve - Old man that gives the Wrecking Ball)")
   AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_010")
-  SetFlag(Flag.FAP1, true)
+  AP.SetFlag("reeve_old_man_1", true)
   --AddItem("ITEM_IMPORTANT_WRECKING_BALL")
   --SetFlag(Flag.FE57, true)
   --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REEVE_GetMagicBall, true)
@@ -71,7 +71,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP1) then
+  if not AP.GetFlag("reeve_old_man_1") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
     return
   end
@@ -84,7 +84,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP1) then
+  if not AP.GetFlag("reeve_old_man_1") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
     return
   end
@@ -98,7 +98,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_035(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP1) then
+  if not AP.GetFlag("reeve_old_man_1") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
     return
   end
@@ -111,7 +111,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP1) then
+  if not AP.GetFlag("reeve_old_man_1") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_010(BeginOverlap, table, ...)
     return
   end
@@ -128,7 +128,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   SetNicolaApertureRate(100, 0)
   SetDispMiniMap(false)
   SetTagItemId("ITEM_IMPORTANT_WRECKING_BALL")
-  if GetFlag(Flag.FAP2) --[[GetFlag(Flag.FE837) == true]] then -- AP
+  if AP.GetFlag("reeve_old_man_2") --[[GetFlag(Flag.FE837) == true]] then -- AP
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
   else
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_1")
@@ -140,7 +140,7 @@ function Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     -- AP
     AP.Log("Reeve_House2_1F_SUB_0_ACTOR_0110_040 called (Reeve - Old man that gives the Wrecking Ball 2)")
     AP.CheckLocation("Reeve_House2_1F_SUB_0_ACTOR_0110_040")
-    SetFlag(Flag.FAP2, true)
+    AP.SetFlag("reeve_old_man_2", true)
     --AddItem("ITEM_IMPORTANT_WRECKING_BALL")
     -- AP end
     CmdEventClosingMessage("NPC_TALK_Reeve_House2_1F_SUB_0_ACTOR_0110_040_4")
@@ -159,7 +159,7 @@ end
 
 function Reeve_House2_1F_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP2) then
+  if not AP.GetFlag("reeve_old_man_2") then
     Reeve_House2_1F_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     return
   end
