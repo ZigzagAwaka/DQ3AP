@@ -1,20 +1,13 @@
 from __future__ import annotations
-from dataclasses import dataclass
 
 from typing import TYPE_CHECKING
 
 from BaseClasses import Item, ItemClassification
+from .data import ItemInfo as Info
+from .items_extra import EXTRA_ITEMS
 
 if TYPE_CHECKING:
     from .world import DQ3World
-
-
-# Describe item informations
-@dataclass
-class Info:
-    id: int
-    classification: ItemClassification = ItemClassification.filler
-    quantity: int = 1
 
 
 # Every item must have a unique integer ID associated with it,
@@ -412,9 +405,13 @@ ALL_ITEMS: dict[str, Info] = {
 }
 
 
+# Add extra items to the items list
+ALL_ITEMS.update(EXTRA_ITEMS)
+
+# Create the map from item names to item ids
 ITEM_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_ITEMS.items()}
 
-
+# Subset of items only containing filler items names
 FILLER_ITEMS_NAMES = [item_name for item_name, info in ALL_ITEMS.items()
                      if info.classification == ItemClassification.filler]
 

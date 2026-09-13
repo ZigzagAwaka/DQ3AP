@@ -1,23 +1,14 @@
 from __future__ import annotations
-from dataclasses import dataclass
 
 from typing import (Any, TYPE_CHECKING)
 
 from BaseClasses import Entrance, Region
-from rule_builder.rules import Rule
 
 from . import rules
+from .data import RegionConnect as Connect
 
 if TYPE_CHECKING:
     from .world import DQ3World
-    from BaseClasses import CollectionRule
-
-
-# Describe possible region connections
-@dataclass
-class Connect:
-    name: str
-    rule: CollectionRule | Rule[Any] | None = None
 
 
 # A region is a container for locations ("checks"), which connects to other regions via "Entrance" objects

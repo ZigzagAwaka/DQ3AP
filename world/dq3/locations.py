@@ -1,5 +1,4 @@
 from __future__ import annotations
-from dataclasses import dataclass
 
 import logging, re
 from typing import (Any, TYPE_CHECKING)
@@ -8,17 +7,12 @@ from BaseClasses import ItemClassification, Location, LocationProgressType
 from rule_builder.rules import Rule
 
 from . import items, rules, regions
+from .data import LocationInfo as Info
+from .locations_extra import EXTRA_LOCATIONS
 
 if TYPE_CHECKING:
     from .world import DQ3World
     from BaseClasses import CollectionRule
-
-
-# Describe possible location informations
-@dataclass
-class Info:
-    id: int
-    rule: CollectionRule | Rule[Any] | None = None
 
 
 # Every location must have a unique integer ID associated with it
@@ -1243,6 +1237,10 @@ ALL_LOCATIONS: dict[str, Info] = {
 }
 
 
+# Add extra locations to the locations list
+ALL_LOCATIONS.update(EXTRA_LOCATIONS)
+
+# Create the map from location names to location ids
 LOCATION_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_LOCATIONS.items()}
 
 
