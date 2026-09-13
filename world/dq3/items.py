@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import Item, ItemClassification
 from .data import ItemInfo as Info
 from .items_extra import EXTRA_ITEMS
+from .items_extra import Type as PoolType
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -413,8 +414,12 @@ ITEM_NAME_TO_ID = {item_name: info.id for item_name, info in ALL_ITEMS.items()}
 
 # Subset of items only containing filler items names
 FILLER_ITEMS_NAMES = [item_name for item_name, info in ALL_ITEMS.items()
-                     if info.classification == ItemClassification.filler]
+                     if info.classification == ItemClassification.filler
+                     and info.type != PoolType.SHINY]
 
+# Subset of items only containing filler items names with exclusive extra shiny items
+FILLER_ITEMS_NAMES_WITH_SHINY = [item_name for item_name, info in ALL_ITEMS.items()
+                                 if info.classification == ItemClassification.filler]
 
 class DQ3Item(Item):
     game = "Dragon Quest III HD-2D Remake"
@@ -422,6 +427,8 @@ class DQ3Item(Item):
 
 # Returns a random filler item name
 def get_random_filler_item_name(world: DQ3World) -> str:
+    if world.options.shiny_spots_sanity != "vanilla":
+        return world.random.choice(FILLER_ITEMS_NAMES_WITH_SHINY)
     return world.random.choice(FILLER_ITEMS_NAMES)
 
 
@@ -459,6 +466,8 @@ def is_item_valid_for_itempool(world: DQ3World, name: str, info: Info) -> bool:
             return False
     if (name == "Ship" and world.options.ship_settings != "anywhere") or (name == "Ramia" and world.options.ramia_settings != "anywhere") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
         return False
+    if info.type == PoolType.SHINY:
+        return False
     return True
 
 
@@ -473,7 +482,10 @@ def create_all_items(world: DQ3World) -> None:
     # Create mandatory and valid items
     for item_name, info in ALL_ITEMS.items():
         if is_item_valid_for_itempool(world, item_name, info):
-            for _ in range(info.quantity):
+            quantity = info.quantity
+            if world.options.shiny_spots_sanity != "vanilla":
+                quantity += info.shiny_quantity
+            for _ in range(quantity):
                 itempool.append(world.create_item(item_name))
     
     number_of_items = len(itempool)

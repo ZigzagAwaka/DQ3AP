@@ -9,6 +9,7 @@ from rule_builder.rules import Rule
 from . import items, rules, regions
 from .data import LocationInfo as Info
 from .locations_extra import EXTRA_LOCATIONS
+from .locations_extra import Type as SanityType
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -1293,7 +1294,12 @@ def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | No
 
 # Helper method that remove (real removal, not excluding!) some locations based on option values and returns the modified locations list
 def remove_locations_based_on_options(world: DQ3World, region: str, location_names: list[str]) -> list[str]:
-    return location_names # Nothing to do for now
+    if world.options.shiny_spots_sanity != "max_checks" and "Overworld" in region:
+        if world.options.shiny_spots_sanity == "one_check":
+            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type != SanityType.SHINY_MAX]
+        else: # if vanilla
+            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type not in (SanityType.SHINY_MAX, SanityType.SHINY)]
+    return location_names
 
 
 # Helper method that exclude some locations that are related to the provided container names,
@@ -1348,7 +1354,7 @@ def get_locations_from_region(world: DQ3World, region: str) -> tuple[list[str], 
     return valid_locations, excluded_locations
 
 
-# Helper method to get the correct Location type (regular or excluded) of the given region
+# Helper method to get the correct Location progress type (regular or excluded) of the given region
 # based on the current options values
 def get_region_location_type_based_on_options(world: DQ3World, region: str) -> Location:
     if not is_postgame_enabled(world):
