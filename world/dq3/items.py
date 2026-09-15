@@ -129,7 +129,7 @@ ALL_ITEMS: dict[str, Info] = {
     # USABLE ITEMS
     "Holy Water": Info(1, quantity=9), #ITEM_USE_ITEM_HOLY_WATER
     "Chimera Wing": Info(3, quantity=16), #ITEM_USE_ITEM_CHIMERA_WING
-    "Medical Herb": Info(4, quantity=14), #ITEM_USE_ITEM_MEDICAL_HERB
+    "Medicinal Herb": Info(4, quantity=14), #ITEM_USE_ITEM_MEDICAL_HERB
     "Antidotal Herb": Info(6, quantity=10), #ITEM_USE_ITEM_ANTIDOTAL_HERB
     "Magic Water": Info(10, quantity=25), #ITEM_USE_ITEM_MAGIC_WATER
     "Unsealant": Info(16, quantity=8), #ITEM_USE_ITEM_WHISPERING_NECTAR

@@ -23,14 +23,20 @@ end
 
 -- checks if the given item is gold
 function AP.IsItemGold(ItemId)
-    local count = string.match(ItemId, "^GOLD_(%d+)$")
-    return count ~= nil, tonumber(count)
+  local count = string.match(ItemId, "^GOLD_(%d+)$")
+  return count ~= nil, tonumber(count)
 end
 
 -- checks if the given item is an enemy
 function AP.IsItemEnemy(ItemId)
-    local enemy = string.match(ItemId, "^BATTLE_EVENT_(.+)$")
-    return enemy ~= nil, tostring(enemy)
+  local enemy = string.match(ItemId, "^BATTLE_EVENT_(.+)$")
+  return enemy ~= nil, tostring(enemy)
+end
+
+-- checks if the given item is a multiple quantity of an item
+function AP.IsItemMultiple(ItemId)
+  local count, item = string.match(ItemId, "^MULTIPLE_(%d+)_(.+)$")
+  return count ~= nil, tonumber(count), item
 end
 
 -- all possible cannibox battle ids
@@ -229,6 +235,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
   ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
   local isEnemy, enemyName = AP.IsItemEnemy(ItemId)
+  local isMultiple, multipleCount, multipleItemId = AP.IsItemMultiple(ItemId)
   local receptor = 0
   if isEnemy then
     local BattleId = AP.GetBattleIdFromEnemyName(enemyName)
@@ -244,6 +251,20 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     SetTagValue(goldCount)
     PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_8")
+  elseif isMultiple then
+    local result = AddItemDetail(multipleItemId, multipleCount, -1, true)
+    SetTagItemId(multipleItemId)
+    SetTagValue(multipleCount)
+    if result then
+      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+      if multipleCount == 1 then
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
+      else
+        CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_2")
+      end
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
+    end
   elseif ItemId ~= "None" then
     receptor = AddItem(ItemId)
     SetTagItemId(ItemId)
