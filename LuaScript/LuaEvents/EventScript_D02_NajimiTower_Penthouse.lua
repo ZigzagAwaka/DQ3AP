@@ -10,7 +10,7 @@ end
 
 function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
-  if GetFlag(Flag.FAP8) then
+  if AP.GetFlag("najimitower_old_man") then
     NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
     return
   end
@@ -88,7 +88,7 @@ function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     AP.Log("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010 called (Dreamer's Tower - Old man that gives the Thief's Key)")
     AP.CheckLocation("NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010")
     SetFlag(Flag.FF1, true)
-    SetFlag(Flag.FAP8, true)
+    AP.SetFlag("najimitower_old_man", true)
     --AddItem("ITEM_IMPORTANT_THIEFS_KEY")
     --SetFlag(Flag.FE54, true)
     --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_NAJIMITOWER_GetKey, true)
@@ -110,7 +110,7 @@ end
 
 function NajimiTower_Penthouse_MAIN_0_ACTOR_0110_020(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP8) then
+  if not AP.GetFlag("najimitower_old_man") then
     NajimiTower_Penthouse_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
     return
   end

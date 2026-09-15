@@ -31,7 +31,7 @@ end
 function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
   eventInfo = EventStart(table, true)
   targetActorId = eventInfo[1]
-  if GetFlag(Flag.FAP7) --[[GetFlag(Flag.FE70) == true]] then -- AP
+  if AP.GetFlag("greenlad_old_man") --[[GetFlag(Flag.FE70) == true]] then -- AP
     CmdEventClosingMessage("NPC_Talk_Greenlad_House_SUB_0_ACTOR_0110_020_5")
   else
     local itemId1 = "ITEM_IMPORTANT_MOD_ROD"
@@ -49,7 +49,7 @@ function Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
       -- AP
       AP.Log("Greenlad_House_SUB_0_ACTOR_0110_020 called (Grimland - Old Man giving the Boatman's Bone)")
       AP.CheckLocation("Greenlad_House_SUB_0_ACTOR_0110_020")
-      SetFlag(Flag.FAP7, true)
+      AP.SetFlag("greenlad_old_man", true)
       --AddItem("ITEM_IMPORTANT_BOATMANS_BONE")
       --SetFlag(Flag.FE70, true)
       -- AP end
@@ -70,8 +70,8 @@ end
 function Greenlad_House_SUB_0_SCENE_0010_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  -- AP
-  if not GetFlag(Flag.FAP7) then
+  -- AP: respawn old man npc from fade out and cancel fade out
+  if not AP.GetFlag("greenlad_old_man") then
     local actorId = ""
     if GetMapTimeFrame() == MAPTIME_NIGHT then
       actorId = "Greenlad_House_OldMan_Greenlad_01_L3"
@@ -203,7 +203,7 @@ end
 
 function Greenlad_House_SUB_0_ACTOR_0110_030(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP7) then
+  if not AP.GetFlag("greenlad_old_man") then
     if GetFlag(Flag.FE69) then
       Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
     else
@@ -232,7 +232,7 @@ end
 
 function Greenlad_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP7) then
+  if not AP.GetFlag("greenlad_old_man") then
     if GetFlag(Flag.FE69) then
       Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
     else
@@ -277,7 +277,7 @@ end
 
 function Greenlad_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP7) then
+  if not AP.GetFlag("greenlad_old_man") then
     if GetFlag(Flag.FE69) then
       Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
     else
@@ -315,7 +315,7 @@ end
 
 function Greenlad_House_SUB_0_ACTOR_0110_060(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP7) then
+  if not AP.GetFlag("greenlad_old_man") then
     if GetFlag(Flag.FE69) then
       Greenlad_House_SUB_0_ACTOR_0110_020(BeginOverlap, table, ...)
     else

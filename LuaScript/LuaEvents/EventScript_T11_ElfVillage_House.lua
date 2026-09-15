@@ -10,7 +10,7 @@ end
 
 function ElfVillage_House_SUB_0_VOLUME_0110_010(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+  if not AP.GetFlag("elfvillage_queen") and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end
@@ -85,7 +85,7 @@ end
 
 function ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+  if not AP.GetFlag("elfvillage_queen") and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end
@@ -182,7 +182,7 @@ end
 function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   -- AP
   if not IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
-    if GetFlag(Flag.FAP3) then
+    if AP.GetFlag("elfvillage_queen") then
       ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
     else
       ElfVillage_House_SUB_0_VOLUME_0110_020(BeginOverlap, table, ...)
@@ -297,7 +297,7 @@ function ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
   -- AP
   AP.Log("ElfVillage_House_SUB_0_VOLUME_0110_030 called (Faerie Village - Faerie Queen giving the Wakey Dust)")
   AP.CheckLocation("ElfVillage_House_SUB_0_VOLUME_0110_030")
-  SetFlag(Flag.FAP3, true)
+  AP.SetFlag("elfvillage_queen", true)
   --AddItem("ITEM_IMPORTANT_WAKEY_DUST")
   --SetFlag(Flag.FE61, true)
   -- AP end
@@ -324,7 +324,7 @@ end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+  if not AP.GetFlag("elfvillage_queen") and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end
@@ -344,7 +344,7 @@ end
 
 function ElfVillage_House_SUB_0_ACTOR_0110_050(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP3) and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
+  if not AP.GetFlag("elfvillage_queen") and IsHaveItem("ITEM_IMPORTANT_DREAMSTONE") then
     ElfVillage_House_SUB_0_VOLUME_0110_030(BeginOverlap, table, ...)
     return
   end

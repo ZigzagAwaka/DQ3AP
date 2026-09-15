@@ -15,7 +15,7 @@ function HolyShrine2FPriest(targetActorId)
   -- AP: some GetFlag replaced with their IsHaveItem equivalent
   --local result = GetFlag(Flag.FE81) and GetFlag(Flag.FE85) --[[and GetFlag(Flag.FE87)]] and IsHaveItem(itemEquipWeaponStaffOfRain)
   local result = IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") -- AP
-  if result == true and not GetFlag(Flag.FAP4) then -- AP
+  if result == true and not AP.GetFlag("holyshrine_priest") then -- AP
     RequestPreloadEventScreenShot("EVENTSCREENSHOT_RubissTower002")
     local partyLivingNum = CheckLivingMemberNum()
     local npcPos = GetNpcLocation(targetActorId)
@@ -137,7 +137,7 @@ function HolyShrine2FPriest(targetActorId)
     -- AP
     AP.Log("HolyShrine_2F_MAIN_0_ACTOR_0120_010 called (Sanctum - Priest giving the Rainbow Drop)")
     AP.CheckLocation("HolyShrine_2F_MAIN_0_ACTOR_0120_010")
-    SetFlag(Flag.FAP4, true)
+    AP.SetFlag("holyshrine_priest", true)
     --AddItem(itemImportantRainbowDrop)
     --SetFlag(Flag.FE88, true)
     -- AP end
@@ -206,7 +206,7 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0120_040(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
+  if not AP.GetFlag("holyshrine_priest") and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
     HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end
@@ -219,7 +219,7 @@ end
 
 function HolyShrine_2F_MAIN_0_ACTOR_0110_010(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP4) and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
+  if not AP.GetFlag("holyshrine_priest") and IsHaveItem("ITEM_EQUIP_WEAPON_STAFF_OF_RAIN") and IsHaveItem("ITEM_EQUIP_ACCESSORY_SACRED_AMULET") and GetFlag(Flag.FE85) then
     HolyShrine_2F_MAIN_0_ACTOR_0120_010(BeginOverlap, table, ...)
     return
   end

@@ -84,7 +84,7 @@ function Dharma_1F_SUB_0_ACTOR_0810_010(BeginOverlap, table, ...)
   else
     Trader = "Dharma_1F_Trader_01_L1"
   end
-  if GetFlag(Flag.FAP10) --[[GetFlag(Flag.FE64) == true]] then -- AP
+  if AP.GetFlag("dharma_trader") --[[GetFlag(Flag.FE64) == true]] then -- AP
     CmdEventClosingMessage("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_5")
   else
     CmdEventClosingMessage("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_1")
@@ -105,7 +105,7 @@ function Dharma_1F_SUB_0_ACTOR_0810_010(BeginOverlap, table, ...)
     -- AP
     AP.Log("Dharma_1F_SUB_0_ACTOR_0810_010 called (Trader giving the Black Pepper)")
     AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
-    SetFlag(Flag.FAP10, true)
+    AP.SetFlag("dharma_trader", true)
     --SetFlag(Flag.FE64, true)
     --AddItem("ITEM_IMPORTANT_BLACK_PEPPER")
     --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)

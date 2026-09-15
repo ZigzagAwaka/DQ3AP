@@ -129,7 +129,7 @@ function NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
   -- AP
   AP.Log("NecrogondShrine_House_MAIN_0_VOLUME_0110_010 called (Necrogond Shrine - Priest giving the silver orb)")
   AP.CheckLocation("NecrogondShrine_House_MAIN_0_VOLUME_0110_010")
-  SetFlag(Flag.FAP6, true)
+  AP.SetFlag("necrogondshrine_priest", true)
   --AddItem("ITEM_IMPORTANT_SILVER_ORB")
   -- AP end
   SetFlag(Flag.FE78, true) -- item flag can't be set, check for item in inventory instead
@@ -164,7 +164,7 @@ end
 
 function NecrogondShrine_House_MAIN_0_ACTOR_0110_030(BeginOverlap, table, ...)
   -- AP
-  if not GetFlag(Flag.FAP6) then
+  if not AP.GetFlag("necrogondshrine_priest") then
     NecrogondShrine_House_MAIN_0_VOLUME_0110_010(BeginOverlap, table, ...)
     return
   end
