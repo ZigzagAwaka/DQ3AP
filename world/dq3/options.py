@@ -58,6 +58,7 @@ class OceanSecretSpotsSanity(DefaultOnToggle):
 
 class ShinySpotsSanity(Choice):
     """
+    WORK IN PROGRESS!! CURRENTLY DOES NOT WORK, WILL BE IMPLEMENTED IN RELEASE 0.4.0, LEAVE THIS VANILLA FOR NOW
     Allows to choose how Shiny Spots locations are randomized, those are small shiny places in the overworld giving a pack of items when checked.
     - Vanilla: Shiny Spots in the overworld will not be randomized and will instead be vanilla
     - One check: Shiny Spots will contain 1 random item check. This adds around 344 more checks in the game.

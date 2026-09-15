@@ -20,7 +20,7 @@ class RegionConnect:
 
 class LocationType(IntEnum):
     """A possible location type, either normal if always present or another type if it is optional"""
-    DEFAULT = 1 # always present in locations list
+    DEFAULT = 1 # always present in locations list (may be excluded but is always registered)
     SHINY = 2 # only present in the list if shiny spots are randomized to 1
     SHINY_MAX = 3 # only present in the list if shiny spots are randomized to max
 
@@ -36,7 +36,7 @@ class LocationInfo:
 class ItemType(IntEnum):
     """A possible item type, either normal if always present or another type if it is optional"""
     DEFAULT = 1 # always in the itempool
-    SHINY = 2 # never in the itempool but can be randomly generated from the filler list
+    SHINY = 2 # never in the itempool but may be randomly generated from the filler list if shiny spots are randomized
 
 
 @dataclass
@@ -45,5 +45,5 @@ class ItemInfo:
     id: int
     classification: ItemClassification = ItemClassification.filler
     quantity: int = 1
-    shiny_quantity: int = 0
+    shiny_quantity: int = 0 # this is used to force a specific quantity in the itempool if shiny spots are randomized
     type: ItemType = ItemType.DEFAULT
