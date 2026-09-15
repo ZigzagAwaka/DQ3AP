@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from BaseClasses import Item, ItemClassification
+
 from .data import ItemInfo as Info
+from .data import ItemType as PoolType
 from .items_extra import EXTRA_ITEMS
-from .items_extra import Type as PoolType
 
 if TYPE_CHECKING:
     from .world import DQ3World

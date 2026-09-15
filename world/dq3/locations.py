@@ -8,8 +8,8 @@ from rule_builder.rules import Rule
 
 from . import items, rules, regions
 from .data import LocationInfo as Info
+from .data import LocationType as SanityType
 from .locations_extra import EXTRA_LOCATIONS
-from .locations_extra import Type as SanityType
 
 if TYPE_CHECKING:
     from .world import DQ3World

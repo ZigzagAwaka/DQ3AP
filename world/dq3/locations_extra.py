@@ -9,7 +9,7 @@ from .data import LocationType as Type
 EXTRA_LOCATIONS: dict[str, Info] = {
     # ///////////////////////// SHINY SPOTS /////////////////////////
     # ----- Aliahan Overworld -----
-    "[Aliahan Overworld] New extra loc": Info(1123, Type.SHINY), #SEARCH_Aliahan_Out_BARREL_0
+    "[Aliahan Overworld] New extra loc": Info(1123, type=Type.SHINY), #SEARCH_Aliahan_Out_BARREL_0
     # ----- Northwest Overworld -----
     # ----- Great Desert Overworld -----
     # ----- Portoga Overworld -----
