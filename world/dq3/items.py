@@ -144,7 +144,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Sage's Elixir": Info(88, quantity=12), #ITEM_USE_ITEM_SAGES_ELIXIR
     "Prayer Ring": Info(104, quantity=17), #ITEM_USE_ITEM_PRAYER_RING
     "Elfin Elixir": Info(133, quantity=10), #ITEM_USE_ITEM_ELFIN_ELIXIR
-    "Yggdrasil Leaf": Info(139, quantity=8), #ITEM_USE_ITEM_YGGDRASIL_LEAF
+    "Yggdrasil Leaf": Info(139, quantity=8, shiny_quantity=1), #ITEM_USE_ITEM_YGGDRASIL_LEAF
     "Oomph Powder": Info(140, quantity=6), #ITEM_USE_ITEM_OOMPH_POWDER
     "Dieamend": Info(170, quantity=9), #ITEM_USE_ITEM_DIEAMEND
     "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
@@ -168,7 +168,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Primm's Primer": Info(57, quantity=3), #ITEM_USE_ITEM_PRIMMS_PRIMER
     "Book: The Eureka Moment": Info(65, quantity=5), #ITEM_USE_ITEM_SMART_BOOK
     "Book: Would I Lie to You?": Info(71, quantity=3), #ITEM_USE_ITEM_CHEATER_BOOK
-    "Book: The Saddest Story Ever Told": Info(87, quantity=2), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
+    "Book: The Saddest Story Ever Told": Info(87, quantity=2, shiny_quantity=1), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
     "Book: Look, No Pants!": Info(109, quantity=3), #ITEM_USE_ITEM_COMEDY_BOOK
     "Book: Leap before you Look": Info(120, quantity=2), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is a Four-Letter Word": Info(121, quantity=3), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
@@ -287,6 +287,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Heavenly Helm": Info(313, ItemClassification.useful), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
     "Duplic Hat": Info(330, ItemClassification.useful), #ITEM_EQUIP_HELMET_DUPLIC_HAT
     "Great Helm": Info(370, ItemClassification.useful), #ITEM_EQUIP_HELMET_GREAT_HELM
+    "Feathered Cap": Info(388, quantity=0, shiny_quantity=1), #ITEM_EQUIP_HELMET_FEATHERED_CAP
     # EQUIPMENT ARMORS
     "Training Togs": Info(5, quantity=6), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
     "Wayfarer's Clothes": Info(29, quantity=4), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
@@ -330,6 +331,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Dragon Robe": Info(366, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
     "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
     "Blessed Bikini": Info(371, ItemClassification.useful), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
+    "Iron Apron": Info(399, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_IRON_APRON
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7, quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Aerofoil Earrings": Info(20, quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
