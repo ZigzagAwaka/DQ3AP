@@ -107,9 +107,61 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Northwest Overworld] Shiny Spot 2 on the island west of Edina Castle: Item 1": Info(1215, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG163_1
     "[Northwest Overworld] Shiny Spot 3 on the island west of Edina Castle: Item 1": Info(1216, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG162_1
     "[Northwest Overworld] Shiny Spot 3 on the island west of Edina Castle: Item 2": Info(1217, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG162_2
-    "[Northwest Overworld] Shiny Spot 4 on the island west of Edina Castle: Item 1": Info(1215, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG014_1
+    "[Northwest Overworld] Shiny Spot 4 on the island west of Edina Castle: Item 1": Info(1218, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG014_1
     # ----- Great Desert Overworld -----
-    # 
+    # 026 027 028 029 069(2) 030 031 032 216 033 039 038 037(3) 035 034 208 036
+    "[Great Desert Overworld] Shiny Spot south of the bridge between Asham and Romaria: Item 1": Info(1219, type=Type.SHINY), #SHINE_SEARCH_FG130_1
+    "[Great Desert Overworld] Shiny Spot south of the bridge between Asham and Romaria: Item 2": Info(1220, type=Type.SHINY_MAX), #SHINE_SEARCH_FG130_2
+    "[Great Desert Overworld] Shiny Spot south of the bridge between Asham and Romaria: Item 3": Info(1221, type=Type.SHINY_MAX), #SHINE_SEARCH_FG130_3
+    "[Great Desert Overworld] Shiny Spot near the mountain north of Asham: Item 1": Info(1222, type=Type.SHINY), #SHINE_SEARCH_FG019_1
+    "[Great Desert Overworld] Shiny Spot near the mountain north of Asham: Item 2": Info(1223, type=Type.SHINY_MAX), #SHINE_SEARCH_FG019_2
+    "[Great Desert Overworld] Shiny Spot near the mountain north of Asham: Item 3": Info(1224, type=Type.SHINY_MAX), #SHINE_SEARCH_FG019_3
+    "[Great Desert Overworld] Shiny Spot north-west of Asham: Item 1": Info(1225, type=Type.SHINY), #SHINE_SEARCH_FG131_1
+    "[Great Desert Overworld] Shiny Spot north-west of Asham: Item 2": Info(1226, type=Type.SHINY_MAX), #SHINE_SEARCH_FG131_2
+    "[Great Desert Overworld] Shiny Spot north-west of Asham: Item 3": Info(1227, type=Type.SHINY_MAX), #SHINE_SEARCH_FG131_3
+    "[Great Desert Overworld] Shiny Spot near Asham: Item 1": Info(1228, type=Type.SHINY), #SHINE_SEARCH_FG134_1
+    "[Great Desert Overworld] Shiny Spot near Asham: Item 2": Info(1229, type=Type.SHINY_MAX), #SHINE_SEARCH_FG134_2
+    "[Great Desert Overworld] Shiny Spot 1 on the coast behind the mountain west of Asham: Item 1": Info(1230, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG018_1
+    "[Great Desert Overworld] Shiny Spot 1 on the coast behind the mountain west of Asham: Item 2": Info(1231, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG018_2
+    "[Great Desert Overworld] Shiny Spot 1 on the coast behind the mountain west of Asham: Item 3": Info(1232, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG018_3
+    "[Great Desert Overworld] Shiny Spot 2 on the coast behind the mountain west of Asham: Item 1": Info(1233, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG176_1
+    "[Great Desert Overworld] Shiny Spot 2 on the coast behind the mountain west of Asham: Item 2": Info(1234, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG176_2
+    "[Great Desert Overworld] Shiny Spot south of Asham: Item 1": Info(1235, type=Type.SHINY), #SHINE_SEARCH_FG132_1
+    "[Great Desert Overworld] Shiny Spot south of Asham: Item 2": Info(1236, type=Type.SHINY_MAX), #SHINE_SEARCH_FG132_2
+    "[Great Desert Overworld] Shiny Spot south of Asham: Item 3": Info(1237, type=Type.SHINY_MAX), #SHINE_SEARCH_FG132_3
+    "[Great Desert Overworld] Shiny Spot south of the forest south of Asham: Item 1": Info(1238, type=Type.SHINY), #SHINE_SEARCH_FG133_1
+    "[Great Desert Overworld] Shiny Spot south of the forest south of Asham: Item 2": Info(1239, type=Type.SHINY_MAX), #SHINE_SEARCH_FG133_2
+    "[Great Desert Overworld] Shiny Spot south of the forest south of Asham: Item 3": Info(1240, type=Type.SHINY_MAX), #SHINE_SEARCH_FG133_3
+    "[Great Desert Overworld] Shiny Spot west of the forest south of Asham: Item 1": Info(1241, type=Type.SHINY), #SHINE_SEARCH_FG021_1
+    "[Great Desert Overworld] Shiny Spot west of the forest south of Asham: Item 2": Info(1242, type=Type.SHINY_MAX), #SHINE_SEARCH_FG021_2
+    "[Great Desert Overworld] Shiny Spot in the center of the forest south of Asham: Item 1": Info(1243, rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG020_1
+    "[Great Desert Overworld] Shiny Spot in the center of the forest south of Asham: Item 2": Info(1244, rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG020_2
+    "[Great Desert Overworld] Shiny Spot in the center of the forest south of Asham: Item 3": Info(1245, rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG020_3
+    "[Great Desert Overworld] Shiny Spot in the forest on the coast north-east of the Pyramid: Item 1": Info(1246, type=Type.SHINY), #SHINE_SEARCH_FG137_1
+    "[Great Desert Overworld] Shiny Spot in the forest on the coast north-east of the Pyramid: Item 2": Info(1247, type=Type.SHINY_MAX), #SHINE_SEARCH_FG137_2
+    "[Great Desert Overworld] Shiny Spot in the forest on the coast north-east of the Pyramid: Item 3": Info(1248, type=Type.SHINY_MAX), #SHINE_SEARCH_FG137_3
+    "[Great Desert Overworld] Shiny Spot north of the Pyramid: Item 1": Info(1249, type=Type.SHINY), #SHINE_SEARCH_FG138_1
+    "[Great Desert Overworld] Shiny Spot north of the Pyramid: Item 2": Info(1250, type=Type.SHINY_MAX), #SHINE_SEARCH_FG138_2
+    "[Great Desert Overworld] Shiny Spot north of the Pyramid: Item 3": Info(1251, type=Type.SHINY_MAX), #SHINE_SEARCH_FG138_3
+    "[Great Desert Overworld] Shiny Spot north-west of Ibis: Item 1": Info(1252, type=Type.SHINY), #SHINE_SEARCH_FG139_1
+    "[Great Desert Overworld] Shiny Spot north-west of Ibis: Item 2": Info(1253, type=Type.SHINY_MAX), #SHINE_SEARCH_FG139_2
+    "[Great Desert Overworld] Shiny Spot north-west of Ibis: Item 3": Info(1254, type=Type.SHINY_MAX), #SHINE_SEARCH_FG139_3
+    "[Great Desert Overworld] Shiny Spot 1 in the center of the desert north of Ibis: Item 1": Info(1255, type=Type.SHINY), #SHINE_SEARCH_FG142_1
+    "[Great Desert Overworld] Shiny Spot 1 in the center of the desert north of Ibis: Item 2": Info(1256, type=Type.SHINY_MAX), #SHINE_SEARCH_FG142_2
+    "[Great Desert Overworld] Shiny Spot 1 in the center of the desert north of Ibis: Item 3": Info(1257, type=Type.SHINY_MAX), #SHINE_SEARCH_FG142_3
+    "[Great Desert Overworld] Shiny Spot 2 in the center of the desert north of Ibis: Item 1": Info(1258, type=Type.SHINY), #SHINE_SEARCH_FG140_1
+    "[Great Desert Overworld] Shiny Spot 2 in the center of the desert north of Ibis: Item 2": Info(1259, type=Type.SHINY_MAX), #SHINE_SEARCH_FG140_2
+    "[Great Desert Overworld] Shiny Spot 3 in the center of the desert north of Ibis: Item 1": Info(1260, type=Type.SHINY), #SHINE_SEARCH_FG141_1
+    "[Great Desert Overworld] Shiny Spot north-east of Ibis: Item 1": Info(1261, type=Type.SHINY), #SHINE_SEARCH_FG022_1
+    "[Great Desert Overworld] Shiny Spot north-east of Ibis: Item 2": Info(1262, type=Type.SHINY_MAX), #SHINE_SEARCH_FG022_2
+    "[Great Desert Overworld] Shiny Spot north-east of Ibis: Item 3": Info(1263, type=Type.SHINY_MAX), #SHINE_SEARCH_FG022_3
+    "[Great Desert Overworld] Shiny Spot in the rocky area north-east of Ibis: Item 1": Info(1264, type=Type.SHINY), #SHINE_SEARCH_FG136_1
+    "[Great Desert Overworld] Shiny Spot in the rocky area north-east of Ibis: Item 2": Info(1265, type=Type.SHINY_MAX), #SHINE_SEARCH_FG136_2
+    "[Great Desert Overworld] Shiny Spot in the mountain east of Ibis: Item 1": Info(1266, rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG023_1
+    "[Great Desert Overworld] Shiny Spot in the mountain east of Ibis: Item 2": Info(1267, rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG023_2
+    "[Great Desert Overworld] Shiny Spot near Desert Shrine: Item 1": Info(1268, type=Type.SHINY), #SHINE_SEARCH_FG135_1
+    "[Great Desert Overworld] Shiny Spot near Desert Shrine: Item 2": Info(1269, type=Type.SHINY_MAX), #SHINE_SEARCH_FG135_2
+    "[Great Desert Overworld] Shiny Spot near Desert Shrine: Item 3": Info(1270, type=Type.SHINY_MAX), #SHINE_SEARCH_FG135_3
     # ----- Portoga Overworld -----
     # 
     # ----- Central Overworld -----

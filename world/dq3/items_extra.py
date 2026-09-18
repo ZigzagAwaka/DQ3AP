@@ -36,4 +36,14 @@ EXTRA_ITEMS: dict[str, Info] = {
     "x2 Dazzle-me-nots": Info(402, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_DEDAZZLE_GRASS
     "x2 Seeds of Strength": Info(403, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_STRENGTH
     "x2 Chimera Wings": Info(404, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_CHIMERA_WING
+    "x2 Feathered Caps": Info(405, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_HELMET_FEATHERED_CAP
+    "x4 Turbans": Info(406, type=Type.SHINY), #MULTIPLE_4_ITEM_EQUIP_HELMET_TURBAN
+    "x2 Boxer Shorts": Info(407, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_ARMOR_BOXER_SHORTS
+    "300 Gold": Info(408, type=Type.SHINY), #GOLD_300
+    "x3 Copper Swords": Info(409, type=Type.SHINY), #MULTIPLE_3_ITEM_EQUIP_WEAPON_COPPER_SWORD
+    "x2 Scale Shields": Info(410, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_SHIELD_SCALE_SHIELD
+    "774 Gold": Info(411, type=Type.SHINY), #GOLD_774
+    "343 Gold": Info(412, type=Type.SHINY), #GOLD_343
+    "228 Gold": Info(413, type=Type.SHINY), #GOLD_228
+    "520 Gold": Info(414, type=Type.SHINY), #GOLD_520
 }

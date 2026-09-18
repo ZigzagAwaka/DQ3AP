@@ -144,7 +144,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Sage's Elixir": Info(88, quantity=12), #ITEM_USE_ITEM_SAGES_ELIXIR
     "Prayer Ring": Info(104, quantity=17), #ITEM_USE_ITEM_PRAYER_RING
     "Elfin Elixir": Info(133, quantity=10), #ITEM_USE_ITEM_ELFIN_ELIXIR
-    "Yggdrasil Leaf": Info(139, quantity=8, shiny_quantity=1), #ITEM_USE_ITEM_YGGDRASIL_LEAF
+    "Yggdrasil Leaf": Info(139, quantity=8, shiny_quantity=2), #ITEM_USE_ITEM_YGGDRASIL_LEAF
     "Oomph Powder": Info(140, quantity=6), #ITEM_USE_ITEM_OOMPH_POWDER
     "Dieamend": Info(170, quantity=9), #ITEM_USE_ITEM_DIEAMEND
     "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
@@ -165,7 +165,7 @@ ALL_ITEMS: dict[str, Info] = {
     # USABLE ITEMS BOOKS
     "Book: Diary of a Hardman": Info(38), #ITEM_USE_ITEM_DIARY_OF_A_HARDMAN
     "Book: The Girl's Own Annual": Info(46, quantity=3), #ITEM_USE_ITEM_THE_GIRLS_OWN_ANNUAL
-    "Book: Primm's Primer": Info(57, quantity=3), #ITEM_USE_ITEM_PRIMMS_PRIMER
+    "Book: Primm's Primer": Info(57, quantity=3, shiny_quantity=1), #ITEM_USE_ITEM_PRIMMS_PRIMER
     "Book: The Eureka Moment": Info(65, quantity=5), #ITEM_USE_ITEM_SMART_BOOK
     "Book: Would I Lie to You?": Info(71, quantity=3), #ITEM_USE_ITEM_CHEATER_BOOK
     "Book: The Saddest Story Ever Told": Info(87, quantity=2, shiny_quantity=1), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
@@ -173,7 +173,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Leap before you Look": Info(120, quantity=2), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is a Four-Letter Word": Info(121, quantity=3), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
     "Book: The Champion's Code": Info(202, quantity=3), #ITEM_USE_ITEM_THE_CHAMPIONS_CODE
-    "Book: Loving Living: A Grinner's Guide": Info(207, quantity=2), #ITEM_USE_ITEM_LOVING_LIVING_A_GRINNERS_GUIDE
+    "Book: Loving Living: A Grinner's Guide": Info(207, quantity=2, shiny_quantity=1), #ITEM_USE_ITEM_LOVING_LIVING_A_GRINNERS_GUIDE
     "Book: Tears before Bedtime": Info(270), #ITEM_USE_ITEM_TEARS_BEFORE_BEDTIME
     "Book: Being a Better Person": Info(280, quantity=2), #ITEM_USE_ITEM_BENICE_BOOK
     "Book: Guns N' Buns": Info(317, ItemClassification.useful), #ITEM_USE_ITEM_NAUGHTY_BOOK
@@ -276,7 +276,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Mask of Implacability": Info(188, ItemClassification.useful), #ITEM_EQUIP_HELMET_MASK_OF_IMPLACABILITY
     "Top Hat": Info(196), #ITEM_EQUIP_HELMET_TOP_HAT
     "Phantom Mask": Info(200), #ITEM_EQUIP_HELMET_PHANTOM_MASK
-    "Scholar's Cap": Info(204, quantity=2), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
+    "Scholar's Cap": Info(204, quantity=2, shiny_quantity=1), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
     "Thief's Turban": Info(226, quantity=3), #ITEM_EQUIP_HELMET_THIEFS_TURBAN
     "Iron Mask": Info(237), #ITEM_EQUIP_HELMET_IRON_MASK
     "Mythril Helm": Info(254, ItemClassification.useful), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
@@ -326,7 +326,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Godbird Armor": Info(331, ItemClassification.useful), #ITEM_EQUIP_ARMOR_GODBIRD_ARMOUR
     "Shell Armor": Info(334, quantity=2), #ITEM_EQUIP_ARMOR_SHELL_ARMOUR
     "Stealth Suit": Info(354, quantity=2), #ITEM_EQUIP_ARMOR_STEALTH_SUIT
-    "Garish Garb": Info(360), #ITEM_EQUIP_ARMOR_GARISH_GARB
+    "Garish Garb": Info(360, shiny_quantity=1), #ITEM_EQUIP_ARMOR_GARISH_GARB
     "Wizard's Robe": Info(362, quantity=2), #ITEM_EQUIP_ARMOR_WIZARDS_ROBE
     "Dragon Robe": Info(366, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
     "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
@@ -345,7 +345,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Care Riviere": Info(93, quantity=6), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
     "Silver Rosary": Info(97, quantity=4), #ITEM_EQUIP_ACCESSORY_GOLD_ROSARY
     "Skull Ring": Info(105, quantity=2), #ITEM_EQUIP_ACCESSORY_SKULL_RING
-    "Ruby Wristband": Info(106), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
+    "Ruby Wristband": Info(106, shiny_quantity=1), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
     "Leg Warmers": Info(107, quantity=2), #ITEM_EQUIP_ACCESSORY_LEG_WARMERS
     "Tough Guy Tatoo": Info(111, quantity=3), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
     "Gold Chain": Info(113, quantity=3), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
