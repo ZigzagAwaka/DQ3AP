@@ -169,7 +169,7 @@ end
 
 function TransitionRura(BeginOverlap, table, ...)
   local _LoadMapId, _StartPointName, _MapId, _RuraId, _IsSuccessRura, _IsDisableMagic, _TextId, _TextId2, _AnimationTime, _PlayerType, _Orientation, _FadeIn, _PrevMapId = ...
-  local isField = IsFieldMapId(_MapId) -- AP
+  local playEvent = false -- AP
   MapTimeNotifyStartSystemProcessing()
   SetDispMiniMap(false)
   SetDispBtnGuide(false)
@@ -194,7 +194,7 @@ function TransitionRura(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadeType)
     MapOnCompleteTransitionFadeOut()
     MapOnStartRuraTransition(_RuraId, true)
-    TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeIn, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType)
+    playEvent = TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeIn, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
     RequestAutoSave()
     WaitFrame(1)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
@@ -222,7 +222,7 @@ function TransitionRura(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  if _IsSuccessRura and isField then
+  if _IsSuccessRura and not playEvent then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -230,6 +230,7 @@ end
 
 function TransitionRiremito(BeginOverlap, table, ...)
   local _LoadMapId, _StartPointName, _MapId, _RuraId, _IsSuccessRura, _IsDisableMagic, _TextId, _UnusedId, _AnimationTime, _PlayerType, _Orientation, _FadeTime, _PrevMapId = ...
+  local playEvent = false -- AP
   MapTimeNotifyStartSystemProcessing()
   SetDispMiniMap(false)
   SetDispBtnGuide(false)
@@ -259,7 +260,7 @@ function TransitionRiremito(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadeType)
     MapOnCompleteTransitionFadeOut()
     EraseLoopEffectByParamEnd(effectName, 0.01)
-    TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType)
+    playEvent = TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
     RequestAutoSave()
     WaitFrame(1)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
@@ -273,14 +274,16 @@ function TransitionRiremito(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
+  -- AP
+  if result and not playEvent then
+    AP.GiveItemsIfAvailable()
+  end
+  -- AP end
 end
 
 function TransitionLevel(BeginOverlap, table, ...)
   local _MapId, _StartPointName, _RiremitoPointID, _SeId, _FadeTime, _Orientation, _PlayerType, _bAutoSave, _IsPlayBGM, _IsTravelDoor, _SpawnX, _SpawnY, fadePriority, _ShowChoice, _IsOnProgress, _ProgressId, _TextId = ...
-  -- AP
-  local isField = IsFieldMapId(_MapId)
-  local fromValidMap = true
-  -- AP end
+  local playEvent = false -- AP
   local execTransition = true
   if _ShowChoice then
     execTransition = CmdChoiceMessage(_TextId)
@@ -303,15 +306,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadePriority)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
-    -- AP
-    --AP.Log(prevMapId)
-    -- prevent some maps to receive items because they can play cutscenes at the same time
-    -- current maps in order: Mt. Necrogond, Talontear Tunnel, Shrine of the Everbird
-    if prevMapId == "MAPLIST_H26F0101" or prevMapId == "MAPLIST_D16R0101" or prevMapId == "MAPLIST_H16R0101" then
-      fromValidMap = false
-    end
-    -- AP end
-    TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority)
+    playEvent = TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority) -- AP: get playEvent
     if _bAutoSave == true then
       RequestAutoSave()
       WaitFrame(1)
@@ -323,7 +318,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   end
   -- AP
-  if execTransition and isField and fromValidMap then
+  if execTransition and not playEvent then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -411,6 +406,7 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     })
   end
   AddTransitionTime(_MapId, "TransitionEnd")
+  return execEvent -- AP: return true if the transition played an event or else false
 end
 
 function TransitionBattle(BeginOverlap, tbl, ...)
