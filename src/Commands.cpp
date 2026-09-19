@@ -96,25 +96,6 @@ void Commands::Process(const std::string& command)
 
         apClientPtr->Connect(host, player, password);
     }
-    else if (commandWord == "/syncmedals")
-    {
-        const std::vector<std::string> arguments = ParseCommandInput(command.substr(11));
-        std::string oldHost;
-
-        if (arguments.size() >= 1)
-        {
-            oldHost = arguments[0];
-        }
-
-        if (oldHost.empty())
-        {
-            loggerPtr->LogError("Medals sync failed: The previous host name must be set");
-            PrintHelp();
-            return;
-        }
-
-        apClientPtr->SyncMedalsDataFromPreviousHost(oldHost);
-    }
     else if (!command.empty())
     {
         loggerPtr->Log("Unknown command: " + command + " (type '/help' for available commands)");
@@ -177,7 +158,6 @@ void Commands::PrintHelp()
     loggerPtr->LogInConsole(" /disconnect                         - Disconnect from Archipelago");
     loggerPtr->LogInConsole(" /reconnect                          - Try to reconnect to the latest valid connection made with /connect");
     loggerPtr->LogInConsole(" /status                             - Show Archipelago connection status");
-    loggerPtr->LogInConsole(" /syncmedals <old_host>              - Transfer medals data from a previous server host to the current host");
     loggerPtr->LogInConsole(" /help                               - Show this message");
     loggerPtr->LogInConsole(" /clear                              - Clear console");
     loggerPtr->LogInConsole("--------------------------------------------------------------------------------------------------------------");

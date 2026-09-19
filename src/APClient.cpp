@@ -3,13 +3,12 @@
 
 
 APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath,
-                   const std::string& roomPath, const std::string& medalsPath, const std::string& flagPath)
+                   const std::string& roomPath, const std::string& flagPath)
     : logger(logger),
     itemDataPath(itemPath),
     locationDataPath(locationPath),
     optionDataPath(optionPath),
     roomDataPath(roomPath),
-    medalsDataPath(medalsPath),
     flagDataPath(flagPath)
 {
     ClearData();
@@ -63,11 +62,10 @@ void APClient::Update()
         AP_ClearLatestMessage();
     }
 
-    // Initialize options and medals data upon receiving an option from client callback
+    // Initialize options data upon receiving an option from client callback
     if (triggerEventOnOptionReceived)
     {
         WriteOptionData();
-        ReadMedalsData();
         triggerEventOnOptionReceived = false;
     }
 
@@ -155,11 +153,6 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
         file.flush();
         file.close();
         logger.LogInFile("Item received: " + itemName);
-
-        if (itemId == 11) // if the received item is a mini medal
-        {
-            WriteMedalsData();
-        }
     }
     else
     {
@@ -177,122 +170,6 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
         return false;
     }
     return victoryId == victoryOption;
-}
-
-
-void APClient::ReadMedalsData()
-{
-    int victoryOption = Options::GetOption("victory_goal");
-    if (victoryOption != 2 && victoryOption != 3)
-    {
-        return;
-    }
-
-    CreateOrClearFile(medalsDataPath, true, false);
-    hostToMedalsMap.clear();
-
-    std::ifstream file(medalsDataPath);
-    std::string line;
-
-    std::function<std::string(std::string)> trim = [](std::string value) {
-        const std::size_t first = value.find_first_not_of(" \t\r\n");
-        if (first == std::string::npos)
-        {
-            return std::string();
-        }
-        const std::size_t last = value.find_last_not_of(" \t\r\n");
-        return value.substr(first, last - first + 1);
-    };
-
-    // Get every lines and save their values in hostToMedalsMap
-    while (std::getline(file, line))
-    {
-        if (line.empty()) continue;
-        const std::size_t equalPos = line.find('=');
-        if (equalPos == std::string::npos) continue;
-
-        std::string hostName = trim(line.substr(0, equalPos));
-        std::string medalsAmountStr = trim(line.substr(equalPos + 1));
-        int medalsAmount;
-
-        try
-        {
-            medalsAmount = std::stoi(medalsAmountStr);
-        }
-        catch (const std::exception&)
-        {
-            medalsAmount = 1;
-        }
-
-        hostToMedalsMap.emplace(hostName, medalsAmount);
-    }
-    file.close();
-}
-
-
-void APClient::WriteMedalsData(int amount)
-{
-    int victoryOption = Options::GetOption("victory_goal");
-    if ((victoryOption != 2 && victoryOption != 3) || currentHost.empty())
-    {
-        return;
-    }
-
-    // If the current host exist, increment by 1, else build a new entry with given amount (or 1 if not given)
-    auto it = hostToMedalsMap.find(currentHost);
-    if (it != hostToMedalsMap.end())
-        hostToMedalsMap[currentHost]++;
-    else
-        hostToMedalsMap.emplace(currentHost, amount);
-    
-    // Then, send medals victory event if amount is >= 110 (collected all medals)
-    if (hostToMedalsMap[currentHost] >= 110)
-    {
-        logger.LogInFile("Victory got for mini medals");
-        hostToMedalsMap.erase(currentHost);
-        AP_StoryComplete();
-    }
-
-    // Finally, re-write medals data
-    std::ofstream file(medalsDataPath, std::ios::trunc);
-    for (const auto& [host, amount] : hostToMedalsMap)
-    {
-        file << host << " = " << std::to_string(amount) << '\n';
-    }
-    file.flush();
-    file.close();
-}
-
-
-void APClient::SyncMedalsDataFromPreviousHost(const std::string& previousHost)
-{
-    if (!IsConnected() || currentHost.empty())
-    {
-        logger.LogError("Medals sync failed: Not connected to Archipelago, please use '/connect' first");
-        return;
-    }
-
-    int victoryOption = Options::GetOption("victory_goal");
-    if ((victoryOption != 2 && victoryOption != 3))
-    {
-        logger.LogError("Medals sync failed: The current room is not configured with any of the mini medals victory goal");
-        return;
-    }
-
-    auto itPrev = hostToMedalsMap.find(previousHost);
-    if (itPrev == hostToMedalsMap.end())
-    {
-        logger.LogError("Medals sync failed: The previous server host must be known to have collected some mini medals, the given previous host is either unknown or does not have any medals data available");
-        return;
-    }
-
-    int previousAmount = hostToMedalsMap[previousHost];
-
-    auto itCurr = hostToMedalsMap.find(currentHost);
-    if (itCurr != hostToMedalsMap.end())
-        hostToMedalsMap.erase(currentHost);
-
-    WriteMedalsData(previousAmount);
 }
 
 

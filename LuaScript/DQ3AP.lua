@@ -94,6 +94,23 @@ function AP.ConvertSpecialItemIds(ItemId)
   return ItemId
 end
 
+-- check mini medals count if victory goal is set to medals
+function AP.CheckMiniMedals(ItemId)
+  if ItemId == "ITEM_SMALL_MEDAL" and GetMiniMedalCount() >= 110 then
+    local victory_goal = AP.GetOption("victory_goal")
+    if victory_goal == nil or victory_goal == 2 or victory_goal == 3 then
+      AP.Log("All 110 medals collected")
+      local locationName = "ITEM_SMALL_MEDAL_COLLECT_ALL_110_"
+      if victory_goal == nil or victory_goal == 2 then
+        locationName = locationName .. "2"
+      elseif victory_goal == 3 then
+        locationName = locationName .. "3"
+      end
+      AP.CheckLocation(locationName)
+    end
+  end
+end
+
 -- set specific important flags if ItemId needs to have those flags set
 function AP.SetSpecialFlags(ItemId)
   if ItemId == "ITEM_IMPORTANT_WRECKING_BALL" then
@@ -316,6 +333,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
     end
     AP.SetSpecialFlags(ItemId)
+    AP.CheckMiniMedals(ItemId)
   end
   return not isEnemy
 end

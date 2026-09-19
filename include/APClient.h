@@ -22,7 +22,6 @@ public:
     /// @param locationPath Path to AP locations data file
     /// @param optionPath Path to AP options data file
     /// @param roomPath Path to AP current room informations data file
-    /// @param medalsPath Path to AP stored medals data file
     /// @param flagPath Path to AP related flags data file
     APClient(
         Logger& logger,
@@ -30,7 +29,6 @@ public:
         const std::string& locationPath,
         const std::string& optionPath,
         const std::string& roomPath,
-        const std::string& medalsPath,
         const std::string& flagPath
     );
 
@@ -68,10 +66,6 @@ public:
     /// @return A tuple for the saved host, player and password
     std::tuple<std::string, std::string, std::string> GetLatestRoomData();
 
-    /// @brief Sync the previousHost's medals data to the current host's medals data
-    /// @param previousHost Previous server host
-    void SyncMedalsDataFromPreviousHost(const std::string& previousHost);
-
     /// @brief Disconnect from Archipelago
     void Disconnect();
 
@@ -86,7 +80,6 @@ private:
     const std::string locationDataPath;
     const std::string optionDataPath;
     const std::string roomDataPath;
-    const std::string medalsDataPath;
     const std::string flagDataPath;
 
     std::string currentHost = "";
@@ -95,14 +88,6 @@ private:
 
     std::filesystem::file_time_type locationDataLastCheckTime;
     bool triggerEventOnOptionReceived = false;
-    std::unordered_map<std::string, int> hostToMedalsMap;
-
-    /// @brief Read AP medals data and store its values in hostToMedalsMap
-    void ReadMedalsData();
-
-    /// @brief Override AP medals data with the current values of hostToMedalsMap
-    /// @param amount Changes the amount to override from the default 1
-    void WriteMedalsData(int amount = 1);
 
     /// @brief Register all AP client options callbacks
     void RegisterAllOptionsCallbacks();
