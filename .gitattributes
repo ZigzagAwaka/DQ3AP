@@ -3,4 +3,6 @@
 
 *.lua linguist-vendored
 LuaScript/DQ3AP.lua -linguist-vendored
+world/dq3/locations_extra.py linguist-vendored
+world/dq3/items_extra.py linguist-vendored
 #file.py linguist-language=cpp
