@@ -46,4 +46,42 @@ EXTRA_ITEMS: dict[str, Info] = {
     "343 Gold": Info(412, type=Type.SHINY), #GOLD_343
     "228 Gold": Info(413, type=Type.SHINY), #GOLD_228
     "520 Gold": Info(414, type=Type.SHINY), #GOLD_520
+    "1560 Gold": Info(415, type=Type.SHINY), #GOLD_1560
+    "x3 Bronze Knives": Info(416, type=Type.SHINY), #MULTIPLE_3_ITEM_EQUIP_WEAPON_BRONZE_KNIFE
+    "x4 Moonwort Bulbs": Info(417, type=Type.SHINY), #MULTIPLE_4_ITEM_USE_ITEM_MOONWORT_BULB
+    # see items.py 418
+    "422 Gold": Info(419, type=Type.SHINY), #GOLD_422
+    "x3 Angel Bells": Info(420, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_SKYBELL
+    "532 Gold": Info(421, type=Type.SHINY), #GOLD_532
+    "321 Gold": Info(422, type=Type.SHINY), #GOLD_321
+    "x2 Angel Bells": Info(423, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SKYBELL
+    "x3 Musk": Info(424, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x2 Special Medicine": Info(425, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SPECIAL_MEDICINE
+    "772 Gold": Info(426, type=Type.SHINY), #GOLD_772
+    "x2 Divine Daggers": Info(427, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_DIVINE_DAGGER
+    "x2 Bronze Knives": Info(428, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_BRONZE_KNIFE
+    "x4 Medicinal Herbs": Info(429, type=Type.SHINY), #MULTIPLE_4_ITEM_USE_ITEM_MEDICAL_HERB
+    "x5 Antidotal Herbs": Info(430, type=Type.SHINY), #MULTIPLE_5_ITEM_USE_ITEM_ANTIDOTAL_HERB
+    "x2 Seeds of Defence": Info(431, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_PROTECTION
+    "429 Gold": Info(432, type=Type.SHINY), #GOLD_429
+    "x6 Holy Waters": Info(433, type=Type.SHINY), #MULTIPLE_6_ITEM_USE_ITEM_HOLY_WATER
+    "3014 Gold": Info(434, type=Type.SHINY), #GOLD_3014
+    "x3 Cypress Sticks": Info(435, type=Type.SHINY), #MULTIPLE_3_ITEM_EQUIP_WEAPON_CYPRESS_STICK
+    "x2 Musk": Info(436, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x2 Boomerangs": Info(437, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_BOOMERANG
+    "245 Gold": Info(438, type=Type.SHINY), #GOLD_245
+    "798 Gold": Info(439, type=Type.SHINY), #GOLD_798
+    # see items.py 440
+    "x3 Tanglewebs": Info(441, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_TANGLEWEB
+    "122 Gold": Info(442, type=Type.SHINY), #GOLD_122
+    # see items.py 443
+    # see items.py 444
+    "x3 Unsealants": Info(445, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_WHISPERING_NECTAR
+    "x2 Seeds of Life": Info(446, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_LIFE
+    "x2 Magic Waters": Info(447, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_MAGIC_WATER
+    # see items.py 448
+    # see items.py 449
+    "132 Gold": Info(450, type=Type.SHINY), #GOLD_132
+    "468 Gold": Info(451, type=Type.SHINY), #GOLD_468
+    "x2 Seeds of Stamina": Info(452, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_RESILIENCE
 }

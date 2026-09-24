@@ -144,7 +144,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Sage's Elixir": Info(88, quantity=12), #ITEM_USE_ITEM_SAGES_ELIXIR
     "Prayer Ring": Info(104, quantity=17), #ITEM_USE_ITEM_PRAYER_RING
     "Elfin Elixir": Info(133, quantity=10), #ITEM_USE_ITEM_ELFIN_ELIXIR
-    "Yggdrasil Leaf": Info(139, quantity=8, shiny_quantity=2), #ITEM_USE_ITEM_YGGDRASIL_LEAF
+    "Yggdrasil Leaf": Info(139, quantity=8, shiny_quantity=4), #ITEM_USE_ITEM_YGGDRASIL_LEAF
     "Oomph Powder": Info(140, quantity=6), #ITEM_USE_ITEM_OOMPH_POWDER
     "Dieamend": Info(170, quantity=9), #ITEM_USE_ITEM_DIEAMEND
     "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
@@ -163,7 +163,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Seed of Wisdom": Info(39, quantity=11), #ITEM_USE_ITEM_SEED_OF_WISDOM
     "Seed of Luck": Info(60, quantity=16), #ITEM_USE_ITEM_SEED_OF_LUCK
     # USABLE ITEMS BOOKS
-    "Book: Diary of a Hardman": Info(38), #ITEM_USE_ITEM_DIARY_OF_A_HARDMAN
+    "Book: Diary of a Hardman": Info(38, shiny_quantity=1), #ITEM_USE_ITEM_DIARY_OF_A_HARDMAN
     "Book: The Girl's Own Annual": Info(46, quantity=3), #ITEM_USE_ITEM_THE_GIRLS_OWN_ANNUAL
     "Book: Primm's Primer": Info(57, quantity=3, shiny_quantity=1), #ITEM_USE_ITEM_PRIMMS_PRIMER
     "Book: The Eureka Moment": Info(65, quantity=5), #ITEM_USE_ITEM_SMART_BOOK
@@ -172,7 +172,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Look, No Pants!": Info(109, quantity=3), #ITEM_USE_ITEM_COMEDY_BOOK
     "Book: Leap before you Look": Info(120, quantity=2), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is a Four-Letter Word": Info(121, quantity=3), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
-    "Book: The Champion's Code": Info(202, quantity=3), #ITEM_USE_ITEM_THE_CHAMPIONS_CODE
+    "Book: The Champion's Code": Info(202, quantity=3, shiny_quantity=1), #ITEM_USE_ITEM_THE_CHAMPIONS_CODE
     "Book: Loving Living: A Grinner's Guide": Info(207, quantity=2, shiny_quantity=1), #ITEM_USE_ITEM_LOVING_LIVING_A_GRINNERS_GUIDE
     "Book: Tears before Bedtime": Info(270), #ITEM_USE_ITEM_TEARS_BEFORE_BEDTIME
     "Book: Being a Better Person": Info(280, quantity=2), #ITEM_USE_ITEM_BENICE_BOOK
@@ -239,13 +239,15 @@ ALL_ITEMS: dict[str, Info] = {
     "Conqueror's Axe": Info(328), #ITEM_EQUIP_WEAPON_CONQUERORS_AXE
     "Aurora Staff": Info(329, ItemClassification.useful), #ITEM_EQUIP_WEAPON_AURORA_STAFF
     "Gringham Whip": Info(332, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_GRINGHAM_WHIP
-    "Staff of Resurrection": Info(345, ItemClassification.useful), #ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
+    "Staff of Resurrection": Info(345, ItemClassification.useful, shiny_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
     "Fire Claws": Info(357), #ITEM_EQUIP_WEAPON_FIRE_CLAWS
     "Slapstick": Info(359), #ITEM_EQUIP_WEAPON_SLAPSTICK
     "Beastly Bullwhip": Info(361), #ITEM_EQUIP_WEAPON_BEASTLY_BULLWHIP
     "Gusterang": Info(364), #ITEM_EQUIP_WEAPON_GUSTERANG
     "Copper Sword": Info(372), #ITEM_EQUIP_WEAPON_COPPER_SWORD
     "Poison Needle": Info(376, quantity=3), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
+    "Chain Whip": Info(418, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_CHAIN_WHIP_ITEMS
+    "Abracadabracus": Info(448, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_ABRACADABRACUS
     # SHIELDS
     "Pot Lid": Info(27, quantity=3), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44, quantity=3), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
@@ -261,6 +263,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Shield of Shame": Info(312), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
     "Dragon Shield": Info(325, quantity=2), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
     "Goddess Shield": Info(327, ItemClassification.useful), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
+    "Iron Shield": Info(444, quantity=0, shiny_quantity=1), #ITEM_EQUIP_SHIELD_IRON_SHIELD
     # EQUIPMENT HELMETS
     "Leather Hat": Info(13, quantity=4), #ITEM_EQUIP_HELMET_LEATHER_HAT
     "Hardwood Headwear": Info(43, quantity=2), #ITEM_EQUIP_HELMET_HARDWOOD_HEADWEAR
@@ -304,7 +307,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Fizzle-Retardant Suit": Info(142, quantity=2), #ITEM_EQUIP_ARMOR_FIZZLE_RETARDANT_SUIT
     "Sparring Suit": Info(145, quantity=2), #ITEM_EQUIP_ARMOR_SPARRING_SUIT
     "Full Plate Armor": Info(159), #ITEM_EQUIP_ARMOR_FULL_PLATE_ARMOUR
-    "Black Pyjamas": Info(189), #ITEM_EQUIP_ARMOR_BLACK_PYJAMAS
+    "Black Pyjamas": Info(189, shiny_quantity=1), #ITEM_EQUIP_ARMOR_BLACK_PYJAMAS
     "Magic Armor": Info(194), #ITEM_EQUIP_ARMOR_MAGIC_ARMOUR
     "Earthenwear": Info(216, quantity=2), #ITEM_EQUIP_ARMOR_EARTHENWEAR
     "Smart Suit": Info(222), #ITEM_EQUIP_ARMOR_SMART_SUIT
@@ -332,6 +335,9 @@ ALL_ITEMS: dict[str, Info] = {
     "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
     "Blessed Bikini": Info(371, ItemClassification.useful), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
     "Iron Apron": Info(399, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_IRON_APRON
+    "Fur Vest": Info(440, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_FUR_VEST
+    "Iron Armor": Info(443, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_IRON_ARMOUR
+    "Epic Apron": Info(449, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_EPIC_APRON
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7, quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Aerofoil Earrings": Info(20, quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
@@ -345,7 +351,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Care Riviere": Info(93, quantity=6), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
     "Silver Rosary": Info(97, quantity=4), #ITEM_EQUIP_ACCESSORY_GOLD_ROSARY
     "Skull Ring": Info(105, quantity=2), #ITEM_EQUIP_ACCESSORY_SKULL_RING
-    "Ruby Wristband": Info(106, shiny_quantity=1), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
+    "Ruby Wristband": Info(106, shiny_quantity=2), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
     "Leg Warmers": Info(107, quantity=2), #ITEM_EQUIP_ACCESSORY_LEG_WARMERS
     "Tough Guy Tatoo": Info(111, quantity=3), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
     "Gold Chain": Info(113, quantity=3), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
@@ -361,7 +367,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Asbestos Earrings": Info(166, quantity=4), #ITEM_EQUIP_ACCESSORY_ICE_EARRINGS
     "Dummy": Info(186, quantity=4), #ITEM_EQUIP_ACCESSORY_PACIFIER
     "Agility Ring": Info(191, quantity=2), #ITEM_EQUIP_ACCESSORY_AGILITY_RING
-    "Spirit Bracer": Info(218, quantity=4), #ITEM_EQUIP_ACCESSORY_FAIRY_BANGLE
+    "Spirit Bracer": Info(218, quantity=4, shiny_quantity=1), #ITEM_EQUIP_ACCESSORY_FAIRY_BANGLE
     "Hen's Tooth": Info(228, quantity=3), #ITEM_EQUIP_ACCESSORY_HENS_TOOTH
     "Full Moon Ring": Info(235, quantity=6), #ITEM_EQUIP_ACCESSORY_MANGETSU_RING
     "Garter": Info(244, quantity=3), #ITEM_EQUIP_ACCESSORY_GARTER
