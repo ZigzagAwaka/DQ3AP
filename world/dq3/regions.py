@@ -106,14 +106,18 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Portoga Overworld": [
         Connect("Romarian Outpost", rules.HAS_MAGIC_KEY),
         Connect("Portoga"),
-        Connect("Portoga Lighthouse", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Portoga Lighthouse Exterior Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+    ],
+    "Portoga Lighthouse Exterior Overworld": [
+        Connect("Portoga Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Portoga Lighthouse"),
     ],
     "Portoga": [
         Connect("Portoga Castle"),
     ],
     "Portoga Castle": [],
     "Portoga Lighthouse": [
-        Connect("Portoga Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Portoga Lighthouse Exterior Overworld"),
     ],
     # CENTRAL
     "Central Overworld": [
@@ -162,18 +166,22 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     "Citadel Tower": [],
     # EASTERN
     "Eastern Overworld": [
-        Connect("Teleportal Shrine", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Teleportal Shrine Island Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Persistence", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Spirit Spring"),
         Connect("Fifer's Spire", rules.HAS_THIEF_KEY),
         Connect("Merchantburg", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Pirates' Den"),
     ],
+    "Teleportal Shrine Island Overworld": [
+        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Teleportal Shrine"),
+    ],
     "Teleportal Shrine": [
         Connect("Wayfarer's Chapel", rules.HAS_ULTIMATE_KEY),
         Connect("Olivia's Promontory", rules.HAS_ULTIMATE_KEY),
         Connect("Romarian Outpost", rules.HAS_ULTIMATE_KEY | rules.HAS_SHIP | rules.HAS_BIRD),
-        Connect("Eastern Overworld", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Teleportal Shrine Island Overworld"),
     ],
     "Persistence": [],
     "Spirit Spring": [],

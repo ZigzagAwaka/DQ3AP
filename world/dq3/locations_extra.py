@@ -316,7 +316,10 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Central Overworld] Shiny Spot 2 on the small coast north of Castle of the Dragon Queen: Item 2": Info(1417, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG056_2
     "[Central Overworld] Shiny Spot 2 on the small coast north of Castle of the Dragon Queen: Item 3": Info(1418, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG056_3
     # ----- Eastern Overworld -----
-    # 
+    # 173 174
+    "[Eastern Overworld] Shiny Spot d: Item 1": Info(1419, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY), #SHINE_SEARCH_FG210_1
+    "[Eastern Overworld] Shiny Spot d: Item 2": Info(1420, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG210_2
+    "[Eastern Overworld] Shiny Spot d: Item 3": Info(1421, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.SHINY_MAX), #SHINE_SEARCH_FG210_3
     # ----- Southern Mountains Overworld -----
     # 
     # ----- Manoza Overworld -----

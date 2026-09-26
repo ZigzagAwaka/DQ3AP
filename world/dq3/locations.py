@@ -1060,8 +1060,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Portoga Overworld -----
     "[Portoga Overworld] Secret Spot north of Portoga: Hidden Ground near a right side tree": Info(952), #SEARCH_GranDragon_SecretForest_05_GROUND_0
     "[Portoga Overworld] Secret Spot north of Portoga: Sack": Info(953), #SEARCH_GranDragon_SecretForest_05_SACK_0
-    "[Portoga Overworld] Secret Spot near Portoga Lighthouse; Pot 1": Info(954, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_07_POT_0
-    "[Portoga Overworld] Secret Spot near Portoga Lighthouse: Pot 2": Info(955, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_07_POT_1
+    "[Portoga Lighthouse Exterior Overworld] Secret Spot near Portoga Lighthouse: Pot 1": Info(954), #SEARCH_GranDragon_SecretForest_07_POT_0
+    "[Portoga Lighthouse Exterior Overworld] Secret Spot near Portoga Lighthouse: Pot 2": Info(955), #SEARCH_GranDragon_SecretForest_07_POT_1
     # ----- Central Overworld -----
     "[Central Overworld] Secret Spot near east entrance of Nordy's Grotto: Barrel 1": Info(956), #SEARCH_GranDragon_SecretMountain_03_BARREL_0
     "[Central Overworld] Secret Spot near east entrance of Nordy's Grotto: Barrel 2": Info(957), #SEARCH_GranDragon_SecretMountain_03_BARREL_1
@@ -1316,13 +1316,13 @@ def exclude_locations_from_containers(valid_locations: list[str], excluded_locat
 
 # Helper method to exclude some locations based on option values and returns new valid and excluded locations
 def exclude_locations_based_on_options(world: DQ3World, region: str, valid_locations: list[str], excluded_locations: list[str]) -> tuple[list[str], list[str]]:
-    if (not world.options.secret_spots_sanity and "Overworld" in region):
+    if (world.options.secret_spots_sanity == "excluded" and "Overworld" in region):
         valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Secret Spot"])
-    elif (not world.options.ocean_secret_spots_sanity and region == "Ocean Overworld"):
+    elif (world.options.ocean_secret_spots_sanity == "excluded" and region == "Ocean Overworld"):
         valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Secret Spot"], matched_rule=rules.HAS_SHIP)
-    if not world.options.container_sanity:
+    if world.options.container_sanity == "excluded":
         valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Barrel", "Pot", "Drawer", "Sack", "Storage", "Bookshelf", "Hidden Ground"])
-    elif not world.options.hidden_ground_sanity:
+    elif world.options.hidden_ground_sanity == "excluded":
         valid_locations, excluded_locations = exclude_locations_from_containers(valid_locations, excluded_locations, ["Hidden Ground"])
     return valid_locations, excluded_locations
 

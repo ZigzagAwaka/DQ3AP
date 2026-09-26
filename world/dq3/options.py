@@ -25,44 +25,59 @@ class VictoryGoal(Choice):
 
 # LOCATIONS OPTIONS
 
-class ContainerSanity(DefaultOnToggle):
+class ContainerSanity(Choice):
     """
     Choose if all the containers in the game should be filled with random items (chests, barrels, pots, sacks, storages, ...).
-    If disabled, then only the chests will be randomized, and other containers will be excluded (forced to contain filler items). This usually excludes 668 checks.
     Note that story related items not in chests will always be randomized.
+    - Enabled: Each container will contain a random item check that could be important for progression
+    - Excluded: Only the chests will be important to check, and other containers will be excluded (forced to contain filler items). This usually excludes 668 checks
     """
     display_name = "Container Sanity"
+    option_enabled = 0
+    option_excluded = 1
+    default = 0
 
-class HiddenGroundSanity(DefaultOnToggle):
+class HiddenGroundSanity(Choice):
     """
-    Choose if "Hidden Ground" items should be randomized, those are items placed in pretty hard to find locations and are invisible unless you use the spell "Snoop".
-    If disabled, then those items will be excluded and forced to have a filler item. This usually excludes 158 checks.
-    If container_sanity is false, then this option will have no effect.
+    Choose if "Hidden Ground" items should be filled with random items, those are items placed in pretty hard to find locations and are invisible unless you use the spell "Snoop".
+    If container_sanity is set to excluded, then this option will have no effect.
+    - Enabled: Each "Hidden Ground" location will contain a random item check that could be important for progression
+    - Excluded: Those locations will be excluded and forced to have a filler item. This usually excludes 158 checks
     """
     display_name = "Hidden Ground Sanity"
+    option_enabled = 0
+    option_excluded = 1
+    default = 0
 
-class SecretSpotsSanity(DefaultOnToggle):
+class SecretSpotsSanity(Choice):
     """
     Choose if containers in Secret Spots areas should be filled with random items, those are small hidden areas in the overworld.
-    If disabled, then those areas will be excluded and forced to contain filler items. This usually excludes 202 checks.
+    - Enabled: Each container in Secret Spots areas will contain a random item check that could be important for progression
+    - Excluded: Those areas will be excluded and forced to contain filler items. This usually excludes 202 checks
     """
     display_name = "Secret Spots Sanity"
+    option_enabled = 0
+    option_excluded = 1
+    default = 0
 
-class OceanSecretSpotsSanity(DefaultOnToggle):
+class OceanSecretSpotsSanity(Choice):
     """
     Choose if containers in Secret Spots areas located in the sea/ocean should be filled with random items, those are small hidden areas only accessible with the Ship.
-    If disabled, then those areas will be excluded and forced to contain filler items. This usually excludes 39 checks.
-    If secret_spots_sanity is false, then this option will have no effect.
+    If secret_spots_sanity is set to excluded, then this option will have no effect.
+    - Enabled: Each container in Secret Spots areas located in the sea/ocean will contain a random item check that could be important for progression
+    - Excluded: Those areas will be excluded and forced to contain filler items. This usually excludes 39 checks
     """
     display_name = "Ocean Secret Spots Sanity"
+    option_enabled = 0
+    option_excluded = 1
+    default = 0
 
 class ShinySpotsSanity(Choice):
     """
-    WORK IN PROGRESS!! CURRENTLY DOES NOT WORK, WILL BE IMPLEMENTED IN RELEASE 0.4.0, LEAVE THIS VANILLA FOR NOW
     Allows to choose how Shiny Spots locations are randomized, those are small shiny places in the overworld giving a pack of items when checked.
     - Vanilla: Shiny Spots in the overworld will not be randomized and will instead be vanilla
-    - One check: Shiny Spots will contain 1 random item check. This adds around 344 more checks in the game.
-    - Max checks: Shiny Spots will contain as many items checks as in vanilla (between 1 and 3). This adds around +1000 more checks in the game.
+    - One check: Shiny Spots will contain 1 random item check. This adds around 344 more checks in the game
+    - Max checks: Shiny Spots will contain as many items checks as in vanilla (between 1 and 3). This adds around +1000 more checks in the game
     """
     display_name = "Shiny Spots Sanity"
     option_vanilla = 0
@@ -76,7 +91,7 @@ class ShipSettings(Choice):
     """
     Allows to configure how the Ship is randomized.
     - Vanilla: The Ship will be rewarded by the Portoga King after giving him the Black Pepper item
-    - Anywhere: The Ship will be randomized anywhere in the multiworld
+    - Anywhere: The Ship will be randomized anywhere in the multiworld (this may generate a shorter seed but with harder fights)
     - Start with: You will start the game with the Ship already unlocked near Portoga, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
     """
     display_name = "Ship Settings"
@@ -89,7 +104,7 @@ class RamiaSettings(Choice):
     """
     Allows to configure how Ramia (the bird) is randomized.
     - Vanilla: Ramia will be obtained by offering the 6 Orbs to the altars in the Shrine of the Everbird
-    - Anywhere: Ramia will be randomized anywhere in the multiworld
+    - Anywhere: Ramia will be randomized anywhere in the multiworld (this may generate a shorter seed but with harder fights)
     - Start with: You will start the game with Ramia already unlocked near Alltrades Abbey, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
     """
     display_name = "Ramia Settings"
