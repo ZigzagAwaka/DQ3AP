@@ -437,12 +437,25 @@ FILLER_ITEMS_NAMES = [item_name for item_name, info in ALL_ITEMS.items()
 FILLER_ITEMS_NAMES_WITH_SHINY = [item_name for item_name, info in ALL_ITEMS.items()
                                  if info.classification == ItemClassification.filler]
 
+# Subset of items only containing trap items names
+TRAPS_ITEMS_NAMES = [item_name for item_name, info in ALL_ITEMS.items()
+                     if info.classification == ItemClassification.trap]
+
+# Subset of items only containing seeds items names
+SEEDS_ITEMS_NAMES = [item_name for item_name, info in ALL_ITEMS.items()
+                     if info.classification == ItemClassification.filler
+                     and info.type != PoolType.SHINY and "Seed" in item_name]
+
 class DQ3Item(Item):
     game = "Dragon Quest III HD-2D Remake"
 
 
 # Returns a random filler item name
 def get_random_filler_item_name(world: DQ3World) -> str:
+    if world.options.additional_traps_chance > 0 and world.random.randint(0, 99) < world.options.additional_traps_chance:
+        return world.random.choice(TRAPS_ITEMS_NAMES)
+    if world.options.additional_seeds_chance > 0 and world.random.randint(0, 99) < world.options.additional_seeds_chance:
+        return world.random.choice(SEEDS_ITEMS_NAMES)
     if world.options.shiny_spots_sanity != "vanilla":
         return world.random.choice(FILLER_ITEMS_NAMES_WITH_SHINY)
     return world.random.choice(FILLER_ITEMS_NAMES)
@@ -480,6 +493,8 @@ def is_item_valid_for_itempool(world: DQ3World, name: str, info: Info) -> bool:
     if info.classification == ItemClassification.trap:
         if (name == "Cannibox Trap" and not world.options.shuffle_cannibox) or (name == "Mimic Trap" and not world.options.shuffle_mimic) or (name == "Pandora's Box Trap" and not world.options.shuffle_pandorabox):
             return False
+    if name == "Nothing" and not world.options.shuffle_none_items:
+        return False
     if (name == "Ship" and world.options.ship_settings != "anywhere") or (name == "Ramia" and world.options.ramia_settings != "anywhere") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
         return False
     if info.type == PoolType.SHINY:
@@ -501,6 +516,8 @@ def create_all_items(world: DQ3World) -> None:
             quantity = info.quantity
             if world.options.shiny_spots_sanity != "vanilla":
                 quantity += info.shiny_quantity
+            if world.options.random_filler_item_pool and info.classification == ItemClassification.filler:
+                quantity = 1
             for _ in range(quantity):
                 itempool.append(world.create_item(item_name))
     

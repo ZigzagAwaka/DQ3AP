@@ -87,6 +87,14 @@ class ShinySpotsSanity(Choice):
 
 # ITEMS OPTIONS
 
+class RandomFillerItemPool(Toggle):
+    """
+    Choose how filler items are added to the game's item pool.
+    By default, every filler items in this game are added with a specific quantity (except items in shiny spots) so the randomizer always generate a balanced game.
+    If you prefer to have completely random filler items then you can activate this option. This will guarantee that the randomizer will use filler items at random without a set quantity, but this may generate a harder seed.
+    """
+    display_name = "Filler items Randomizer"
+
 class ShipSettings(Choice):
     """
     Allows to configure how the Ship is randomized.
@@ -121,6 +129,24 @@ class RainbowDropShuffle(Toggle):
     """
     display_name = "Shuffle Rainbow Drop"
 
+class NoneItemsShuffle(DefaultOnToggle):
+    """
+    This game has some chests and pots that are empty, so the randomizer will generate a minimum of 6 'Nothing' items in the item pool, that will give you... nothing.
+    Disabling this option will instead replace those with random filler items. Note that, rarely, a 'Nothing' item could still be generated as a filler.
+    """
+    display_name = "Shuffle None items"
+
+class AdditionalSeedsChance(Range):
+    """
+    Select a percentage chance that any filler items are replaced by a random seed item. This can be used to generate more seeds in the game to help at gaining stats faster.
+    To avoid seeds to overflow the item pool, you should use a small number like 10 or 20.
+    This option will work best if random_filler_item_pool or shiny_spots_sanity are enabled.
+    """
+    display_name = "Additional seeds chance"
+    range_start = 0
+    range_end = 100
+    default = 0
+
 # TRAPS OPTIONS
 
 class ShuffleCanniboxTraps(DefaultOnToggle):
@@ -144,6 +170,17 @@ class ShufflePandoraBoxTraps(DefaultOnToggle):
     """
     display_name = "Shuffle Pandora's Box Traps"
 
+class AdditionalTrapsChance(Range):
+    """
+    Select a percentage chance that any filler items are replaced by a random trap. This should only be used if you want an extremly hard game.
+    This option will work best if random_filler_item_pool or shiny_spots_sanity are enabled.
+    This option will work even if traps are disabled individually.
+    """
+    display_name = "Additional traps chance"
+    range_start = 0
+    range_end = 100
+    default = 0
+
 # MISC OPTIONS
 
 class AliahanKingSpecialGifts(DefaultOnToggle):
@@ -164,12 +201,16 @@ class DQ3Options(PerGameCommonOptions):
     secret_spots_sanity: SecretSpotsSanity
     ocean_secret_spots_sanity: OceanSecretSpotsSanity
     shiny_spots_sanity: ShinySpotsSanity
+    random_filler_item_pool: RandomFillerItemPool
     ship_settings: ShipSettings
     ramia_settings: RamiaSettings
     shuffle_rainbow_drop: RainbowDropShuffle
+    shuffle_none_items: NoneItemsShuffle
+    additional_seeds_chance: AdditionalSeedsChance
     shuffle_cannibox: ShuffleCanniboxTraps
     shuffle_mimic: ShuffleMimicTraps
     shuffle_pandorabox: ShufflePandoraBoxTraps
+    additional_traps_chance: AdditionalTrapsChance
     aliahan_king_special_gifts: AliahanKingSpecialGifts
 
 
@@ -181,11 +222,11 @@ groups = [
     ),
     OptionGroup(
         "Items Options",
-        [ShipSettings, RamiaSettings, RainbowDropShuffle],
+        [RandomFillerItemPool, ShipSettings, RamiaSettings, RainbowDropShuffle, NoneItemsShuffle, AdditionalSeedsChance],
     ),
     OptionGroup(
         "Traps Options",
-        [ShuffleCanniboxTraps, ShuffleMimicTraps, ShufflePandoraBoxTraps],
+        [ShuffleCanniboxTraps, ShuffleMimicTraps, ShufflePandoraBoxTraps, AdditionalTrapsChance],
     ),
     OptionGroup(
         "Misc Options",
