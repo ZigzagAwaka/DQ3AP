@@ -149,7 +149,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Dieamend": Info(170, quantity=9), #ITEM_USE_ITEM_DIEAMEND
     "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
     "Sage's Stone": Info(205, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_SAGES_STONE
-    "Fading Jenny": Info(217, quantity=6), #ITEM_USE_ITEM_FADING_JENNY
+    "Fading Jenny": Info(217, quantity=6, shiny_quantity=2), #ITEM_USE_ITEM_FADING_JENNY
     "Sphere of Light": Info(263, ItemClassification.progression | ItemClassification.useful), #ITEM_USE_ITEM_SPHERE_OF_LIGHT
     "Lyre of Ire": Info(266, ItemClassification.useful), #ITEM_USE_ITEM_LYRE_OF_IRE
     "War Drum": Info(322, ItemClassification.useful), #ITEM_USE_ITEM_WAR_DRUM
@@ -186,7 +186,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Mimic Trap": Info(236, ItemClassification.trap, quantity=19), #BATTLE_EVENT_MIMIC
     "Pandora's Box Trap": Info(326, ItemClassification.trap, quantity=10), #BATTLE_EVENT_PANDORABOX
     # WEAPONS
-    "Rune Staff": Info(18), #ITEM_EQUIP_WEAPON_RUNE_STAFF
+    "Rune Staff": Info(18, shiny_quantity=1), #ITEM_EQUIP_WEAPON_RUNE_STAFF
     "Oaken Club": Info(35, quantity=4), #ITEM_EQUIP_WEAPON_OAKEN_CLUB
     "Boomerang": Info(45, quantity=3), #ITEM_EQUIP_WEAPON_BOOMERANG
     "Chain Sickle": Info(54, quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_SICKLE
@@ -214,7 +214,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Iron Claws": Info(214, quantity=3), #ITEM_EQUIP_WEAPON_IRON_CLAWS
     "Shallowtail": Info(229), #ITEM_EQUIP_WEAPON_SWALLOWTAIL
     "Spiked Steel Whip": Info(230, quantity=2), #ITEM_EQUIP_WEAPON_SPIKED_STEEL_WHIP
-    "Zombiesbane": Info(241, quantity=2), #ITEM_EQUIP_WEAPON_ZOMBIESBANE
+    "Zombiesbane": Info(241, quantity=2, shiny_quantity=1), #ITEM_EQUIP_WEAPON_ZOMBIESBANE
     "Sizeable Scissors": Info(245), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
     "Mountaincleaver": Info(250, ItemClassification.progression, quantity=2), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
     "Thunderbolt Blade": Info(252), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
@@ -234,7 +234,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Poker": Info(314), #ITEM_EQUIP_WEAPON_GODLY_POKER
     "Destructiball": Info(316, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_DESTRUCTIBALL
     "Rubiss' Sword": Info(319, ItemClassification.useful), #ITEM_EQUIP_WEAPON_RUBISSS_SWORD
-    "Dragontail Whip": Info(321, quantity=2), #ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP
+    "Dragontail Whip": Info(321, quantity=2, shiny_quantity=1), #ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP
     "Dragon Claws": Info(324, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_DRAGON_CLAWS
     "Conqueror's Axe": Info(328), #ITEM_EQUIP_WEAPON_CONQUERORS_AXE
     "Aurora Staff": Info(329, ItemClassification.useful), #ITEM_EQUIP_WEAPON_AURORA_STAFF
@@ -248,6 +248,10 @@ ALL_ITEMS: dict[str, Info] = {
     "Poison Needle": Info(376, quantity=3), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
     "Chain Whip": Info(418, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_CHAIN_WHIP_ITEMS
     "Abracadabracus": Info(448, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_ABRACADABRACUS
+    "Sandstorm Spear": Info(456, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_SANDSTORM_SPEAR
+    "Morning Star": Info(457, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_MORNING_STAR
+    "Flametang Boomerang": Info(484, quantity=0, shiny_quantity=1), #ITEM_EQUIP_WEAPON_FLAMETANG_BOOMERANG
+    "Sledgehammer": Info(502, quantity=0, shiny_quantity=2), #ITEM_EQUIP_WEAPON_SLEDGEHAMMER
     # SHIELDS
     "Pot Lid": Info(27, quantity=3), #ITEM_EQUIP_SHIELD_POT_LID
     "Leather Shield": Info(44, quantity=3), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
@@ -257,11 +261,11 @@ ALL_ITEMS: dict[str, Info] = {
     "Light Shield": Info(190), #ITEM_EQUIP_SHIELD_LIGHT_SHIELD
     "Silver Platter": Info(206), #ITEM_EQUIP_SHIELD_SILVER_PLATTER
     "Ice Shield": Info(239, quantity=3), #ITEM_EQUIP_SHIELD_ICE_SHIELD
-    "Magic Shield": Info(255, quantity=2), #ITEM_EQUIP_SHIELD_MAGIC_SHIELD
+    "Magic Shield": Info(255, quantity=2, shiny_quantity=1), #ITEM_EQUIP_SHIELD_MAGIC_SHIELD
     "Hero's Shield": Info(294, ItemClassification.useful), #ITEM_EQUIP_SHIELD_HEROS_SHIELD
     "Silver Shield": Info(298, ItemClassification.useful), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
     "Shield of Shame": Info(312), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
-    "Dragon Shield": Info(325, quantity=2), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
+    "Dragon Shield": Info(325, quantity=2, shiny_quantity=1), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
     "Goddess Shield": Info(327, ItemClassification.useful), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
     "Iron Shield": Info(444, quantity=0, shiny_quantity=1), #ITEM_EQUIP_SHIELD_IRON_SHIELD
     # EQUIPMENT HELMETS
@@ -276,21 +280,22 @@ ALL_ITEMS: dict[str, Info] = {
     "Hermes' Hat": Info(173, quantity=2), #ITEM_EQUIP_HELMET_HERMES_HAT
     "Black Bandana": Info(178, quantity=5), #ITEM_EQUIP_HELMET_BLACK_BANDANA
     "Pointy Hat": Info(180), #ITEM_EQUIP_HELMET_POINTY_HAT
-    "Mask of Implacability": Info(188, ItemClassification.useful), #ITEM_EQUIP_HELMET_MASK_OF_IMPLACABILITY
+    "Mask of Implacability": Info(188, ItemClassification.useful, shiny_quantity=1), #ITEM_EQUIP_HELMET_MASK_OF_IMPLACABILITY
     "Top Hat": Info(196), #ITEM_EQUIP_HELMET_TOP_HAT
     "Phantom Mask": Info(200), #ITEM_EQUIP_HELMET_PHANTOM_MASK
-    "Scholar's Cap": Info(204, quantity=2, shiny_quantity=1), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
+    "Scholar's Cap": Info(204, quantity=2, shiny_quantity=2), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
     "Thief's Turban": Info(226, quantity=3), #ITEM_EQUIP_HELMET_THIEFS_TURBAN
     "Iron Mask": Info(237), #ITEM_EQUIP_HELMET_IRON_MASK
     "Mythril Helm": Info(254, ItemClassification.useful), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
     "Thinking Cap": Info(257, quantity=3), #ITEM_EQUIP_HELMET_THINKING_CAP
     "Hapless Helm": Info(261, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
-    "Rabbit Ears": Info(275, quantity=2), #ITEM_EQUIP_HELMET_BUNNY_EARS
+    "Rabbit Ears": Info(275, quantity=2, shiny_quantity=1), #ITEM_EQUIP_HELMET_BUNNY_EARS
     "Auroral Helm": Info(284, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_HELMET_LIGHT_HELM
     "Heavenly Helm": Info(313, ItemClassification.useful), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
-    "Duplic Hat": Info(330, ItemClassification.useful), #ITEM_EQUIP_HELMET_DUPLIC_HAT
+    "Duplic Hat": Info(330, ItemClassification.useful, shiny_quantity=1), #ITEM_EQUIP_HELMET_DUPLIC_HAT
     "Great Helm": Info(370, ItemClassification.useful), #ITEM_EQUIP_HELMET_GREAT_HELM
     "Feathered Cap": Info(388, quantity=0, shiny_quantity=1), #ITEM_EQUIP_HELMET_FEATHERED_CAP
+    "Raging Bull Helm": Info(482, quantity=0, shiny_quantity=1), #ITEM_EQUIP_HELMET_RAGING_BULL_HELM
     # EQUIPMENT ARMORS
     "Training Togs": Info(5, quantity=6), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
     "Wayfarer's Clothes": Info(29, quantity=4), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
@@ -313,7 +318,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Smart Suit": Info(222), #ITEM_EQUIP_ARMOR_SMART_SUIT
     "Party Dress": Info(223, quantity=2), #ITEM_EQUIP_ARMOR_PARTY_DRESS
     "Agility Gilet": Info(227), #ITEM_EQUIP_ARMOR_AGILITY_GILET
-    "Cat Suit": Info(242, quantity=2), #ITEM_EQUIP_ARMOR_CAT_SUIT
+    "Cat Suit": Info(242, ItemClassification.useful, quantity=2, shiny_quantity=1), #ITEM_EQUIP_ARMOR_CAT_SUIT
     "Spiked Armor": Info(251), #ITEM_EQUIP_ARMOR_SPIKED_ARMOUR
     "Magical Robes": Info(256, quantity=2), #ITEM_EQUIP_ARMOR_MAGICAL_ROBES
     "Flowing Dress": Info(259, quantity=2), #ITEM_EQUIP_ARMOR_FLOWING_DRESS
@@ -322,7 +327,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Magic Bikini": Info(272, ItemClassification.useful), #ITEM_EQUIP_ARMOR_MAGIC_BIKINI
     "Dark Robe": Info(278, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DARK_ROBE
     "Hate Mail": Info(289), #ITEM_EQUIP_ARMOR_INFERNAL_ARMOUR
-    "Angel's Robe": Info(300, quantity=2), #ITEM_EQUIP_ARMOR_ANGELS_ROBE
+    "Angel's Robe": Info(300, quantity=2, shiny_quantity=1), #ITEM_EQUIP_ARMOR_ANGELS_ROBE
     "Auroral Armor": Info(301, ItemClassification.useful), #ITEM_EQUIP_ARMOR_AURORAL_ARMOUR
     "Dragon Dojo Duds": Info(305, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_DOJO_DUDS
     "Shimmering Dress": Info(307, ItemClassification.useful), #ITEM_EQUIP_ARMOR_SHIMMERING_DRESS
@@ -338,6 +343,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Fur Vest": Info(440, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_FUR_VEST
     "Iron Armor": Info(443, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_IRON_ARMOUR
     "Epic Apron": Info(449, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_EPIC_APRON
+    "Silver Cuirass": Info(469, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ARMOR_SILVER_CUIRASS
     # EQUIPMENT ACCESSORIES
     "Dragon Scales": Info(7, quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
     "Aerofoil Earrings": Info(20, quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
@@ -379,6 +385,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Elevating Shoes": Info(315, ItemClassification.useful, quantity=2), #ITEM_EQUIP_ACCESSORY_ELEVATING_SHOES
     "Strength Ring": Info(341), #ITEM_EQUIP_ACCESSORY_STRENGTH_RING
     "Mercury's Bandana": Info(353, quantity=2), #ITEM_EQUIP_ACCESSORY_MERCURYS_BANDANA
+    "Scholar's Specs": Info(459, quantity=0, shiny_quantity=1), #ITEM_EQUIP_ACCESSORY_SCHOLARS_SPECS
     # IMPORTANT
     "Wrecking Ball": Info(40, ItemClassification.progression, quantity=2), #ITEM_IMPORTANT_WRECKING_BALL
     "Progressive Key": Info(47, ItemClassification.progression | ItemClassification.useful, quantity=3), #ITEM_IMPORTANT_PROGRESSIVE_KEY (ITEM_IMPORTANT_THIEFS_KEY, ITEM_IMPORTANT_MAGIC_KEY, ITEM_IMPORTANT_ULTIMATE_KEY)

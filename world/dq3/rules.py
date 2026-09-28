@@ -6,7 +6,7 @@ from rule_builder.options import OptionFilter
 from rule_builder.rules import Has, HasAll, Rule
 
 from . import locations
-from .options import ShipSettings, RamiaSettings, RainbowDropShuffle
+#from .options import ShipSettings, RamiaSettings, RainbowDropShuffle
 
 if TYPE_CHECKING:
     from .world import DQ3World

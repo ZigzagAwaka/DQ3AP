@@ -55,7 +55,7 @@ EXTRA_ITEMS: dict[str, Info] = {
     "532 Gold": Info(421, type=Type.SHINY), #GOLD_532
     "321 Gold": Info(422, type=Type.SHINY), #GOLD_321
     "x2 Angel Bells": Info(423, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SKYBELL
-    "x3 Musk": Info(424, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x3 Musks": Info(424, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_POUCH_OF_MUSK
     "x2 Special Medicine": Info(425, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SPECIAL_MEDICINE
     "772 Gold": Info(426, type=Type.SHINY), #GOLD_772
     "x2 Divine Daggers": Info(427, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_DIVINE_DAGGER
@@ -67,7 +67,7 @@ EXTRA_ITEMS: dict[str, Info] = {
     "x6 Holy Waters": Info(433, type=Type.SHINY), #MULTIPLE_6_ITEM_USE_ITEM_HOLY_WATER
     "3014 Gold": Info(434, type=Type.SHINY), #GOLD_3014
     "x3 Cypress Sticks": Info(435, type=Type.SHINY), #MULTIPLE_3_ITEM_EQUIP_WEAPON_CYPRESS_STICK
-    "x2 Musk": Info(436, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x2 Musks": Info(436, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_POUCH_OF_MUSK
     "x2 Boomerangs": Info(437, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_BOOMERANG
     "245 Gold": Info(438, type=Type.SHINY), #GOLD_245
     "798 Gold": Info(439, type=Type.SHINY), #GOLD_798
@@ -84,4 +84,58 @@ EXTRA_ITEMS: dict[str, Info] = {
     "132 Gold": Info(450, type=Type.SHINY), #GOLD_132
     "468 Gold": Info(451, type=Type.SHINY), #GOLD_468
     "x2 Seeds of Stamina": Info(452, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_RESILIENCE
+    "x2 Tanglewebs": Info(453, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_TANGLEWEB
+    "x4 Dazzle-me-nots": Info(454, type=Type.SHINY), #MULTIPLE_4_ITEM_USE_ITEM_DEDAZZLE_GRASS
+    "464 Gold": Info(455, type=Type.SHINY), #GOLD_464
+    # see items.py 456
+    # see items.py 457
+    "1276 Gold": Info(458, type=Type.SHINY), #GOLD_1276
+    # see items.py 459
+    "x2 Coagulants": Info(460, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_COAGULANT
+    "465 Gold": Info(461, type=Type.SHINY), #GOLD_465
+    "845 Gold": Info(462, type=Type.SHINY), #GOLD_845
+    "2214 Gold": Info(463, type=Type.SHINY), #GOLD_2214
+    "x2 Fading Jennies": Info(464, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_FADING_JENNY
+    "x2 Dieamends": Info(465, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_DIEAMEND
+    "x2 Plain Clothes": Info(466, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
+    "x2 Oaken Clubs": Info(467, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_OAKEN_CLUB
+    "x2 Oomph Powders": Info(468, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_OOMPH_POWDER
+    # see items.py 469
+    "326 Gold": Info(470, type=Type.SHINY), #GOLD_326
+    "227 Gold": Info(471, type=Type.SHINY), #GOLD_227
+    "1060 Gold": Info(472, type=Type.SHINY), #GOLD_1060
+    "x3 Magic Waters": Info(473, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_MAGIC_WATER
+    "357 Gold": Info(474, type=Type.SHINY), #GOLD_357
+    "984 Gold": Info(475, type=Type.SHINY), #GOLD_984
+    "732 Gold": Info(476, type=Type.SHINY), #GOLD_732
+    "834 Gold": Info(477, type=Type.SHINY), #GOLD_834
+    "137 Gold": Info(478, type=Type.SHINY), #GOLD_137
+    "2180 Gold": Info(479, type=Type.SHINY), #GOLD_2180
+    "x2 Chain Sickles": Info(480, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_WEAPON_CHAIN_SICKLE
+    "x2 Iron Helmets": Info(481, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_HELMET_IRON_HELMET
+    # see items.py 482
+    "x2 Sage's Elixir": Info(483, type=Type.SHINY), #MULTIPLE_2_ITEM_USE_ITEM_SAGES_ELIXIR
+    # see items.py 484
+    "1258 Gold": Info(485, type=Type.SHINY), #GOLD_1258
+    "x4 Musks": Info(486, type=Type.SHINY), #MULTIPLE_4_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x2 Wayfarer's Clothes": Info(487, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
+    "378 Gold": Info(488, type=Type.SHINY), #GOLD_378
+    "515 Gold": Info(489, type=Type.SHINY), #GOLD_515
+    "441 Gold": Info(490, type=Type.SHINY), #GOLD_441
+    "2137 Gold": Info(491, type=Type.SHINY), #GOLD_2137
+    "272 Gold": Info(492, type=Type.SHINY), #GOLD_272
+    "249 Gold": Info(493, type=Type.SHINY), #GOLD_249
+    "431 Gold": Info(494, type=Type.SHINY), #GOLD_431
+    "116 Gold": Info(495, type=Type.SHINY), #GOLD_116
+    "x2 Turbans": Info(496, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_HELMET_TURBAN
+    "578 Gold": Info(497, type=Type.SHINY), #GOLD_578
+    "896 Gold": Info(498, type=Type.SHINY), #GOLD_896
+    "654 Gold": Info(499, type=Type.SHINY), #GOLD_654
+    "1289 Gold": Info(500, type=Type.SHINY), #GOLD_1289
+    "x4 Magic Waters": Info(501, type=Type.SHINY), #MULTIPLE_4_ITEM_USE_ITEM_MAGIC_WATER
+    # see items.py 502
+    "x2 Torcs of Truth": Info(503, type=Type.SHINY), #MULTIPLE_2_ITEM_EQUIP_ACCESSORY_PHANTOM_RESISTANCE_NECKLACE
+    "x3 Chimera Wings": Info(504, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_CHIMERA_WING
+    "483 Gold": Info(505, type=Type.SHINY), #GOLD_483
+    "224 Gold": Info(506, type=Type.SHINY), #GOLD_224
 }
