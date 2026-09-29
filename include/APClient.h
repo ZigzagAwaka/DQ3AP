@@ -66,6 +66,10 @@ public:
     /// @return A tuple for the saved host, player and password
     std::tuple<std::string, std::string, std::string> GetLatestRoomData();
 
+    /// @brief Print the current goal option number
+    /// @return String text containing the current goal option number
+    std::string PrintGoal();
+
     /// @brief Disconnect from Archipelago
     void Disconnect();
 

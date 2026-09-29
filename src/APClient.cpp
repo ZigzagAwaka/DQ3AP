@@ -286,6 +286,15 @@ std::tuple<std::string, std::string, std::string> APClient::GetLatestRoomData()
 }
 
 
+std::string APClient::PrintGoal()
+{
+    int victoryOption = Options::GetOption("victory_goal");
+    if (victoryOption == -1)
+        return "The current victory option is not defined, this could lead to unexpected behavior in your game! Try to connect (or reconnect) first.";
+    return "The current victory option is set to " + std::to_string(victoryOption) + ".";
+}
+
+
 void APClient::SetLatestRoomData()
 {
     if (currentHost.empty() || currentPlayer.empty())
