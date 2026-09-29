@@ -138,4 +138,24 @@ EXTRA_ITEMS: dict[str, Info] = {
     "x3 Chimera Wings": Info(504, type=Type.SHINY), #MULTIPLE_3_ITEM_USE_ITEM_CHIMERA_WING
     "483 Gold": Info(505, type=Type.SHINY), #GOLD_483
     "224 Gold": Info(506, type=Type.SHINY), #GOLD_224
+    "x3 Plain Clothes": Info(507, type=Type.SHINY), #MULTIPLE_3_ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
+    "3370 Gold": Info(508, type=Type.SHINY), #GOLD_3370
+    "1260 Gold": Info(509, type=Type.SHINY), #GOLD_1260
+    "961 Gold": Info(510, type=Type.SHINY), #GOLD_961
+    # see items.py 511
+    "1812 Gold": Info(512, type=Type.SHINY), #GOLD_1812
+    "3319 Gold": Info(513, type=Type.SHINY), #GOLD_3319
+    "233 Gold": Info(514, type=Type.SHINY), #GOLD_233
+    "2774 Gold": Info(515, type=Type.SHINY), #GOLD_2774
+    "5831 Gold": Info(516, type=Type.SHINY), #GOLD_5831
+    # see items.py 517
+    "617 Gold": Info(518, type=Type.SHINY), #GOLD_617
+    "487 Gold": Info(519, type=Type.SHINY), #GOLD_487
+    "655 Gold": Info(520, type=Type.SHINY), #GOLD_655
+    "1757 Gold": Info(521, type=Type.SHINY), #GOLD_1757
+    "782 Gold": Info(522, type=Type.SHINY), #GOLD_782
+    # see items.py 523
+    # see items.py 524
+    "657 Gold": Info(525, type=Type.SHINY), #GOLD_657
+    # see items.py 526
 }
