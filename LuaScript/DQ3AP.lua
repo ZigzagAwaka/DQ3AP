@@ -273,6 +273,12 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     SetTagItemId(multipleItemId)
     SetTagValue(multipleCount)
     if result then
+      CmdLoadItemIcon(multipleItemId)
+      if ObjectId ~= nil and TreasureId ~= nil then
+        CmdPlayItemGetNoWait(ObjectId, TreasureId)
+      else
+        PlayItemGetToLocation(GetPartyMemberLocation(1), multipleItemId)
+      end
       PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
       if multipleCount == 1 then
         CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
@@ -581,6 +587,9 @@ local predefined_excluded_locations = {
   SEARCH_GranDragon_SecretSea_34_GROUND_0 = true,
   SEARCH_GranDragon_SecretSea_34_GROUND_1 = true,
   SEARCH_ElfVillage_House_GROUND_0 = true,
+  SHINE_SEARCH_FS072 = true,
+  SHINE_SEARCH_FS073 = true,
+  SHINE_SEARCH_FS074 = true,
 }
 
 -- check if the given location is a excluded from the randomization

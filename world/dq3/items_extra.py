@@ -158,4 +158,5 @@ EXTRA_ITEMS: dict[str, Info] = {
     # see items.py 524
     "657 Gold": Info(525, type=Type.SHINY), #GOLD_657
     # see items.py 526
+    "426 Gold": Info(527, type=Type.SHINY), #GOLD_426
 }

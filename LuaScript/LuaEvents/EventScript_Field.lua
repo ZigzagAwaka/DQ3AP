@@ -112,10 +112,24 @@ function YGGDRASIL_LEAF_FieldEvent_01(BeginOverlap, table, ...)
       AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF")
     end
   else
-    ItemGetMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1", "ITEM_USE_ITEM_YGGDRASIL_LEAF", false, true)
-    AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF") -- AP: todo: randomize this item
+    -- AP
+    local shiny_spots_sanity = AP.GetOption("shiny_spots_sanity")
+    if shiny_spots_sanity == nil or shiny_spots_sanity == 1 or shiny_spots_sanity == 2 then
+      AP.Log("YGGDRASIL_LEAF_FieldEvent_01 called (getting item from yggdrasil tree)")
+      AP.CheckLocation("YGGDRASIL_LEAF_FieldEvent_01")
+      SetTagItemId("ITEM_ARCHIPELAGO")
+      CmdLoadItemIcon("ITEM_ARCHIPELAGO")
+      PlayItemGetToLocation(GetPartyMemberLocation(1), "ITEM_ARCHIPELAGO")
+      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
+    else
+      ItemGetMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1", "ITEM_USE_ITEM_YGGDRASIL_LEAF", false, true)
+      AddItem("ITEM_USE_ITEM_YGGDRASIL_LEAF")
+    end
+    -- AP end
     SetFlag(Flag.FE726, true)
   end
+  AP.GiveItemsIfAvailable() -- AP
   EventEnd(eventInfo, "")
 end
 
