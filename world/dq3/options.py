@@ -76,8 +76,8 @@ class ShinySpotsSanity(Choice):
     """
     Allows to choose how Shiny Spots locations are randomized, those are small shiny places in the overworld giving a pack of items when checked.
     - Vanilla: Shiny Spots in the overworld will not be randomized and will instead be vanilla
-    - One check: Shiny Spots will contain 1 random item check. This adds around 344 more checks in the game
-    - Max checks: Shiny Spots will contain as many items checks as in vanilla (between 1 and 3). This adds around +1000 more checks in the game
+    - One check: Shiny Spots will contain 1 random item check. This adds around 342 more checks in the game
+    - Max checks: Shiny Spots will contain as many items checks as in vanilla (between 1 and 3). This adds around 859 more checks in the game
     """
     display_name = "Shiny Spots Sanity"
     option_vanilla = 0
@@ -138,8 +138,8 @@ class NoneItemsShuffle(DefaultOnToggle):
 
 class AdditionalSeedsChance(Range):
     """
-    Select a percentage chance that any filler items are replaced by a random seed item. This can be used to generate more seeds in the game to help at gaining stats faster.
-    To avoid seeds to overflow the item pool, you should use a small number like 10 or 20.
+    Select a percentage chance that any random filler items are replaced by a random seed item. This can be used to generate more seeds in the game to help at gaining stats faster.
+    If you want to enable this but are not sure what to write, you should avoid overflowing the item pool with seeds and so you should use a small number like 10 or 20.
     This option will work best if random_filler_item_pool or shiny_spots_sanity are enabled.
     """
     display_name = "Additional seeds chance"
@@ -172,9 +172,8 @@ class ShufflePandoraBoxTraps(DefaultOnToggle):
 
 class AdditionalTrapsChance(Range):
     """
-    Select a percentage chance that any filler items are replaced by a random trap. This should only be used if you want an extremly hard game.
-    This option will work best if random_filler_item_pool or shiny_spots_sanity are enabled.
-    This option will work even if traps are disabled individually.
+    Select a percentage chance that any random filler items are replaced by a random trap. This should only be used if you want an extremly hard game.
+    This option will work best if random_filler_item_pool or shiny_spots_sanity are enabled, and it will work even if traps are disabled individually.
     """
     display_name = "Additional traps chance"
     range_start = 0
