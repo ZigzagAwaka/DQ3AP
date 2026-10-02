@@ -705,7 +705,7 @@ function SearchObject_Shine_Ground(BeginOverlap, table, CanObtainItem, TreasureI
     AP.CheckLocation(checkName)
   end
   SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1, isExcluded)
-  if isExcluded or sanity_max then
+  if isExcluded --[[or sanity_max]] then
     SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
     SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
   end
