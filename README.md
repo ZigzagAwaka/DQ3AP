@@ -4,13 +4,16 @@ Dragon Quest III HD-2D Remake implementation for the [Archipelago multiworld ran
 
 ## Setup Guide
 
-1. Make sure you have [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) 0.6.7+ installed
+1. If you plan to host a room, make sure you have [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) 0.6.7+ installed
 2. Download the latest version of [DQ3AP](https://github.com/ZigzagAwaka/DQ3AP/releases)
 3. Place `Game-WindowsNoEditor_P_DQ3AP.pak` in `Game/Content/Paks` in the game folder
 4. Place `DQ3AP.asi`, `dsound.dll`, `libAPCpp.dll`, `libstdc++-6.dll`, `libgcc_s_seh-1.dll` and `libwinpthread-1.dll` in `Game/Binaries/Win64` in the game folder, next to the executable
 5. If playing on a Linux computer, add `WINEDLLOVERRIDES="dsound.dll=n,b" %command%` in the game's launch options on Steam (no need to do that on Windows!)
-6. For [generating a world](https://archipelago.gg/tutorial/Archipelago/setup_en#on-your-local-installation), place or install `dq3.apworld` in the `custom_worlds` folder of your Archipelago installation
+6. For generating a world, place or install `dq3.apworld` in the `custom_worlds` folder of your Archipelago installation
 7. For configuring your randomized game, select `Generate Template Options` in the Archipelago Launcher to create a `Dragon Quest III HD-2D Remake.yaml` that you can edit to your liking (make sure to have the apworld installed before doing this)
+8. You can now [generate a world](https://archipelago.gg/tutorial/Archipelago/setup_en#on-your-local-installation) and play!
+
+After playing the mod, if you later want to play in vanilla again you will need to at least uninstall/remove the following files: `DQ3AP.asi` and `Game-WindowsNoEditor_P_DQ3AP.pak`.
 
 ## Connecting to a hosted room
 
@@ -20,6 +23,7 @@ When the setup is finished, you can open the game on Steam to see a new separate
 - You can connect anytime you want, before or after loading your game file. But make sure to be connected before checking a new location in the game !
 
 *Tips:* If you have some spaces in your player name or password, use quotes! *(example: "Player name")*
+*Tips 2: If you stop the game and come back later, try `/reconnect` to try to reconnect faster! (if the current room still has the same port)*
 
 ## Useful informations
 ### What does randomization do to this game ?
@@ -39,13 +43,14 @@ You have multiple options to set the goal of the game, among these:
 
 ### Which items can be in another player's world ?
 
-All obtainable items can be placed in other players' worlds, except the Maps which are not randomized.
+All obtainable items can be placed in other players' worlds, except the Maps which are not randomized. Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
 
 Items in shops, medals rewards, arena rewards and enemy drops are also not randomized but this may change in the future.
 
 ### What does another world's item look like in the game ?
 
 Multiworld items appear as a mini medal sprite when you collect them. The game will say that you got an Archipelago medal.
+Items are all remotely implemented for now, so you will also find Archipelago medals for your own local items.
 
 *Planned : If possible, the sprite will be edited into a proper Archipelago sprite.*
 
@@ -57,14 +62,14 @@ The only supported version is the Steam release of `Dragon Quest III HD-2D Remak
 
 The game will cache the received items then give them all to the player when one of the following events happens :
 
-- The player exits an area, dungeon, or village ; either by walking to an exit or warping outside the area with Zoom
+- The player enters or exits an area, house, dungeon, or village (that does not have any special events happening at the same time) either by a player transition or warping with Zoom
 - The player successfully defeats an enemy (but not a Cannibox/Mimic/Pandora's Box as those are traps !)
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
 - The player talks to a Priest of any location by loading a save file from the title screen
 - The player uses the spell "Peep" when not being next to a chest [check mods compatibility for this one!]
 
-Once items are received, the game will display a message to show what's been received for each items (except for the Ship and Ramia since those are not real items in the game, but are progression checks/items for Archipelago).
+Once items are obtained, the game will display the item's sprite with a message to show what's been received (except for the Ship and Ramia since those are not real items in the game, but are progression checks/items for Archipelago).
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
 
