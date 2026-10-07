@@ -653,6 +653,7 @@ function SearchObject_Shine_Sea(BeginOverlap, table, CanObtainItem, TreasureId, 
   print(tostring(CanObtainItem) .. ", " .. TreasureId .. ", " .. ItemId1 .. ", " .. tostring(ItemCount1) .. ", " .. tostring(Gold1) .. ", " .. ItemId2 .. ", " .. tostring(ItemCount2) .. ", " .. tostring(Gold2) .. ", " .. ItemId3 .. ", " .. tostring(ItemCount3) .. ", " .. tostring(Gold3))
   -- AP
   local checkName = ""
+  local checkCount = 0
   local isExcluded = AP.IsLocationExcluded(TreasureId)
   local shiny_spots_sanity = AP.GetOption("shiny_spots_sanity")
   local sanity_one = shiny_spots_sanity == nil or shiny_spots_sanity == 1
@@ -662,19 +663,31 @@ function SearchObject_Shine_Sea(BeginOverlap, table, CanObtainItem, TreasureId, 
   if not isExcluded then
     if 0 < ItemCount1 or 0 < Gold1 then
       checkName = checkName .. TreasureId .. "_1"
+      checkCount = checkCount + 1
     end
     if (0 < ItemCount2 or 0 < Gold2) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_2"
+      checkCount = checkCount + 1
     end
     if (0 < ItemCount3 or 0 < Gold3) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_3"
+      checkCount = checkCount + 1
     end
     AP.CheckLocation(checkName)
-  end
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1, isExcluded)
-  if isExcluded or sanity_max then
-    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
-    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
+    SetTagItemId("ITEM_ARCHIPELAGO")
+    SetTagValue(checkCount)
+    CmdLoadItemIcon("ITEM_ARCHIPELAGO")
+    CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    if checkCount == 1 then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_2")
+    end
+  else
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3)
   end
   AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
   -- AP end
@@ -686,6 +699,7 @@ function SearchObject_Shine_Ground(BeginOverlap, table, CanObtainItem, TreasureI
   print(tostring(CanObtainItem) .. ", " .. TreasureId .. ", " .. ItemId1 .. ", " .. tostring(ItemCount1) .. ", " .. tostring(Gold1) .. ", " .. ItemId2 .. ", " .. tostring(ItemCount2) .. ", " .. tostring(Gold2) .. ", " .. ItemId3 .. ", " .. tostring(ItemCount3) .. ", " .. tostring(Gold3))
   -- AP
   local checkName = ""
+  local checkCount = 0
   local isExcluded = AP.IsLocationExcluded(TreasureId)
   local shiny_spots_sanity = AP.GetOption("shiny_spots_sanity")
   local sanity_one = shiny_spots_sanity == nil or shiny_spots_sanity == 1
@@ -695,37 +709,38 @@ function SearchObject_Shine_Ground(BeginOverlap, table, CanObtainItem, TreasureI
   if not isExcluded then
     if 0 < ItemCount1 or 0 < Gold1 then
       checkName = checkName .. TreasureId .. "_1"
+      checkCount = checkCount + 1
     end
     if (0 < ItemCount2 or 0 < Gold2) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_2"
+      checkCount = checkCount + 1
     end
     if (0 < ItemCount3 or 0 < Gold3) and sanity_max then
       checkName = checkName .. "\n" .. TreasureId .. "_3"
+      checkCount = checkCount + 1
     end
     AP.CheckLocation(checkName)
-  end
-  SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1, isExcluded)
-  if isExcluded --[[or sanity_max]] then
-    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2, isExcluded)
-    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3, isExcluded)
+    SetTagItemId("ITEM_ARCHIPELAGO")
+    SetTagValue(checkCount)
+    CmdLoadItemIcon("ITEM_ARCHIPELAGO")
+    CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    if checkCount == 1 then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_2")
+    end
+  else
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId1, ItemCount1, Gold1)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2)
+    SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3)
   end
   AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
   -- AP end
   EventEnd(eventInfo, "")
 end
 
-function SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId, ItemCount, Gold, IsExcluded)
-  -- AP
-  if not IsExcluded and (0 < ItemCount or 0 < Gold) then
-    ItemId = "ITEM_ARCHIPELAGO"
-    SetTagItemId(ItemId)
-    CmdLoadItemIcon(ItemId)
-    CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
-    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
-    CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_11")
-    return
-  end
-  -- AP end
+function SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId, ItemCount, Gold)
   if 0 < ItemCount then
     local result = AddItemDetail(ItemId, ItemCount, -1, true)
     SetTagItemId(ItemId)
