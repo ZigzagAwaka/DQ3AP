@@ -231,7 +231,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Bastard Sword": Info(306, ItemClassification.useful, quantity=2, shiny_quantity=1), #ITEM_EQUIP_WEAPON_BASTARD_SWORD
     "Staff of Strife": Info(308, quantity=2, shiny_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_STRIFE
     "Empress' Whip": Info(309), #ITEM_EQUIP_WEAPON_EMPRESSS_WHIP
-    "Poker": Info(314), #ITEM_EQUIP_WEAPON_GODLY_POKER
+    "Poker": Info(314, ItemClassification.useful), #ITEM_EQUIP_WEAPON_GODLY_POKER
     "Destructiball": Info(316, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_DESTRUCTIBALL
     "Rubiss' Sword": Info(319, ItemClassification.useful), #ITEM_EQUIP_WEAPON_RUBISSS_SWORD
     "Dragontail Whip": Info(321, quantity=2, shiny_quantity=1), #ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP

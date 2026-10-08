@@ -23,6 +23,7 @@ When the setup is finished, you can open the game on Steam to see a new separate
 - You can connect anytime you want, before or after loading your game file. But make sure to be connected before checking a new location in the game !
 
 *Tips:* If you have some spaces in your player name or password, use quotes! *(example: "Player name")*
+
 *Tips 2: If you stop the game and come back later, try `/reconnect` to try to reconnect faster! (if the current room still has the same port)*
 
 ## Useful informations
@@ -50,9 +51,10 @@ Items in shops, medals rewards, arena rewards and enemy drops are also not rando
 ### What does another world's item look like in the game ?
 
 Multiworld items appear as a mini medal sprite when you collect them. The game will say that you got an Archipelago medal.
-Items are all remotely implemented for now, so you will also find Archipelago medals for your own local items.
 
-*Planned : If possible, the sprite will be edited into a proper Archipelago sprite.*
+Items are all remotely implemented for now, so you will also find Archipelago medals for your own local items, which will then give you your real item with their correct sprite.
+
+*Planned : The Archipelago medal sprite will be edited into a proper unique texture in a future release.*
 
 ### What versions of the game are supported ?
 
@@ -118,5 +120,6 @@ You can report anything in the `Dragon Quest III HD-2D Remake` post in the `futu
 - [Game Interactive Maps by th3blackb3rry](https://gamefaqs.gamespot.com/pc/466975-dragon-quest-iii-hd-2d-remake/faqs)
 - [APCpp Library: used by the client mod](https://github.com/N00byKing/APCpp)
 - [@mike9k1: for useful modding advices](https://www.nexusmods.com/profile/mike9k1)
+- [@xyphire: for making the Archipelago item texture](https://interweb.xyphire.tv)
 - [@mastermarz: for helping at figuring out the logic in some locations](https://www.twitch.tv/mastermarz)
 - [@seraphin_eveles: for good support and testing](https://www.twitch.tv/seraphin_eveles)
