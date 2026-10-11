@@ -79,7 +79,7 @@ end
 
 -- checks if the given item is an item that needs an id conversion and returns the new id if it needs one
 function AP.ConvertSpecialItemIds(ItemId)
-  if ItemId == "ITEM_IMPORTANT_PROGRESSIVE_KEY" then
+  if ItemId == "ITEM_IMPORTANT_PROGRESSIVE_KEY" then -- convert progressive key item into proper keys
     if not GetFlag(Flag.FE54) then
       ItemId = "ITEM_IMPORTANT_THIEFS_KEY"
     elseif not GetFlag(Flag.FE55) then
@@ -87,9 +87,12 @@ function AP.ConvertSpecialItemIds(ItemId)
     elseif not GetFlag(Flag.FE56) then
       ItemId = "ITEM_IMPORTANT_ULTIMATE_KEY"
     end
-  elseif ItemId == "ITEM_IMPORTANT_SHIP" or ItemId == "ITEM_IMPORTANT_RAMIA" then
-    AP.SetSpecialFlags(ItemId) --set ship/ramia flags before id conversion (discard id, ship/ramia are not real items)
-    ItemId = "None"
+  elseif ItemId == "ITEM_IMPORTANT_RAMIA" then -- ignore ramia item if ramia option is vanilla
+    local ramia_settings = AP.GetOption("ramia_settings")
+    if ramia_settings ~= nil and ramia_settings == 0 then
+      AP.SetSpecialFlags(ItemId)
+      ItemId = "None"
+    end
   end
   return ItemId
 end

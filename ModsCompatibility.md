@@ -11,6 +11,8 @@ This means that mods that modifies or add new items and those that add new conte
 Here is a small list of some mods that you can install to have a better experience playing DQ3AP. These mods have all been tested and confirmed working with DQ3AP.
 
 - [Better Monster Rewards](https://www.nexusmods.com/dragonquest3remake/mods/17): to increase EXP and gold received from defeating monsters, making characters progression faster
+- [Perfect Seeds](https://www.nexusmods.com/dragonquest3remake/mods/16): to gain more stats when using seeds items, also making characters progression faster
+- [Rebalanced Encounter Rate](https://www.nexusmods.com/dragonquest3remake/mods/5): to reduce the rate of many of the game's random battles, allowing you to focus more on getting checks
 - [Faster Overworld Traversal](https://www.nexusmods.com/dragonquest3remake/mods/14): to increase the movement speed of the player, the ship and Ramia
 - [Skip Initial Logos](https://www.nexusmods.com/dragonquest3remake/mods/22): to launch the game faster
 - [Passive Snoop and Nose for Treasure](https://www.nexusmods.com/dragonquest3remake/mods/52): to help you find the treasures hidden in towns and dungeons [is partially compatible, please check the note below!]

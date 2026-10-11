@@ -36,30 +36,32 @@ Options to choose which locations are randomized, excluded or vanilla are availa
 ### What is the goal of the game when randomized ?
 
 You have multiple options to set the goal of the game, among these:
-- Defeat Zoma, the final boss of the game
-- Defeat the Grand Dragon, the final boss of the postgame
-- Find all 110 mini medals
-- Find all 110 mini medals, with postgame locations included
-- Defeat Baramos, for shorter games
+- Defeat **Zoma**, the final boss of the game
+- Defeat the **Grand Dragon**, the final boss of the postgame
+- Find all **110 mini medals**
+- Find all **110 mini medals**, with postgame locations included
+- Defeat **Baramos**, for shorter games
+
+### What versions of the game are supported ?
+
+The only supported version is the Steam/PC release of `Dragon Quest III HD-2D Remake`.
 
 ### Which items can be in another player's world ?
 
 All obtainable items can be placed in other players' worlds, except the Maps which are not randomized. Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
 
 Items in shops, medals rewards, arena rewards and enemy drops are also not randomized but this may change in the future.
-
+<!--
 ### What does another world's item look like in the game ?
 
-Multiworld items appear as a mini medal sprite when you collect them. The game will say that you got an Archipelago medal.
+Multiworld items appear as an **Archipelago medal** sprite when you collect them. The game will also display a message when you get it.
 
-Items are all remotely implemented for now, so you will also find Archipelago medals for your own local items, which will then give you your real item with their correct sprite.
+<img src="https://raw.githubusercontent.com/ZigzagAwaka/DQ3AP/main/Images/Archipelago_Item_Animated.gif" width="32"/>
 
-*Planned : The Archipelago medal sprite will be edited into a proper unique texture in a future release.*
+Collecting this item will trigger the Archipelago server to send back the corresponding item to the correct player.
 
-### What versions of the game are supported ?
-
-The only supported version is the Steam release of `Dragon Quest III HD-2D Remake`.
-
+And if it was one of your own items, the server will then send it to you [items are all remotely implemented for now, you will still find Archipelago medals for your own items then receive those as if someone else was giving it to you].
+-->
 ### When the player receives an item, what happens ?
 
 The game will cache the received items then give them all to the player when one of the following events happens :
@@ -71,27 +73,25 @@ The game will cache the received items then give them all to the player when one
 - The player talks to a Priest of any location by loading a save file from the title screen
 - The player uses the spell "Peep" when not being next to a chest [check mods compatibility for this one!]
 
-Once items are obtained, the game will display the item's sprite with a message to show what's been received (except for the Ship and Ramia since those are not real items in the game, but are progression checks/items for Archipelago).
+Once items are obtained, the game will display the item's sprite with a message to show what's been received.
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
 
-You can play in singleplayer by generating a world with only this game, then connect and play as usual.
+You can play in singleplayer by generating a world with only this game, then connect and play as usual (you still need to be online for it to work).
 
-As items are all remotely implemented for now, you will still find multiworld items and receive your own items as if someone else was giving it to you but besides that it's completely playable.
+### Can I go back to previously explored areas ?
+
+If you don't want to walk back to previous areas, then you can collect and use a Chimera Wing or level up and learn Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.
 
 ### What about saving ?
 
-Make sure to always save the game before turning it off !
+**Make sure to always save the game before turning it off !**
 
 If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to check again but actually checking it will have no effect since it was already registered by the Archipelago server.
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
-The game already perform some auto saves automatically when you receive an item, so you can also reload the last auto save if you need it.
-
-### Can I go back to previously explored areas ?
-
-If you don't want to walk back to previous areas, then you can collect and use a Chimera Wing or level up and learn Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.
+The game already perform some auto saves automatically when you receive an item, so you can also reload the latest auto save if you need it.
 
 ### Is there a location tracker available ?
 
@@ -99,7 +99,7 @@ For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Arc
 
 ### What about other mods compatibility ?
 
-Most other mods should be compatible, but if you want to learn more about this please check [this document here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/ModsCompatibility.md) describing mods compatibility in details.
+Most other mods should be compatible, but if you want to learn more about this please check [this document here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/ModsCompatibility.md) describing mods compatibility in details. This document also lists some other mods you can install to have a better experience at playing the game with Archipelago.
 
 ### What other modifications are being made to the game ?
 
