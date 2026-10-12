@@ -292,7 +292,11 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
       CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_ItemGetBagMax_1")
     end
   elseif ItemId ~= "None" then
-    receptor = AddItem(ItemId)
+    if ItemId ~= "ITEM_IMPORTANT_SHIP" and ItemId ~= "ITEM_IMPORTANT_RAMIA" then
+      receptor = AddItem(ItemId) -- add item to the inventory except for vehicles
+    else
+      receptor = 1
+    end
     SetTagItemId(ItemId)
     if 0 < receptor or receptor == 0 or receptor == -2 then
       CmdLoadItemIcon(ItemId)
