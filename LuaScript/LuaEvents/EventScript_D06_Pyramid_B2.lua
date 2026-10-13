@@ -25,9 +25,10 @@ function Pyramid_B2F_Coffin_00(BeginOverlap, table, CanObtainItem, TreasureId, I
       CmdMessage("NPC_Talk_Pyramid_B2F_SearchObj_Coffin_2")
       CmdLoadItemIcon("ITEM_ARCHIPELAGO"--[[itemId]]) -- AP
       CmdPlayItemGetNoWait(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
-      PlayJingleOnGetItemRareDefaultFade()
+      PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+      --PlayJingleOnGetItemRareDefaultFade() -- AP
       CmdMessage("NPC_Talk_Pyramid_B2F_SearchObj_Coffin_3")
-      WaitPlayJingle()
+      --WaitPlayJingle() -- AP
       PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
       CmdEventClosingMessage("NPC_Talk_Pyramid_B2F_SearchObj_Coffin_4")
       -- AP

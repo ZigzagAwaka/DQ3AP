@@ -775,11 +775,12 @@ function ItemGetMessage(MessageId, ItemId, NoJingle, NoIcon)
   if PlayJingle == true then
     CloseMessage()
     Wait(0.4)
-    RequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_007", 0, 0)
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+    --RequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_007", 0, 0) -- AP
     HideMessageWindowPageFeedIcon()
     ShowMessage(MessageId)
     _retry(SYS_WaitShowMessage)
-    WaitPlayJingle()
+    --WaitPlayJingle() -- AP
     CloseMessage()
   else
     if HideIcon == true then
@@ -811,25 +812,27 @@ function ItemGetMessageToActor(MessageId, ItemId, TargetId, PauseBGM, NoIcon, Is
       HideMessageWindowPageFeedIcon()
     end
     ShowMessage(MessageId)
-    RequestPlayJingle("BGM_JINGLE_007", EBgmPlayerManagerMEPlayRequestTypePAUSE, 0, EBgmPlayerManagerLineTypeOnMEEndCURRENT, 0, "")
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+    --RequestPlayJingle("BGM_JINGLE_007", EBgmPlayerManagerMEPlayRequestTypePAUSE, 0, EBgmPlayerManagerLineTypeOnMEEndCURRENT, 0, "") -- AP
     PlayItemGetToActor(TargetId, {
       X = 0,
       Y = 0,
       Z = 0
     }, ItemId, IsRenderPrePass)
-    WaitPlayJingle()
+    --WaitPlayJingle() -- AP
     _retry(SYS_WaitPlayItemGet)
     _retry(SYS_WaitShowMessage)
   else
     HideMessageWindowPageFeedIcon()
     ShowMessage(MessageId)
-    PlayJingleOnGetItemRareDefaultFade()
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+    --PlayJingleOnGetItemRareDefaultFade() -- AP
     PlayItemGetToActor(TargetId, {
       X = 0,
       Y = 0,
       Z = 0
     }, ItemId, IsRenderPrePass)
-    WaitPlayJingle()
+    --WaitPlayJingle() -- AP
     _retry(SYS_WaitPlayItemGet)
     _retry(SYS_WaitShowMessage)
     CloseMessage()
@@ -851,7 +854,8 @@ function ItemsGetMessageToActor(TargetId, MessageId, GetItemIdIndex, ...)
   Wait(0.4)
   HideMessageWindowPageFeedIcon()
   ShowMessage(MessageId)
-  PlayJingleOnGetItemRareDefaultFade()
+  PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+  --PlayJingleOnGetItemRareDefaultFade() -- AP
   PlayItemGetToActor(TargetId, {
     X = 0,
     Y = 0,
@@ -859,7 +863,7 @@ function ItemsGetMessageToActor(TargetId, MessageId, GetItemIdIndex, ...)
   }, select(GetItemIdIndex, ...))
   _retry(SYS_WaitShowMessage)
   _retry(SYS_WaitPlayItemGet)
-  WaitPlayJingle()
+  --WaitPlayJingle() -- AP
   CloseMessage()
 end
 
@@ -884,19 +888,21 @@ function ItemGetMessageToLocation(MessageId, ItemId, Location, NoIcon)
       HideMessageWindowPageFeedIcon()
     end
     ShowMessage(MessageId)
-    RequestPlayJingle("BGM_JINGLE_007", EBgmPlayerManagerMEPlayRequestTypePAUSE, 0, EBgmPlayerManagerLineTypeOnMEEndCURRENT, 0, "")
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+    --RequestPlayJingle("BGM_JINGLE_007", EBgmPlayerManagerMEPlayRequestTypePAUSE, 0, EBgmPlayerManagerLineTypeOnMEEndCURRENT, 0, "") -- AP
     PlayItemGetToLocation(Location, ItemId)
     _retry(SYS_WaitShowMessage)
     _retry(SYS_WaitPlayItemGet)
-    WaitPlayJingle()
+    --WaitPlayJingle() -- AP
   else
     HideMessageWindowPageFeedIcon()
     ShowMessage(MessageId)
-    PlayJingleOnGetItemRareDefaultFade()
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM") -- AP
+    --PlayJingleOnGetItemRareDefaultFade() -- AP
     PlayItemGetToLocation(Location, ItemId)
     _retry(SYS_WaitShowMessage)
     _retry(SYS_WaitPlayItemGet)
-    WaitPlayJingle()
+    --WaitPlayJingle() -- AP
     CloseMessage()
   end
 end

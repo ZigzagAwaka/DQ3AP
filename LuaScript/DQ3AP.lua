@@ -306,8 +306,13 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
         PlayItemGetToLocation(GetPartyMemberLocation(1), ItemId)
       end
     end
+    local shouldPlayRareAnimation = IsRareItem(ItemId)
+    if shouldPlayRareAnimation then
+      local rare_items_fast_animation = AP.GetOption("rare_items_fast_animation")
+      shouldPlayRareAnimation = shouldPlayRareAnimation and (rare_items_fast_animation == nil or rare_items_fast_animation == 0)
+    end
     if receptor == 0 then
-      if IsRareItem(ItemId) then
+      if shouldPlayRareAnimation then
         PlayJingleOnGetItemRareDefaultFade()
         CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
         WaitPlayJingle()
@@ -330,7 +335,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
         SetFlag(Flag.FE962, true)
       end
     elseif 0 < receptor then
-      if IsRareItem(ItemId) then
+      if shouldPlayRareAnimation then
         PlayJingleOnGetItemRareDefaultFade()
         SetTagActorFromParty(receptor - 1)
         CmdMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_5")
@@ -392,6 +397,7 @@ local client_options = {
   aliahan_king_special_gifts = nil,
   ramia_settings = nil,
   shiny_spots_sanity = nil,
+  rare_items_fast_animation = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file

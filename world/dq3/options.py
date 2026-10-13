@@ -191,6 +191,13 @@ class AliahanKingSpecialGifts(DefaultOnToggle):
     """
     display_name = "Aliahan King's special gifts"
 
+class RareItemsFastAnimation(Toggle):
+    """
+    By default, when receiving a rare/important item the game will play the rare item sound effect along with a pretty long animation (to show that the item is important).
+    But if you enable this option, those items will then use the normal get item animation, which is faster but could be missinterpreted for a non important item if you don't know all items very well.
+    """
+    display_name = "Fast animation for rare items"
+
 # Put all options in a dataclass
 @dataclass
 class DQ3Options(PerGameCommonOptions):
@@ -211,6 +218,7 @@ class DQ3Options(PerGameCommonOptions):
     shuffle_pandorabox: ShufflePandoraBoxTraps
     additional_traps_chance: AdditionalTrapsChance
     aliahan_king_special_gifts: AliahanKingSpecialGifts
+    rare_items_fast_animation: RareItemsFastAnimation
 
 
 # Group options by similar type (options not in a group will be displayed under the "Game Options" default group)
@@ -229,7 +237,7 @@ groups = [
     ),
     OptionGroup(
         "Misc Options",
-        [AliahanKingSpecialGifts],
+        [AliahanKingSpecialGifts, RareItemsFastAnimation],
     ),
 ]
 
