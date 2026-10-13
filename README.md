@@ -71,7 +71,7 @@ The game will cache the received items then give them all to the player when one
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
 - The player talks to a Priest of any location by loading a save file from the title screen
-- The player uses the spell "Peep" when not being next to a chest [check mods compatibility for this one!]
+- The player uses some specific field spells/abilities
 
 Once items are obtained, the game will display the item's sprite with a message to show what's been received.
 

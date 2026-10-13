@@ -56,6 +56,7 @@ function SS_End_Effect_Message(BeginOverlap, table, ...)
   local args = SS_GetCommonArgs(...)
   SS_Effect_Message(args.EndEffectText)
   MapTimeNotifyEndSystemProcessing()
+  AP.GiveItemsIfAvailable() -- AP
 end
 
 function SS_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
@@ -87,6 +88,7 @@ function SS_End_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
   CloseMessage()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
+  AP.GiveItemsIfAvailable() -- AP
 end
 
 function SS_Effect_MONSTER_ATTRACT2(BeginOverlap, table, ...)
@@ -150,6 +152,7 @@ function SS_Effect_CHANGE_NIGHT(BeginOverlap, table, ...)
   _retry(SYS_WaitFadeIn, fadeType)
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
+  AP.GiveItemsIfAvailable() -- AP
 end
 
 function SS_Effect_TRANSFORM_RANDOM(BeginOverlap, table, ...)
@@ -238,7 +241,7 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
     print(args.InpasuResult)
   end
   if args.InpasuResult == "NoneResult" then
-    --SS_ShowMessage("Txt_Magic_Inpasu_5", true) -- AP
+    SS_ShowMessage("Txt_Magic_Inpasu_5", true)
   elseif args.InpasuResult == "Empty" then
     SS_ShowMessage("Txt_Magic_Inpasu_4", true)
   elseif args.InpasuResult == "Blue" then
@@ -249,18 +252,12 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
     SS_ShowMessage("Txt_Magic_Inpasu_3", true)
   end
   PlayEffectInpasu()
-  if args.InpasuResult ~= "NoneResult" then -- AP
-    _retry(SYS_WaitShowMessage)
-  end
+  _retry(SYS_WaitShowMessage)
   CloseMessage()
   StopEffectInpasu()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  -- AP
-  if args.InpasuResult == "NoneResult" then
-    AP.GiveItemsIfAvailable()
-  end
-  -- AP end
+  AP.GiveItemsIfAvailable() -- AP
 end
 
 function SS_Effect_TREASURE_SEARCH(BeginOverlap, table, ...)
