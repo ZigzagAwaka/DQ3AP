@@ -185,7 +185,6 @@ class AdditionalTrapsChance(Range):
 class AliahanKingSpecialGifts(DefaultOnToggle):
     """
     Allows the scene with the Aliahan King at the start of the game to give you additionnal gifts:
-    - A pack of x10 "Chimera Wings" items for easier early game progression
     - The main World Map if not already obtained
     - The story flag that will allow you to change the Hero's hair color in Alltrades Abbey
     """

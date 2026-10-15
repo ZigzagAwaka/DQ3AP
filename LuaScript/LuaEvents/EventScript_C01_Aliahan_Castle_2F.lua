@@ -250,10 +250,6 @@ function Gift()
   -- AP
   local special_gifts = AP.GetOption("aliahan_king_special_gifts")
   if special_gifts == nil or special_gifts == 1 then
-    -- gives a pack of chimera wing
-    for i = 0, 9 do
-      AddItem("ITEM_USE_ITEM_CHIMERA_WING")
-    end
     -- flag that lets you change the hero hair color in alltrades abbey (no need to get this from xenlon in postgame)
     SetFlag(Flag.FE342, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_Xenlon_Looks, true)

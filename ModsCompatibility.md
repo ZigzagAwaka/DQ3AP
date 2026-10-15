@@ -19,12 +19,12 @@ Here is a small list of some mods that you can install to have a better experien
 
 ## Note about the "Passive Snoop and Nose for Treasure" mod
 
-"Passive Snoop and Nose for Treasure" is a mod released by mike9k1 that makes it so the abilities/spells "Snoop" and "Nose for Treasure" are simplier to use. This mod comes with 2 files: `Game-WindowsNoEditor_P_Passive_Snoop_vX.Y.Z.pak` and `Passive_Nose_Treasure_vX.Y.Z.asi`, the first one managing the "Snoop" spell upgrade, and the other managing the "Nose for Treasure" ability upgrade.
+"Passive Snoop and Nose for Treasure" is a mod released by mike9k1 that makes it so the abilities/spells "Snoop" and "Nose for Treasure" are simplier to use. This mod comes with 2 files: `Game-WindowsNoEditor_P_Passive_Snoop_vX.Y.Z.pak` and `Passive_Nose_Treasure_vX.Y.Z.asi`, the first one is managing the "Snoop" spell upgrade, and the other one is for the "Nose for Treasure" ability upgrade.
 
 The way this mod and DQ3AP were made makes it so they are not compatible but this only affects the file `Game-WindowsNoEditor_P_Passive_Snoop_vX.Y.Z.pak`, meaning the other file is totally compatible. But what does it mean exactly ? You have 2 options.
 
-- If you have the two mods installed: then the receiving of items in DQ3AP when using the spell "Peep" will not work! Which is fine because there is other ways to receive items as listed in the [README here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/README.md#when-the-player-receives-an-item-what-happens-), but you will lose a pretty cool quality of life feature.
+- If you have the two mods installed: then the receiving of items in DQ3AP when using some field spells/abilities will not work! Which is fine because there is other ways to receive items as listed in the [README here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/README.md#when-the-player-receives-an-item-what-happens-), but you will lose a pretty cool quality of life feature.
 
 - If you want to keep the previously mentioned feature in DQ3AP then you need to manually delete the file `Game-WindowsNoEditor_P_Passive_Snoop_vX.Y.Z.pak`. Doing so will no longer highlight the treasures for an unlimited time when using "Snoop" and instead will revert to vanilla, which is a few seconds. But that's pretty much it, the other file of the mod can still be kept and it will work fine.
 
-Anyways, it ultimately depends on your personal play style. Whether you prefer to have a longer treasure highlight for "Snoop" or to have a way to receive item from DQ3AP on demand with "Peep".
+Anyways, it ultimately depends on your personal play style. Whether you prefer to have a longer treasure highlight for "Snoop" or to have a way to receive item from DQ3AP on demand with some field spells and abilities.

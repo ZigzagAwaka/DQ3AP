@@ -51,7 +51,7 @@ The only supported version is the Steam/PC release of `Dragon Quest III HD-2D Re
 All obtainable items can be placed in other players' worlds, except the Maps which are not randomized. Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
 
 Items in shops, medals rewards, arena rewards and enemy drops are also not randomized but this may change in the future.
-<!--
+
 ### What does another world's item look like in the game ?
 
 Multiworld items appear as an **Archipelago medal** sprite when you collect them. The game will also display a message when you get it.
@@ -60,8 +60,8 @@ Multiworld items appear as an **Archipelago medal** sprite when you collect them
 
 Collecting this item will trigger the Archipelago server to send back the corresponding item to the correct player.
 
-And if it was one of your own items, the server will then send it to you [items are all remotely implemented for now, you will still find Archipelago medals for your own items then receive those as if someone else was giving it to you].
--->
+*And if it was one of your own items, the server will then send it to you [items are all remotely implemented for now, you will still find Archipelago medals for your own items then receive those as if someone else was giving it to you].*
+
 ### When the player receives an item, what happens ?
 
 The game will cache the received items then give them all to the player when one of the following events happens :
@@ -81,7 +81,7 @@ You can play in singleplayer by generating a world with only this game, then con
 
 ### Can I go back to previously explored areas ?
 
-If you don't want to walk back to previous areas, then you can collect and use a Chimera Wing or level up and learn Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.
+If you don't want to walk back to previous areas, then you can use Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.
 
 ### What about saving ?
 
@@ -106,9 +106,10 @@ Most other mods should be compatible, but if you want to learn more about this p
 Other modifications were implemented to nicely integrate Archipelago :
 
 - Some story scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
-- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom (or a Chimera Wing) to warp to a previously explored location and the Ship and Ramia will be teleported near you.
+- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom to warp to a previously explored location and the Ship and Ramia will be teleported near you.
 - Merchantburg is fully excluded from the logic except the containers available in the final stage of the town. This means that the Yellow Orb check is excluded but the Yellow Orb is still randomized. Checking the Yellow Orb at it's vanilla location will give you some gold instead.
-- Gifts from the Aliahan King at the start of the game are not randomized, and receiving those gifts will also give you a pack of 10 Chimera Wings for easier early game progression until you level up and learn Zoom. You can use those to return to previously explored areas or to teleport the Ship/Ramia near you in early Ship/Ramia seeds. Moreover, speaking to the King will also gives you the main World Map and will set a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
+- Gifts from the Aliahan King at the start of the game are not randomized. Speaking to the King will also gives you the main World Map and will set a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
+- Some field spells/abilities are unlocked from the start and available to be used right away. This helps with the pace of the game for Archipelago.
 
 ## Feedbacks and issues
 
