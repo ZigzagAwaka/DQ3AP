@@ -2108,6 +2108,11 @@ const std::unordered_map<std::string, int> WorldData::victory_locations =
     {"BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010", 4},
 };
 
+const std::unordered_map<std::string, std::set<int64_t>> WorldData::hints =
+{
+    {"placeholder", {1, 2, 3}},
+};
+
 const std::unordered_map<int, std::string> WorldData::items =
 {
     // GOLD

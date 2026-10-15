@@ -2,6 +2,7 @@
 
 #include "Logger.h"
 #include "WorldData.h"
+#include "Archipelago.h"
 
 #include <string>
 #include <filesystem>
@@ -46,6 +47,10 @@ public:
     /// @param locationId The Id of the received location
     void ReceiveCheckedLocation(int64_t locationId);
 
+    /// @brief Receive a scout result from Archipelago
+    /// @param scoutResult A vector of AP_NetworkItem, giving informations for the received scout
+    void ReceiveScout(std::vector<AP_NetworkItem> scoutResult);
+
     /// @brief Receive an item from Archipelago
     /// @param itemId The Id of the received item
     /// @param notify False if the item has already been notified/collected
@@ -55,6 +60,11 @@ public:
     /// @param locationName The name of the given location to check
     /// @return True if the location is the correct configured victory or else false
     bool CheckVictoryLocation(const std::string& locationName);
+
+    /// @brief Checks if the given location name is a hint location, and if so then send the associated hints
+    /// @param locationName The name of the given location to check
+    /// @return True if the location is a hint or else false
+    bool CheckHint(const std::string& locationName);
 
     /// @brief When connected, write options to AP options data file, overriding previous content
     void WriteOptionData();

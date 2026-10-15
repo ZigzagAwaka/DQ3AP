@@ -1,5 +1,4 @@
 #include "APClient.h"
-#include "Archipelago.h"
 
 
 APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath,
@@ -36,6 +35,10 @@ void APClient::Connect(const std::string& host, const std::string& player, const
 
         AP_SetLocationCheckedCallback([this](int64_t locationId) {
             ReceiveCheckedLocation(locationId);
+        });
+
+        AP_SetLocationInfoCallback([this](std::vector<AP_NetworkItem> scoutResult) {
+            ReceiveScout(scoutResult);
         });
 
         currentHost = host;
@@ -93,12 +96,20 @@ void APClient::Update()
         while (std::getline(file, line))
         {
             if (line.empty()) continue;
+
             if (CheckVictoryLocation(line))
             {
                 logger.LogInFile("Victory got for location: " + line);
                 AP_StoryComplete();
                 continue;
             }
+
+            if (CheckHint(line))
+            {
+                logger.LogInFile("Hint triggered for location: " + line);
+                continue;
+            }
+
             int locationId = WorldData::GetLocationId(line);
             if (locationId != -1)
             {
@@ -122,18 +133,7 @@ void APClient::Update()
 }
 
 
-void APClient::ReceiveCheckedLocation(int64_t locationId)
-{
-    /*std::string locationName = WorldData::GetLocationName(locationId);
-    if (!locationName.empty())
-    {
-        logger.Log("Location checked by server: " + locationName);
-    }
-    else
-    {
-        logger.Log("Unknown location Id: " + locationId);
-    }*/
-}
+void APClient::ReceiveCheckedLocation(int64_t locationId) { }
 
 
 void APClient::ReceiveItem(int64_t itemId, bool notify)
@@ -164,13 +164,38 @@ void APClient::ReceiveItem(int64_t itemId, bool notify)
 bool APClient::CheckVictoryLocation(const std::string& locationName)
 {
     int victoryId = WorldData::IsLocationVictory(locationName);
-    int victoryOption = Options::GetOption("victory_goal");
-    if (victoryId == -1 || victoryOption == -1)
+
+    if (victoryId == -1)
     {
         return false;
     }
+
+    int victoryOption = Options::GetOption("victory_goal");
+
+    if (victoryOption == -1)
+    {
+        return false;
+    }
+
     return victoryId == victoryOption;
 }
+
+
+bool APClient::CheckHint(const std::string& locationName)
+{
+    std::set<int64_t> hintIds = WorldData::GetHintIds(locationName);
+
+    if (hintIds.empty())
+    {
+        return false;
+    }
+
+    AP_SendLocationScouts(hintIds, 1);  // 1 here is the create_as_hint parameter, this creates an AP hint to the server
+    return true;
+}
+
+
+void APClient::ReceiveScout(std::vector<AP_NetworkItem> scoutResult) { }
 
 
 std::unordered_map<std::string, int> APClient::Options::allOptions;

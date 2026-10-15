@@ -1,6 +1,8 @@
 #pragma once
 
 #include <unordered_map>
+#include <cstdint>
+#include <set>
 #include <string>
 #include <iostream>
 
@@ -38,6 +40,15 @@ public:
         return it != victory_locations.end() ? it->second : -1;
     }
 
+    /// @brief Returns the set of hints ids from the given check name
+    /// @param checkName Name of the check to hint
+    /// @return The ids of the hints corresponding to that check, or an empty set if the check has no associated ids
+    static std::set<int64_t> GetHintIds(const std::string& checkName)
+    {
+        auto it = hints.find(checkName);
+        return it != hints.end() ? it->second : std::set<int64_t>();
+    }
+
     /// @brief Returns the corresponding location name from the given location id
     /// @param locationId Id of the searched location
     /// @return Location name, or empty string if not found
@@ -57,6 +68,9 @@ private:
 
     /// @brief Contains every locations names that when received will send the victory event to AP
     static const std::unordered_map<std::string, int> victory_locations;
+
+    /// @brief Contains every hints string ids associated to one or multiple location AP IDs
+    static const std::unordered_map<std::string, std::set<int64_t>> hints;
 
     /// @brief Associate locations AP specific unique IDs to their respective ingame name
     /// (basically, the reverse of std::unordered_map<std::string, int> locations)
