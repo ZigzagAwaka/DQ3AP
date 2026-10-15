@@ -1296,9 +1296,9 @@ def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | No
 def remove_locations_based_on_options(world: DQ3World, region: str, location_names: list[str]) -> list[str]:
     if world.options.shiny_spots_sanity != "max_checks" and "Overworld" in region:
         if world.options.shiny_spots_sanity == "one_check":
-            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type != SanityType.SHINY_MAX]
+            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type in {SanityType.DEFAULT, SanityType.SHINY}]
         else: # if vanilla
-            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type not in (SanityType.SHINY_MAX, SanityType.SHINY)]
+            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type == SanityType.DEFAULT]
     return location_names
 
 

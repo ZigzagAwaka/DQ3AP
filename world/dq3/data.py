@@ -23,6 +23,7 @@ class LocationType(IntEnum):
     DEFAULT = 1 # always present in locations list (may be excluded but is always registered)
     SHINY = 2 # only present in the list if shiny spots are randomized to 1
     SHINY_MAX = 3 # only present in the list if shiny spots are randomized to max
+    SHOP = 4 # only present in the list if shops are randomized
 
 
 @dataclass

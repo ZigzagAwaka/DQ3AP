@@ -895,4 +895,6 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Ocean Overworld] Shiny Spot in the ocean near the mountains north of Wayfarer's Chapel: Item 1": Info(1979, rules.HAS_SHIP, type=Type.SHINY), #SHINE_SEARCH_FS025_1
     "[Ocean Overworld] Shiny Spot in the ocean near the mountains north of Wayfarer's Chapel: Item 2": Info(1980, rules.HAS_SHIP, type=Type.SHINY_MAX), #SHINE_SEARCH_FS025_2
     "[Ocean Overworld] Shiny Spot in the ocean near the mountains north of Wayfarer's Chapel: Item 3": Info(1981, rules.HAS_SHIP, type=Type.SHINY_MAX), #SHINE_SEARCH_FS025_3
+    # ///////////////////////// SHOPS /////////////////////////
+    # ----- Aliahan -----
 }
