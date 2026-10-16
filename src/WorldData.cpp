@@ -2097,6 +2097,19 @@ const std::unordered_map<std::string, int> WorldData::locations =
     {"SHINE_SEARCH_FS025_1", 1979},
     {"SHINE_SEARCH_FS025_2", 1980},
     {"SHINE_SEARCH_FS025_3", 1981},
+    // ----- Aliahan Shops -----
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_WEAPON_CYPRESS_STICK", 1982},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_SHIELD_POT_LID", 1983},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES", 1984},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_ARMOR_PLAIN_CLOTHES", 1985},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_MEDICAL_HERB", 1986},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_ANTIDOTAL_HERB", 1987},
+    {"SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_CHIMERA_WING", 1988},
+    {"SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_COPPER_SWORD", 1989},
+    {"SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_BRONZE_KNIFE", 1990},
+    {"SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_OAKEN_CLUB", 1991},
+    {"SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_SHIELD_LEATHER_SHIELD", 1992},
+    {"SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_ARMOR_LEATHER_ARMOUR", 1993},
 };
 
 const std::unordered_map<std::string, int> WorldData::victory_locations =
@@ -2110,7 +2123,8 @@ const std::unordered_map<std::string, int> WorldData::victory_locations =
 
 const std::unordered_map<std::string, std::set<int64_t>> WorldData::hints =
 {
-    {"placeholder", {1, 2, 3}},
+    {"SHOP_ALIAHAN_ITEM_0001", {1982, 1983, 1984, 1985, 1986, 1987, 1988}},
+    {"SHOP_ALIAHAN_EQUIP_0001", {1989, 1990, 1991, 1992, 1993}},
 };
 
 const std::unordered_map<int, std::string> WorldData::items =

@@ -85,6 +85,17 @@ class ShinySpotsSanity(Choice):
     option_max_checks = 2
     default = 0
 
+class ShopSanity(Choice):
+    """
+    Choose if items sold in shops are randomized or not.
+    - Vanilla: Items in shops will not be randomized and will instead be vanilla
+    - Enabled: Buying items in the shops will count as a check and hints for those items will be sent upon speaking to the shop owner. This adds around 500 more checks in the game
+    """
+    display_name = "Shop Sanity"
+    option_vanilla = 0
+    option_enabled = 1
+    default = 0
+
 # ITEMS OPTIONS
 
 class RandomFillerItemPool(Toggle):
@@ -206,6 +217,7 @@ class DQ3Options(PerGameCommonOptions):
     secret_spots_sanity: SecretSpotsSanity
     ocean_secret_spots_sanity: OceanSecretSpotsSanity
     shiny_spots_sanity: ShinySpotsSanity
+    shop_sanity: ShopSanity
     random_filler_item_pool: RandomFillerItemPool
     ship_settings: ShipSettings
     ramia_settings: RamiaSettings
@@ -224,7 +236,7 @@ class DQ3Options(PerGameCommonOptions):
 groups = [
     OptionGroup(
         "Locations Options",
-        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity, ShinySpotsSanity],
+        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity, ShinySpotsSanity, ShopSanity],
     ),
     OptionGroup(
         "Items Options",

@@ -183,6 +183,13 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
 
 bool APClient::CheckHint(const std::string& locationName)
 {
+    int shopSanityOption = Options::GetOption("shop_sanity");
+
+    if (shopSanityOption == 0)
+    {
+        return false;
+    }
+
     std::set<int64_t> hintIds = WorldData::GetHintIds(locationName);
 
     if (hintIds.empty())
@@ -205,7 +212,7 @@ void APClient::RegisterAllOptionsCallbacks()
     // All options that will be registered needs to be added in this vector
     const std::vector<std::string> optionNames = {
         "victory_goal", "aliahan_king_special_gifts", "ramia_settings",
-        "shiny_spots_sanity", "rare_items_fast_animation"
+        "shiny_spots_sanity", "rare_items_fast_animation", "shop_sanity"
     };
     for (int i = 0; i < optionNames.size(); i++)
     {

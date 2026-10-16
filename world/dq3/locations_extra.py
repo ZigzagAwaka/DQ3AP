@@ -897,4 +897,16 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Ocean Overworld] Shiny Spot in the ocean near the mountains north of Wayfarer's Chapel: Item 3": Info(1981, rules.HAS_SHIP, type=Type.SHINY_MAX), #SHINE_SEARCH_FS025_3
     # ///////////////////////// SHOPS /////////////////////////
     # ----- Aliahan -----
+    "[Aliahan] Item Shop: Cypress Stick": Info(1982, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_WEAPON_CYPRESS_STICK
+    "[Aliahan] Item Shop: Pot Lid": Info(1983, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_SHIELD_POT_LID
+    "[Aliahan] Item Shop: Wayfarer's Clothes": Info(1984, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
+    "[Aliahan] Item Shop: Plain Clothes": Info(1985, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
+    "[Aliahan] Item Shop: Medicinal Herb": Info(1986, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_MEDICAL_HERB
+    "[Aliahan] Item Shop: Antidotal Herb": Info(1987, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_ANTIDOTAL_HERB
+    "[Aliahan] Item Shop: Chimera Wing": Info(1988, type=Type.SHOP), #SHOP_ALIAHAN_ITEM_0001_ITEM_USE_ITEM_CHIMERA_WING
+    "[Aliahan] Equipment Shop: Copper Sword": Info(1989, type=Type.SHOP), #SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_COPPER_SWORD
+    "[Aliahan] Equipment Shop: Bronze Knife": Info(1990, type=Type.SHOP), #SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_BRONZE_KNIFE
+    "[Aliahan] Equipment Shop: Oaken Club": Info(1991, type=Type.SHOP), #SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_WEAPON_OAKEN_CLUB
+    "[Aliahan] Equipment Shop: Leather Shield": Info(1992, type=Type.SHOP), #SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_SHIELD_LEATHER_SHIELD
+    "[Aliahan] Equipment Shop: Leather Armor": Info(1993, type=Type.SHOP), #SHOP_ALIAHAN_EQUIP_0001_ITEM_EQUIP_ARMOR_LEATHER_ARMOUR
 }

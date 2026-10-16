@@ -519,7 +519,7 @@ def create_all_items(world: DQ3World) -> None:
     for item_name, info in ALL_ITEMS.items():
         if is_item_valid_for_itempool(world, item_name, info):
             quantity = info.quantity
-            if world.options.shiny_spots_sanity != "vanilla":
+            if world.options.shiny_spots_sanity != "vanilla": #todo: add shop_sanity
                 quantity += info.shiny_quantity
             if world.options.random_filler_item_pool and info.classification == ItemClassification.filler:
                 quantity = 1

@@ -1294,12 +1294,14 @@ def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | No
 
 # Helper method that remove (real removal, not excluding!) some locations based on option values and returns the modified locations list
 def remove_locations_based_on_options(world: DQ3World, region: str, location_names: list[str]) -> list[str]:
-    if world.options.shiny_spots_sanity != "max_checks" and "Overworld" in region:
-        if world.options.shiny_spots_sanity == "one_check":
-            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type in {SanityType.DEFAULT, SanityType.SHINY}]
-        else: # if vanilla
-            return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type == SanityType.DEFAULT]
-    return location_names
+    valid_sanities = {SanityType.DEFAULT}
+    if world.options.shiny_spots_sanity != "vanilla" and "Overworld" in region:
+        valid_sanities.add(SanityType.SHINY)
+        if world.options.shiny_spots_sanity == "max_checks":
+            valid_sanities.add(SanityType.SHINY_MAX)
+    if world.options.shop_sanity != "vanilla":
+        valid_sanities.add(SanityType.SHOP)
+    return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type in valid_sanities]
 
 
 # Helper method that exclude some locations that are related to the provided container names,
