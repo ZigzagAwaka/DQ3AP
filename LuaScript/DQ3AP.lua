@@ -398,6 +398,7 @@ local client_options = {
   ramia_settings = nil,
   shiny_spots_sanity = nil,
   rare_items_fast_animation = nil,
+  shop_sanity = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file
@@ -473,6 +474,55 @@ function AP.SetFlag(FlagName, FlagValue)
       end
       file:close()
     end
+  end
+end
+
+-- contains all items in all shops
+local shops_content = {
+  SHOP_ALIAHAN_ITEM_0001 = {
+    "ITEM_EQUIP_WEAPON_CYPRESS_STICK",
+    "ITEM_EQUIP_SHIELD_POT_LID",
+    "ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES",
+    "ITEM_EQUIP_ARMOR_PLAIN_CLOTHES",
+    "ITEM_USE_ITEM_MEDICAL_HERB",
+    "ITEM_USE_ITEM_ANTIDOTAL_HERB",
+    "ITEM_USE_ITEM_CHIMERA_WING"
+  },
+  SHOP_ALIAHAN_EQUIP_0001 = {
+    "ITEM_EQUIP_WEAPON_COPPER_SWORD",
+    "ITEM_EQUIP_WEAPON_BRONZE_KNIFE",
+    "ITEM_EQUIP_WEAPON_OAKEN_CLUB",
+    "ITEM_EQUIP_SHIELD_LEATHER_SHIELD",
+    "ITEM_EQUIP_ARMOR_LEATHER_ARMOUR"
+  },
+}
+
+-- shop management function for AP, executes before the shop is called
+-- calculates the quantities of items before those are bought and returns it
+function AP.PreCallShop(ShopId)
+  AP.CheckLocation(ShopId) -- this sends hints for items in this shop
+  local items_quantities = {}
+  for _, item in ipairs(shops_content[ShopId]) do
+    items_quantities[#items_quantities + 1] = GetHaveItemNum(item)
+  end
+  return items_quantities
+end
+
+-- shop management function for AP, executes after the shop has been called
+-- sends a check for every item bought based on their quantities
+function AP.PostCallShop(ShopId, ItemsQuantities)
+  local checkName = ""
+  for index, item in ipairs(shops_content[ShopId]) do
+    if GetHaveItemNum(item) > ItemsQuantities[index] then
+      RemoveItem(item)
+      if index ~= 1 then
+        checkName = checkName .. "\n"
+      end
+      checkName = checkName .. ShopId .. "_" .. item
+    end
+  end
+  if checkName ~= "" then
+    AP.CheckLocation(checkName)
   end
 end
 

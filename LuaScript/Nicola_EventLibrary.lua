@@ -576,22 +576,23 @@ function WaitShowMessage()
 end
 
 function CmdCallShopUI(ShopId)
-  --[[
-  AP.Log("Shop: " .. ShopId)
-  local original = GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD")
-  AP.Log("qo " .. original)
-  ]]
+  -- AP
+  local shop_sanity = AP.GetOption("shop_sanity")
+  local is_vanilla = shop_sanity ~= nil and shop_sanity == 0
+  local quantities = {}
+  AP.Log("CmdCallShopUI called with ShopId: " .. tostring(ShopId))
+  if not is_vanilla then
+    quantities = AP.PreCallShop(ShopId)
+  end
+  -- AP end
   CallShopUI(ShopId)
   _retry(SYS_WaitShopUI)
-  --[[
-  if GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD") > original then
-    AP.Log("ITEM_EQUIP_WEAPON_COPPER_SWORD bought from shop " .. ShopId)
-    RemoveItem("ITEM_EQUIP_WEAPON_COPPER_SWORD")
-    AddItem("ITEM_ARCHIPELAGO")
-    AP.Log("qb " .. GetHaveItemNum("ITEM_EQUIP_WEAPON_COPPER_SWORD"))
+  -- AP
+  if not is_vanilla and #quantities > 0 then
+    AP.PostCallShop(ShopId, quantities)
   end
-  AP.Log("Shop end")
-  ]]
+  AP.GiveItemsIfAvailable()
+  -- AP end
 end
 
 function WaitShopUI()
