@@ -44,6 +44,7 @@ HAS_RAINBOW_DROP = Has("Rainbow Drop")
 HAS_SWORD_OF_KINGS = Has("Sword of Kings")
 HAS_AURORAL_HELM = Has("Auroral Helm")
 HAS_GRINGHAM_WHIP = Has("Gringham Whip")
+HAS_FADING_JENNY = Has("Fading Jenny")
 #HAS_MOD_ROD_2 = Has("") #non randomized, wip
 HAS_ALL_MEDALS = Has("Mini Medal", count=110)
 

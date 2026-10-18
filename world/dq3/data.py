@@ -46,5 +46,5 @@ class ItemInfo:
     id: int
     classification: ItemClassification = ItemClassification.filler
     quantity: int = 1
-    shiny_quantity: int = 0 # this is used to force a specific quantity in the itempool if shiny spots are randomized
+    extra_quantity: int = 0 # this is used to force a specific quantity in the itempool if shiny spots or shops are randomized
     type: ItemType = ItemType.DEFAULT
