@@ -355,12 +355,12 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       CmdMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_8")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_9")
       RequestUnlockAchievementByGetGoldenMedal()
-      ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_10", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_GOLDEN_MEDAL"]], "GranDragon_07_Snake_GranDragon_01_L1", false, false, true) -- AP
+      ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_10", "ITEM_IMPORTANT_GOLDEN_MEDAL", "GranDragon_07_Snake_GranDragon_01_L1", false, false, true)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
-      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
-      --AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
+      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
       -- AP end
+      AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_11")
       SetFlag(Flag.FE704, true)
     end
@@ -386,12 +386,12 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       CmdMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_24")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_25")
       RequestUnlockAchievementByGetGoldenMedal()
-      ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_26", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_GOLDEN_MEDAL"]], "GranDragon_07_Snake_GranDragon_01_L1", false, false, true) -- AP
+      ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_26", "ITEM_IMPORTANT_GOLDEN_MEDAL", "GranDragon_07_Snake_GranDragon_01_L1", false, false, true)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
-      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL\nGranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
-      --AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
+      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
       -- AP end
+      AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_27")
       Wait(0.1)
       SpawnMangaIcon("GranDragon_07_Snake_GranDragon_01_L1", "Ev_Cmn_Zzz_01")
