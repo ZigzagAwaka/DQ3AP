@@ -1022,7 +1022,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Temple of Trials] Chest 3 in top right corner area of North-East Trial": Info(917), #SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_10
     "[Temple of Trials] Chest near leftmost room in North-East Trial": Info(918), #SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_11
     "[Temple of Trials] Chest near top right corner area in North-East Trial": Info(919), #SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_12
-    "[Temple of Trials] Reward for defeating the Grand Dragon in 19 turns or less": Info(920, rules.HAS_AURORAL_HELM & rules.HAS_SWORD_OF_KINGS & rules.HAS_GRINGHAM_WHIP), #GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL
+    #"[Temple of Trials] Reward for defeating the Grand Dragon in 19 turns or less": Info(920, rules.HAS_AURORAL_HELM & rules.HAS_SWORD_OF_KINGS & rules.HAS_GRINGHAM_WHIP), #GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL # not randomized
     # ----- Aliahan Overworld -----
     "[Aliahan Overworld] Secret Spot near Reeve: Chest": Info(921), #SEARCH_GranDragon_SecretPlain_02_TREASURE_NORMAL_0
     "[Aliahan Overworld] Secret Spot near Dreamer's Tower: Chest": Info(922), #SEARCH_GranDragon_SecretForest_02_TREASURE_NORMAL_0

@@ -423,7 +423,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Broken Blade": Info(277, ItemClassification.progression), #ITEM_IMPORTANT_BROKEN_SWORD
     "Faerie Flute": Info(285, ItemClassification.progression), #ITEM_IMPORTANT_FAERIE_FLUTE
     "More Buns N' Guns": Info(318, ItemClassification.useful), #ITEM_IMPORTANT_VERY_NAUGHTY_BOOK
-    "Grand Medal": Info(333, ItemClassification.useful), #ITEM_IMPORTANT_GOLDEN_MEDAL
+    #"Grand Medal": Info(333, ItemClassification.useful), #ITEM_IMPORTANT_GOLDEN_MEDAL # not randomized
 }
 
 

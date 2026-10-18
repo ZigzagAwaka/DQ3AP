@@ -1014,7 +1014,7 @@ const std::unordered_map<std::string, int> WorldData::locations =
     {"SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_10", 917},
     {"SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_11", 918},
     {"SEARCH_GranDragon_Weapon2_TREASURE_NORMAL_12", 919},
-    {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL", 920},
+    //{"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_MEDAL", 920},
     // ----- Aliahan Overworld -----
     {"SEARCH_GranDragon_SecretPlain_02_TREASURE_NORMAL_0", 921},
     {"SEARCH_GranDragon_SecretForest_02_TREASURE_NORMAL_0", 922},
