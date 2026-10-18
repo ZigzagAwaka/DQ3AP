@@ -66,7 +66,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
         Connect("Underground Lake"),
         Connect("Skyfell Tower"),
         Connect("Great Desert Overworld"),
-        Connect("Edina Castle", rules.HAS_SHIP | rules.HAS_BIRD),
+        Connect("Edina Castle", (rules.HAS_SHIP | rules.HAS_BIRD) & rules.HAS_FADING_JENNY),
     ],
     "Romaria": [
         Connect("Romaria Castle"),
