@@ -216,7 +216,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Spiked Steel Whip": Info(230, quantity=2), #ITEM_EQUIP_WEAPON_SPIKED_STEEL_WHIP
     "Zombiesbane": Info(241, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_ZOMBIESBANE
     "Sizeable Scissors": Info(245), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
-    "Mountaincleaver": Info(250, ItemClassification.progression, quantity=2), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
+    "Mountaincleaver": Info(250, ItemClassification.progression), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
     "Thunderbolt Blade": Info(252), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
     "Headsman's Axe": Info(260, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_HEADSMANS_AXE
     "Staff of Rain": Info(282, ItemClassification.progression), #ITEM_EQUIP_WEAPON_STAFF_OF_RAIN
@@ -424,6 +424,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Faerie Flute": Info(285, ItemClassification.progression), #ITEM_IMPORTANT_FAERIE_FLUTE
     "More Buns N' Guns": Info(318, ItemClassification.useful), #ITEM_IMPORTANT_VERY_NAUGHTY_BOOK
     #"Grand Medal": Info(333, ItemClassification.useful), #ITEM_IMPORTANT_GOLDEN_MEDAL # not randomized
+    "Modmore Rod": Info(528, ItemClassification.progression), #ITEM_IMPORTANT_MODMORE_ROD # this is the second Mod Rod, renamed with altered effect
 }
 
 
