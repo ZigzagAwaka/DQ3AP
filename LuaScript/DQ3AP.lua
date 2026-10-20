@@ -502,8 +502,11 @@ local shops_content = {
 function AP.PreCallShop(ShopId)
   AP.CheckLocation(ShopId) -- this sends hints for items in this shop
   local items_quantities = {}
-  for _, item in ipairs(shops_content[ShopId]) do
-    items_quantities[#items_quantities + 1] = GetHaveItemNum(item)
+  local shop_items = shops_content[ShopId]
+  if shop_items then -- checks if shop is defined only in PreCall
+    for _, item in ipairs(shop_items) do
+      items_quantities[#items_quantities + 1] = GetHaveItemNum(item)
+    end
   end
   return items_quantities
 end
@@ -512,6 +515,7 @@ end
 -- sends a check for every item bought based on their quantities
 function AP.PostCallShop(ShopId, ItemsQuantities)
   local checkName = ""
+  local checkAmount = 0
   for index, item in ipairs(shops_content[ShopId]) do
     if GetHaveItemNum(item) > ItemsQuantities[index] then
       RemoveItem(item)
@@ -519,10 +523,21 @@ function AP.PostCallShop(ShopId, ItemsQuantities)
         checkName = checkName .. "\n"
       end
       checkName = checkName .. ShopId .. "_" .. item
+      checkAmount = checkAmount + 1
     end
   end
-  if checkName ~= "" then
+  if checkAmount > 0 then -- send check and display message
     AP.CheckLocation(checkName)
+    SetTagItemId("ITEM_ARCHIPELAGO")
+    SetTagValue(checkAmount)
+    CmdLoadItemIcon("ITEM_ARCHIPELAGO")
+    PlayItemGetToLocation(GetPartyMemberLocation(1), "ITEM_ARCHIPELAGO")
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    if checkAmount == 1 then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_2")
+    end
   end
 end
 
