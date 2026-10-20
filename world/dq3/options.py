@@ -11,9 +11,11 @@ class VictoryGoal(Choice):
     Choose the desired goal to mark the game as completed. Note that if you choose a goal that end the game before the postgame, then this will exclude every postgame locations. 
     - Zoma: Find a way to access Alefgard and defeat Zoma, the final boss of the game
     - Grand Dragon: Defeat Zoma to gain access to postgame areas then defeat the Grand Dragon, the final boss of the postgame
-    - Medals: Find all 110 mini medals in the world to win
+    - Medals: Find the specified amount of mini medals in the world to win
     - Medals postgame: Same as Medals but will also include postgame locations in the world
     - Baramos: Gain access to Baramos Castle then defeat Baramos, for shorter games
+    - Zoma medals: Same as Zoma but you also need to find the specified amount of mini medals to obtain the Rainbow Drop
+    - Grand Dragon medals: Same as Grand Dragon but you also need to find the specified amount of mini medals to complete the west trial of the Temple of Trials
     """
     display_name = "Victory Goal"
     option_zoma = 0
@@ -21,7 +23,35 @@ class VictoryGoal(Choice):
     option_medals = 2
     option_medals_postgame = 3
     option_baramos = 4
+    option_zoma_medals = 5
+    option_grand_dragon_medals = 6
     default = 0
+
+class RequiredMedalsAmount(Range):
+    """
+    Choose the amount of mini medals required to be obtained in order to complete, or advance towards, the selected victory goal.
+    This option will only work if playing with a medals related victory goal.
+    """
+    display_name = "Amount of required medals"
+    range_start = 1
+    range_end = 110
+    default = 110
+
+class TrialsEdits(Choice):
+    """
+    To access the Grand Dragon, you need to enter the Temple of Trials at the end of the postgame and complete all 5 trials to open the door to the boss.
+    However, some of these trials could be seen as not interesting to complete for a randomized game. This option is there to simplify some of the trials to open the door faster.
+    Note that this option is only relevant if playing with a postgame related victory goal.
+    Also note that if victory_goal is set to grand_dragon_medals it will replace the west trial requirement and thus it will be impossible for this trial to be completed automatically by this option, meaning the west trial will always be required.
+    - None: No trials will be modified and all 5 must be completed to open the door
+    - Fast: Completing the east trial will also complete the south and west trials automatically
+    - Very fast: Completing the east trial will also complete the south, west, north-west and north-east trials automatically
+    """
+    display_name = "Trials Edits"
+    option_none = 0
+    option_fast = 1
+    option_very_fast = 2
+    default = 1
 
 # LOCATIONS OPTIONS
 
@@ -137,6 +167,7 @@ class RainbowDropShuffle(Toggle):
     The Rainbow Drop is an important item that allows you to create the rainbow bridge to Zoma's Castle, where the final boss of the game resides.
     Enable this option to have it be randomized anywhere in the multiworld.
     If disabled, it will instead be placed in it's vanilla location, which is the reward from Sanctum's priest after giving him the Sacred Amulet, the Staff of Rain and the Sunstone.
+    Note that this option will have no effect if victory_goal is set to zoma_medals.
     """
     display_name = "Shuffle Rainbow Drop"
 
@@ -212,6 +243,8 @@ class RareItemsFastAnimation(Toggle):
 @dataclass
 class DQ3Options(PerGameCommonOptions):
     victory_goal: VictoryGoal
+    required_medals_amount: RequiredMedalsAmount
+    trials_edits: TrialsEdits
     container_sanity: ContainerSanity
     hidden_ground_sanity: HiddenGroundSanity
     secret_spots_sanity: SecretSpotsSanity

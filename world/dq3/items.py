@@ -412,7 +412,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Zenithium": Info(220, ItemClassification.progression), #ITEM_IMPORTANT_BLUE_METAL
     "Bottomless Pot": Info(224, ItemClassification.progression), #ITEM_IMPORTANT_BOTTOMLESS_POT
     "Echo Flute": Info(225, ItemClassification.useful), #ITEM_IMPORTANT_ECHO_FLUTE
-    "Mod Rod": Info(234, ItemClassification.progression), #ITEM_IMPORTANT_MOD_ROD
+    "Mod Rod": Info(234, ItemClassification.progression), #ITEM_IMPORTANT_MOD_ROD # altered effect
     "Ra's Mirror": Info(243, ItemClassification.progression), #ITEM_IMPORTANT_RAS_MIRROR
     "Lovers' Locket": Info(246, ItemClassification.progression), #ITEM_IMPORTANT_LOVERS_LOCKET
     "Silver Orb": Info(258, ItemClassification.progression), #ITEM_IMPORTANT_SILVER_ORB
@@ -471,8 +471,11 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
     classification = ALL_ITEMS[name].classification
 
-    if name == "Mini Medal" and (world.options.victory_goal == "medals" or world.options.victory_goal == "medals_postgame"):
-        classification = ItemClassification.progression_skip_balancing | ItemClassification.useful
+    if name == "Mini Medal" and world.options.victory_goal in {"medals", "medals_postgame", "zoma_medals", "grand_dragon_medals"}:
+        if world.options.victory_goal in {"medals", "medals_postgame"}:
+            classification = ItemClassification.progression_skip_balancing | ItemClassification.useful
+        else:
+            classification = ItemClassification.progression | ItemClassification.useful
 
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
@@ -489,7 +492,7 @@ def create_starting_and_locked_items(world: DQ3World) -> None:
     elif world.options.ramia_settings == "vanilla":
         world.get_location("[Shrine of the Everbird] Reward for offering the 6 orbs").place_locked_item(world.create_item("Ramia"))
 
-    if not world.options.shuffle_rainbow_drop:
+    if world.options.victory_goal != "zoma_medals" and not world.options.shuffle_rainbow_drop:
         world.get_location("[Sanctum] Reward from Priest after giving the Sacred Amulet, Staff of Rain and Sunstone").place_locked_item(world.create_item("Rainbow Drop"))
 
 
@@ -501,7 +504,7 @@ def is_item_valid_for_itempool(world: DQ3World, name: str, info: Info) -> bool:
             return False
     if name == "Nothing" and not world.options.shuffle_none_items:
         return False
-    if (name == "Ship" and world.options.ship_settings != "anywhere") or (name == "Ramia" and world.options.ramia_settings != "anywhere") or (name == "Rainbow Drop" and not world.options.shuffle_rainbow_drop):
+    if (name == "Ship" and world.options.ship_settings != "anywhere") or (name == "Ramia" and world.options.ramia_settings != "anywhere") or (name == "Rainbow Drop" and (world.options.victory_goal == "zoma_medals" or not world.options.shuffle_rainbow_drop)):
         return False
     if info.type == PoolType.SHINY:
         return False

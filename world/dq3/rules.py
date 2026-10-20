@@ -3,10 +3,11 @@ from __future__ import annotations
 from typing import (Any, TYPE_CHECKING)
 
 from rule_builder.options import OptionFilter
+from rule_builder.field_resolvers import FromOption
 from rule_builder.rules import Has, HasAll, Rule
 
 from . import locations
-#from .options import ShipSettings, RamiaSettings, RainbowDropShuffle
+from .options import VictoryGoal, RequiredMedalsAmount
 
 if TYPE_CHECKING:
     from .world import DQ3World
@@ -40,16 +41,18 @@ HAS_FAERIE_FLUTE = Has("Faerie Flute")
 HAS_SACRED_AMULET = Has("Sacred Amulet")
 HAS_STAFF_OF_RAIN = Has("Staff of Rain")
 HAS_SUNSTONE = Has("Sunstone")
-HAS_RAINBOW_DROP = Has("Rainbow Drop")
 HAS_SWORD_OF_KINGS = Has("Sword of Kings")
 HAS_AURORAL_HELM = Has("Auroral Helm")
 HAS_GRINGHAM_WHIP = Has("Gringham Whip")
 HAS_FADING_JENNY = Has("Fading Jenny")
 HAS_MODMORE_ROD = Has("Modmore Rod")
-HAS_ALL_MEDALS = Has("Mini Medal", count=110)
+HAS_ALL_MEDALS = Has("Mini Medal", count=FromOption(RequiredMedalsAmount))
+HAS_RAINBOW_DROP = (OptionFilter(VictoryGoal, "zoma_medals", "ne") & Has("Rainbow Drop")) | (OptionFilter(VictoryGoal, "zoma_medals", "eq") & HAS_ALL_MEDALS)
 
 CAN_ACCESS_ZOMA = HAS_BIRD & HAS_SPHERE_OF_LIGHT & HAS_SHIP & HAS_RAINBOW_DROP & HAS_THIEF_KEY
-CAN_ACCESS_GRAND_DRAGON = CAN_ACCESS_ZOMA & HAS_MAGIC_KEY & HAS_ULTIMATE_KEY & HAS_AURORAL_HELM & HAS_SWORD_OF_KINGS & HAS_GRINGHAM_WHIP & HAS_MODMORE_ROD
+
+CAN_ACCESS_GRAND_DRAGON = CAN_ACCESS_ZOMA & HAS_MAGIC_KEY & HAS_ULTIMATE_KEY & HAS_AURORAL_HELM & HAS_SWORD_OF_KINGS & HAS_GRINGHAM_WHIP & HAS_MODMORE_ROD & (
+    OptionFilter(VictoryGoal, "grand_dragon_medals", "ne") | HAS_ALL_MEDALS)
 
 
 def set_all_rules(world: DQ3World) -> None:
@@ -75,13 +78,13 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 # Helper method that returns the current completion event region, name and rule based on option values
 def get_completion_event_parameters(world: DQ3World) -> tuple[str, str, CollectionRule | Rule[Any] | None]:
-    if world.options.victory_goal == "zoma":
+    if world.options.victory_goal in {"zoma", "zoma_medals"}:
         return "Zoma's Citadel", "[Zoma's Citadel] Zoma defeated", CAN_ACCESS_ZOMA
-    elif world.options.victory_goal == "grand_dragon":
+    elif world.options.victory_goal in {"grand_dragon", "grand_dragon_medals"}:
         return "Temple of Trials", "[Temple of Trials] Grand Dragon defeated", CAN_ACCESS_GRAND_DRAGON
     elif world.options.victory_goal == "baramos":
         return "Baramos' Lair", "[Baramos' Lair] Baramos defeated", HAS_BIRD
-    elif world.options.victory_goal == "medals" or world.options.victory_goal == "medals_postgame":
+    elif world.options.victory_goal in {"medals", "medals_postgame"}:
         return "Aliahan", "All medals collected", HAS_ALL_MEDALS
     return "Aliahan", "Unknown victory", CAN_ACCESS_ZOMA
 

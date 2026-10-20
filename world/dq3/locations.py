@@ -1280,7 +1280,7 @@ class DQ3LocationPriority(DQ3Location):
 
 # Checks if postgame is enabled in the options
 def is_postgame_enabled(world: DQ3World) -> bool:
-    return world.options.victory_goal == "grand_dragon" or world.options.victory_goal == "medals_postgame"
+    return world.options.victory_goal in {"grand_dragon", "medals_postgame", "grand_dragon_medals"}
 
 # Checks if the current goal is baramos (exclude after-baramos locations)
 def is_goal_baramos_only(world: DQ3World) -> bool:
