@@ -97,19 +97,26 @@ function AP.ConvertSpecialItemIds(ItemId)
   return ItemId
 end
 
--- check mini medals count if victory goal is set to medals
+-- check mini medals count if victory goal is related to medals
 function AP.CheckMiniMedals(ItemId)
-  if ItemId == "ITEM_SMALL_MEDAL" and GetMiniMedalCount() >= 110 then
-    local victory_goal = AP.GetOption("victory_goal")
-    if victory_goal == nil or victory_goal == 2 or victory_goal == 3 then
-      AP.Log("All 110 medals collected")
-      local locationName = "ITEM_SMALL_MEDAL_COLLECT_ALL_110_"
-      if victory_goal == nil or victory_goal == 2 then
-        locationName = locationName .. "2"
-      elseif victory_goal == 3 then
-        locationName = locationName .. "3"
+  if ItemId == "ITEM_SMALL_MEDAL" then
+    local required_medals_amount = AP.GetOption("required_medals_amount")
+    if required_medals_amount ~= nil and GetMiniMedalCount() >= required_medals_amount then
+      local victory_goal = AP.GetOption("victory_goal")
+      if victory_goal == nil or victory_goal == 2 or victory_goal == 3 or victory_goal == 5 then
+        AP.Log("All medals collected for victory " .. tostring(victory_goal))
+        if victory_goal == 5 then
+          AP.GiveItem("ITEM_IMPORTANT_RAINBOW_DROP")
+        else
+          local locationName = "ITEM_SMALL_MEDAL_COLLECT_ALL_110_"
+          if victory_goal == nil or victory_goal == 2 then
+            locationName = locationName .. "2"
+          elseif victory_goal == 3 then
+            locationName = locationName .. "3"
+          end
+          AP.CheckLocation(locationName)
+        end
       end
-      AP.CheckLocation(locationName)
     end
   end
 end
@@ -399,6 +406,8 @@ local client_options = {
   shiny_spots_sanity = nil,
   rare_items_fast_animation = nil,
   shop_sanity = nil,
+  required_medals_amount = nil,
+  trials_edits = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file

@@ -14,6 +14,7 @@ Here is a small list of some mods that you can install to have a better experien
 - [Perfect Seeds](https://www.nexusmods.com/dragonquest3remake/mods/16): to gain more stats when using seeds items, also making characters progression faster
 - [Rebalanced Encounter Rate](https://www.nexusmods.com/dragonquest3remake/mods/5): to reduce the rate of many of the game's random battles, allowing you to focus more on getting checks
 - [Faster Overworld Traversal](https://www.nexusmods.com/dragonquest3remake/mods/14): to increase the movement speed of the player, the ship and Ramia
+- [Faster Hold Button](https://www.nexusmods.com/dragonquest3remake/mods/15): to reduce the time you need to hold the speedup button, allowing to speedup/skip scenes faster
 - [Skip Initial Logos](https://www.nexusmods.com/dragonquest3remake/mods/22): to launch the game faster
 - [Passive Snoop and Nose for Treasure](https://www.nexusmods.com/dragonquest3remake/mods/52): to help you find the treasures hidden in towns and dungeons [is partially compatible, please check the note below!]
 

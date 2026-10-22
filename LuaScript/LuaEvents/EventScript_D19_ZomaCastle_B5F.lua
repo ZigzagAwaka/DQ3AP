@@ -136,7 +136,16 @@ function ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050(BeginOverlap, table, ...)
   SetFlag(Flag.FE91, true) -- ZOMA IS DEFEATED
   -- AP
   AP.Log("ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050 called (Zoma's Citadel - Zoma is defeated)")
-  AP.CheckLocation("ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050")
+  local victory_goal = AP.GetOption("victory_goal")
+  if victory_goal == nil or victory_goal == 0 or victory_goal == 5 then
+    local locationName = "ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050_"
+    if victory_goal == nil or victory_goal == 0 then
+      locationName = locationName .. "0"
+    elseif victory_goal == 5 then
+      locationName = locationName .. "5"
+    end
+    AP.CheckLocation(locationName)
+  end
   -- AP end
   SetFlag(Flag.FE95, true)
   local ResultHeroSolo = CheckHeroSolo()

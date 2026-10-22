@@ -24,7 +24,10 @@ function BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010(BeginOverlap, table, ...
   SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BARAMOSCASTLE_DefeatBaramos, true)
   -- AP
   AP.Log("BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010 called (Baramos Castle - Baramos is defeated)")
-  AP.CheckLocation("BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010")
+  local victory_goal = AP.GetOption("victory_goal")
+  if victory_goal == nil or victory_goal == 4 then
+    AP.CheckLocation("BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010")
+  end
   -- AP end
   SoundTransitionVolumeRateByCategory(ENicolaSoundCategoryAMBIENT, 1, 0.5)
   FadeIn(EFadingPriorityTopMost, 0)

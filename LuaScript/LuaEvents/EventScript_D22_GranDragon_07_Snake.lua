@@ -358,7 +358,16 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_10", "ITEM_IMPORTANT_GOLDEN_MEDAL", "GranDragon_07_Snake_GranDragon_01_L1", false, false, true)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
-      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
+      local victory_goal = AP.GetOption("victory_goal")
+      if victory_goal == nil or victory_goal == 1 or victory_goal == 6 then
+        local locationName = "GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_"
+        if victory_goal == nil or victory_goal == 1 then
+          locationName = locationName .. "1"
+        elseif victory_goal == 6 then
+          locationName = locationName .. "6"
+        end
+        AP.CheckLocation(locationName)
+      end
       -- AP end
       AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_11")
@@ -389,7 +398,16 @@ function GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020(BeginOverlap, table, ...)
       ItemGetMessageToActor("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_26", "ITEM_IMPORTANT_GOLDEN_MEDAL", "GranDragon_07_Snake_GranDragon_01_L1", false, false, true)
       -- AP
       AP.Log("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020 called (Temple of Trials - Grand Dragon defeated)")
-      AP.CheckLocation("GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020")
+      local victory_goal = AP.GetOption("victory_goal")
+      if victory_goal == nil or victory_goal == 1 or victory_goal == 6 then
+        local locationName = "GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_"
+        if victory_goal == nil or victory_goal == 1 then
+          locationName = locationName .. "1"
+        elseif victory_goal == 6 then
+          locationName = locationName .. "6"
+        end
+        AP.CheckLocation(locationName)
+      end
       -- AP end
       AddItem("ITEM_IMPORTANT_GOLDEN_MEDAL")
       CmdEventClosingMessage("NPC_Talk_GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_27")

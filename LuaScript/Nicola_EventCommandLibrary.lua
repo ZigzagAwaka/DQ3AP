@@ -623,7 +623,7 @@ function CheckBurgField()
     return
   end
   if GetFlag(Flag.FE114) == true then
-    if GetFlag(Flag.FE125) == true and CheckOrbCount() >= 3 then
+    if GetFlag(Flag.FE125) == true and GetFlag(Flag.FE186) == true --[[CheckOrbCount() >= 3]] then -- AP
       SetFlag(Flag.FE115, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BURG_5_ChangeFrom4, true)
     end
@@ -687,7 +687,7 @@ function CheckDevBurg3()
 end
 
 function CheckDevBurg4()
-  if GetFlag(Flag.FE125) == true and CheckOrbCount() >= 3 and GetFlag(Flag.FE810) == false then
+  if GetFlag(Flag.FE125) == true and GetFlag(Flag.FE186) == true --[[CheckOrbCount() >= 3]] and GetFlag(Flag.FE810) == false then -- AP
     SetFlag(Flag.FE115, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BURG_5_ChangeFrom4, true)
     if GetFlag(Flag.FE814) == false then

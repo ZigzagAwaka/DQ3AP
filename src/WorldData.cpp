@@ -2114,11 +2114,13 @@ const std::unordered_map<std::string, int> WorldData::locations =
 
 const std::unordered_map<std::string, int> WorldData::victory_locations =
 {
-    {"ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050", 0},
-    {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020", 1},
+    {"ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050_0", 0},
+    {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_1", 1},
     {"ITEM_SMALL_MEDAL_COLLECT_ALL_110_2", 2},
     {"ITEM_SMALL_MEDAL_COLLECT_ALL_110_3", 3},
     {"BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010", 4},
+    {"ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050_5", 5},
+    {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_6", 6},
 };
 
 const std::unordered_map<std::string, std::set<int64_t>> WorldData::hints =
@@ -2600,6 +2602,7 @@ const std::unordered_map<int, std::string> WorldData::items =
     {285, "ITEM_IMPORTANT_FAERIE_FLUTE"},
     {318, "ITEM_IMPORTANT_VERY_NAUGHTY_BOOK"},
     {333, "ITEM_IMPORTANT_GOLDEN_MEDAL"},
+    {528, "ITEM_IMPORTANT_MODMORE_ROD"},
     // MULTIPLE ITEMS FOR SHINY SPOTS
     {377, "MULTIPLE_2_ITEM_USE_ITEM_HOLY_WATER"},
     {378, "MULTIPLE_3_ITEM_USE_ITEM_DEDAZZLE_GRASS"},
