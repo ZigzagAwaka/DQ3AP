@@ -391,6 +391,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Baharata] Drawer in Inn": Info(339), #SEARCH_Baharata_inn_1F_DRAWER_0
     "[Baharata] Sack in bottom left house": Info(340), #SEARCH_Baharata_Shop3_1F_SACK_0
     "[Baharata] Drawer in bottom left house": Info(341), #SEARCH_Baharata_Shop3_2F_DRAWER_0
+    "[Baharata] Reward from the pepper Merchant in bottom left house after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
     # ----- Kidnapper's Cave -----
     "[Kidnapper's Cave] Chest 1 in the top locked rooms": Info(342, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_ENEMY_0
     "[Kidnapper's Cave] Chest 2 in the top locked rooms": Info(343, rules.HAS_THIEF_KEY), #SEARCH_BaharataEastCave_B1F_TREASURE_NORMAL_1
@@ -406,7 +407,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Kidnapper's Cave] Chest 2 in treasure room B2": Info(353, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_1
     "[Kidnapper's Cave] Chest 3 in treasure room B2": Info(354, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_2
     "[Kidnapper's Cave] Chest 4 in treasure room B2": Info(355, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_TREASURE_NORMAL_3
-    "[Kidnapper's Cave] Sack on the left wall of the room before jails B2": Info(356), #SEARCH_BaharataEastCave_B2F_SACK_0
+    "[Kidnapper's Cave] Sack on the left wall of the room before jails B2": Info(356, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_SACK_0
     "[Kidnapper's Cave] Hidden Ground in the top left corner of the left jail B2": Info(357, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_GROUND_0
     "[Kidnapper's Cave] Hidden Ground in the top right corner of the right jail B2": Info(358, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_GROUND_1
     #"[Kidnapper's Cave] Lever Event": Info(359, rules.HAS_MAGIC_KEY), #SEARCH_BaharataEastCave_B2F_EVENT_0 # no items here
@@ -418,7 +419,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Hidden Ground behind the Church B1": Info(364), #SEARCH_Dharma_Castle_B1F_GROUND_0
     "[Alltrades Abbey] Pot 1 at the bottom of Inn B1": Info(365), #SEARCH_Dharma_Castle_B1F_POT_0
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
-    "[Alltrades Abbey] Reward from Merchant in the main corridor after talking to the pepper Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010
+    #"[Alltrades Abbey] Reward from Merchant in the main corridor after talking to the pepper Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010 # replaced
     # ----- Wayfarer's Inn -----
     "[Wayfarer's Inn] Drawer in left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
     "[Wayfarer's Inn] Drawer in right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
@@ -1280,7 +1281,7 @@ class DQ3LocationPriority(DQ3Location):
 
 # Checks if postgame is enabled in the options
 def is_postgame_enabled(world: DQ3World) -> bool:
-    return world.options.victory_goal in {"grand_dragon", "medals_postgame", "grand_dragon_medals"}
+    return world.options.victory_goal.current_key in {"grand_dragon", "medals_postgame", "grand_dragon_medals"}
 
 # Checks if the current goal is baramos (exclude after-baramos locations)
 def is_goal_baramos_only(world: DQ3World) -> bool:

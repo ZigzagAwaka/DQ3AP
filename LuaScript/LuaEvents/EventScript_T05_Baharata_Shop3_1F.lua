@@ -1,5 +1,7 @@
 print("Load Script EventScript_T05_Baharata_Shop3_1F")
 
+local AP = require("Src/DQ3AP") -- AP
+
 function EventTemplate(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
@@ -67,14 +69,20 @@ function Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010(BeginOverlap, table, ...)
       }, 200)
       TurnParty(1, 2)
       CmdTurnNpc(Gupta, NPC_D_UP)
-      CmdEventClosingMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_10")
-      Wait(0.5)
-      CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_11")
-      CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_12")
-      CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_13")
-      CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_14")
-      CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_15")
-      CmdEventClosingMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_16")
+      -- AP : add event to get randomized black pepper here instead of at alltrades abbey
+      --CmdEventClosingMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_10")
+      --Wait(0.5)
+      --CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_11")
+      --CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_12")
+      --CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_13")
+      --CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_14")
+      --CmdMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_15")
+      --CmdEventClosingMessage("NPC_Talk_Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010_16")
+      CmdEventClosingMessage("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_3")
+      ItemGetMessageToActor("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_4", "ITEM_ARCHIPELAGO", Gupta)
+      AP.Log("Dharma_1F_SUB_0_ACTOR_0810_010 called (Merchant giving the Black Pepper)")
+      AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
+      -- AP end
       SetFlag(Flag.FE744, true)
       SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_TalkGuptaAfterRescue, true)
       RequestAutoSaveFromEvent()
@@ -88,7 +96,7 @@ function Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010(BeginOverlap, table, ...)
 end
 
 function Baharata_Shop3_1F_MAIN_0_ACTOR_0210_020(BeginOverlap, table, ...)
-  -- AP: force the spawning of Alltrades Abbey trader NPC to happen if not already done before
+  -- AP: force the merchant to give you his (ap modified) rewards if not already done before
   if not GetFlag(Flag.FE744) then
     Baharata_Shop3_1F_MAIN_0_ACTOR_0210_010(BeginOverlap, table, ...)
     return

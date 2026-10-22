@@ -101,11 +101,12 @@ function Dharma_1F_SUB_0_ACTOR_0810_010(BeginOverlap, table, ...)
     Wait(1)
     TurnNpc(Trader, NPC_D_TO_PLAYER)
     CmdEventClosingMessage("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_3")
-    ItemGetMessageToActor("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_4", "ITEM_ARCHIPELAGO"--[["ITEM_IMPORTANT_BLACK_PEPPER"]], Trader) -- AP
-    -- AP
-    AP.Log("Dharma_1F_SUB_0_ACTOR_0810_010 called (Trader giving the Black Pepper)")
-    AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
+    ItemGetMessageToActor("NPC_Talk_Dharma_1F_SUB_0_ACTOR_0810_010_4", "ITEM_USE_ITEM_MEDICAL_HERB"--[["ITEM_IMPORTANT_BLACK_PEPPER"]], Trader) -- AP
+    -- AP : replace this npc event to give 1 medicinal herb instead of black pepper which has been moved to baharata's pepper merchant
+    --AP.Log("Dharma_1F_SUB_0_ACTOR_0810_010 called (Trader giving the Black Pepper)")
+    --AP.CheckLocation("Dharma_1F_SUB_0_ACTOR_0810_010")
     AP.SetFlag("dharma_trader", true)
+    AddItem("ITEM_USE_ITEM_MEDICAL_HERB")
     --SetFlag(Flag.FE64, true)
     --AddItem("ITEM_IMPORTANT_BLACK_PEPPER")
     --SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_BAHARATA_GetPepper, true)

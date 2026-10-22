@@ -78,13 +78,13 @@ def set_all_location_rules(world: DQ3World) -> None:
 
 # Helper method that returns the current completion event region, name and rule based on option values
 def get_completion_event_parameters(world: DQ3World) -> tuple[str, str, CollectionRule | Rule[Any] | None]:
-    if world.options.victory_goal in {"zoma", "zoma_medals"}:
+    if world.options.victory_goal.current_key in {"zoma", "zoma_medals"}:
         return "Zoma's Citadel", "[Zoma's Citadel] Zoma defeated", CAN_ACCESS_ZOMA
-    elif world.options.victory_goal in {"grand_dragon", "grand_dragon_medals"}:
+    elif world.options.victory_goal.current_key in {"grand_dragon", "grand_dragon_medals"}:
         return "Temple of Trials", "[Temple of Trials] Grand Dragon defeated", CAN_ACCESS_GRAND_DRAGON
     elif world.options.victory_goal == "baramos":
         return "Baramos' Lair", "[Baramos' Lair] Baramos defeated", HAS_BIRD
-    elif world.options.victory_goal in {"medals", "medals_postgame"}:
+    elif world.options.victory_goal.current_key in {"medals", "medals_postgame"}:
         return "Aliahan", "All medals collected", HAS_ALL_MEDALS
     return "Aliahan", "Unknown victory", CAN_ACCESS_ZOMA
 
