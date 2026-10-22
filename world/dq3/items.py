@@ -202,7 +202,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Golden Claws": Info(143, ItemClassification.useful), #ITEM_EQUIP_WEAPON_GOLDEN_CLAWS
     "Edged Boomerang": Info(146, quantity=2), #ITEM_EQUIP_WEAPON_EDGED_BOOMERANG
     "Staff of Antimagic": Info(147), #ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC
-    "Siren Sword": Info(148), #ITEM_EQUIP_WEAPON_SIREN_SWORD
+    "Siren Sword": Info(148, ItemClassification.useful), #ITEM_EQUIP_WEAPON_SIREN_SWORD
     "Thorn Whip": Info(153, quantity=3), #ITEM_EQUIP_WEAPON_THORN_WHIP
     "Iron Axe": Info(160, quantity=4), #ITEM_EQUIP_WEAPON_IRON_AXE
     "Battle Fork": Info(172, quantity=2), #ITEM_EQUIP_WEAPON_BATTLE_FORK
@@ -217,12 +217,12 @@ ALL_ITEMS: dict[str, Info] = {
     "Zombiesbane": Info(241, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_ZOMBIESBANE
     "Sizeable Scissors": Info(245), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
     "Mountaincleaver": Info(250, ItemClassification.progression), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
-    "Thunderbolt Blade": Info(252), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
+    "Thunderbolt Blade": Info(252, ItemClassification.useful), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
     "Headsman's Axe": Info(260, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_HEADSMANS_AXE
     "Staff of Rain": Info(282, ItemClassification.progression), #ITEM_EQUIP_WEAPON_STAFF_OF_RAIN
     "Sword of Kings": Info(287, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_SWORD_OF_KINGS
     "Sword of Ruin": Info(288, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_WEAPON_SWORD_OF_RUIN
-    "Demon Spear": Info(290), #ITEM_EQUIP_WEAPON_DEMON_SPEAR
+    "Demon Spear": Info(290, ItemClassification.useful), #ITEM_EQUIP_WEAPON_DEMON_SPEAR
     "Blizzard Blade": Info(293, quantity=3), #ITEM_EQUIP_WEAPON_BLIZZARD_BLADE
     "Staff of Sentencing": Info(297, quantity=2), #ITEM_EQUIP_WEAPON_STAFF_OF_SENTENCING
     "Stormlord's Sword": Info(299, ItemClassification.useful), #ITEM_EQUIP_WEAPON_STORMLORDS_SWORD
@@ -236,7 +236,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Rubiss' Sword": Info(319, ItemClassification.useful), #ITEM_EQUIP_WEAPON_RUBISSS_SWORD
     "Dragontail Whip": Info(321, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP
     "Dragon Claws": Info(324, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_DRAGON_CLAWS
-    "Conqueror's Axe": Info(328), #ITEM_EQUIP_WEAPON_CONQUERORS_AXE
+    "Conqueror's Axe": Info(328, ItemClassification.useful), #ITEM_EQUIP_WEAPON_CONQUERORS_AXE
     "Aurora Staff": Info(329, ItemClassification.useful), #ITEM_EQUIP_WEAPON_AURORA_STAFF
     "Gringham Whip": Info(332, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_GRINGHAM_WHIP
     "Staff of Resurrection": Info(345, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
@@ -292,7 +292,7 @@ ALL_ITEMS: dict[str, Info] = {
     "Iron Mask": Info(237), #ITEM_EQUIP_HELMET_IRON_MASK
     "Mythril Helm": Info(254, ItemClassification.useful), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
     "Thinking Cap": Info(257, quantity=3), #ITEM_EQUIP_HELMET_THINKING_CAP
-    "Hapless Helm": Info(261, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
+    "Hapless Helm": Info(261, ItemClassification.useful, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
     "Rabbit Ears": Info(275, quantity=2, extra_quantity=1), #ITEM_EQUIP_HELMET_BUNNY_EARS
     "Auroral Helm": Info(284, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_HELMET_LIGHT_HELM
     "Heavenly Helm": Info(313, ItemClassification.useful), #ITEM_EQUIP_HELMET_HEAVENLY_HELM

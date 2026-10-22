@@ -289,7 +289,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Palace of Ibis] Pot in the bottom left room": Info(242, rules.HAS_THIEF_KEY), #SEARCH_Isis_Castle_1F_POT_1
     "[Palace of Ibis] Hidden Ground on throne (night) 2F": Info(243), #SEARCH_Isis_Castle_2F_GROUND_0
     "[Palace of Ibis] Hidden Ground near top right corner of the balcony 2F": Info(244), #SEARCH_Isis_Castle_2F_Out_GROUND_0
-    "[Palace of Ibis] Hidden Ground behind the queen's bed (night) 3F": Info(245, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_3F_GROUND_0
+    "[Palace of Ibis] Hidden Ground behind the queen's bed after talking to the queen (night) 3F": Info(245, rules.HAS_MAGIC_KEY), #SEARCH_Isis_Castle_3F_GROUND_0
     "[Palace of Ibis] Chest guarded by ghost after going through the Secret Passage B2": Info(246), #SEARCH_Isis_Castle_B2F_TREASURE_IMPORTANT_0
     # ----- Pyramid -----
     "[Pyramid] Chest at the left of the top left corner room 1F": Info(247), #SEARCH_Pyramid_1F_TREASURE_NORMAL_0
@@ -589,7 +589,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Lanson] Pot in left house": Info(516), #SEARCH_Lancel_House_POT_0
     "[Lanson] Drawer in left house": Info(517), #SEARCH_Lancel_House_DRAWER_0
     "[Lanson] Pot in Equipment Shop": Info(518), #SEARCH_Lancel_WeaponShop_POT_0
-    "[Lanson] Chest on the bridge after the top building": Info(519, rules.HAS_ULTIMATE_KEY | rules.HAS_BIRD), #SEARCH_Lancel_Bridge_TREASURE_NORMAL_0
+    "[Lanson] Chest on the bridge after the top building": Info(519, rules.HAS_ULTIMATE_KEY), #SEARCH_Lancel_Bridge_TREASURE_NORMAL_0
     # ----- Gaia's Navel -----
     "[Gaia's Navel] Chest in top left room near entrance": Info(520), #SEARCH_GaiaNavel_B1FA_TREASURE_NORMAL_0
     "[Gaia's Navel] Chest in top right room near entrance": Info(521), #SEARCH_GaiaNavel_B1FA_TREASURE_NORMAL_1
@@ -663,7 +663,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     #"[Manoza] Grave Event": Info(581), #SEARCH_Samanosa_Out_EVENT_0 # no items here
     "[Manoza] Pot in right house": Info(582), #SEARCH_Samanosa_House1_POT_0
     "[Manoza] Sack in right house": Info(583), #SEARCH_Samanosa_House1_SACK_0
-    "[Manoza] Drawer in Equipment Shop": Info(584), #SEARCH_Samanosa_House2_1F_DRAWER_0
+    "[Manoza] Drawer in Equipment Shop": Info(584, rules.HAS_THIEF_KEY), #SEARCH_Samanosa_House2_1F_DRAWER_0
     "[Manoza] Sack in Equipment Shop": Info(585), #SEARCH_Samanosa_House2_1F_SACK_0
     "[Manoza] Pot in graveyard house": Info(586), #SEARCH_Samanosa_House3_POT_0
     "[Manoza] Drawer in Inn": Info(587), #SEARCH_Samanosa_Inn_DRAWER_0
