@@ -56,7 +56,7 @@ function SS_End_Effect_Message(BeginOverlap, table, ...)
   local args = SS_GetCommonArgs(...)
   SS_Effect_Message(args.EndEffectText)
   MapTimeNotifyEndSystemProcessing()
-  AP.GiveItemsIfAvailable() -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
@@ -88,7 +88,7 @@ function SS_End_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
   CloseMessage()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  AP.GiveItemsIfAvailable() -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_MONSTER_ATTRACT2(BeginOverlap, table, ...)
@@ -152,7 +152,7 @@ function SS_Effect_CHANGE_NIGHT(BeginOverlap, table, ...)
   _retry(SYS_WaitFadeIn, fadeType)
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  AP.GiveItemsIfAvailable() -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_TRANSFORM_RANDOM(BeginOverlap, table, ...)
@@ -198,6 +198,7 @@ function SS_End_Effect_TRANSFORM_RANDOM(BeginOverlap, table, ...)
   CloseMessage()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_RELEASE_TRAP(BeginOverlap, table, ...)
@@ -257,7 +258,7 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
   StopEffectInpasu()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  AP.GiveItemsIfAvailable() -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_TREASURE_SEARCH(BeginOverlap, table, ...)
@@ -288,12 +289,18 @@ function SS_Effect_CALL_SHOP(BeginOverlap, table, ...)
     _retry(SYS_WaitChurchUI)
   elseif args.LastShopId ~= "" and args.LastShopId ~= nil then
     print("SS_Effect_CALL_SHOP: ShopId " .. args.LastShopId)
-    CallShopUI(args.LastShopId)
-    _retry(SYS_WaitShopUI)
+    -- AP
+    CmdCallShopUI(args.LastShopId)
+    --CallShopUI(args.LastShopId)
+    --_retry(SYS_WaitShopUI)
+    -- AP end
   else
     print("SS_Effect_CALL_SHOP: ShopId \230\156\170\231\153\187\233\140\178 ")
-    CallShopUI("SHOP_ALIAHAN_ITEM_0001")
-    _retry(SYS_WaitShopUI)
+    -- AP
+    CmdCallShopUI("SHOP_ALIAHAN_ITEM_0001")
+    --CallShopUI("SHOP_ALIAHAN_ITEM_0001")
+    --_retry(SYS_WaitShopUI)
+    -- AP end
   end
   CloseMessage()
   SetDispBtnGuide(true)

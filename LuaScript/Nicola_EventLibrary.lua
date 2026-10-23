@@ -7,7 +7,7 @@ function EventStart(Table, IsLookAtPlayer)
   local targetActorId = Table[2]
   local eventGopId = Table[3]
   local npcTypeId = Table[4]
-  local isLookAtTargetForPlayer = string.lower(Table[5]) == "true"
+  local isLookAtTargetForPlayer = Table[5] ~= nil and string.lower(Table[5]) == "true" -- AP check just in case: Table[5] ~= nil
   local collisionTag = Table[6]
   local doChangeEventCamera = IsStageCameraNow() == false
   local didWaitBeforeChangingCamera = false
@@ -615,7 +615,7 @@ end
 function StartChurchRestartGame()
   CallChurchUIRestart(CHURCH_MODE_GAME_START)
   _retry(SYS_WaitChurchUI)
-  AP.GiveItemsIfAvailable() -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function WaitChurchUI()

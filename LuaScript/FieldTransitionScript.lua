@@ -154,6 +154,7 @@ function OpenFieldTopFromTitleAfterLevelVisible(BeginOverlap, table, ...)
   StopSimpleLoadingUI()
   PerformanceSettingFL_OnLoadingEnd()
   bExecEvent = CallSceneEvent(_mapId)
+  -- maybe add CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") here?
   if bExecEvent == false then
     CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, _fadeIn, _mapId)
   end
@@ -222,7 +223,7 @@ function TransitionRura(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  if _IsSuccessRura and not playEvent then
+  if not playEvent and _IsSuccessRura then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -275,7 +276,7 @@ function TransitionRiremito(BeginOverlap, table, ...)
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
   -- AP
-  if result and not playEvent then
+  if not playEvent and result then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -318,7 +319,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   end
   -- AP
-  if execTransition and not playEvent then
+  if not playEvent and execTransition then
     AP.GiveItemsIfAvailable()
   end
   -- AP end
@@ -404,6 +405,7 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     CmdFadeInOnInitialFadeInPostMapTransition(_FadeType, _FadeTime, _MapId, {
       NicolaSoundBgmManagementTypeOnMapTransition = _IsPlayBGM and ENicolaSoundBgmManagementTypeOnMapTransitionDEFAULT or ENicolaSoundBgmManagementTypeOnMapTransitionNOP
     })
+    execEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
   end
   AddTransitionTime(_MapId, "TransitionEnd")
   return execEvent -- AP: return true if the transition played an event or else false
@@ -578,10 +580,22 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   local isPlayLancelLoseEvent = isPlayEvent and battleEventId == lancelLoseEventId
   local isCallChurchUI = isLose == true and isBattleRoad == false and bDoRetry == false and isPlayLancelLoseEvent == false
-  if isPlayEvent == false and bDoRetry == false then
+  -- AP: force base event to give AP items if another event is not called
+  local isFadeIn = false
+  if not isPlayEvent and not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent then
     CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, _fadeIn, GetCurrentMapId(), {
       NicolaSoundBgmManagementTypeOnMapTransition = isLose and ENicolaSoundBgmManagementTypeOnMapTransitionDEFAULT or ENicolaSoundBgmManagementTypeOnMapTransitionRESUME
     })
+    isFadeIn = true
+    isPlayEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable")
+  end
+  -- AP end
+  if isPlayEvent == false and bDoRetry == false then
+    if not isFadeIn then -- AP
+      CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, _fadeIn, GetCurrentMapId(), {
+        NicolaSoundBgmManagementTypeOnMapTransition = isLose and ENicolaSoundBgmManagementTypeOnMapTransitionDEFAULT or ENicolaSoundBgmManagementTypeOnMapTransitionRESUME
+      })
+    end
     if isCallChurchUI == false then
       WaitPlayerOnGround()
     end
@@ -606,7 +620,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   print("TransitionBattleToLevel End")
   -- AP
-  if not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent and not isPlayEvent then
+  if not isPlayEvent and not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent then
     AP.GiveItemsIfAvailable()
   end
   -- AP end

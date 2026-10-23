@@ -19,6 +19,16 @@ function Field_TUTO_0_SCENE_0110_080(BeginOverlap, table, ...)
   EventEnd(eventInfo, "")
 end
 
+-- AP
+-- the base give items AP event, this is called anytime CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") is executed
+function GiveItems_ARCHIPELAGO(BeginOverlap, table, ...)
+  eventInfo = EventStart(table, false)
+  targetActorId = eventInfo[1]
+  AP.GiveItemsIfAvailable()
+  EventEnd(eventInfo, "")
+end
+-- AP end
+
 function Field_MAIN_0_SCENE_0010_010(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
