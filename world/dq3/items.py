@@ -127,26 +127,26 @@ ALL_ITEMS: dict[str, Info] = {
     "53 Gold": Info(374), #GOLD_53
     "2211 Gold": Info(375), #GOLD_2211
     # USABLE ITEMS
-    "Holy Water": Info(1, quantity=9), #ITEM_USE_ITEM_HOLY_WATER
-    "Chimera Wing": Info(3, quantity=16), #ITEM_USE_ITEM_CHIMERA_WING
-    "Medicinal Herb": Info(4, quantity=14), #ITEM_USE_ITEM_MEDICAL_HERB
-    "Antidotal Herb": Info(6, quantity=10), #ITEM_USE_ITEM_ANTIDOTAL_HERB
-    "Magic Water": Info(10, quantity=25), #ITEM_USE_ITEM_MAGIC_WATER
-    "Unsealant": Info(16, quantity=8), #ITEM_USE_ITEM_WHISPERING_NECTAR
-    "Musk": Info(23, quantity=11), #ITEM_USE_ITEM_POUCH_OF_MUSK
-    "Strong Medicine": Info(32, quantity=8), #ITEM_USE_ITEM_STRONG_MEDICINE
-    "Moonwort Bulb": Info(61, quantity=10), #ITEM_USE_ITEM_MOONWORT_BULB
-    "Tangleweb": Info(67), #ITEM_USE_ITEM_TANGLEWEB
-    "Dazzle-me-not": Info(68, quantity=7), #ITEM_USE_ITEM_DEDAZZLE_GRASS
-    "Special Medicine": Info(75, quantity=12), #ITEM_USE_ITEM_SPECIAL_MEDICINE
-    "Coagulant": Info(76, quantity=8), #ITEM_USE_ITEM_COAGULANT
-    "Angel Bell": Info(77, quantity=6), #ITEM_USE_ITEM_SKYBELL
-    "Sage's Elixir": Info(88, quantity=12), #ITEM_USE_ITEM_SAGES_ELIXIR
-    "Prayer Ring": Info(104, quantity=17, extra_quantity=2), #ITEM_USE_ITEM_PRAYER_RING
-    "Elfin Elixir": Info(133, quantity=10), #ITEM_USE_ITEM_ELFIN_ELIXIR
+    "Holy Water": Info(1, quantity=9, extra_quantity=5), #ITEM_USE_ITEM_HOLY_WATER
+    "Chimera Wing": Info(3, quantity=16, extra_quantity=4), #ITEM_USE_ITEM_CHIMERA_WING
+    "Medicinal Herb": Info(4, quantity=14, extra_quantity=6), #ITEM_USE_ITEM_MEDICAL_HERB
+    "Antidotal Herb": Info(6, quantity=10, extra_quantity=5), #ITEM_USE_ITEM_ANTIDOTAL_HERB
+    "Magic Water": Info(10, quantity=25, extra_quantity=5), #ITEM_USE_ITEM_MAGIC_WATER
+    "Unsealant": Info(16, quantity=8, extra_quantity=1), #ITEM_USE_ITEM_WHISPERING_NECTAR
+    "Musk": Info(23, quantity=11, extra_quantity=4), #ITEM_USE_ITEM_POUCH_OF_MUSK
+    "Strong Medicine": Info(32, quantity=8, extra_quantity=3), #ITEM_USE_ITEM_STRONG_MEDICINE
+    "Moonwort Bulb": Info(61, quantity=10, extra_quantity=4), #ITEM_USE_ITEM_MOONWORT_BULB
+    "Tangleweb": Info(67, extra_quantity=4), #ITEM_USE_ITEM_TANGLEWEB
+    "Dazzle-me-not": Info(68, quantity=7, extra_quantity=3), #ITEM_USE_ITEM_DEDAZZLE_GRASS
+    "Special Medicine": Info(75, quantity=12, extra_quantity=1), #ITEM_USE_ITEM_SPECIAL_MEDICINE
+    "Coagulant": Info(76, quantity=8, extra_quantity=2), #ITEM_USE_ITEM_COAGULANT
+    "Angel Bell": Info(77, quantity=6, extra_quantity=2), #ITEM_USE_ITEM_SKYBELL
+    "Sage's Elixir": Info(88, quantity=12, extra_quantity=1), #ITEM_USE_ITEM_SAGES_ELIXIR
+    "Prayer Ring": Info(104, quantity=17, extra_quantity=3), #ITEM_USE_ITEM_PRAYER_RING
+    "Elfin Elixir": Info(133, quantity=10, extra_quantity=1), #ITEM_USE_ITEM_ELFIN_ELIXIR
     "Yggdrasil Leaf": Info(139, quantity=8, extra_quantity=4), #ITEM_USE_ITEM_YGGDRASIL_LEAF
-    "Oomph Powder": Info(140, quantity=6), #ITEM_USE_ITEM_OOMPH_POWDER
-    "Dieamend": Info(170, quantity=9), #ITEM_USE_ITEM_DIEAMEND
+    "Oomph Powder": Info(140, quantity=6, extra_quantity=3), #ITEM_USE_ITEM_OOMPH_POWDER
+    "Dieamend": Info(170, quantity=9, extra_quantity=2), #ITEM_USE_ITEM_DIEAMEND
     "Night Light": Info(179, ItemClassification.useful), #ITEM_USE_ITEM_NIGHT_LIGHT
     "Sage's Stone": Info(205, ItemClassification.useful, quantity=3), #ITEM_USE_ITEM_SAGES_STONE
     "Fading Jenny": Info(217, ItemClassification.progression), #ITEM_USE_ITEM_FADING_JENNY # quantities and effects altered
@@ -170,12 +170,12 @@ ALL_ITEMS: dict[str, Info] = {
     "Book: Would I Lie to You?": Info(71, quantity=3, extra_quantity=1), #ITEM_USE_ITEM_CHEATER_BOOK
     "Book: The Saddest Story Ever Told": Info(87, quantity=2, extra_quantity=1), #ITEM_USE_ITEM_THE_SADDEST_STORY_EVER_TOLD
     "Book: Look, No Pants!": Info(109, quantity=3), #ITEM_USE_ITEM_COMEDY_BOOK
-    "Book: Leap before you Look": Info(120, quantity=2), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
+    "Book: Leap before you Look": Info(120, quantity=2, extra_quantity=1), #ITEM_USE_ITEM_LEAP_BEFORE_YOU_LOOK
     "Book: Fail is a Four-Letter Word": Info(121, quantity=3), #ITEM_USE_ITEM_FAIL_IS_A_FOUR_LETTER_WORD
     "Book: The Champion's Code": Info(202, quantity=3, extra_quantity=1), #ITEM_USE_ITEM_THE_CHAMPIONS_CODE
     "Book: Loving Living: A Grinner's Guide": Info(207, quantity=2, extra_quantity=2), #ITEM_USE_ITEM_LOVING_LIVING_A_GRINNERS_GUIDE
     "Book: Tears before Bedtime": Info(270), #ITEM_USE_ITEM_TEARS_BEFORE_BEDTIME
-    "Book: Being a Better Person": Info(280, quantity=2), #ITEM_USE_ITEM_BENICE_BOOK
+    "Book: Being a Better Person": Info(280, quantity=2, extra_quantity=1), #ITEM_USE_ITEM_BENICE_BOOK
     "Book: Guns N' Buns": Info(317, ItemClassification.useful), #ITEM_USE_ITEM_NAUGHTY_BOOK
     # MEDAL
     "Mini Medal": Info(11, ItemClassification.useful, quantity=110), #ITEM_SMALL_MEDAL
@@ -187,35 +187,35 @@ ALL_ITEMS: dict[str, Info] = {
     "Pandora's Box Trap": Info(326, ItemClassification.trap, quantity=10), #BATTLE_EVENT_PANDORABOX
     # WEAPONS
     "Rune Staff": Info(18, extra_quantity=2), #ITEM_EQUIP_WEAPON_RUNE_STAFF
-    "Oaken Club": Info(35, quantity=4), #ITEM_EQUIP_WEAPON_OAKEN_CLUB
-    "Boomerang": Info(45, quantity=3), #ITEM_EQUIP_WEAPON_BOOMERANG
-    "Chain Sickle": Info(54, quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_SICKLE
-    "Cypress Stick": Info(58, quantity=2), #ITEM_EQUIP_WEAPON_CYPRESS_STICK
+    "Oaken Club": Info(35, quantity=4, extra_quantity=1), #ITEM_EQUIP_WEAPON_OAKEN_CLUB
+    "Boomerang": Info(45, quantity=3, extra_quantity=2), #ITEM_EQUIP_WEAPON_BOOMERANG
+    "Chain Sickle": Info(54, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_SICKLE
+    "Cypress Stick": Info(58, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_CYPRESS_STICK
     "Assassin's Dagger": Info(73, quantity=2), #ITEM_EQUIP_WEAPON_ASSASSINS_DAGGER
     "Wizard's Staff": Info(83, quantity=4), #ITEM_EQUIP_WEAPON_WIZARDS_STAFF
-    "Iron Lance": Info(92, quantity=2), #ITEM_EQUIP_WEAPON_IRON_LANCE
+    "Iron Lance": Info(92, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_IRON_LANCE
     "Snooze Stick": Info(96, quantity=3), #ITEM_EQUIP_WEAPON_SNOOZE_STICK
-    "Steel Broadsword": Info(99, quantity=3), #ITEM_EQUIP_WEAPON_STEEL_BROADSWORD
-    "Bronze Knife": Info(115), #ITEM_EQUIP_WEAPON_BRONZE_KNIFE
-    "Knuckledusters": Info(127), #ITEM_EQUIP_WEAPON_KNUCKLEDUSTERS
+    "Steel Broadsword": Info(99, quantity=3, extra_quantity=1), #ITEM_EQUIP_WEAPON_STEEL_BROADSWORD
+    "Bronze Knife": Info(115, extra_quantity=3), #ITEM_EQUIP_WEAPON_BRONZE_KNIFE
+    "Knuckledusters": Info(127, extra_quantity=2), #ITEM_EQUIP_WEAPON_KNUCKLEDUSTERS
     "Holy Lance": Info(132, quantity=2), #ITEM_EQUIP_WEAPON_HOLY_LANCE
     "Golden Claws": Info(143, ItemClassification.useful), #ITEM_EQUIP_WEAPON_GOLDEN_CLAWS
     "Edged Boomerang": Info(146, quantity=2), #ITEM_EQUIP_WEAPON_EDGED_BOOMERANG
-    "Staff of Antimagic": Info(147), #ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC
+    "Staff of Antimagic": Info(147, extra_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_ANTIMAGIC
     "Siren Sword": Info(148, ItemClassification.useful), #ITEM_EQUIP_WEAPON_SIREN_SWORD
-    "Thorn Whip": Info(153, quantity=3), #ITEM_EQUIP_WEAPON_THORN_WHIP
+    "Thorn Whip": Info(153, quantity=3, extra_quantity=2), #ITEM_EQUIP_WEAPON_THORN_WHIP
     "Iron Axe": Info(160, quantity=4), #ITEM_EQUIP_WEAPON_IRON_AXE
-    "Battle Fork": Info(172, quantity=2), #ITEM_EQUIP_WEAPON_BATTLE_FORK
-    "Somatic Staff": Info(174), #ITEM_EQUIP_WEAPON_SOMATIC_STAFF
-    "Battle-Axe": Info(175, quantity=2), #ITEM_EQUIP_WEAPON_BATTLEAXE
+    "Battle Fork": Info(172, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_BATTLE_FORK
+    "Somatic Staff": Info(174, extra_quantity=3), #ITEM_EQUIP_WEAPON_SOMATIC_STAFF
+    "Battle-Axe": Info(175, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_BATTLEAXE
     "Beast Claws": Info(176, ItemClassification.useful), #ITEM_EQUIP_WEAPON_BEAST_CLAWS
     "Divine Dagger": Info(185, quantity=5), #ITEM_EQUIP_WEAPON_DIVINE_DAGGER
     "Lightning Staff": Info(193, quantity=2), #ITEM_EQUIP_WEAPON_LIGHTNING_STAFF
     "Iron Claws": Info(214, quantity=3), #ITEM_EQUIP_WEAPON_IRON_CLAWS
-    "Swallowtail": Info(229), #ITEM_EQUIP_WEAPON_SWALLOWTAIL
-    "Spiked Steel Whip": Info(230, quantity=2), #ITEM_EQUIP_WEAPON_SPIKED_STEEL_WHIP
+    "Swallowtail": Info(229, extra_quantity=1), #ITEM_EQUIP_WEAPON_SWALLOWTAIL
+    "Spiked Steel Whip": Info(230, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_SPIKED_STEEL_WHIP
     "Zombiesbane": Info(241, quantity=2, extra_quantity=2), #ITEM_EQUIP_WEAPON_ZOMBIESBANE
-    "Sizeable Scissors": Info(245), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
+    "Sizeable Scissors": Info(245, extra_quantity=1), #ITEM_EQUIP_WEAPON_SIZEABLE_SCISSORS
     "Mountaincleaver": Info(250, ItemClassification.progression), #ITEM_EQUIP_WEAPON_MOUNTAINCLEAVER
     "Thunderbolt Blade": Info(252, ItemClassification.useful), #ITEM_EQUIP_WEAPON_THUNDERBOLT_BLADE
     "Headsman's Axe": Info(260, ItemClassification.useful, quantity=2), #ITEM_EQUIP_WEAPON_HEADSMANS_AXE
@@ -223,11 +223,11 @@ ALL_ITEMS: dict[str, Info] = {
     "Sword of Kings": Info(287, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_SWORD_OF_KINGS
     "Sword of Ruin": Info(288, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_WEAPON_SWORD_OF_RUIN
     "Demon Spear": Info(290, ItemClassification.useful), #ITEM_EQUIP_WEAPON_DEMON_SPEAR
-    "Blizzard Blade": Info(293, quantity=3), #ITEM_EQUIP_WEAPON_BLIZZARD_BLADE
-    "Staff of Sentencing": Info(297, quantity=2), #ITEM_EQUIP_WEAPON_STAFF_OF_SENTENCING
+    "Blizzard Blade": Info(293, quantity=3, extra_quantity=1), #ITEM_EQUIP_WEAPON_BLIZZARD_BLADE
+    "Staff of Sentencing": Info(297, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_SENTENCING
     "Stormlord's Sword": Info(299, ItemClassification.useful), #ITEM_EQUIP_WEAPON_STORMLORDS_SWORD
-    "Scourge Whip": Info(302, quantity=2), #ITEM_EQUIP_WEAPON_SCOURGE_WHIP
-    "Double-Edged Sword": Info(304), #ITEM_EQUIP_WEAPON_DOUBLE-EDGED_SWORD
+    "Scourge Whip": Info(302, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_SCOURGE_WHIP
+    "Double-Edged Sword": Info(304, ItemClassification.useful), #ITEM_EQUIP_WEAPON_DOUBLE-EDGED_SWORD
     "Bastard Sword": Info(306, ItemClassification.useful, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_BASTARD_SWORD
     "Staff of Strife": Info(308, quantity=2, extra_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_STRIFE
     "Empress' Whip": Info(309), #ITEM_EQUIP_WEAPON_EMPRESSS_WHIP
@@ -240,153 +240,160 @@ ALL_ITEMS: dict[str, Info] = {
     "Aurora Staff": Info(329, ItemClassification.useful), #ITEM_EQUIP_WEAPON_AURORA_STAFF
     "Gringham Whip": Info(332, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_WEAPON_GRINGHAM_WHIP
     "Staff of Resurrection": Info(345, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
-    "Fire Claws": Info(357), #ITEM_EQUIP_WEAPON_FIRE_CLAWS
-    "Slapstick": Info(359), #ITEM_EQUIP_WEAPON_SLAPSTICK
-    "Beastly Bullwhip": Info(361), #ITEM_EQUIP_WEAPON_BEASTLY_BULLWHIP
-    "Gusterang": Info(364), #ITEM_EQUIP_WEAPON_GUSTERANG
-    "Copper Sword": Info(372), #ITEM_EQUIP_WEAPON_COPPER_SWORD
-    "Poison Needle": Info(376, quantity=3), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
-    "Chain Whip": Info(418, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_CHAIN_WHIP_ITEMS
-    "Abracadabracus": Info(448, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_ABRACADABRACUS
-    "Sandstorm Spear": Info(456, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_SANDSTORM_SPEAR
-    "Morning Star": Info(457, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_MORNING_STAR
+    "Fire Claws": Info(357, extra_quantity=2), #ITEM_EQUIP_WEAPON_FIRE_CLAWS
+    "Slapstick": Info(359, extra_quantity=1), #ITEM_EQUIP_WEAPON_SLAPSTICK
+    "Beastly Bullwhip": Info(361, extra_quantity=1), #ITEM_EQUIP_WEAPON_BEASTLY_BULLWHIP
+    "Gusterang": Info(364, extra_quantity=2), #ITEM_EQUIP_WEAPON_GUSTERANG
+    "Copper Sword": Info(372, extra_quantity=1), #ITEM_EQUIP_WEAPON_COPPER_SWORD
+    "Poison Needle": Info(376, quantity=3, extra_quantity=1), #ITEM_EQUIP_WEAPON_POISON_NEEDLE
+    "Chain Whip": Info(418, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_CHAIN_WHIP_ITEMS
+    "Abracadabracus": Info(448, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_ABRACADABRACUS
+    "Sandstorm Spear": Info(456, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_SANDSTORM_SPEAR
+    "Morning Star": Info(457, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_MORNING_STAR
     "Flametang Boomerang": Info(484, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_FLAMETANG_BOOMERANG
-    "Sledgehammer": Info(502, quantity=0, extra_quantity=3), #ITEM_EQUIP_WEAPON_SLEDGEHAMMER
-    "Sage's Staff": Info(511, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_SAGES_STAFF
+    "Sledgehammer": Info(502, quantity=0, extra_quantity=4), #ITEM_EQUIP_WEAPON_SLEDGEHAMMER
+    "Sage's Staff": Info(511, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_SAGES_STAFF
+    "War Hammer": Info(529, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_WAR_HAMMER
+    "Dragonsbane Claws": Info(530, quantity=0, extra_quantity=2), #ITEM_EQUIP_WEAPON_DRAGONSBANE
+    "Falcon Blade": Info(531, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_WEAPON_FALCON_BLADE
     # SHIELDS
-    "Pot Lid": Info(27, quantity=3), #ITEM_EQUIP_SHIELD_POT_LID
-    "Leather Shield": Info(44, quantity=3), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
+    "Pot Lid": Info(27, quantity=3, extra_quantity=1), #ITEM_EQUIP_SHIELD_POT_LID
+    "Leather Shield": Info(44, quantity=3, extra_quantity=2), #ITEM_EQUIP_SHIELD_LEATHER_SHIELD
     "Tempest Shield": Info(74, quantity=2), #ITEM_EQUIP_SHIELD_TEMPEST_SHIELD
-    "Bronze Shield": Info(101), #ITEM_EQUIP_SHIELD_BRONZE_SHIELD
+    "Bronze Shield": Info(101, extra_quantity=3), #ITEM_EQUIP_SHIELD_BRONZE_SHIELD
     "Scale Shield": Info(187), #ITEM_EQUIP_SHIELD_SCALE_SHIELD
-    "Light Shield": Info(190), #ITEM_EQUIP_SHIELD_LIGHT_SHIELD
-    "Silver Platter": Info(206), #ITEM_EQUIP_SHIELD_SILVER_PLATTER
-    "Ice Shield": Info(239, quantity=3), #ITEM_EQUIP_SHIELD_ICE_SHIELD
-    "Magic Shield": Info(255, quantity=2, extra_quantity=2), #ITEM_EQUIP_SHIELD_MAGIC_SHIELD
+    "Light Shield": Info(190, extra_quantity=3), #ITEM_EQUIP_SHIELD_LIGHT_SHIELD
+    "Silver Platter": Info(206, extra_quantity=1), #ITEM_EQUIP_SHIELD_SILVER_PLATTER
+    "Ice Shield": Info(239, quantity=3, extra_quantity=1), #ITEM_EQUIP_SHIELD_ICE_SHIELD
+    "Magic Shield": Info(255, quantity=2, extra_quantity=3), #ITEM_EQUIP_SHIELD_MAGIC_SHIELD
     "Hero's Shield": Info(294, ItemClassification.useful), #ITEM_EQUIP_SHIELD_HEROS_SHIELD
-    "Silver Shield": Info(298, ItemClassification.useful), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
-    "Shield of Shame": Info(312), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
-    "Dragon Shield": Info(325, quantity=2, extra_quantity=1), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
+    "Silver Shield": Info(298, ItemClassification.useful, extra_quantity=2), #ITEM_EQUIP_SHIELD_SILVER_SHIELD
+    "Shield of Shame": Info(312, ItemClassification.useful), #ITEM_EQUIP_SHIELD_SHIELD_OF_SHAME
+    "Dragon Shield": Info(325, quantity=2, extra_quantity=2), #ITEM_EQUIP_SHIELD_DRAGON_SHIELD
     "Goddess Shield": Info(327, ItemClassification.useful), #ITEM_EQUIP_SHIELD_GODDESS_SHIELD
-    "Iron Shield": Info(444, quantity=0, extra_quantity=1), #ITEM_EQUIP_SHIELD_IRON_SHIELD
-    "Power Shield": Info(523, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_SHIELD_POWER_SHIELD
-    "Mirror Shield": Info(524, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_SHIELD_MIRROR_SHIELD
-    "Flame Shield": Info(526, quantity=0, extra_quantity=1), #ITEM_EQUIP_SHIELD_FLAME_SHIELD
+    "Iron Shield": Info(444, quantity=0, extra_quantity=2), #ITEM_EQUIP_SHIELD_IRON_SHIELD
+    "Power Shield": Info(523, ItemClassification.useful, quantity=0, extra_quantity=2), #ITEM_EQUIP_SHIELD_POWER_SHIELD
+    "Mirror Shield": Info(524, ItemClassification.useful, quantity=0, extra_quantity=2), #ITEM_EQUIP_SHIELD_MIRROR_SHIELD
+    "Flame Shield": Info(526, quantity=0, extra_quantity=3), #ITEM_EQUIP_SHIELD_FLAME_SHIELD
+    "Ogre Shield": Info(534, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_SHIELD_OGRE_SHIELD
     # EQUIPMENT HELMETS
-    "Leather Hat": Info(13, quantity=4), #ITEM_EQUIP_HELMET_LEATHER_HAT
-    "Hardwood Headwear": Info(43, quantity=2), #ITEM_EQUIP_HELMET_HARDWOOD_HEADWEAR
-    "Turban": Info(63, quantity=2), #ITEM_EQUIP_HELMET_TURBAN
-    "Fur Hood": Info(80), #ITEM_EQUIP_HELMET_FUR_HOOD
+    "Leather Hat": Info(13, quantity=4, extra_quantity=2), #ITEM_EQUIP_HELMET_LEATHER_HAT
+    "Hardwood Headwear": Info(43, quantity=2, extra_quantity=1), #ITEM_EQUIP_HELMET_HARDWOOD_HEADWEAR
+    "Turban": Info(63, quantity=2, extra_quantity=2), #ITEM_EQUIP_HELMET_TURBAN
+    "Fur Hood": Info(80, extra_quantity=2), #ITEM_EQUIP_HELMET_FUR_HOOD
     "King's Crown": Info(103, ItemClassification.useful), #ITEM_EQUIP_HELMET_KINGS_CROWN
-    "Iron Helmet": Info(157, quantity=2), #ITEM_EQUIP_HELMET_IRON_HELMET
+    "Iron Helmet": Info(157, quantity=2, extra_quantity=2), #ITEM_EQUIP_HELMET_IRON_HELMET
     "Ortega's Helm": Info(165, ItemClassification.progression), #ITEM_EQUIP_HELMET_ORTEGAS_HELM
-    "Silver Tiara": Info(169, quantity=2), #ITEM_EQUIP_HELMET_SILVER_TIARA
-    "Hermes' Hat": Info(173, quantity=2), #ITEM_EQUIP_HELMET_HERMES_HAT
-    "Black Bandana": Info(178, quantity=5), #ITEM_EQUIP_HELMET_BLACK_BANDANA
-    "Pointy Hat": Info(180), #ITEM_EQUIP_HELMET_POINTY_HAT
+    "Silver Tiara": Info(169, quantity=2, extra_quantity=1), #ITEM_EQUIP_HELMET_SILVER_TIARA
+    "Hermes' Hat": Info(173, quantity=2, extra_quantity=1), #ITEM_EQUIP_HELMET_HERMES_HAT
+    "Black Bandana": Info(178, quantity=5, extra_quantity=1), #ITEM_EQUIP_HELMET_BLACK_BANDANA
+    "Pointy Hat": Info(180, extra_quantity=3), #ITEM_EQUIP_HELMET_POINTY_HAT
     "Mask of Implacability": Info(188, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_HELMET_MASK_OF_IMPLACABILITY
     "Top Hat": Info(196), #ITEM_EQUIP_HELMET_TOP_HAT
-    "Phantom Mask": Info(200), #ITEM_EQUIP_HELMET_PHANTOM_MASK
-    "Scholar's Cap": Info(204, quantity=2, extra_quantity=2), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
-    "Thief's Turban": Info(226, quantity=3), #ITEM_EQUIP_HELMET_THIEFS_TURBAN
-    "Iron Mask": Info(237), #ITEM_EQUIP_HELMET_IRON_MASK
-    "Mythril Helm": Info(254, ItemClassification.useful), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
+    "Phantom Mask": Info(200, extra_quantity=1), #ITEM_EQUIP_HELMET_PHANTOM_MASK
+    "Scholar's Cap": Info(204, quantity=2, extra_quantity=3), #ITEM_EQUIP_HELMET_SCHOLARS_CAP
+    "Thief's Turban": Info(226, quantity=3, extra_quantity=1), #ITEM_EQUIP_HELMET_THIEFS_TURBAN
+    "Iron Mask": Info(237, extra_quantity=1), #ITEM_EQUIP_HELMET_IRON_MASK
+    "Mythril Helm": Info(254, ItemClassification.useful, extra_quantity=2), #ITEM_EQUIP_HELMET_MYTHRIL_HELM
     "Thinking Cap": Info(257, quantity=3), #ITEM_EQUIP_HELMET_THINKING_CAP
     "Hapless Helm": Info(261, ItemClassification.useful, quantity=2), #ITEM_EQUIP_HELMET_HAPLESS_HELM
     "Rabbit Ears": Info(275, quantity=2, extra_quantity=1), #ITEM_EQUIP_HELMET_BUNNY_EARS
     "Auroral Helm": Info(284, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_HELMET_LIGHT_HELM
     "Heavenly Helm": Info(313, ItemClassification.useful), #ITEM_EQUIP_HELMET_HEAVENLY_HELM
     "Duplic Hat": Info(330, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_HELMET_DUPLIC_HAT
-    "Great Helm": Info(370, ItemClassification.useful), #ITEM_EQUIP_HELMET_GREAT_HELM
-    "Feathered Cap": Info(388, quantity=0, extra_quantity=1), #ITEM_EQUIP_HELMET_FEATHERED_CAP
-    "Raging Bull Helm": Info(482, quantity=0, extra_quantity=1), #ITEM_EQUIP_HELMET_RAGING_BULL_HELM
+    "Great Helm": Info(370, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_HELMET_GREAT_HELM
+    "Feathered Cap": Info(388, quantity=0, extra_quantity=2), #ITEM_EQUIP_HELMET_FEATHERED_CAP
+    "Raging Bull Helm": Info(482, quantity=0, extra_quantity=3), #ITEM_EQUIP_HELMET_RAGING_BULL_HELM
+    "Star Circlet": Info(535, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_HELMET_STAR_CIRCLET
     # EQUIPMENT ARMORS
-    "Training Togs": Info(5, quantity=6), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
+    "Training Togs": Info(5, quantity=6, extra_quantity=1), #ITEM_EQUIP_ARMOR_TRAINING_TOGS
     "Wayfarer's Clothes": Info(29, quantity=4), #ITEM_EQUIP_ARMOR_WAYFARERS_CLOTHES
     "Tortoise Shell": Info(52, quantity=2), #ITEM_EQUIP_ARMOR_TORTOISE_SHELL
-    "Leather Armor": Info(62), #ITEM_EQUIP_ARMOR_LEATHER_ARMOUR
-    "Leather Cape": Info(72, quantity=2), #ITEM_EQUIP_ARMOR_LEATHER_CAPE
+    "Leather Armor": Info(62, extra_quantity=4), #ITEM_EQUIP_ARMOR_LEATHER_ARMOUR
+    "Leather Cape": Info(72, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_LEATHER_CAPE
     "Boxer Shorts": Info(79, quantity=7), #ITEM_EQUIP_ARMOR_BOXER_SHORTS
-    "Plain Clothes": Info(82, quantity=3), #ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
-    "Leather Kilt": Info(84, quantity=3), #ITEM_EQUIP_ARMOR_LEATHER_KILT
-    "Cloak of Evasion": Info(94, quantity=2), #ITEM_EQUIP_ARMOR_CLOAK_OF_EVASION
-    "Leather Dress": Info(114), #ITEM_EQUIP_ARMOR_LEATHER_DRESS
+    "Plain Clothes": Info(82, quantity=3, extra_quantity=1), #ITEM_EQUIP_ARMOR_PLAIN_CLOTHES
+    "Leather Kilt": Info(84, quantity=3, extra_quantity=1), #ITEM_EQUIP_ARMOR_LEATHER_KILT
+    "Cloak of Evasion": Info(94, quantity=2, extra_quantity=2), #ITEM_EQUIP_ARMOR_CLOAK_OF_EVASION
+    "Leather Dress": Info(114, extra_quantity=2), #ITEM_EQUIP_ARMOR_LEATHER_DRESS
     "Silk Robe": Info(116, quantity=3), #ITEM_EQUIP_ARMOR_SILK_ROBE
-    "Magical Skirt": Info(134, quantity=2), #ITEM_EQUIP_ARMOR_MAGICAL_SKIRT
+    "Magical Skirt": Info(134, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_MAGICAL_SKIRT
     "Fizzle-Retardant Suit": Info(142, quantity=2), #ITEM_EQUIP_ARMOR_FIZZLE_RETARDANT_SUIT
     "Sparring Suit": Info(145, quantity=2), #ITEM_EQUIP_ARMOR_SPARRING_SUIT
-    "Full Plate Armor": Info(159), #ITEM_EQUIP_ARMOR_FULL_PLATE_ARMOUR
-    "Black Pyjamas": Info(189, extra_quantity=1), #ITEM_EQUIP_ARMOR_BLACK_PYJAMAS
-    "Magic Armor": Info(194), #ITEM_EQUIP_ARMOR_MAGIC_ARMOUR
+    "Full Plate Armor": Info(159, extra_quantity=1), #ITEM_EQUIP_ARMOR_FULL_PLATE_ARMOUR
+    "Black Pyjamas": Info(189, extra_quantity=3), #ITEM_EQUIP_ARMOR_BLACK_PYJAMAS
+    "Magic Armor": Info(194, extra_quantity=1), #ITEM_EQUIP_ARMOR_MAGIC_ARMOUR
     "Earthenwear": Info(216, quantity=2), #ITEM_EQUIP_ARMOR_EARTHENWEAR
     "Smart Suit": Info(222), #ITEM_EQUIP_ARMOR_SMART_SUIT
     "Party Dress": Info(223, quantity=2), #ITEM_EQUIP_ARMOR_PARTY_DRESS
     "Agility Gilet": Info(227), #ITEM_EQUIP_ARMOR_AGILITY_GILET
     "Cat Suit": Info(242, ItemClassification.useful, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_CAT_SUIT
-    "Spiked Armor": Info(251, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_ARMOR_SPIKED_ARMOUR
-    "Magical Robes": Info(256, quantity=2), #ITEM_EQUIP_ARMOR_MAGICAL_ROBES
-    "Flowing Dress": Info(259, ItemClassification.useful, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_FLOWING_DRESS
-    "Dragon Mail": Info(262), #ITEM_EQUIP_ARMOR_DRAGON_MAIL
-    "Chain Mail": Info(265, quantity=2), #ITEM_EQUIP_ARMOR_CHAIN_MAIL
+    "Spiked Armor": Info(251, ItemClassification.useful, extra_quantity=2), #ITEM_EQUIP_ARMOR_SPIKED_ARMOUR
+    "Magical Robes": Info(256, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_MAGICAL_ROBES
+    "Flowing Dress": Info(259, ItemClassification.useful, quantity=2, extra_quantity=2), #ITEM_EQUIP_ARMOR_FLOWING_DRESS
+    "Dragon Mail": Info(262, extra_quantity=1), #ITEM_EQUIP_ARMOR_DRAGON_MAIL
+    "Chain Mail": Info(265, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_CHAIN_MAIL
     "Magic Bikini": Info(272, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_ARMOR_MAGIC_BIKINI
     "Dark Robe": Info(278, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DARK_ROBE
-    "Hate Mail": Info(289), #ITEM_EQUIP_ARMOR_INFERNAL_ARMOUR
-    "Angel's Robe": Info(300, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_ANGELS_ROBE
+    "Hate Mail": Info(289, ItemClassification.useful), #ITEM_EQUIP_ARMOR_INFERNAL_ARMOUR
+    "Angel's Robe": Info(300, quantity=2, extra_quantity=2), #ITEM_EQUIP_ARMOR_ANGELS_ROBE
     "Auroral Armor": Info(301, ItemClassification.useful), #ITEM_EQUIP_ARMOR_AURORAL_ARMOUR
-    "Dragon Dojo Duds": Info(305, ItemClassification.useful, extra_quantity=1), #ITEM_EQUIP_ARMOR_DRAGON_DOJO_DUDS
+    "Dragon Dojo Duds": Info(305, ItemClassification.useful, extra_quantity=2), #ITEM_EQUIP_ARMOR_DRAGON_DOJO_DUDS
     "Shimmering Dress": Info(307, ItemClassification.useful), #ITEM_EQUIP_ARMOR_SHIMMERING_DRESS
     "Godbird Armor": Info(331, ItemClassification.useful), #ITEM_EQUIP_ARMOR_GODBIRD_ARMOUR
-    "Shell Armor": Info(334, quantity=2), #ITEM_EQUIP_ARMOR_SHELL_ARMOUR
-    "Stealth Suit": Info(354, quantity=2), #ITEM_EQUIP_ARMOR_STEALTH_SUIT
-    "Garish Garb": Info(360, extra_quantity=1), #ITEM_EQUIP_ARMOR_GARISH_GARB
-    "Wizard's Robe": Info(362, quantity=2), #ITEM_EQUIP_ARMOR_WIZARDS_ROBE
+    "Shell Armor": Info(334, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_SHELL_ARMOUR
+    "Stealth Suit": Info(354, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_STEALTH_SUIT
+    "Garish Garb": Info(360, extra_quantity=2), #ITEM_EQUIP_ARMOR_GARISH_GARB
+    "Wizard's Robe": Info(362, quantity=2, extra_quantity=1), #ITEM_EQUIP_ARMOR_WIZARDS_ROBE
     "Dragon Robe": Info(366, ItemClassification.useful), #ITEM_EQUIP_ARMOR_DRAGON_ROBE
-    "Scandalous Swimsuit": Info(369), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
+    "Scandalous Swimsuit": Info(369, extra_quantity=1), #ITEM_EQUIP_ARMOR_SCANDALOUS_SWIMSUIT
     "Blessed Bikini": Info(371, ItemClassification.useful), #ITEM_EQUIP_ARMOR_BLESSED_BIKINI
-    "Iron Apron": Info(399, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_IRON_APRON
-    "Fur Vest": Info(440, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_FUR_VEST
+    "Iron Apron": Info(399, quantity=0, extra_quantity=2), #ITEM_EQUIP_ARMOR_IRON_APRON
+    "Fur Vest": Info(440, quantity=0, extra_quantity=2), #ITEM_EQUIP_ARMOR_FUR_VEST
     "Iron Armor": Info(443, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_IRON_ARMOUR
-    "Epic Apron": Info(449, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_EPIC_APRON
-    "Silver Cuirass": Info(469, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_SILVER_CUIRASS
+    "Epic Apron": Info(449, quantity=0, extra_quantity=2), #ITEM_EQUIP_ARMOR_EPIC_APRON
+    "Silver Cuirass": Info(469, quantity=0, extra_quantity=2), #ITEM_EQUIP_ARMOR_SILVER_CUIRASS
     "Corsair's Coat": Info(517, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_CORSAIRS_COAT
+    "Bandit Mail": Info(532, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_BANDIT_MAIL
+    "Flame Armor": Info(533, ItemClassification.useful, quantity=0, extra_quantity=1), #ITEM_EQUIP_ARMOR_FLAME_ARMOUR
     # EQUIPMENT ACCESSORIES
-    "Dragon Scales": Info(7, quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
-    "Aerofoil Earrings": Info(20, quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
-    "Ring of Clarity": Info(21, quantity=2), #ITEM_EQUIP_ACCESSORY_RING_OF_REASON
-    "Mighty Armlet": Info(22, quantity=2), #ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET
-    "Rousing Ring": Info(26, quantity=4), #ITEM_EQUIP_ACCESSORY_ALARM_RING
-    "Rabbit Tail": Info(50, quantity=4), #ITEM_EQUIP_ACCESSORY_BUNNY_TAIL
-    "Cower Ring": Info(51, quantity=4), #ITEM_EQUIP_ACCESSORY_COWER_RING
+    "Dragon Scale": Info(7, quantity=5, extra_quantity=5), #ITEM_EQUIP_ACCESSORY_DRAGON_SCALES
+    "Aerofoil Earrings": Info(20, quantity=2, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_WIND_EARRINGS
+    "Ring of Clarity": Info(21, quantity=2, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_RING_OF_REASON
+    "Mighty Armlet": Info(22, quantity=2, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_MIGHTY_ARMLET
+    "Rousing Ring": Info(26, quantity=4, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_ALARM_RING
+    "Rabbit Tail": Info(50, quantity=4, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_BUNNY_TAIL
+    "Cower Ring": Info(51, quantity=4, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_COWER_RING
     "Restless Heart": Info(64, quantity=3), #ITEM_EQUIP_ACCESSORY_RESTLESS_HEART
-    "Necklace of Immunity": Info(81, quantity=2), #ITEM_EQUIP_ACCESSORY_POISON_RESISTANCE_NECKLACE
-    "Care Riviere": Info(93, quantity=6), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
+    "Necklace of Immunity": Info(81, quantity=2, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_POISON_RESISTANCE_NECKLACE
+    "Care Riviere": Info(93, quantity=6, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_SEALING_RESISTANCE_NECKLACE
     "Silver Rosary": Info(97, quantity=4), #ITEM_EQUIP_ACCESSORY_GOLD_ROSARY
     "Skull Ring": Info(105, quantity=2), #ITEM_EQUIP_ACCESSORY_SKULL_RING
-    "Ruby Wristband": Info(106, extra_quantity=3), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
+    "Ruby Wristband": Info(106, extra_quantity=4), #ITEM_EQUIP_ACCESSORY_RUBY_WRISTBAND
     "Leg Warmers": Info(107, quantity=2), #ITEM_EQUIP_ACCESSORY_LEG_WARMERS
     "Tough Guy Tatoo": Info(111, quantity=3), #ITEM_EQUIP_ACCESSORY_TOUGH_GUY_TATTOO
     "Gold Chain": Info(113, quantity=3), #ITEM_EQUIP_ACCESSORY_GOLD_CHAIN
     "Golden Tiara": Info(118, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_GOLDEN_TIARA
     "Recovery Ring": Info(123, quantity=4), #ITEM_EQUIP_ACCESSORY_RECOVERY_RING
     "Meteorite Bracer": Info(124, ItemClassification.useful), #ITEM_EQUIP_ACCESSORY_METEORITE_BRACER
-    "Banishing Bell": Info(130, quantity=7), #ITEM_EQUIP_ACCESSORY_AMULET_BELL
+    "Banishing Bell": Info(130, quantity=7, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_AMULET_BELL
     "Care Ring": Info(131, quantity=4), #ITEM_EQUIP_ACCESSORY_CARE_RING
     "Ten Ton Toupee": Info(137, quantity=3), #ITEM_EQUIP_ACCESSORY_TEN_TON_TOUPEE
-    "Holy Talisman": Info(152, quantity=3), #ITEM_EQUIP_ACCESSORY_HOLY_SYMBOL_OF_AMULET
-    "Doh-hican": Info(155, quantity=3), #ITEM_EQUIP_ACCESSORY_DOH_HICAN
-    "Torc of Truth": Info(163, quantity=2), #ITEM_EQUIP_ACCESSORY_PHANTOM_RESISTANCE_NECKLACE
-    "Asbestos Earrings": Info(166, quantity=4), #ITEM_EQUIP_ACCESSORY_ICE_EARRINGS
-    "Dummy": Info(186, quantity=4), #ITEM_EQUIP_ACCESSORY_PACIFIER
-    "Agility Ring": Info(191, quantity=2), #ITEM_EQUIP_ACCESSORY_AGILITY_RING
-    "Spirit Bracer": Info(218, quantity=4, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_FAIRY_BANGLE
-    "Hen's Tooth": Info(228, quantity=3), #ITEM_EQUIP_ACCESSORY_HENS_TOOTH
-    "Full Moon Ring": Info(235, quantity=6), #ITEM_EQUIP_ACCESSORY_MANGETSU_RING
+    "Holy Talisman": Info(152, quantity=3, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_HOLY_SYMBOL_OF_AMULET
+    "Doh-hican": Info(155, quantity=3, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_DOH_HICAN
+    "Torc of Truth": Info(163, quantity=2, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_PHANTOM_RESISTANCE_NECKLACE
+    "Asbestos Earrings": Info(166, quantity=4, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_ICE_EARRINGS
+    "Dummy": Info(186, quantity=4, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_PACIFIER
+    "Agility Ring": Info(191, quantity=2, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_AGILITY_RING
+    "Spirit Bracer": Info(218, quantity=4, extra_quantity=3), #ITEM_EQUIP_ACCESSORY_FAIRY_BANGLE
+    "Hen's Tooth": Info(228, quantity=3, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_HENS_TOOTH
+    "Full Moon Ring": Info(235, quantity=6, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_MANGETSU_RING
     "Garter": Info(244, quantity=3), #ITEM_EQUIP_ACCESSORY_GARTER
-    "Weightlifter's Belt": Info(249, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_TITAN_BELT
-    "Slime Earrings": Info(269, quantity=2), #ITEM_EQUIP_ACCESSORY_SLIME_EARRINGS
+    "Weightlifter's Belt": Info(249, extra_quantity=2), #ITEM_EQUIP_ACCESSORY_TITAN_BELT
+    "Slime Earrings": Info(269, quantity=2, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_SLIME_EARRINGS
     "Goddess Ring": Info(291, ItemClassification.useful, quantity=2), #ITEM_EQUIP_ACCESSORY_GODDESS_RING
     "Sacred Amulet": Info(295, ItemClassification.progression | ItemClassification.useful), #ITEM_EQUIP_ACCESSORY_SACRED_AMULET
-    "Anti-Freeze Earrings": Info(311, quantity=2), #ITEM_EQUIP_ACCESSORY_FLAME_EARRINGS
+    "Anti-Freeze Earrings": Info(311, quantity=2, extra_quantity=3), #ITEM_EQUIP_ACCESSORY_FLAME_EARRINGS
     "Elevating Shoes": Info(315, ItemClassification.useful, quantity=2), #ITEM_EQUIP_ACCESSORY_ELEVATING_SHOES
     "Strength Ring": Info(341), #ITEM_EQUIP_ACCESSORY_STRENGTH_RING
     "Mercury's Bandana": Info(353, quantity=2, extra_quantity=1), #ITEM_EQUIP_ACCESSORY_MERCURYS_BANDANA
@@ -477,6 +484,9 @@ def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3It
         else:
             classification = ItemClassification.progression | ItemClassification.useful
 
+    if name == "Wakey Dust" and world.options.shop_sanity != "vanilla":
+        classification = ItemClassification.progression
+
     return DQ3Item(name, classification, ALL_ITEMS[name].id, world.player)
 
 
@@ -523,7 +533,7 @@ def create_all_items(world: DQ3World) -> None:
     for item_name, info in ALL_ITEMS.items():
         if is_item_valid_for_itempool(world, item_name, info):
             quantity = info.quantity
-            if world.options.shiny_spots_sanity != "vanilla": #todo: add shop_sanity
+            if world.options.shiny_spots_sanity != "vanilla" or world.options.shop_sanity != "vanilla":
                 quantity += info.extra_quantity
             if world.options.random_filler_item_pool and info.classification == ItemClassification.filler:
                 quantity = 1

@@ -421,8 +421,8 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Alltrades Abbey] Pot 2 at the bottom of Inn B1": Info(366), #SEARCH_Dharma_Castle_B1F_POT_1
     #"[Alltrades Abbey] Reward from Merchant in the main corridor after talking to the pepper Merchant in Baharata after rescuing the Couple in Kidnapper's Cave from Robbin' 'Ood 2": Info(367, rules.HAS_MAGIC_KEY), #Dharma_1F_SUB_0_ACTOR_0810_010 # replaced
     # ----- Wayfarer's Inn -----
-    "[Wayfarer's Inn] Drawer in left room": Info(368), #SEARCH_TravelersHotel_House_DRAWER_0
-    "[Wayfarer's Inn] Drawer in right room": Info(369), #SEARCH_TravelersHotel_House_DRAWER_1
+    "[Wayfarer's Inn] Drawer in left room": Info(368, rules.HAS_THIEF_KEY), #SEARCH_TravelersHotel_House_DRAWER_0
+    "[Wayfarer's Inn] Drawer in right room": Info(369, rules.HAS_THIEF_KEY), #SEARCH_TravelersHotel_House_DRAWER_1
     # ----- Mur -----
     "[Mur] Barrel on the small island": Info(370), #SEARCH_Muor_Out_BARREL_0
     "[Mur] Barrel on the edge near the bottom entrance": Info(371), #SEARCH_Muor_Out_BARREL_1
