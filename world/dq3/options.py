@@ -141,7 +141,7 @@ class ShipSettings(Choice):
     Allows to configure how the Ship is randomized.
     - Vanilla: The Ship will be rewarded by the Portoga King after giving him the Black Pepper item
     - Anywhere: The Ship will be randomized anywhere in the multiworld (this may generate a shorter seed but with harder fights)
-    - Start with: You will start the game with the Ship already unlocked near Portoga, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
+    - Start with: You will start the game with the Ship already unlocked near Portoga (or Aliahan if you don't have access to Portoga yet)
     """
     display_name = "Ship Settings"
     option_vanilla = 0
@@ -154,7 +154,7 @@ class RamiaSettings(Choice):
     Allows to configure how Ramia (the bird) is randomized.
     - Vanilla: Ramia will be obtained by offering the 6 Orbs to the altars in the Shrine of the Everbird
     - Anywhere: Ramia will be randomized anywhere in the multiworld (this may generate a shorter seed but with harder fights)
-    - Start with: You will start the game with Ramia already unlocked near Alltrades Abbey, use the spell "Zoom" or a "Chimera Wing" item to teleport it near you
+    - Start with: You will start the game with Ramia already unlocked near Alltrades Abbey (or Aliahan if you don't have access to Alltrades Abbey yet)
     """
     display_name = "Ramia Settings"
     option_vanilla = 0

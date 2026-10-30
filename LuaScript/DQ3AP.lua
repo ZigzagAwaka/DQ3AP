@@ -90,11 +90,18 @@ function AP.ConvertSpecialItemIds(ItemId)
   elseif ItemId == "ITEM_IMPORTANT_RAMIA" then -- ignore ramia item if ramia option is vanilla
     local ramia_settings = AP.GetOption("ramia_settings")
     if ramia_settings ~= nil and ramia_settings == 0 then
-      AP.SetSpecialFlags(ItemId)
       ItemId = "None"
     end
   end
   return ItemId
+end
+
+-- warp vehicle items to Aliahan if needed
+function AP.WarpVehicles()
+  if (GetFlag(Flag.FE34) and not (GetFlag(Flag.FE35) or (GetFlag(Flag.FE57) and GetFlag(Flag.FE55))))
+  or (GetFlag(Flag.FE35) and not (GetFlag(Flag.FE34) or (GetFlag(Flag.FE57) and GetFlag(Flag.FE54) and (GetFlag(Flag.FE63) or GetFlag(Flag.FE56))))) then
+    MapOnStartRuraTransition("RURA_RIREMITO_RURA_ALIAHAN", false)
+  end
 end
 
 -- check mini medals count if victory goal is related to medals
@@ -163,6 +170,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE107, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_PORTOGA_RideShip, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_SHIP, true)
+    AP.WarpVehicles()
   elseif ItemId == "ITEM_IMPORTANT_GREEN_ORB" then
     --SetFlag(Flag.FE73, true) -- orbs flags can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_TEDON_GetGreenOrb, true)
@@ -173,6 +181,7 @@ function AP.SetSpecialFlags(ItemId)
     SetFlag(Flag.FE215, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_REIAMULAND_RevivalLamia, true)
     SetFlagGopEnumProgress(FlagGOPEnumProgress.SUB_INFORMATION_RAMIA, true)
+    AP.WarpVehicles()
   elseif ItemId == "ITEM_IMPORTANT_HAMMER_OF_GAIA" then
     --SetFlag(Flag.FE841, true) -- can't be set, check for item in inventory instead
     SetFlagGopEnumProgress(FlagGOPEnumProgress.MAIN_JIPANG_GetGaiaHanmer, true)
