@@ -374,6 +374,9 @@ end
 
 -- check if there is available items and if yes then gives them all to the player if possible
 function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
+  if GetFlag(Flag.FE157) == false then -- ignore items if dream sequence intro is not finished
+    return
+  end
   local filePath = "Archipelago/items.data"
   local file = io.open(filePath, "r")
   if file then
