@@ -193,21 +193,21 @@ class AdditionalSeedsChance(Range):
 
 class ShuffleCanniboxTraps(DefaultOnToggle):
     """
-    Enable this option to shuffle 7 Cannibox Traps in the item pool.
+    Enable this option to shuffle 7 Cannibox Traps in the item pool (you should probably disable traps if you plan on playing with the Dracky Quest ingame difficulty).
     If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Cannibox Traps"
 
 class ShuffleMimicTraps(DefaultOnToggle):
     """
-    Enable this option to shuffle 19 Mimic Traps in the item pool.
+    Enable this option to shuffle 19 Mimic Traps in the item pool (you should probably disable traps if you plan on playing with the Dracky Quest ingame difficulty).
     If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Mimic Traps"
 
 class ShufflePandoraBoxTraps(DefaultOnToggle):
     """
-    Enable this option to shuffle 10 Pandora's Box Traps in the item pool.
+    Enable this option to shuffle 10 Pandora's Box Traps in the item pool (you should probably disable traps if you plan on playing with the Dracky Quest ingame difficulty).
     If disabled, it will replace those with random filler items.
     """
     display_name = "Shuffle Pandora's Box Traps"
