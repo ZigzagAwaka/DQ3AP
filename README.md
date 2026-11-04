@@ -19,12 +19,14 @@ After playing the mod, if you later want to play in vanilla again you will need 
 
 When the setup is finished, you can open the game on Steam to see a new separate DQ3AP console appearing alongside the game. Use it to connect to a room :
 
+<img src="https://raw.githubusercontent.com/ZigzagAwaka/DQ3AP/main/Images/Console.PNG" width="400"/>
+
 - Type `/connect <host> <player> [password]` into the console with valid parameters *(example: /connect archipelago.gg:12345 Player1)*
 - You can connect anytime you want, before or after loading your game file. But make sure to be connected before checking a new location in the game !
 
 *Tips:* If you have some spaces in your player name or password, use quotes! *(example: "Player name")*
 
-*Tips 2: If you stop the game and come back later, try `/reconnect` to try to reconnect faster! (if the current room still has the same port)*
+*Tips 2:* If you stop the game and come back later, try `/reconnect` to try to reconnect faster! *(if the current room still has the same port)*
 
 ## Useful informations
 ### What does randomization do to this game ?
@@ -38,9 +40,11 @@ Options to choose which locations are randomized, excluded or vanilla are availa
 You have multiple options to set the goal of the game, among these:
 - Defeat **Zoma**, the final boss of the game
 - Defeat the **Grand Dragon**, the final boss of the postgame
-- Find all **110 mini medals**
-- Find all **110 mini medals**, with postgame locations included
+- Find all **mini medals**
+- Find all **mini medals**, with postgame locations included
 - Defeat **Baramos**, for shorter games
+- Find all **mini medals**, then defeat **Zoma**
+- Find all **mini medals**, then defeat the **Grand Dragon**
 
 ### What versions of the game are supported ?
 
@@ -48,9 +52,11 @@ The only supported version is the Steam/PC release of `Dragon Quest III HD-2D Re
 
 ### Which items can be in another player's world ?
 
-All obtainable items can be placed in other players' worlds, except the Maps which are not randomized. Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
+All obtainable items (equipments, keys, usable items, ...) can be placed in other players' worlds. In short, items in containers, given by NPCs, found in shiny spots and sold in shops are all randomized.
 
-Items in shops, medals rewards, arena rewards and enemy drops are also not randomized but this may change in the future.
+Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
+
+Overworld maps, medals rewards, arena rewards and enemy drops are not randomized but some of these may be changed in the future.
 
 ### What does another world's item look like in the game ?
 
@@ -60,13 +66,13 @@ Multiworld items appear as an **Archipelago medal** sprite when you collect them
 
 Collecting this item will trigger the Archipelago server to send back the corresponding item to the correct player.
 
-*And if it was one of your own items, the server will then send it to you [items are all remotely implemented for now, you will still find Archipelago medals for your own items then receive those as if someone else was giving it to you].*
+And if it was one of your own items, the server will then send it to you *[items are all remotely implemented for now, you will still find Archipelago medals for your own items then receive those as if someone else was giving it to you]*.
 
 ### When the player receives an item, what happens ?
 
 The game will cache the received items then give them all to the player when one of the following events happens :
 
-- The player enters or exits an area, house, dungeon, or village (that does not have any special events happening at the same time) either by a player transition or warping with Zoom
+- The player enters or exits an area, house, dungeon, or village (that does not have any special events happening at the same time) by a scene transition
 - The player successfully defeats an enemy (but not a Cannibox/Mimic/Pandora's Box as those are traps !)
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
@@ -74,6 +80,8 @@ The game will cache the received items then give them all to the player when one
 - The player uses some specific field spells/abilities
 
 Once items are obtained, the game will display the item's sprite with a message to show what's been received.
+
+*Tips:* When receiving multiple items, it's possible to hold the ingame speedup button in order to increase the speed of the animation!
 
 ### Archipelago is all about playing with multiple worlds/players, but can I play in singleplayer ?
 
@@ -83,11 +91,13 @@ You can play in singleplayer by generating a world with only this game, then con
 
 If you don't want to walk back to previous areas, then you can use Zoom to warp to any previously explored areas. This is the same as in a regular non-randomized game.
 
+Also, Zoom, among other field spells/abilities, is unlocked from the start of the game so you can use it right away.
+
 ### What about saving ?
 
 **Make sure to always save the game before turning it off !**
 
-If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to check again but actually checking it will have no effect since it was already registered by the Archipelago server.
+If you check a location then turn off the game without saving (or reloading a previous save) then the location will be available to be checked again but actually checking it will have no effect since it was already registered by the Archipelago server.
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
@@ -95,7 +105,7 @@ The game already perform some auto saves automatically when you receive an item,
 
 ### Is there a location tracker available ?
 
-For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker).
+For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker). Just make sure you have correctly installed the apworld file before using this tracker.
 
 ### What about other mods compatibility ?
 
@@ -103,17 +113,11 @@ Most other mods should be compatible, but if you want to learn more about this p
 
 ### What other modifications are being made to the game ?
 
-Other modifications were implemented to nicely integrate Archipelago :
-
-- Some story scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
-- Once the Ship or Ramia are unlocked, they will spawn near Portoga or Alltrades Abbey but if you don't have access to these places yet then you can use Zoom to warp to a previously explored location and the Ship and Ramia will be teleported near you.
-- Merchantburg is fully excluded from the logic except the containers available in the final stage of the town. This means that the Yellow Orb check is excluded but the Yellow Orb is still randomized. Checking the Yellow Orb at it's vanilla location will give you some gold instead.
-- Gifts from the Aliahan King at the start of the game are not randomized. Speaking to the King will also gives you the main World Map and will set a flag that will allow you to change the Hero's hair color in Alltrades Abbey without needing to get it from Xenlon's wishes.
-- Some field spells/abilities are unlocked from the start and available to be used right away. This helps with the pace of the game for Archipelago.
+Other modifications were implemented to nicely integrate Archipelago, among these some important changes to scenes and items. Please check [this document here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/GameModifications.md) if you want to learn about those edits.
 
 ## Feedbacks and issues
 
-You can report anything in the `Dragon Quest III HD-2D Remake` post in the `future-game-design` channel of the [Archipelago discord server](https://discord.gg/archipelago) or post a new issue on github.
+You can report anything in the `Dragon Quest III HD-2D Remake` post in the `custom-games` channel of the [Archipelago discord server](https://discord.gg/archipelago) or post a new issue on github.
 
 ## Useful ressources and special thanks
 
