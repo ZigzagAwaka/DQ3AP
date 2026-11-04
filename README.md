@@ -19,7 +19,7 @@ After playing the mod, if you later want to play in vanilla again you will need 
 
 When the setup is finished, you can open the game on Steam to see a new separate DQ3AP console appearing alongside the game. Use it to connect to a room :
 
-<img src="https://raw.githubusercontent.com/ZigzagAwaka/DQ3AP/main/Images/Console.PNG" width="400"/>
+<img src="https://raw.githubusercontent.com/ZigzagAwaka/DQ3AP/main/Images/Console.PNG" width="600"/>
 
 - Type `/connect <host> <player> [password]` into the console with valid parameters *(example: /connect archipelago.gg:12345 Player1)*
 - You can connect anytime you want, before or after loading your game file. But make sure to be connected before checking a new location in the game !
