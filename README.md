@@ -101,7 +101,7 @@ If you check a location then turn off the game without saving (or reloading a pr
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
-The game already perform some auto saves automatically when you receive an item, so you can also reload the latest auto save if you need it.
+Loading the latest auto save could also prevent you from losing items as those are being performed automatically when you receive an item, so you can also reload the latest auto save if you need it.
 
 ### Is there a location tracker available ?
 
