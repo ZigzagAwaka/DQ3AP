@@ -5,6 +5,7 @@
 #include "Archipelago.h"
 
 #include <string>
+#include <sstream>
 #include <filesystem>
 #include <system_error>
 #include <fstream>
@@ -66,6 +67,11 @@ public:
     /// @return True if the location is a hint or else false
     bool CheckHint(const std::string& locationName);
 
+    /// @brief Checks if the given location name is a storedInventory signal, and if so then execute the correct signal action
+    /// @param locationName The name of the given location to check
+    /// @return True if the location is a storedInventory signal or else false
+    bool CheckSignalForStoredInventory(const std::string& locationName);
+
     /// @brief When connected, write options to AP options data file, overriding previous content
     void WriteOptionData();
 
@@ -102,6 +108,8 @@ private:
 
     std::filesystem::file_time_type locationDataLastCheckTime;
     bool triggerEventOnOptionReceived = false;
+
+    std::vector<std::string> storedInventory;
 
     /// @brief Register all AP client options callbacks
     void RegisterAllOptionsCallbacks();

@@ -110,6 +110,11 @@ void APClient::Update()
                 continue;
             }
 
+            if (CheckSignalForStoredInventory(line))
+            {
+                continue;
+            }
+
             int locationId = WorldData::GetLocationId(line);
             if (locationId != -1)
             {
@@ -138,26 +143,31 @@ void APClient::ReceiveCheckedLocation(int64_t locationId) { }
 
 void APClient::ReceiveItem(int64_t itemId, bool notify)
 {
+    std::string itemName = WorldData::GetItemName(itemId);
+
+    if (itemName.empty())
+    {
+        logger.Log("Unknown item Id: " + std::to_string(itemId));
+        return;
+    }
+
+    // Insert every valid item in storedInventory (valid items= are not traps or none)
+    if (itemId != 125 && itemId != 126 && itemId != 236 && itemId != 326)
+    {
+        storedInventory.push_back(itemName);
+    }
+
     if (!notify)
     {
         return;
     }
 
-    std::string itemName = WorldData::GetItemName(itemId);
-
-    if (!itemName.empty())
-    {
-        std::ofstream file;
-        file.open(itemDataPath, std::ios::app);
-        file << itemName << '\n';
-        file.flush();
-        file.close();
-        logger.LogInFile("Item received: " + itemName);
-    }
-    else
-    {
-        logger.Log("Unknown item Id: " + std::to_string(itemId));
-    }
+    std::ofstream file;
+    file.open(itemDataPath, std::ios::app);
+    file << itemName << '\n';
+    file.flush();
+    file.close();
+    logger.LogInFile("Item received: " + itemName);
 }
 
 
@@ -197,6 +207,32 @@ bool APClient::CheckHint(const std::string& locationName)
 
     AP_SendLocationScouts(hintIds, 1);  // 1 here is the create_as_hint parameter, this creates an AP hint to the server
     return true;
+}
+
+
+bool APClient::CheckSignalForStoredInventory(const std::string& locationName)
+{
+    if (locationName == "STORED_INVENTORY_SIGNAL_0")
+    {
+        if (storedInventory.size() > 0)
+        {
+            std::stringstream stream;
+
+            for (const std::string& itemName : storedInventory)
+            {
+                stream << itemName << '\n';
+            }
+
+            // force receive storedInventory
+            std::ofstream file;
+            file.open(itemDataPath, std::ios::trunc);
+            file << stream.rdbuf();
+            file.close();
+            logger.LogInFile("Item received from a storedInventory signal");
+        }
+        return true;
+    }
+    return false;
 }
 
 
@@ -252,6 +288,9 @@ void APClient::ClearData()
     // Always clear location data
     CreateOrClearFile(locationDataPath);
     locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
+    // Always clear storedInventory
+    storedInventory.clear();
+    storedInventory.reserve(2500);
 }
 
 
