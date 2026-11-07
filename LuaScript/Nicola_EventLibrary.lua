@@ -589,7 +589,7 @@ function CmdCallShopUI(ShopId)
   _retry(SYS_WaitShopUI)
   -- AP
   if not is_vanilla and #quantities > 0 then
-    AP.PostCallShop(ShopId, quantities)
+    AP.PostCallShop(ShopId, quantities, (shop_sanity ~= nil and shop_sanity == 2))
   end
   AP.GiveItemsIfAvailable()
   -- AP end

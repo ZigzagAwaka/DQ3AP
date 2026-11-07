@@ -1081,12 +1081,17 @@ end
 
 -- shop management function for AP, executes after the shop has been called
 -- sends a check for every item bought based on their quantities
-function AP.PostCallShop(ShopId, ItemsQuantities)
+function AP.PostCallShop(ShopId, ItemsQuantities, ShouldKeepQuantities)
   local checkName = ""
   local checkAmount = 0
   for index, item in ipairs(shops_content[ShopId]) do
-    if GetHaveItemNum(item) > ItemsQuantities[index] then
-      RemoveItem(item)
+    local diff = GetHaveItemNum(item) - ItemsQuantities[index]
+    if diff > 0 then
+      if not ShouldKeepQuantities then
+        for i = 0, (diff - 1) do
+          RemoveItem(item)
+        end
+      end
       if index ~= 1 then
         checkName = checkName .. "\n"
       end

@@ -118,12 +118,15 @@ class ShinySpotsSanity(Choice):
 class ShopSanity(Choice):
     """
     Choose if items sold in shops are randomized or not.
+    Note that if set to Enabled, there is a known issue where buying a new copy of an item you already have equiped will unequip it.
     - Vanilla: Items in shops will not be randomized and will instead be vanilla
     - Enabled: Buying items in the shops will count as a check and hints for those items will be sent upon speaking to the shop owner. This adds around 471 more checks in the game
+    - Enabled and vanilla: Same as Enabled but buying items in the shops will also give you the vanilla item you bought, so it gives the vanilla item + a check
     """
     display_name = "Shop Sanity"
     option_vanilla = 0
     option_enabled = 1
+    option_enabled_and_vanilla = 2
     default = 0
 
 # ITEMS OPTIONS
