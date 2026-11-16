@@ -25,13 +25,15 @@ public:
     /// @param optionPath Path to AP options data file
     /// @param roomPath Path to AP current room informations data file
     /// @param flagPath Path to AP related flags data file
+    /// @param mapPath Path to AP map infos data file
     APClient(
         Logger& logger,
         const std::string& itemPath,
         const std::string& locationPath,
         const std::string& optionPath,
         const std::string& roomPath,
-        const std::string& flagPath
+        const std::string& flagPath,
+        const std::string& mapPath
     );
 
     /// @brief Connect to Archipelago
@@ -47,6 +49,9 @@ public:
     /// @brief Receive a location from Archipelago
     /// @param locationId The Id of the received location
     void ReceiveCheckedLocation(int64_t locationId);
+
+    /// @brief Receive a death link from Archipelago
+    void ReceiveDeathLink();
 
     /// @brief Receive a scout result from Archipelago
     /// @param scoutResult A vector of AP_NetworkItem, giving informations for the received scout
@@ -67,10 +72,10 @@ public:
     /// @return True if the location is a hint or else false
     bool CheckHint(const std::string& locationName);
 
-    /// @brief Checks if the given location name is a storedInventory signal, and if so then execute the correct signal action
+    /// @brief Checks if the given location name is a signal, and if so then execute the correct signal action
     /// @param locationName The name of the given location to check
-    /// @return True if the location is a storedInventory signal or else false
-    bool CheckSignalForStoredInventory(const std::string& locationName);
+    /// @return True if the location is a signal or else false
+    bool CheckSignal(const std::string& locationName);
 
     /// @brief When connected, write options to AP options data file, overriding previous content
     void WriteOptionData();
@@ -85,6 +90,10 @@ public:
     /// @brief Print the current goal option number
     /// @return String text containing the current goal option number
     std::string PrintGoal();
+
+    /// @brief Enable/disable deathlink on the current seed, if possible
+    /// @return String text containing some informations to print, optional
+    std::string ToggleDeathLink();
 
     /// @brief Disconnect from Archipelago
     void Disconnect();
@@ -101,6 +110,7 @@ private:
     const std::string optionDataPath;
     const std::string roomDataPath;
     const std::string flagDataPath;
+    const std::string mapDataPath;
 
     std::string currentHost = "";
     std::string currentPlayer = "";
@@ -110,6 +120,9 @@ private:
     bool triggerEventOnOptionReceived = false;
 
     std::vector<std::string> storedInventory;
+
+    bool deathlinkEnabled = false;
+    bool deathlinkIsReady = false;
 
     /// @brief Register all AP client options callbacks
     void RegisterAllOptionsCallbacks();

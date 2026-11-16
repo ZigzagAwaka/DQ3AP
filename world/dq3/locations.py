@@ -243,7 +243,7 @@ ALL_LOCATIONS: dict[str, Info] = {
     "[Asham] Barrel in the top left corner": Info(200), #SEARCH_Ashalam_Out_BARREL_1
     "[Asham] Pot near right house": Info(201), #SEARCH_Ashalam_Out_POT_0
     "[Asham] Pot near Hotel": Info(202), #SEARCH_Ashalam_Out_POT_1
-    "[Asham] Storage in Puff Puff house (night)": Info(203), #SEARCH_Ashalam_House01_2F_STORAGE_0
+    "[Asham] Storage in Puff Puff house (night, male party member)": Info(203), #SEARCH_Ashalam_House01_2F_STORAGE_0
     "[Asham] Pot in top left house": Info(204, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_1F_POT_0
     "[Asham] Hidden Ground on top right square tile floor in top left house": Info(205, rules.HAS_MAGIC_KEY), #SEARCH_Ashalam_House02_2F_GROUND_0
     "[Asham] Bookshelf in locked room in top left house": Info(206, rules.HAS_MAGIC_KEY & rules.HAS_THIEF_KEY), #SEARCH_Ashalam_House02_2F_BOOKSHELF_0

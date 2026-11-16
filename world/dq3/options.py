@@ -37,6 +37,12 @@ class RequiredMedalsAmount(Range):
     range_end = 110
     default = 110
 
+class DeathLink(Toggle):
+    """
+    todo
+    """
+    display_name = "DeathLink"
+
 class TrialsEdits(Choice):
     """
     To access the Grand Dragon, you need to enter the Temple of Trials at the end of the postgame and complete all 5 trials to open the door to the boss.
@@ -247,6 +253,7 @@ class RareItemsFastAnimation(Toggle):
 class DQ3Options(PerGameCommonOptions):
     victory_goal: VictoryGoal
     required_medals_amount: RequiredMedalsAmount
+    death_link: DeathLink
     trials_edits: TrialsEdits
     container_sanity: ContainerSanity
     hidden_ground_sanity: HiddenGroundSanity

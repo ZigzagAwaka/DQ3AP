@@ -2,13 +2,14 @@
 
 
 APClient::APClient(Logger& logger, const std::string& itemPath, const std::string& locationPath, const std::string& optionPath,
-                   const std::string& roomPath, const std::string& flagPath)
+                   const std::string& roomPath, const std::string& flagPath, const std::string& mapPath)
     : logger(logger),
     itemDataPath(itemPath),
     locationDataPath(locationPath),
     optionDataPath(optionPath),
     roomDataPath(roomPath),
-    flagDataPath(flagPath)
+    flagDataPath(flagPath),
+    mapDataPath(mapPath)
 {
     ClearData();
 }
@@ -37,6 +38,10 @@ void APClient::Connect(const std::string& host, const std::string& player, const
             ReceiveCheckedLocation(locationId);
         });
 
+        AP_SetDeathLinkRecvCallback([this]() {
+            ReceiveDeathLink();
+        });
+
         AP_SetLocationInfoCallback([this](std::vector<AP_NetworkItem> scoutResult) {
             ReceiveScout(scoutResult);
         });
@@ -46,6 +51,7 @@ void APClient::Connect(const std::string& host, const std::string& player, const
         currentPassword = password;
         RegisterAllOptionsCallbacks();
         AP_EnableQueueItemRecvMsgs(true);
+        AP_SetDeathLinkSupported(true);
         AP_Start();
     }
     catch (const std::exception& e)
@@ -110,7 +116,7 @@ void APClient::Update()
                 continue;
             }
 
-            if (CheckSignalForStoredInventory(line))
+            if (CheckSignal(line))
             {
                 continue;
             }
@@ -210,7 +216,7 @@ bool APClient::CheckHint(const std::string& locationName)
 }
 
 
-bool APClient::CheckSignalForStoredInventory(const std::string& locationName)
+bool APClient::CheckSignal(const std::string& locationName)
 {
     if (locationName == "STORED_INVENTORY_SIGNAL_0")
     {
@@ -228,11 +234,62 @@ bool APClient::CheckSignalForStoredInventory(const std::string& locationName)
             file.open(itemDataPath, std::ios::trunc);
             file << stream.rdbuf();
             file.close();
-            logger.LogInFile("Item received from a storedInventory signal");
+            logger.LogInFile("Items received from a storedInventory signal");
         }
         return true;
     }
+    if (locationName == "DEATHLINK_READY_SIGNAL_0")
+    {
+        // mark deathlink state to be ready for receiving
+        if (deathlinkEnabled)
+            deathlinkIsReady = true;
+        return true;
+    }
+    if (locationName == "DEATHLINK_SEND_SIGNAL_1")
+    {
+        // send a deathlink to the server
+        if (deathlinkEnabled)
+            AP_DeathLinkSend();
+        return true;
+    }
+    // same as DEATHLINK_READY_SIGNAL_0 for no signal, to prevent a non ready state in case of a server auto-reconnect
+    // maybe not needed?
+    //if (deathlinkEnabled)
+        //deathlinkIsReady = true;
     return false;
+}
+
+
+void APClient::ReceiveDeathLink()
+{
+    if (deathlinkEnabled && deathlinkIsReady)
+    {
+        deathlinkIsReady = false;
+        std::ofstream file;
+        file.open(itemDataPath, std::ios::app);
+        file << "DEATH_LINK" << '\n';
+        file.flush();
+        file.close();
+        logger.LogInFile("DeathLink received");
+    }
+}
+
+
+std::string APClient::ToggleDeathLink()
+{
+    switch (Options::GetOption("death_link"))
+    {
+        case 0:
+            deathlinkEnabled = false;
+            deathlinkIsReady = false;
+            return "DeathLink can't be enabled on this seed because the current death_link option is disabled. ";
+        case 1:
+            deathlinkEnabled = !deathlinkEnabled;
+            deathlinkIsReady = false;
+            return "DeathLink is now " + std::string(deathlinkEnabled ? "enabled" : "disabled") + " on this seed.";
+        default:
+            return "The current death_link option is not defined! Try to connect (or reconnect) first.";
+    }
 }
 
 
@@ -247,7 +304,7 @@ void APClient::RegisterAllOptionsCallbacks()
     const std::vector<std::string> optionNames = {
         "victory_goal", "aliahan_king_special_gifts", "ramia_settings",
         "shiny_spots_sanity", "rare_items_fast_animation", "shop_sanity",
-        "required_medals_amount", "trials_edits"
+        "required_medals_amount", "trials_edits", "death_link"
     };
     for (int i = 0; i < optionNames.size(); i++)
     {
@@ -256,6 +313,7 @@ void APClient::RegisterAllOptionsCallbacks()
             logger.LogInFile("Receive option " + name + ": " + std::to_string(value));
             Options::SetOption(name, value);
             triggerEventOnOptionReceived = true;
+            if (name == "death_link") deathlinkEnabled = value;
         });
     }
 }
@@ -281,9 +339,12 @@ void APClient::ClearData()
         CreateOrClearFile(itemDataPath, true, !isHostKnown);
         // Then set the latest room data to be the current room data
         SetLatestRoomData();
-        // And finally, clear flags if connected to an unknown host
+        // And finally, clear flags and map infos if connected to an unknown host
         if (!isHostKnown)
+        {
             DeleteFile(flagDataPath);
+            DeleteFile(mapDataPath);
+        }
     }
     // Always clear location data
     CreateOrClearFile(locationDataPath);
@@ -291,6 +352,9 @@ void APClient::ClearData()
     // Always clear storedInventory
     storedInventory.clear();
     storedInventory.reserve(2500);
+    // Always clear deathlink booleans
+    deathlinkEnabled = false;
+    deathlinkIsReady = false;
 }
 
 

@@ -111,6 +111,8 @@ end
 function OpenFieldTopFromTitleAfterLevelVisible(BeginOverlap, table, ...)
   print("OpenFieldTopFromTitleAfterLevelVisible Begin")
   local _mapId, _startPointName, _ShowChurchText, _fadeIn = ...
+  AP.SetMapInfo("map_entry_point", tostring(_startPointName)) -- AP
+  AP.CheckLocation("DEATHLINK_READY_SIGNAL_0") -- AP
   ResumeTransition()
   StartTransitionTime(_mapId)
   WaitFrame(2)
@@ -154,7 +156,6 @@ function OpenFieldTopFromTitleAfterLevelVisible(BeginOverlap, table, ...)
   StopSimpleLoadingUI()
   PerformanceSettingFL_OnLoadingEnd()
   bExecEvent = CallSceneEvent(_mapId)
-  -- maybe add CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") here?
   if bExecEvent == false then
     CmdFadeInOnInitialFadeInPostMapTransition(EFadingPriorityTopMost, _fadeIn, _mapId)
   end
@@ -170,7 +171,6 @@ end
 
 function TransitionRura(BeginOverlap, table, ...)
   local _LoadMapId, _StartPointName, _MapId, _RuraId, _IsSuccessRura, _IsDisableMagic, _TextId, _TextId2, _AnimationTime, _PlayerType, _Orientation, _FadeIn, _PrevMapId = ...
-  local playEvent = false -- AP
   MapTimeNotifyStartSystemProcessing()
   SetDispMiniMap(false)
   SetDispBtnGuide(false)
@@ -195,7 +195,7 @@ function TransitionRura(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadeType)
     MapOnCompleteTransitionFadeOut()
     MapOnStartRuraTransition(_RuraId, true)
-    playEvent = TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeIn, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
+    TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeIn, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
     RequestAutoSave()
     WaitFrame(1)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
@@ -222,16 +222,10 @@ function TransitionRura(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
-  -- AP
-  if not playEvent and _IsSuccessRura then
-    AP.GiveItemsIfAvailable()
-  end
-  -- AP end
 end
 
 function TransitionRiremito(BeginOverlap, table, ...)
   local _LoadMapId, _StartPointName, _MapId, _RuraId, _IsSuccessRura, _IsDisableMagic, _TextId, _UnusedId, _AnimationTime, _PlayerType, _Orientation, _FadeTime, _PrevMapId = ...
-  local playEvent = false -- AP
   MapTimeNotifyStartSystemProcessing()
   SetDispMiniMap(false)
   SetDispBtnGuide(false)
@@ -261,7 +255,7 @@ function TransitionRiremito(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadeType)
     MapOnCompleteTransitionFadeOut()
     EraseLoopEffectByParamEnd(effectName, 0.01)
-    playEvent = TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
+    TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, true, 0.5, 0.5, fadeType) -- AP: get playEvent
     RequestAutoSave()
     WaitFrame(1)
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
@@ -275,16 +269,10 @@ function TransitionRiremito(BeginOverlap, table, ...)
   end
   SetDispMiniMap(true)
   SetDispBtnGuide(true)
-  -- AP
-  if not playEvent and result then
-    AP.GiveItemsIfAvailable()
-  end
-  -- AP end
 end
 
 function TransitionLevel(BeginOverlap, table, ...)
   local _MapId, _StartPointName, _RiremitoPointID, _SeId, _FadeTime, _Orientation, _PlayerType, _bAutoSave, _IsPlayBGM, _IsTravelDoor, _SpawnX, _SpawnY, fadePriority, _ShowChoice, _IsOnProgress, _ProgressId, _TextId = ...
-  local playEvent = false -- AP
   local execTransition = true
   if _ShowChoice then
     execTransition = CmdChoiceMessage(_TextId)
@@ -307,7 +295,7 @@ function TransitionLevel(BeginOverlap, table, ...)
     _retry(SYS_WaitFadeOut, fadePriority)
     MapOnCompleteTransitionFadeOut()
     local prevMapId = GetCurrentMapId()
-    playEvent = TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority) -- AP: get playEvent
+    TransitionLevelImpl(prevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, fadePriority) -- AP: get playEvent
     if _bAutoSave == true then
       RequestAutoSave()
       WaitFrame(1)
@@ -318,11 +306,6 @@ function TransitionLevel(BeginOverlap, table, ...)
   else
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   end
-  -- AP
-  if not playEvent and execTransition then
-    AP.GiveItemsIfAvailable()
-  end
-  -- AP end
 end
 
 function OnStartTransitionFieldTownDungeon(_MapId, _StartPointName)
@@ -365,6 +348,7 @@ function OnCompletePlayerSpawned(_PrevMapId, _NextMapId, _IsLose)
 end
 
 function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Orientation, _PlayerType, _IsPlayBGM, _SpawnX, _SpawnY, _FadeType)
+  AP.SetMapInfo("map_entry_point", tostring(_StartPointName)) -- AP
   local isField = IsFieldMapId(_MapId)
   AddTransitionTime(_MapId, "LoadingStart")
   PlaySimpleLoadingUI()
@@ -408,13 +392,13 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     execEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
   end
   AddTransitionTime(_MapId, "TransitionEnd")
-  return execEvent -- AP: return true if the transition played an event or else false
 end
 
 function TransitionBattle(BeginOverlap, tbl, ...)
   print("TransitionBattle Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, bgmId, isNotChangeBGM, isDisableSE = ...
   print("[FieldTransitionScript::TransitionBattle] " .. "_mapId=" .. tostring(_mapId) .. " ,_startPointName=" .. tostring(_startPointName) .. " ,_environmentLightOn=" .. tostring(_environmentLightOn) .. " ,_fadeOut=" .. tostring(_fadeOut) .. " ,_fadeIn=" .. tostring(_fadeIn) .. " ,_mapConstructFuncName=" .. tostring(_mapConstructFuncName) .. " ,_seId=" .. tostring(_seId) .. " ,bgmId=" .. tostring(bgmId) .. " ,isNotChangeBGM=" .. tostring(isNotChangeBGM) .. " ,isDisableSE=" .. tostring(isDisableSE))
+  AP.SetMapInfo("battle_map_id", tostring(_mapId)) -- AP
   local bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmPAUSE
   if isNotChangeBGM == true then
     bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmNOP
@@ -580,6 +564,11 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   end
   local isPlayLancelLoseEvent = isPlayEvent and battleEventId == lancelLoseEventId
   local isCallChurchUI = isLose == true and isBattleRoad == false and bDoRetry == false and isPlayLancelLoseEvent == false
+  -- AP
+  if (bDoRetry or isLose or isCallChurchUI) and not isBattleRoad then
+    AP.CheckLocation("DEATHLINK_SEND_SIGNAL_1") -- AP
+  end
+  -- AP end
   -- AP: force base event to give AP items if another event is not called
   local isFadeIn = false
   if not isPlayEvent and not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent then
@@ -619,11 +608,6 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
     StartRetryBattle()
   end
   print("TransitionBattleToLevel End")
-  -- AP
-  if not isPlayEvent and not bDoRetry and not isLose and not isCallChurchUI and not isBattleRoad and not isPlayLancelLoseEvent then
-    AP.GiveItemsIfAvailable()
-  end
-  -- AP end
 end
 
 function TransitionInn()

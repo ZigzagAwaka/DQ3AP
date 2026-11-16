@@ -58,6 +58,10 @@ void Commands::Process(const std::string& command)
     {
         loggerPtr->LogInConsole(apClientPtr->PrintGoal());
     }
+    else if (commandWord == "/deathlink")
+    {
+        loggerPtr->LogInConsole(apClientPtr->ToggleDeathLink());
+    }
     else if (commandWord == "/disconnect")
     {
         apClientPtr->Disconnect();
@@ -163,6 +167,7 @@ void Commands::PrintHelp()
     loggerPtr->LogInConsole(" /reconnect                          - Try to reconnect to the latest valid connection made with /connect");
     loggerPtr->LogInConsole(" /status                             - Show Archipelago connection status");
     loggerPtr->LogInConsole(" /goal                               - Show the current victory goal option number");
+    loggerPtr->LogInConsole(" /deathlink                          - Toggle deathlink state, if possible");
     loggerPtr->LogInConsole(" /help                               - Show this message");
     loggerPtr->LogInConsole(" /clear                              - Clear console");
     loggerPtr->LogInConsole("--------------------------------------------------------------------------------------------------------------");

@@ -267,10 +267,11 @@ function AP.SetSpecialFlags(ItemId)
 end
 
 -- give the specified item to the player (and return true if the item was real, or false if this was an enemy)
-function AP.GiveItem(ItemId, ObjectId, TreasureId)
+function AP.GiveItem(ItemId, ObjectId, TreasureId, DeathLinkReloadMap)
   ItemId = AP.ConvertSpecialItemIds(ItemId)
   local isGold, goldCount = AP.IsItemGold(ItemId)
   local isEnemy, enemyName = AP.IsItemEnemy(ItemId)
+  local isDeathlink = ItemId == "DEATH_LINK"
   local isMultiple, multipleCount, multipleItemId = AP.IsItemMultiple(ItemId)
   local receptor = 0
   if isEnemy then
@@ -282,6 +283,9 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_TREASURE_9")
     CloseMessage()
     CmdStartEventBattle(BattleId)
+  elseif isDeathlink then
+    local shouldReload = DeathLinkReloadMap ~= nil and DeathLinkReloadMap == true
+    AP.TriggerDeathlink(shouldReload)
   elseif isGold then
     AddGold(goldCount)
     SetTagValue(goldCount)
@@ -369,11 +373,11 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId)
     AP.SetSpecialFlags(ItemId)
     AP.CheckMiniMedals(ItemId)
   end
-  return not isEnemy
+  return not (isEnemy or isDeathlink)
 end
 
 -- check if there is available items and if yes then gives them all to the player if possible
-function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
+function AP.GiveItemsIfAvailable(ObjectId, TreasureId, DeathLinkReloadMap)
   if GetFlag(Flag.FE157) == false then -- ignore items if dream sequence intro is not finished
     return
   end
@@ -386,7 +390,7 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
       if line ~= "" then
         if not stopGiveItem then
           AP.Log("Available item: " .. line)
-          local isRealItem = AP.GiveItem(line, ObjectId, TreasureId)
+          local isRealItem = AP.GiveItem(line, ObjectId, TreasureId, DeathLinkReloadMap)
           if isRealItem then
             RequestAutoSave() -- only auto save for real items and not for enemies
           else
@@ -408,6 +412,83 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId)
       file:close()
     end
   end
+end
+
+function AP.TriggerDeathlink(ShouldReloadMap)
+  SetActionInputMode(INPUT_MODE_GAME_EVENT, true)
+  CloseMessage()
+  SpawnPartyClone(true, true, true, true)
+  local NextMapId = GetCurrentMapId()
+  local isField = IsFieldMapId(NextMapId)
+  local effectSize = 1
+  if isField then
+    effectSize = 1.5
+  end
+  local n = GetPartyMemberNum()
+  local _leaderMovePos = GetPartyMemberLocation(1)
+  ChangeStageCameraToGlobalPoint(_leaderMovePos.X, _leaderMovePos.Y, _leaderMovePos.Z + 100, CAMERA_BLEND_EASE_IN_OUT, 2, 2, 1600, {
+    Yaw = 0,
+    Pitch = -18,
+    Roll = 0
+  })
+  StopBGM(2)
+  Wait(0.5)
+  if GetPartyMemberStatus(1, UNIT_STATUS_HP) >= 1 then
+    SpawnMangaIcon("Party1", "FIELD_EFX2D_SURPRISE")
+  end
+  Wait(1)
+  PlaySEEvent("EVESE_TOWN_BURN")
+  for i = 1, n, 1 do
+    if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
+      local targetPos = GetPartyMemberLocation(i)
+      SpawnEffectWorld("Ev_S04_FireBreath_02", {
+        X = targetPos.X,
+        Y = targetPos.Y,
+        Z = targetPos.Z - 40
+      }, {
+        Yaw = 0,
+        Pitch = 0,
+        Roll = 0
+      }, effectSize)
+      ChangeNpcOpacity("Party" .. tostring(i), 0, 1, false)
+    end
+  end
+  Wait(0.2)
+  PlaySEEvent("SE_BTL_016_DEATH")
+  for i = 1, n, 1 do
+    if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
+      WaitChangeNpcOpacity("Party" .. tostring(i))
+    end
+  end
+  SetEnableEventFastForwardControl(false)
+  CmdRequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_005")
+  --CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
+  CmdFadeOut(EFadingPriorityTopMost, 1)
+  for i = 1, n, 1 do
+    if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
+      HealPartyMemberHP(i, -GetPartyMemberStatus(i, UNIT_STATUS_HP) + 1)
+      HealPartyMemberMP(i, -GetPartyMemberStatus(i, UNIT_STATUS_MP))
+    end
+  end
+  Wait(0.5)
+  DestroyPartyClone()
+  PlayBGM(GetCurrentMapBgmId(), 3)
+  local map_entry_point = AP.GetFlag("map_entry_point")
+  if map_entry_point == nil or map_entry_point == false or map_entry_point == "None" or map_entry_point == "" then
+    map_entry_point = "None"
+    if isField then
+      if NextMapId == "MAPLIST_FIELD1" then
+        map_entry_point = "F_FromAliahanWest"
+      else -- MAPLIST_FIELD2
+        map_entry_point = "F_FromLudatormWest"
+      end
+    end
+  end
+  RequestLoading(NextMapId)
+  ChangeMap(NextMapId, map_entry_point, ORIENTATION_PLAYER_START)
+  SetEnableEventFastForwardControl(true)
+  SetActionInputMode(INPUT_MODE_GAME_EVENT, false)
+  AP.CheckLocation("DEATHLINK_READY_SIGNAL_0")
 end
 
 -- contains every options received from the client
@@ -461,9 +542,6 @@ local progress_flags = {
 
 -- Gets the value of the given AP related flag
 function AP.GetFlag(FlagName)
-  if progress_flags[FlagName] ~= nil then
-    return progress_flags[FlagName]
-  end
   local file = io.open("Archipelago/flags.data", "r")
   if not file then
     return false
@@ -483,12 +561,75 @@ end
 
 -- Sets the given value to the given AP related flag
 function AP.SetFlag(FlagName, FlagValue)
-  local previous = progress_flags[FlagName]
+  local previous = nil
+  local file = io.open("Archipelago/flags.data", "r")
+  if file then
+    for line in file:lines() do
+      local flag, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "flag: value"
+      progress_flags[flag] = value == "true"
+      if flag == FlagName then
+        previous = progress_flags[FlagName]
+      end
+    end
+    file:close()
+  end
   progress_flags[FlagName] = FlagValue
   if previous == nil or previous ~= FlagValue then
     local file = io.open("Archipelago/flags.data", "w")
     if file then
       for name, value in pairs(progress_flags) do
+        if value ~= nil then
+          file:write(name .. ": " .. tostring(value) .. "\n")
+        end
+      end
+      file:close()
+    end
+  end
+end
+
+-- contains every map data informations (string values)
+local map_info = {
+  map_entry_point = nil,
+  battle_map_id = nil,
+}
+
+-- Gets the value of the given map info
+function AP.GetMapInfo(InfoName)
+  local file = io.open("Archipelago/map.data", "r")
+  if not file then
+    return nil
+  end
+  for line in file:lines() do
+    local info, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "info: value"
+    if info == InfoName then
+      map_info[InfoName] = value
+      file:close()
+      return value
+    end
+  end
+  file:close()
+  return nil
+end
+
+-- Sets the value of the given map info
+function AP.SetMapInfo(InfoName, InfoValue)
+  local previous = nil
+  local file = io.open("Archipelago/map.data", "r")
+  if file then
+    for line in file:lines() do
+      local info, value = string.match(line, "^([^:]+):%s*(.+)$") -- matches "info: value"
+      map_info[info] = value
+      if info == InfoName then
+        previous = map_info[InfoName]
+      end
+    end
+    file:close()
+  end
+  map_info[InfoName] = InfoValue
+  if previous == nil or previous ~= InfoValue then
+    local file = io.open("Archipelago/map.data", "w")
+    if file then
+      for name, value in pairs(map_info) do
         if value ~= nil then
           file:write(name .. ": " .. tostring(value) .. "\n")
         end
