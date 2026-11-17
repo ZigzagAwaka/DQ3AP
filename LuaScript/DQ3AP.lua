@@ -417,76 +417,80 @@ end
 function AP.TriggerDeathlink(ShouldReloadMap)
   SetActionInputMode(INPUT_MODE_GAME_EVENT, true)
   CloseMessage()
-  SpawnPartyClone(true, true, true, true)
-  local NextMapId = GetCurrentMapId()
-  local isField = IsFieldMapId(NextMapId)
+  local mapId = ""
+  local isField = false
+  local map_entry_point = ""
   local effectSize = 1
-  if isField then
-    effectSize = 1.5
+  if ShouldReloadMap then
+    mapId = GetCurrentMapId()
+    isField = IsFieldMapId(mapId)
+    map_entry_point = AP.GetMapInfo("map_entry_point")
+    if isField then
+      effectSize = 1.5
+    end
   end
-  local n = GetPartyMemberNum()
-  local _leaderMovePos = GetPartyMemberLocation(1)
-  ChangeStageCameraToGlobalPoint(_leaderMovePos.X, _leaderMovePos.Y, _leaderMovePos.Z + 100, CAMERA_BLEND_EASE_IN_OUT, 2, 2, 1600, {
-    Yaw = 0,
-    Pitch = -18,
-    Roll = 0
-  })
+  local numberOfPartyMembers = GetPartyMemberNum()
+  local zoomPos = GetPartyMemberLocation(1)
+  ChangeStageCameraToGlobalPoint(zoomPos.X, zoomPos.Y, zoomPos.Z + 100, CAMERA_BLEND_EASE_IN_OUT, 2, 2, 1600, {Yaw = 0, Pitch = -18, Roll = 0})
   StopBGM(2)
   Wait(0.5)
   if GetPartyMemberStatus(1, UNIT_STATUS_HP) >= 1 then
-    SpawnMangaIcon("Party1", "FIELD_EFX2D_SURPRISE")
+    SpawnMangaIconByParty(1, "FIELD_EFX2D_SURPRISE")
   end
   Wait(1)
   PlaySEEvent("EVESE_TOWN_BURN")
-  for i = 1, n, 1 do
-    if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
-      local targetPos = GetPartyMemberLocation(i)
-      SpawnEffectWorld("Ev_S04_FireBreath_02", {
-        X = targetPos.X,
-        Y = targetPos.Y,
-        Z = targetPos.Z - 40
-      }, {
-        Yaw = 0,
-        Pitch = 0,
-        Roll = 0
-      }, effectSize)
-      ChangeNpcOpacity("Party" .. tostring(i), 0, 1, false)
+  if ShouldReloadMap then
+    SpawnPartyClone(true, true, true, true)
+    for i = 1, numberOfPartyMembers, 1 do
+      if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
+        local partyPos = GetPartyMemberLocation(i)
+        SpawnEffectWorld("Ev_S04_FireBreath_02", {X = partyPos.X, Y = partyPos.Y, Z = partyPos.Z - 40}, {Yaw = 0, Pitch = 0, Roll = 0}, effectSize)
+        ChangeNpcOpacity("Party" .. tostring(i), 0, 1, false)
+      end
     end
   end
   Wait(0.2)
   PlaySEEvent("SE_BTL_016_DEATH")
-  for i = 1, n, 1 do
-    if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
-      WaitChangeNpcOpacity("Party" .. tostring(i))
+  if ShouldReloadMap then
+    for i = 1, numberOfPartyMembers, 1 do
+      if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
+        WaitChangeNpcOpacity("Party" .. tostring(i))
+      end
     end
   end
-  SetEnableEventFastForwardControl(false)
-  CmdRequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_005")
-  --CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
-  CmdFadeOut(EFadingPriorityTopMost, 1)
-  for i = 1, n, 1 do
+  --SetEnableEventFastForwardControl(false)
+  RequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_005") --CmdRequestPlayJingleTemporaryDefaultFade
+  for i = 1, numberOfPartyMembers, 1 do
     if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
       HealPartyMemberHP(i, -GetPartyMemberStatus(i, UNIT_STATUS_HP) + 1)
       HealPartyMemberMP(i, -GetPartyMemberStatus(i, UNIT_STATUS_MP))
     end
   end
   Wait(0.5)
-  DestroyPartyClone()
+  if ShouldReloadMap then
+    CmdFadeOut(EFadingPriorityTopMost, 1)
+    Wait(0.5)
+    DestroyPartyClone()
+  else
+    Wait(0.5)
+    CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
+  end
   PlayBGM(GetCurrentMapBgmId(), 3)
-  local map_entry_point = AP.GetFlag("map_entry_point")
-  if map_entry_point == nil or map_entry_point == false or map_entry_point == "None" or map_entry_point == "" then
-    map_entry_point = "None"
-    if isField then
-      if NextMapId == "MAPLIST_FIELD1" then
-        map_entry_point = "F_FromAliahanWest"
-      else -- MAPLIST_FIELD2
-        map_entry_point = "F_FromLudatormWest"
+  if ShouldReloadMap then
+    if map_entry_point == nil or map_entry_point == false or map_entry_point == "None" or map_entry_point == "" then
+      map_entry_point = "None"
+      if isField then
+        if mapId == "MAPLIST_FIELD1" then
+          map_entry_point = "F_FromAliahanWest"
+        else -- MAPLIST_FIELD2
+          map_entry_point = "F_FromLudatormWest"
+        end
       end
     end
+    RequestLoading(mapId)
+    ChangeMap(mapId, map_entry_point, ORIENTATION_PLAYER_START)
   end
-  RequestLoading(NextMapId)
-  ChangeMap(NextMapId, map_entry_point, ORIENTATION_PLAYER_START)
-  SetEnableEventFastForwardControl(true)
+  --SetEnableEventFastForwardControl(true)
   SetActionInputMode(INPUT_MODE_GAME_EVENT, false)
   AP.CheckLocation("DEATHLINK_READY_SIGNAL_0")
 end
