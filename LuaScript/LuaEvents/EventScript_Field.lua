@@ -20,13 +20,50 @@ function Field_TUTO_0_SCENE_0110_080(BeginOverlap, table, ...)
 end
 
 -- AP
--- the base give items AP event, this is called anytime CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") is executed
-function GiveItems_ARCHIPELAGO(BeginOverlap, table, ...)
+-- the base give items AP events, those are called anytime CallSceneEvent(triggerId) is executed
+
+-- from a guaranteed ground position, trigger id: ARCHIPELAGO_GiveItemsIfAvailable_Ground
+function GiveItems_ARCHIPELAGO_1(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  AP.GiveItemsIfAvailable()
+  AP.GiveItemsIfAvailable(nil, nil, true)
   EventEnd(eventInfo, "")
 end
+
+-- from a guaranteed vehicle position, trigger id: ARCHIPELAGO_GiveItemsIfAvailable_Vehicle
+function GiveItems_ARCHIPELAGO_2(BeginOverlap, table, ...)
+  eventInfo = EventStart(table, false)
+  targetActorId = eventInfo[1]
+  AP.GiveItemsIfAvailable(nil, nil, false)
+  EventEnd(eventInfo, "")
+end
+
+-- from an uncertain or unknown position, trigger id: ARCHIPELAGO_GiveItemsIfAvailable_Unknown
+function GiveItems_ARCHIPELAGO_3(BeginOverlap, table, ...)
+  eventInfo = EventStart(table, false)
+  targetActorId = eventInfo[1]
+  local reload = not IsFieldMapId(GetCurrentMapId())
+  AP.GiveItemsIfAvailable(nil, nil, reload)
+  EventEnd(eventInfo, "")
+end
+
+-- table of battle map ids that should not reload the map in case of a deathlink, used by GiveItems_ARCHIPELAGO_4
+local non_reload_map_ids = {
+  [false] = true,
+  [""] = true,
+  ["test_battle_01_todo"] = true,
+}
+
+-- from the end of a battle, trigger id: ARCHIPELAGO_GiveItemsIfAvailable_Battle
+function GiveItems_ARCHIPELAGO_4(BeginOverlap, table, ...)
+  eventInfo = EventStart(table, false)
+  targetActorId = eventInfo[1]
+  local battle_map_id = AP.GetMapInfo("battle_map_id")
+  local reload = not (battle_map_id == nil or non_reload_map_ids[battle_map_id])
+  AP.GiveItemsIfAvailable(nil, nil, reload)
+  EventEnd(eventInfo, "")
+end
+
 -- AP end
 
 function Field_MAIN_0_SCENE_0010_010(BeginOverlap, table, ...)

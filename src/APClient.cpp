@@ -252,10 +252,6 @@ bool APClient::CheckSignal(const std::string& locationName)
             AP_DeathLinkSend();
         return true;
     }
-    // same as DEATHLINK_READY_SIGNAL_0 for no signal, to prevent a non ready state in case of a server auto-reconnect
-    // maybe not needed?
-    //if (deathlinkEnabled)
-        //deathlinkIsReady = true;
     return false;
 }
 
@@ -339,22 +335,21 @@ void APClient::ClearData()
         CreateOrClearFile(itemDataPath, true, !isHostKnown);
         // Then set the latest room data to be the current room data
         SetLatestRoomData();
-        // And finally, clear flags and map infos if connected to an unknown host
+        // And finally, clear flags, map infos and deathlink state if connected to an unknown host
         if (!isHostKnown)
         {
             DeleteFile(flagDataPath);
             DeleteFile(mapDataPath);
+            deathlinkIsReady = false;
         }
     }
     // Always clear location data
     CreateOrClearFile(locationDataPath);
     locationDataLastCheckTime = std::filesystem::last_write_time(locationDataPath);
-    // Always clear storedInventory
+    // Always clear storedInventory and deathlink
     storedInventory.clear();
     storedInventory.reserve(2500);
-    // Always clear deathlink booleans
     deathlinkEnabled = false;
-    deathlinkIsReady = false;
 }
 
 

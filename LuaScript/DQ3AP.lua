@@ -284,7 +284,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId, DeathLinkReloadMap)
     CloseMessage()
     CmdStartEventBattle(BattleId)
   elseif isDeathlink then
-    local shouldReload = DeathLinkReloadMap ~= nil and DeathLinkReloadMap == true
+    local shouldReload = DeathLinkReloadMap == nil or DeathLinkReloadMap == true
     AP.TriggerDeathlink(shouldReload)
   elseif isGold then
     AddGold(goldCount)
