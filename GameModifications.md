@@ -24,7 +24,9 @@ Other than every modifications related to the Archipelago server, DQ3AP also edi
 
 - Some items have been edited to no longer be considered "rare" so getting those will not trigger the long "rare item get" animation. This is the case for a lot of filler items such as the Prayer Ring.
 
-- Some field spells/abilities are unlocked from the start and available to be used right away. This helps with the pace of the game for Archipelago.
+- Some field spells/abilities are unlocked from the start and available to be used right away (some of these also don't cost MP anymore). This helps with the pace of the game for Archipelago.
+
+- The spell "Peep" has been reworked as it's vanilla effect didn't properly reflect the randomized item located in the checked chest. It can now be used to instantly collect any new received items from the server, meaning it is a way to receive available items on demand.
 
 ## List for progression and logic
 
