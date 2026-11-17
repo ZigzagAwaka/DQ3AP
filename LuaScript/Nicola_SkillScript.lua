@@ -56,7 +56,7 @@ function SS_End_Effect_Message(BeginOverlap, table, ...)
   local args = SS_GetCommonArgs(...)
   SS_Effect_Message(args.EndEffectText)
   MapTimeNotifyEndSystemProcessing()
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown") -- AP
 end
 
 function SS_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
@@ -88,7 +88,7 @@ function SS_End_Effect_INVISIBLE_PARTY(BeginOverlap, table, ...)
   CloseMessage()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown") -- AP
 end
 
 function SS_Effect_MONSTER_ATTRACT2(BeginOverlap, table, ...)
@@ -152,7 +152,7 @@ function SS_Effect_CHANGE_NIGHT(BeginOverlap, table, ...)
   _retry(SYS_WaitFadeIn, fadeType)
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown") -- AP
 end
 
 function SS_Effect_TRANSFORM_RANDOM(BeginOverlap, table, ...)
@@ -198,7 +198,7 @@ function SS_End_Effect_TRANSFORM_RANDOM(BeginOverlap, table, ...)
   CloseMessage()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown") -- AP
 end
 
 function SS_Effect_RELEASE_TRAP(BeginOverlap, table, ...)
@@ -230,6 +230,15 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
   SetActionInputMode(INPUT_MODE_NO_INPUT, true)
   SS_ShowMessage(args.SuccessText)
   _retry(SYS_WaitShowMessage)
+  -- AP: Peep effect reworked for archipelago
+  if true then
+    CloseMessage()
+    SetActionInputMode(INPUT_MODE_NO_INPUT, false)
+    MapTimeNotifyEndSystemProcessing()
+    CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown")
+    return
+  end
+  -- AP end
   if args.InpasuResult == "NoneResult" then
     print(args.InpasuResult)
   elseif args.InpasuResult == "Empty" then
@@ -258,7 +267,6 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
   StopEffectInpasu()
   SetActionInputMode(INPUT_MODE_NO_INPUT, false)
   MapTimeNotifyEndSystemProcessing()
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
 end
 
 function SS_Effect_TREASURE_SEARCH(BeginOverlap, table, ...)

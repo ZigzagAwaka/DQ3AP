@@ -389,7 +389,13 @@ function TransitionLevelImpl(_PrevMapId, _MapId, _StartPointName, _FadeTime, _Or
     CmdFadeInOnInitialFadeInPostMapTransition(_FadeType, _FadeTime, _MapId, {
       NicolaSoundBgmManagementTypeOnMapTransition = _IsPlayBGM and ENicolaSoundBgmManagementTypeOnMapTransitionDEFAULT or ENicolaSoundBgmManagementTypeOnMapTransitionNOP
     })
-    execEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+    -- AP
+    if _PlayerType == PLAYER_TYPE_SWIM or _PlayerType == PLAYER_TYPE_FLY then
+      execEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Vehicle")
+    else
+      execEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Ground")
+    end
+    -- AP end
   end
   AddTransitionTime(_MapId, "TransitionEnd")
 end
@@ -576,7 +582,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
       NicolaSoundBgmManagementTypeOnMapTransition = isLose and ENicolaSoundBgmManagementTypeOnMapTransitionDEFAULT or ENicolaSoundBgmManagementTypeOnMapTransitionRESUME
     })
     isFadeIn = true
-    isPlayEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable")
+    isPlayEvent = CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Battle")
   end
   -- AP end
   if isPlayEvent == false and bDoRetry == false then

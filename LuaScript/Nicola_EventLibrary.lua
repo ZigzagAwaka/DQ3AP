@@ -615,7 +615,7 @@ end
 function StartChurchRestartGame()
   CallChurchUIRestart(CHURCH_MODE_GAME_START)
   _retry(SYS_WaitChurchUI)
-  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable") -- AP
+  CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Ground") -- AP
 end
 
 function WaitChurchUI()

@@ -689,7 +689,7 @@ function SearchObject_Shine_Sea(BeginOverlap, table, CanObtainItem, TreasureId, 
     SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId2, ItemCount2, Gold2)
     SearchObject_Shine_ShowMessage(eventInfo, TreasureId, ItemId3, ItemCount3, Gold3)
   end
-  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId)
+  AP.GiveItemsIfAvailable(GetTargetActorIdFromEventInfo(eventInfo), TreasureId, false)
   -- AP end
   EventEnd(eventInfo, "")
 end
