@@ -47,19 +47,12 @@ function GiveItems_ARCHIPELAGO_3(BeginOverlap, table, ...)
   EventEnd(eventInfo, "")
 end
 
--- table of battle map ids that should not reload the map in case of a deathlink, used by GiveItems_ARCHIPELAGO_4
-local non_reload_map_ids = {
-  [false] = true,
-  [""] = true,
-  ["test_battle_01_todo"] = true,
-}
-
 -- from the end of a battle, trigger id: ARCHIPELAGO_GiveItemsIfAvailable_Battle
 function GiveItems_ARCHIPELAGO_4(BeginOverlap, table, ...)
   eventInfo = EventStart(table, false)
   targetActorId = eventInfo[1]
-  local battle_map_id = AP.GetMapInfo("battle_map_id")
-  local reload = not (battle_map_id == nil or non_reload_map_ids[battle_map_id])
+  local map_id = AP.GetMapInfo("battle_map_id")
+  local reload = not (map_id == nil or map_id == false or map_id == "" or string.match(map_id, "^MAPLIST_BATTLE_(SEA.*|RIVER.*)$") ~= nil)
   AP.GiveItemsIfAvailable(nil, nil, reload)
   EventEnd(eventInfo, "")
 end
