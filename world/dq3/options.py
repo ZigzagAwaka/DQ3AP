@@ -39,7 +39,11 @@ class RequiredMedalsAmount(Range):
 
 class DeathLink(Toggle):
     """
-    todo
+    Configure if Death Link is enabled or not, an experimental feature. With it enabled it will:
+    - send a death to other games/players when you lose a battle (when the party is defeated)
+    - disintegrate all party members, reducing their HP along with a dramatic sound effect and reload the current map when another player sends a death
+    The "disintegrated" animation will not work everywhere and depending on where you get it, it may just play the sound.
+    Note that, if enabled, the client has a /deathlink command that can be used anytime to toggle Death Link on or off.
     """
     display_name = "DeathLink"
 
