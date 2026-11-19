@@ -421,10 +421,12 @@ function AP.TriggerDeathlink(ShouldReloadMap)
   local isField = false
   local map_entry_point = ""
   local effectSize = 1
+  local timeToPlayBGM = 0.5
   if ShouldReloadMap then
     mapId = GetCurrentMapId()
     isField = IsFieldMapId(mapId)
     map_entry_point = AP.GetMapInfo("map_entry_point")
+    timeToPlayBGM = 3
     if isField then
       effectSize = 1.5
     end
@@ -457,25 +459,27 @@ function AP.TriggerDeathlink(ShouldReloadMap)
         WaitChangeNpcOpacity("Party" .. tostring(i))
       end
     end
+  else
+    Wait(0.5)
   end
-  --SetEnableEventFastForwardControl(false)
-  RequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_005") --CmdRequestPlayJingleTemporaryDefaultFade
+  SetEnableEventFastForwardControl(false)
+  RequestPlayJingleTemporaryDefaultFade("BGM_JINGLE_005")
   for i = 1, numberOfPartyMembers, 1 do
     if GetPartyMemberStatus(i, UNIT_STATUS_HP) >= 1 then
       HealPartyMemberHP(i, -GetPartyMemberStatus(i, UNIT_STATUS_HP) + 1)
       HealPartyMemberMP(i, -GetPartyMemberStatus(i, UNIT_STATUS_MP))
     end
   end
-  Wait(0.5)
+  Wait(1)
   if ShouldReloadMap then
     CmdFadeOut(EFadingPriorityTopMost, 1)
-    Wait(0.5)
+    Wait(1)
     DestroyPartyClone()
   else
-    Wait(0.5)
+    _retry(SYS_WaitPlayJingle)
     CmdChangeTraceCamera(CAMERA_BLEND_EASE_IN_OUT, 1, 2)
   end
-  PlayBGM(GetCurrentMapBgmId(), 3)
+  PlayBGM(GetCurrentMapBgmId(), timeToPlayBGM)
   if ShouldReloadMap then
     if map_entry_point == nil or map_entry_point == false or map_entry_point == "None" or map_entry_point == "" then
       map_entry_point = "None"
@@ -490,7 +494,7 @@ function AP.TriggerDeathlink(ShouldReloadMap)
     RequestLoading(mapId)
     ChangeMap(mapId, map_entry_point, ORIENTATION_PLAYER_START)
   end
-  --SetEnableEventFastForwardControl(true)
+  SetEnableEventFastForwardControl(true)
   SetActionInputMode(INPUT_MODE_GAME_EVENT, false)
   AP.CheckLocation("DEATHLINK_READY_SIGNAL_0")
 end

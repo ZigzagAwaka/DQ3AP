@@ -235,6 +235,7 @@ function SS_Effect_TREASURE_APPRAISAL(BeginOverlap, table, ...)
     CloseMessage()
     SetActionInputMode(INPUT_MODE_NO_INPUT, false)
     MapTimeNotifyEndSystemProcessing()
+    Wait(0.1)
     CallSceneEvent("ARCHIPELAGO_GiveItemsIfAvailable_Unknown")
     return
   end

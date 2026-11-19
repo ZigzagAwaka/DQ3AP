@@ -249,7 +249,10 @@ bool APClient::CheckSignal(const std::string& locationName)
     {
         // send a deathlink to the server
         if (deathlinkEnabled)
+        {
+            logger.LogInConsole("Sending DeathLink...");
             AP_DeathLinkSend();
+        }
         return true;
     }
     return false;
