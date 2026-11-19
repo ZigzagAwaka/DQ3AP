@@ -1285,7 +1285,7 @@ def is_postgame_enabled(world: DQ3World) -> bool:
 
 # Checks if the current goal is baramos (exclude after-baramos locations)
 def is_goal_baramos_only(world: DQ3World) -> bool:
-    return world.options.victory_goal == "baramos"
+    return world.options.victory_goal.current_key in {"baramos", "medals_short"}
 
 
 # Helper method that takes a list of location names and returns them as a dict with their IDs

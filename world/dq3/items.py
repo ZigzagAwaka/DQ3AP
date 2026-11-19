@@ -478,8 +478,8 @@ def get_random_filler_item_name(world: DQ3World) -> str:
 def create_item_with_correct_classification(world: DQ3World, name: str) -> DQ3Item:
     classification = ALL_ITEMS[name].classification
 
-    if name == "Mini Medal" and world.options.victory_goal.current_key in {"medals", "medals_postgame", "zoma_medals", "grand_dragon_medals"}:
-        if world.options.victory_goal.current_key in {"medals", "medals_postgame"}:
+    if name == "Mini Medal" and world.options.victory_goal.current_key in {"medals", "medals_postgame", "zoma_medals", "grand_dragon_medals", "medals_short"}:
+        if world.options.victory_goal.current_key in {"medals", "medals_postgame", "medals_short"}:
             classification = ItemClassification.progression_skip_balancing | ItemClassification.useful
         else:
             classification = ItemClassification.progression | ItemClassification.useful

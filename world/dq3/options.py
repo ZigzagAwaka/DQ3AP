@@ -16,6 +16,7 @@ class VictoryGoal(Choice):
     - Baramos: Gain access to Baramos Castle then defeat Baramos, for shorter games
     - Zoma medals: Same as Zoma but you also need to find the specified amount of mini medals to obtain the Rainbow Drop
     - Grand Dragon medals: Same as Grand Dragon but you also need to find the specified amount of mini medals to complete the west trial of the Temple of Trials
+    - Medals short: Same as Medals but it will exclude every area located after Baramos, for shorter games
     """
     display_name = "Victory Goal"
     option_zoma = 0
@@ -25,6 +26,7 @@ class VictoryGoal(Choice):
     option_baramos = 4
     option_zoma_medals = 5
     option_grand_dragon_medals = 6
+    option_medals_short = 7
     default = 0
 
 class RequiredMedalsAmount(Range):
@@ -44,6 +46,7 @@ class DeathLink(Toggle):
     - disintegrate all party members, reducing their HP along with a dramatic sound effect and reload the current map when another player sends a death
     The "disintegrated" animation will not work everywhere and depending on where you get it, it may just play the sound.
     Note that, if enabled, the client has a /deathlink command that can be used anytime to toggle Death Link on or off.
+    (You should probably leave it disable if you plan on playing with the Dracky Quest ingame difficulty)
     """
     display_name = "DeathLink"
 

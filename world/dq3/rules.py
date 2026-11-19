@@ -85,7 +85,7 @@ def get_completion_event_parameters(world: DQ3World) -> tuple[str, str, Collecti
         return "Temple of Trials", "[Temple of Trials] Grand Dragon defeated", CAN_ACCESS_GRAND_DRAGON
     elif world.options.victory_goal == "baramos":
         return "Baramos' Lair", "[Baramos' Lair] Baramos defeated", HAS_BIRD
-    elif world.options.victory_goal.current_key in {"medals", "medals_postgame"}:
+    elif world.options.victory_goal.current_key in {"medals", "medals_postgame", "medals_short"}:
         return "Aliahan", "All medals collected", HAS_ALL_MEDALS
     return "Aliahan", "Unknown victory", CAN_ACCESS_ZOMA
 
