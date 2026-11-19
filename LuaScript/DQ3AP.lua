@@ -110,7 +110,7 @@ function AP.CheckMiniMedals(ItemId)
     local required_medals_amount = AP.GetOption("required_medals_amount")
     if required_medals_amount ~= nil and GetMiniMedalCount() >= required_medals_amount then
       local victory_goal = AP.GetOption("victory_goal")
-      if victory_goal == nil or victory_goal == 2 or victory_goal == 3 or victory_goal == 5 then
+      if victory_goal == nil or victory_goal == 2 or victory_goal == 3 or victory_goal == 5 or victory_goal == 7 then
         AP.Log("All medals collected for victory " .. tostring(victory_goal))
         if victory_goal == 5 then
           AP.GiveItem("ITEM_IMPORTANT_RAINBOW_DROP")
@@ -120,6 +120,8 @@ function AP.CheckMiniMedals(ItemId)
             locationName = locationName .. "2"
           elseif victory_goal == 3 then
             locationName = locationName .. "3"
+          elseif victory_goal == 7 then
+            locationName = locationName .. "7"
           end
           AP.CheckLocation(locationName)
         end

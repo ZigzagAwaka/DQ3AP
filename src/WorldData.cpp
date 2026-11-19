@@ -2606,6 +2606,7 @@ const std::unordered_map<std::string, int> WorldData::victory_locations =
     {"BaramosCastle_DreamSpace_MAIN_0_SCENE_0000_010", 4},
     {"ZomaCastle_B5F_MAIN_0_BATTLE_END_0010_050_5", 5},
     {"GranDragon_07_Snake_SUB_0_BATTLE_END_0010_020_6", 6},
+    {"ITEM_SMALL_MEDAL_COLLECT_ALL_110_7", 7},
 };
 
 const std::unordered_map<std::string, std::set<int64_t>> WorldData::hints =
