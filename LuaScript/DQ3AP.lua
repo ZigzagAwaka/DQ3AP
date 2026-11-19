@@ -599,6 +599,7 @@ end
 local map_info = {
   map_entry_point = nil,
   battle_map_id = nil,
+  in_battle = nil,
 }
 
 -- Gets the value of the given map info
@@ -619,9 +620,10 @@ function AP.GetMapInfo(InfoName)
   return nil
 end
 
--- Sets the value of the given map info
-function AP.SetMapInfo(InfoName, InfoValue)
+-- Sets the value of the given map info (optionally, set 2 map info at once)
+function AP.SetMapInfo(InfoName, InfoValue, InfoName2, InfoValue2)
   local previous = nil
+  local previous2 = nil
   local file = io.open("Archipelago/map.data", "r")
   if file then
     for line in file:lines() do
@@ -630,11 +632,17 @@ function AP.SetMapInfo(InfoName, InfoValue)
       if info == InfoName then
         previous = map_info[InfoName]
       end
+      if InfoName2 ~= nil and info == InfoName2 then
+        previous2 = map_info[InfoName2]
+      end
     end
     file:close()
   end
   map_info[InfoName] = InfoValue
-  if previous == nil or previous ~= InfoValue then
+  if InfoName2 ~= nil then
+    map_info[InfoName2] = InfoValue2
+  end
+  if previous == nil or previous ~= InfoValue or (InfoName2 ~= nil and previous2 == nil) or (InfoName2 ~= nil and previous2 ~= InfoValue2) then
     local file = io.open("Archipelago/map.data", "w")
     if file then
       for name, value in pairs(map_info) do

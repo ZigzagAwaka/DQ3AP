@@ -284,7 +284,7 @@ std::string APClient::ToggleDeathLink()
             return "DeathLink can't be enabled on this seed because the current death_link option is disabled. ";
         case 1:
             deathlinkEnabled = !deathlinkEnabled;
-            deathlinkIsReady = false;
+            deathlinkIsReady = true;
             return "DeathLink is now " + std::string(deathlinkEnabled ? "enabled" : "disabled") + " on this seed.";
         default:
             return "The current death_link option is not defined! Try to connect (or reconnect) first.";

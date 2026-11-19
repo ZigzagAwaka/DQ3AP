@@ -111,8 +111,15 @@ end
 function OpenFieldTopFromTitleAfterLevelVisible(BeginOverlap, table, ...)
   print("OpenFieldTopFromTitleAfterLevelVisible Begin")
   local _mapId, _startPointName, _ShowChurchText, _fadeIn = ...
-  AP.SetMapInfo("map_entry_point", tostring(_startPointName)) -- AP
-  AP.CheckLocation("DEATHLINK_READY_SIGNAL_0") -- AP
+  -- AP
+  local mapCheckName = "DEATHLINK_READY_SIGNAL_0"
+  local in_battle = AP.GetMapInfo("in_battle")
+  if in_battle ~= nil and in_battle == "1" then
+    mapCheckName = mapCheckName .. "\n" .. "DEATHLINK_SEND_SIGNAL_1"
+  end
+  AP.SetMapInfo("map_entry_point", tostring(_startPointName), "in_battle", "0")
+  AP.CheckLocation(mapCheckName)
+  -- AP end
   ResumeTransition()
   StartTransitionTime(_mapId)
   WaitFrame(2)
@@ -404,7 +411,7 @@ function TransitionBattle(BeginOverlap, tbl, ...)
   print("TransitionBattle Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, bgmId, isNotChangeBGM, isDisableSE = ...
   print("[FieldTransitionScript::TransitionBattle] " .. "_mapId=" .. tostring(_mapId) .. " ,_startPointName=" .. tostring(_startPointName) .. " ,_environmentLightOn=" .. tostring(_environmentLightOn) .. " ,_fadeOut=" .. tostring(_fadeOut) .. " ,_fadeIn=" .. tostring(_fadeIn) .. " ,_mapConstructFuncName=" .. tostring(_mapConstructFuncName) .. " ,_seId=" .. tostring(_seId) .. " ,bgmId=" .. tostring(bgmId) .. " ,isNotChangeBGM=" .. tostring(isNotChangeBGM) .. " ,isDisableSE=" .. tostring(isDisableSE))
-  AP.SetMapInfo("battle_map_id", tostring(_mapId)) -- AP
+  AP.SetMapInfo("battle_map_id", tostring(_mapId), "in_battle", "1") -- AP
   local bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmPAUSE
   if isNotChangeBGM == true then
     bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmNOP
@@ -486,6 +493,7 @@ end
 function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   print("TransitionBattleToLevel Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, _orientation, isLose, isLoad, bDoAutoSave, bDoRetry, battleEventId = ...
+  AP.SetMapInfo("in_battle", "0") -- AP
   StartTransition(_mapId)
   local isBattleRoad = IsBattleRoad()
   MapTimeNotifyStartSystemProcessing()
@@ -572,7 +580,7 @@ function TransitionBattleToLevel(BeginOverlap, tbl, ...)
   local isCallChurchUI = isLose == true and isBattleRoad == false and bDoRetry == false and isPlayLancelLoseEvent == false
   -- AP
   if (bDoRetry or isLose or isCallChurchUI) and not isBattleRoad then
-    AP.CheckLocation("DEATHLINK_SEND_SIGNAL_1") -- AP
+    AP.CheckLocation("DEATHLINK_SEND_SIGNAL_1")
   end
   -- AP end
   -- AP: force base event to give AP items if another event is not called
