@@ -57,4 +57,5 @@ class DQ3World(World):
             "victory_goal", "aliahan_king_special_gifts", "ramia_settings",
             "shiny_spots_sanity", "rare_items_fast_animation", "shop_sanity",
             "required_medals_amount", "trials_edits", "death_link",
+            "medal_rewards_sanity", "arena_rewards_sanity",
         )

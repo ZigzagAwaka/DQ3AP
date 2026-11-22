@@ -650,8 +650,23 @@ function WaitMemberCreateUI()
 end
 
 function CmdCallMedalTradeUI(TargetActorId)
+  -- AP
+  local medal_rewards_sanity = AP.GetOption("medal_rewards_sanity")
+  local is_vanilla = medal_rewards_sanity ~= nil and medal_rewards_sanity == 0
+  local quantities = {}
+  AP.Log("CmdCallMedalTradeUI called with TargetActorId: " .. tostring(TargetActorId))
+  if not is_vanilla then
+    quantities = AP.PreCallShop("MEDAL_TRADE")
+  end
+  -- AP end
   CallMedalTradeUI(TargetActorId)
   _retry(SYS_WaitMedalTradeUI)
+  -- AP
+  if not is_vanilla and #quantities > 0 then
+    AP.PostCallShop("MEDAL_TRADE", quantities, (medal_rewards_sanity ~= nil and medal_rewards_sanity == 2))
+  end
+  AP.GiveItemsIfAvailable()
+  -- AP end
 end
 
 function WaitMedalTradeUI()
@@ -659,6 +674,7 @@ function WaitMedalTradeUI()
 end
 
 function CmdCallMedalRewardUI()
+  AP.CheckLocation("MEDAL_TRADE") -- AP : this sends hints for items placed on medals rewards
   CallMedalRewardUI()
   _retry(SYS_WaitMedalRewardUI)
 end
@@ -718,11 +734,13 @@ function WaitBattleRoadZooUI()
 end
 
 function CmdCallBattleRoadEntryUI(BattleRoadEntryId)
+  AP.Log("CmdCallBattleRoadEntryUI")
   CallBattleRoadEntryUI(BattleRoadEntryId)
   _retry(SYS_WaitBattleRoadEntryUI)
 end
 
 function CmdCallBattleRoadEntryUIForResult()
+  AP.Log("CmdCallBattleRoadEntryUIForResult")
   CallBattleRoadEntryUIForResult()
   _retry(SYS_WaitBattleRoadEntryUI)
 end

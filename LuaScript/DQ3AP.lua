@@ -511,6 +511,8 @@ local client_options = {
   shop_sanity = nil,
   required_medals_amount = nil,
   trials_edits = nil,
+  medal_rewards_sanity = nil,
+  arena_rewards_sanity = nil,
 }
 
 -- gets the option value if it exist or else search it in the option file
@@ -1221,13 +1223,41 @@ local shops_content = {
     "ITEM_USE_ITEM_POUCH_OF_MUSK",
     "ITEM_USE_ITEM_DIEAMEND",
     "ITEM_USE_ITEM_OOMPH_POWDER"
+  },
+  MEDAL_TRADE = {
+    "ITEM_EQUIP_WEAPON_THORN_WHIP",
+    "ITEM_EQUIP_ARMOR_LEATHER_DRESS",
+    "ITEM_EQUIP_ACCESSORY_GARTER",
+    "ITEM_EQUIP_WEAPON_EDGED_BOOMERANG",
+    "ITEM_EQUIP_SHIELD_SILVER_PLATTER",
+    "ITEM_USE_ITEM_PRAYER_RING",
+    "ITEM_EQUIP_ACCESSORY_STRENGTH_RING",
+    "ITEM_EQUIP_ACCESSORY_SCHOLARS_SPECS",
+    "ITEM_EQUIP_ACCESSORY_AGILITY_RING",
+    "ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION",
+    "ITEM_EQUIP_ACCESSORY_TITAN_BELT",
+    "ITEM_EQUIP_ARMOR_AGILITY_GILET",
+    "ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP",
+    "ITEM_EQUIP_ARMOR_STEALTH_SUIT",
+    "ITEM_EQUIP_WEAPON_FLAMETANG_BOOMERANG",
+    "ITEM_EQUIP_ACCESSORY_MERCURYS_BANDANA",
+    "ITEM_EQUIP_WEAPON_SCOURGE_WHIP",
+    "ITEM_EQUIP_WEAPON_DRAGON_CLAWS",
+    "ITEM_EQUIP_WEAPON_ASTRAEAS_ABACUS",
+    "ITEM_EQUIP_ARMOR_DRAGON_ROBE",
+    "ITEM_EQUIP_ARMOR_BLESSED_BIKINI",
+    "ITEM_EQUIP_SHIELD_GODDESS_SHIELD",
+    "ITEM_EQUIP_WEAPON_BASTARD_SWORD",
+    "ITEM_EQUIP_ARMOR_EXOTOGA"
   }
 }
 
 -- shop management function for AP, executes before the shop is called
 -- calculates the quantities of items before those are bought and returns it
 function AP.PreCallShop(ShopId)
-  AP.CheckLocation(ShopId) -- this sends hints for items in this shop
+  if ShopId ~= "MEDAL_TRADE" then
+    AP.CheckLocation(ShopId) -- this sends hints for items in this shop
+  end
   local items_quantities = {}
   local shop_items = shops_content[ShopId]
   if shop_items then -- checks if shop is defined only in PreCall

@@ -45,7 +45,7 @@ class DeathLink(Toggle):
     - send a death to other games/players when you lose a battle (when the party is defeated)
     - disintegrate all party members, reducing their HP along with a dramatic sound effect and reload the current map when another player sends a death
     The "disintegrated" animation will not work everywhere and depending on where you get it, it may just play the sound.
-    Note that, if enabled, the client has a /deathlink command that can be used anytime to toggle Death Link on or off.
+    Note that, if enabled, the client has a '/deathlink' command that can be used anytime to toggle Death Link on or off.
     (You should probably leave it disable if you plan on playing with the Dracky Quest ingame difficulty)
     """
     display_name = "DeathLink"
@@ -137,6 +137,34 @@ class ShopSanity(Choice):
     - Enabled and vanilla: Same as Enabled but buying items in the shops will also give you the vanilla item you bought, so it gives the vanilla item + a check
     """
     display_name = "Shop Sanity"
+    option_vanilla = 0
+    option_enabled = 1
+    option_enabled_and_vanilla = 2
+    default = 0
+
+class MedalRewardsSanity(Choice):
+    """
+    Choose if items obtained from rewards by the Medal Trader in Aliahan's well are randomized or not.
+    Note that if set to Enabled, there is a known issue where getting a new copy of an item you already have equiped will unequip it.
+    - Vanilla: Mini Medals rewards items will not be randomized and will instead be vanilla
+    - Enabled: Getting a Mini Medal reward will count as a check and hints for those items will be sent upon inspecting the bookshelf left of the Trader. This adds around 24 more checks in the game
+    - Enabled and vanilla: Same as Enabled but getting items from the Trader will also give you the vanilla item you got, so it gives the vanilla item + a check
+    """
+    display_name = "Medals Rewards Sanity"
+    option_vanilla = 0
+    option_enabled = 1
+    option_enabled_and_vanilla = 2
+    default = 0
+
+class ArenaRewardsSanity(Choice):
+    """
+    Choose if items obtained from rewards in Monster Arenas are randomized or not.
+    Note that if set to Enabled, there is a known issue where getting a new copy of an item you already have equiped will unequip it.
+    - Vanilla: Arena rewards items will not be randomized and will instead be vanilla
+    - Enabled: Getting the rewards for beating a rank of an Arena will count as checks and hints for those items will be sent upon speaking with the Arena's host NPC. This adds around 35 more checks in the game
+    - Enabled and vanilla: Same as Enabled but getting the rewards will also give you the vanilla items you got, so it gives the vanilla items + some checks
+    """
+    display_name = "Monster Arena Rewards Sanity"
     option_vanilla = 0
     option_enabled = 1
     option_enabled_and_vanilla = 2
@@ -268,6 +296,8 @@ class DQ3Options(PerGameCommonOptions):
     ocean_secret_spots_sanity: OceanSecretSpotsSanity
     shiny_spots_sanity: ShinySpotsSanity
     shop_sanity: ShopSanity
+    medal_rewards_sanity: MedalRewardsSanity
+    arena_rewards_sanity: ArenaRewardsSanity
     random_filler_item_pool: RandomFillerItemPool
     ship_settings: ShipSettings
     ramia_settings: RamiaSettings
@@ -286,7 +316,7 @@ class DQ3Options(PerGameCommonOptions):
 groups = [
     OptionGroup(
         "Locations Options",
-        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity, ShinySpotsSanity, ShopSanity],
+        [ContainerSanity, HiddenGroundSanity, SecretSpotsSanity, OceanSecretSpotsSanity, ShinySpotsSanity, ShopSanity, MedalRewardsSanity, ArenaRewardsSanity],
     ),
     OptionGroup(
         "Items Options",

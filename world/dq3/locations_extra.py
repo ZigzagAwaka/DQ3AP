@@ -1396,4 +1396,30 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Cloudsgate Citadel] Item Shop: Musk": Info(2452, type=Type.SHOP), #SHOP_ZENITH_CASTLE_ITEM_0001_ITEM_USE_ITEM_POUCH_OF_MUSK
     "[Cloudsgate Citadel] Item Shop: Dieamend": Info(2453, type=Type.SHOP), #SHOP_ZENITH_CASTLE_ITEM_0001_ITEM_USE_ITEM_DIEAMEND
     "[Cloudsgate Citadel] Item Shop: Oomph Powder": Info(2454, type=Type.SHOP), #SHOP_ZENITH_CASTLE_ITEM_0001_ITEM_USE_ITEM_OOMPH_POWDER
+    # ///////////////////////// MEDALS REWARDS /////////////////////////
+    # ----- Aliahan -----
+    "[Aliahan] In the well: trade 2 Mini Medals": Info(2455, rules.Has("Mini Medal", count=2), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_THORN_WHIP
+    "[Aliahan] In the well: trade 3 Mini Medals": Info(2456, rules.Has("Mini Medal", count=3), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_LEATHER_DRESS
+    "[Aliahan] In the well: trade 5 Mini Medals": Info(2457, rules.Has("Mini Medal", count=5), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_GARTER
+    "[Aliahan] In the well: trade 8 Mini Medals": Info(2458, rules.Has("Mini Medal", count=8), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_EDGED_BOOMERANG
+    "[Aliahan] In the well: trade 12 Mini Medals": Info(2459, rules.Has("Mini Medal", count=12), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_SHIELD_SILVER_PLATTER
+    "[Aliahan] In the well: trade 15 Mini Medals": Info(2460, rules.Has("Mini Medal", count=15), type=Type.MEDALS), #MEDAL_TRADE_ITEM_USE_ITEM_PRAYER_RING
+    "[Aliahan] In the well: trade 20 Mini Medals": Info(2461, rules.Has("Mini Medal", count=20), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_STRENGTH_RING
+    "[Aliahan] In the well: trade 23 Mini Medals": Info(2462, rules.Has("Mini Medal", count=23), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_SCHOLARS_SPECS
+    "[Aliahan] In the well: trade 27 Mini Medals": Info(2463, rules.Has("Mini Medal", count=27), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_AGILITY_RING
+    "[Aliahan] In the well: trade 30 Mini Medals": Info(2464, rules.Has("Mini Medal", count=30), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_STAFF_OF_RESURRECTION
+    "[Aliahan] In the well: trade 35 Mini Medals": Info(2465, rules.Has("Mini Medal", count=35), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_TITAN_BELT
+    "[Aliahan] In the well: trade 40 Mini Medals": Info(2466, rules.Has("Mini Medal", count=40), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_AGILITY_GILET
+    "[Aliahan] In the well: trade 50 Mini Medals": Info(2467, rules.Has("Mini Medal", count=50), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_DRAGONTAIL_WHIP
+    "[Aliahan] In the well: trade 60 Mini Medals": Info(2468, rules.Has("Mini Medal", count=60), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_STEALTH_SUIT
+    "[Aliahan] In the well: trade 65 Mini Medals": Info(2469, rules.Has("Mini Medal", count=65), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_FLAMETANG_BOOMERANG
+    "[Aliahan] In the well: trade 70 Mini Medals": Info(2470, rules.Has("Mini Medal", count=70), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ACCESSORY_MERCURYS_BANDANA
+    "[Aliahan] In the well: trade 75 Mini Medals": Info(2471, rules.Has("Mini Medal", count=75), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_SCOURGE_WHIP
+    "[Aliahan] In the well: trade 80 Mini Medals": Info(2472, rules.Has("Mini Medal", count=80), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_DRAGON_CLAWS
+    "[Aliahan] In the well: trade 85 Mini Medals": Info(2473, rules.Has("Mini Medal", count=85), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_ASTRAEAS_ABACUS
+    "[Aliahan] In the well: trade 90 Mini Medals": Info(2474, rules.Has("Mini Medal", count=90), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_DRAGON_ROBE
+    "[Aliahan] In the well: trade 95 Mini Medals": Info(2475, rules.Has("Mini Medal", count=95), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_BLESSED_BIKINI
+    "[Aliahan] In the well: trade 100 Mini Medals": Info(2476, rules.Has("Mini Medal", count=100), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_SHIELD_GODDESS_SHIELD
+    "[Aliahan] In the well: trade 105 Mini Medals": Info(2477, rules.Has("Mini Medal", count=105), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_BASTARD_SWORD
+    "[Aliahan] In the well: trade 110 Mini Medals": Info(2478, rules.Has("Mini Medal", count=110), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_EXOTOGA
 }
