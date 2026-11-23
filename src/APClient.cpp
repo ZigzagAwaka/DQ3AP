@@ -199,7 +199,8 @@ bool APClient::CheckVictoryLocation(const std::string& locationName)
 
 bool APClient::CheckHint(const std::string& locationName)
 {
-    if (Options::GetOption("shop_sanity") == 0)
+    if (Options::GetOption("shop_sanity") == 0 && Options::GetOption("medal_rewards_sanity") == 0
+        && Options::GetOption("arena_rewards_sanity") == 0)
     {
         return false;
     }
