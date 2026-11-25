@@ -379,7 +379,7 @@ function AP.GiveItem(ItemId, ObjectId, TreasureId, DeathLinkReloadMap)
 end
 
 -- check if there is available items and if yes then gives them all to the player if possible
-function AP.GiveItemsIfAvailable(ObjectId, TreasureId, DeathLinkReloadMap)
+function AP.GiveItemsIfAvailable(ObjectId, TreasureId, DeathLinkReloadMap, ShouldAutoSave)
   if GetFlag(Flag.FE157) == false then -- ignore items if dream sequence intro is not finished
     return
   end
@@ -393,7 +393,7 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId, DeathLinkReloadMap)
         if not stopGiveItem then
           AP.Log("Available item: " .. line)
           local isRealItem = AP.GiveItem(line, ObjectId, TreasureId, DeathLinkReloadMap)
-          if isRealItem then
+          if isRealItem and (ShouldAutoSave == nil or ShouldAutoSave == true) then
             RequestAutoSave() -- only auto save for real items and not for enemies
           else
             stopGiveItem = true -- if the item was an enemy, stop giving other items and keep them for the next call
