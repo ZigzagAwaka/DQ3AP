@@ -411,7 +411,11 @@ function TransitionBattle(BeginOverlap, tbl, ...)
   print("TransitionBattle Start")
   local _mapId, _startPointName, _environmentLightOn, _fadeOut, _fadeIn, _mapConstructFuncName, _seId, bgmId, isNotChangeBGM, isDisableSE = ...
   print("[FieldTransitionScript::TransitionBattle] " .. "_mapId=" .. tostring(_mapId) .. " ,_startPointName=" .. tostring(_startPointName) .. " ,_environmentLightOn=" .. tostring(_environmentLightOn) .. " ,_fadeOut=" .. tostring(_fadeOut) .. " ,_fadeIn=" .. tostring(_fadeIn) .. " ,_mapConstructFuncName=" .. tostring(_mapConstructFuncName) .. " ,_seId=" .. tostring(_seId) .. " ,bgmId=" .. tostring(bgmId) .. " ,isNotChangeBGM=" .. tostring(isNotChangeBGM) .. " ,isDisableSE=" .. tostring(isDisableSE))
-  AP.SetMapInfo("battle_map_id", tostring(_mapId), "in_battle", "1") -- AP
+  -- AP
+  if not IsBattleRoad() then
+    AP.SetMapInfo("battle_map_id", tostring(_mapId), "in_battle", "1")
+  end
+  -- AP end
   local bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmPAUSE
   if isNotChangeBGM == true then
     bgmManageType = ENicolaSoundBgmManagementTypeOnMapTransitionPreMapBgmNOP
