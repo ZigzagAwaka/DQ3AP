@@ -1303,6 +1303,86 @@ function AP.PostCallShop(ShopId, ItemsQuantities, ShouldKeepQuantities)
   end
 end
 
+-- contains items in arena that are detected for AP checks calculation
+-- order in table: item id, check type, check id, check amount
+local arena_content = {
+  {"ITEM_USE_ITEM_STRONG_MEDICINE", 1, 1, 3},
+  {"ITEM_EQUIP_ARMOR_CLOAK_OF_EVASION", 1, 2, 3},
+  {"ITEM_USE_ITEM_OOMPH_POWDER", 1, 3, 3},
+  {"ITEM_USE_ITEM_SEED_OF_MAGIC", 1, 4, 3},
+  {"ITEM_USE_ITEM_PRAYER_RING", 1, 5, 3},
+  {"ITEM_USE_ITEM_SEED_OF_LUCK", 1, 6, 4},
+  {"ITEM_USE_ITEM_THE_CHAMPIONS_CODE", 1, 7, 4},
+  {"ITEM_EQUIP_ARMOR_MAGIC_BIKINI", 1, 8, 4},
+  {"ITEM_USE_ITEM_ELFIN_ELIXIR", 1, 9, 3},
+  {"ITEM_EQUIP_WEAPON_GODBIRD_SCEPTRE", 1, 10, 2},
+  {"ITEM_USE_ITEM_WAR_DRUM", 1, 11, 3},
+  {"ITEM_USE_ITEM_MAGIC_WATER", 2, 10, 1}, --[quantity=5]
+  {"ITEM_EQUIP_ARMOR_AGILITY_GILET", 2, 30, 1},
+  {"ITEM_EQUIP_ACCESSORY_GODDESS_RING", 2, 50, 6},
+  {"ITEM_EQUIP_ARMOR_GLOMBOLERO", 2, 100, 2},
+  {"ITEM_EQUIP_WEAPON_ORICHALCUM_CLAWS", 2, 121, 3}
+}
+
+-- arena management function for AP, executes before the arena is called
+-- calculates the quantities of items before those are obtained and returns it
+function AP.PreCallArena()
+  local items_quantities = {}
+  for _, item in ipairs(arena_content) do
+    items_quantities[#items_quantities + 1] = GetHaveItemNum(item[1])
+  end
+  return items_quantities
+end
+
+-- arena management function for AP, executes after the arena has been called
+-- sends a check for the correct arena rewards based on items quantities
+function AP.PostCallArena(ItemsQuantities, ShouldKeepQuantities)
+  local checkName = ""
+  local checkType = ""
+  local checkId = 0
+  local checkAmount = 0
+  for index, item in ipairs(arena_content) do
+    local diff = GetHaveItemNum(item[1]) - ItemsQuantities[index]
+    if diff < 5 and item[1] == "ITEM_USE_ITEM_MAGIC_WATER" then
+      diff = 0 -- discard this item, it's a special case
+    end
+    if diff > 0 then
+      if not ShouldKeepQuantities then
+        for i = 0, (diff - 1) do
+          RemoveItem(item[1])
+        end
+      end
+      if item[2] == 1 then
+        checkType = "BATTLEROAD_REWARD_"
+      else
+        checkType = "BATTLEROAD_RECRUIT_"
+      end
+      checkId = tostring(item[3])
+      checkAmount = item[4]
+      for i = 1, checkAmount do
+        if i ~= 1 then
+          checkName = checkName .. "\n"
+        end
+        checkName = checkName .. checkType .. checkId .. "_" .. tostring(i)
+      end
+      break
+    end
+  end
+  if checkAmount > 0 then -- send check and display message
+    AP.CheckLocation(checkName)
+    SetTagItemId("ITEM_ARCHIPELAGO")
+    SetTagValue(checkAmount)
+    CmdLoadItemIcon("ITEM_ARCHIPELAGO")
+    PlayItemGetToLocation(GetPartyMemberLocation(1), "ITEM_ARCHIPELAGO")
+    PlaySEUI("SYSSE_TD_TREASURE_BOX_ITEM")
+    if checkAmount == 1 then
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_1")
+    else
+      CmdEventClosingMessage("NPC_Talk_Common_SEARCHOBJECT_SHINE_2")
+    end
+  end
+end
+
 -- list of all predefined non randomized locations (not important for AP)
 local predefined_excluded_locations = {
   SEARCH_Aliahan_House3_1F_BOOKSHELF_0 = true,

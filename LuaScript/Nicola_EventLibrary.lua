@@ -725,9 +725,23 @@ function WaitBattleRoadInfoUI()
 end
 
 function CmdCallBattleRoadZooUI()
-  AP.Log("CmdCallBattleRoadZooUI")
+  -- AP
+  local arena_rewards_sanity = AP.GetOption("arena_rewards_sanity")
+  local is_vanilla = arena_rewards_sanity ~= nil and (arena_rewards_sanity == 0 or arena_rewards_sanity == 1 or arena_rewards_sanity == 2)
+  local quantities = {}
+  AP.Log("CmdCallBattleRoadZooUI called")
+  if not is_vanilla then
+    quantities = AP.PreCallArena()
+  end
+  -- AP end
   CallBattleRoadZooUI()
   _retry(SYS_WaitBattleRoadZooUI)
+  -- AP
+  if not is_vanilla and #quantities > 0 then
+    AP.PostCallArena(quantities, (arena_rewards_sanity ~= nil and arena_rewards_sanity == 4))
+  end
+  AP.GiveItemsIfAvailable()
+  -- AP end
 end
 
 function WaitBattleRoadZooUI()
@@ -735,15 +749,29 @@ function WaitBattleRoadZooUI()
 end
 
 function CmdCallBattleRoadEntryUI(BattleRoadEntryId)
-  AP.Log("CmdCallBattleRoadEntryUI")
+  AP.CheckLocation(BattleRoadEntryId) -- AP : this sends hints for items placed on arena rewards
   CallBattleRoadEntryUI(BattleRoadEntryId)
   _retry(SYS_WaitBattleRoadEntryUI)
 end
 
 function CmdCallBattleRoadEntryUIForResult()
-  AP.Log("CmdCallBattleRoadEntryUIForResult")
+  -- AP
+  local arena_rewards_sanity = AP.GetOption("arena_rewards_sanity")
+  local is_vanilla = arena_rewards_sanity ~= nil and arena_rewards_sanity == 0
+  local quantities = {}
+  AP.Log("CmdCallBattleRoadEntryUIForResult called")
+  if not is_vanilla then
+    quantities = AP.PreCallArena()
+  end
+  -- AP end
   CallBattleRoadEntryUIForResult()
   _retry(SYS_WaitBattleRoadEntryUI)
+  -- AP
+  if not is_vanilla and #quantities > 0 then
+    AP.PostCallArena(quantities, (arena_rewards_sanity ~= nil and (arena_rewards_sanity == 2 or arena_rewards_sanity == 4)))
+  end
+  AP.GiveItemsIfAvailable()
+  -- AP end
 end
 
 function WaitBattleRoadEntryUI()
