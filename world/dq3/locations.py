@@ -1254,7 +1254,15 @@ specific_postgame_locations = {"[Cantlin] Hidden Ground near flowers of left hou
                                "[Lozamii] Hidden Ground near the telescope in right house",
                                "[Jipang] Pot near stairs in Monster Arena",
                                "[Jipang] Barrel on the back right side of the Monster Arena",
-                               "[Theddon] Hidden Ground on the cross in the bottom right area"}
+                               "[Theddon] Hidden Ground on the cross in the bottom right area",
+                               "[Jipang] Monster Arena Rank 10: Item 1",
+                               "[Jipang] Monster Arena Rank 10: Item 2",
+                               "[Jipang] Monster Arena Rank 11: Item 1",
+                               "[Jipang] Monster Arena Rank 11: Item 2",
+                               "[Jipang] Monster Arena Rank 11: Item 3",
+                               "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 1",
+                               "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 2",
+                               "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 3"}
 
 # Set of regions available after beating Baramos but before the postgame
 all_post_baramos_regions = {"Castle of the Dragon Queen", "West Tantegel Harbour", "Galen's House", "Sanctum", "Tantegel", "Tantegel Castle", "Damdara", "Cantlin", "Shrine of the Spirit", "Rimuldar", "Quagmire Cave", "Kol", "Craggy Cave", "Talontear Tunnel", "Tower of Rubiss", "Zoma's Citadel", "Alefgard Overworld"}
@@ -1265,7 +1273,7 @@ specific_post_baramos_locations = {"[Portoga] Gift from woman in the bottom righ
                                    "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn",
                                    "[Jipang] On ground in top left house after talking to Kol's blacksmith"}
 
-# Set of regions that are related to either specific_postgame_locations or specific_baramos_only_locations
+# Set of regions that are related to either specific_postgame_locations or specific_post_baramos_locations
 specific_exclude_goal_regions = {"Cantlin", "Lozamii", "Jipang", "Theddon", "Portoga", "Reeve", "Asham"}
 
 
@@ -1304,8 +1312,10 @@ def remove_locations_based_on_options(world: DQ3World, region: str, location_nam
         valid_sanities.add(SanityType.SHOP)
     if world.options.medal_rewards_sanity != "vanilla" and region == "Aliahan":
         valid_sanities.add(SanityType.MEDALS)
-    if world.options.arena_rewards_sanity != "vanilla":
+    if world.options.arena_rewards_sanity != "vanilla" and region in {"Romaria", "Ibis", "Manoza", "Cantlin", "Jipang"}:
         valid_sanities.add(SanityType.ARENA)
+        if world.options.arena_rewards_sanity.current_key in {"enabled_full", "enabled_full_and_vanilla"}:
+            valid_sanities.add(SanityType.ARENA_FULL)
     return [location_name for location_name in location_names if ALL_LOCATIONS[location_name].type in valid_sanities]
 
 

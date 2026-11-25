@@ -146,6 +146,7 @@ class MedalRewardsSanity(Choice):
     """
     Choose if items obtained from rewards by the Medal Trader in Aliahan's well are randomized or not.
     Note that if set to Enabled, there is a known issue where getting a new copy of an item you already have equiped will unequip it.
+    Also note that when obtaining a reward from the Trader, the vanilla 'get item' animation will play just like if you got the vanilla item, but it's just the animation you will not get the actual item (unless you selected enabled_and_vanilla).
     - Vanilla: Mini Medals rewards items will not be randomized and will instead be vanilla
     - Enabled: Getting a Mini Medal reward will count as a check and hints for those items will be sent upon inspecting the bookshelf left of the Trader. This adds around 24 more checks in the game
     - Enabled and vanilla: Same as Enabled but getting items from the Trader will also give you the vanilla item you got, so it gives the vanilla item + a check
@@ -160,14 +161,19 @@ class ArenaRewardsSanity(Choice):
     """
     Choose if items obtained from rewards in Monster Arenas are randomized or not.
     Note that if set to Enabled, there is a known issue where getting a new copy of an item you already have equiped will unequip it.
+    It is recommended, but not required, to have a Monster Wrangler in your party if you want to enable this option. If you don't, some monsters will be harder to recruit for the Arena and may require you to temporary bring a Monster Wrangler from Aliahan every time you want to recruit a monster.
     - Vanilla: Arena rewards items will not be randomized and will instead be vanilla
     - Enabled: Getting the rewards for beating a rank of an Arena will count as checks and hints for those items will be sent upon speaking with the Arena's host NPC. This adds around 35 more checks in the game
     - Enabled and vanilla: Same as Enabled but getting the rewards will also give you the vanilla items you got, so it gives the vanilla items + some checks
+    - Enabled full: Same as Enabled but it will also give checks for when you receive rewards for recruiting monsters given by Monty (the Old Man listing your recruited monsters in the Arenas). This adds around 48 more checks in the game
+    - Enabled full and vanilla: Same as Enabled full but with the effect of getting the vanilla items just like in Enabled and vanilla
     """
     display_name = "Monster Arena Rewards Sanity"
     option_vanilla = 0
     option_enabled = 1
     option_enabled_and_vanilla = 2
+    option_enabled_full = 3
+    option_enabled_full_and_vanilla = 4
     default = 0
 
 # ITEMS OPTIONS

@@ -26,6 +26,7 @@ class LocationType(IntEnum):
     SHOP = 4 # only present in the list if shops are randomized
     MEDALS = 5 # only present in the list if medals rewards are randomized
     ARENA = 6 # only present in the list if monster arena rewards are randomized
+    ARENA_FULL = 7 # only present in the list if monster arena recruiting rewards are randomized
 
 
 @dataclass
@@ -40,7 +41,7 @@ class ItemType(IntEnum):
     """A possible item type, either normal if always present or another type if it is optional"""
     DEFAULT = 1 # always in the itempool
     SHINY = 2 # never in the itempool but may be randomly generated from the filler list if shiny spots are randomized
-    ARENA = 3 # never in the itempool but may be randomly generated from the filler list if monster arena rewards are randomized
+    ARENA = 3 # never in the itempool but may be randomly generated from the filler list if monster arena or monster recruit rewards are randomized
 
 
 @dataclass
@@ -51,5 +52,5 @@ class ItemInfo:
     quantity: int = 1
     extra_quantity: int = 0 # this is used to force a specific quantity in the itempool if shiny spots or shops are randomized
     medal_quantity: int = 0 # this is used to force a specific quantity in the itempool if medals rewards are randomized
-    arena_quantity: int = 0 # this is used to force a specific quantity in the itempool if monster arena rewards are randomized
+    arena_quantity: int = 0 # this is used to force a specific quantity in the itempool if monster arena or monster recruit rewards are randomized
     type: ItemType = ItemType.DEFAULT

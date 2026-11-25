@@ -1422,4 +1422,54 @@ EXTRA_LOCATIONS: dict[str, Info] = {
     "[Aliahan] In the well: trade 100 Mini Medals": Info(2476, rules.Has("Mini Medal", count=100), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_SHIELD_GODDESS_SHIELD
     "[Aliahan] In the well: trade 105 Mini Medals": Info(2477, rules.Has("Mini Medal", count=105), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_WEAPON_BASTARD_SWORD
     "[Aliahan] In the well: trade 110 Mini Medals": Info(2478, rules.Has("Mini Medal", count=110), type=Type.MEDALS), #MEDAL_TRADE_ITEM_EQUIP_ARMOR_EXOTOGA
+    # ///////////////////////// ARENA REWARDS /////////////////////////
+    # ----- Romaria, Ibis, Manoza, Cantlin, Jipang -----
+    "[Romaria] Monster Arena Rank 1: Item 1": Info(2479, type=Type.ARENA), #BATTLEROAD_REWARD_1_1
+    "[Romaria] Monster Arena Rank 1: Item 2": Info(2480, type=Type.ARENA), #BATTLEROAD_REWARD_1_2
+    "[Romaria] Monster Arena Rank 1: Item 3": Info(2481, type=Type.ARENA), #BATTLEROAD_REWARD_1_3
+    "[Romaria] Monster Arena Rank 2: Item 1": Info(2482, type=Type.ARENA), #BATTLEROAD_REWARD_2_1
+    "[Romaria] Monster Arena Rank 2: Item 2": Info(2483, type=Type.ARENA), #BATTLEROAD_REWARD_2_2
+    "[Romaria] Monster Arena Rank 2: Item 3": Info(2484, type=Type.ARENA), #BATTLEROAD_REWARD_2_3
+    "[Ibis] Monster Arena Rank 3: Item 1": Info(2485, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_3_1
+    "[Ibis] Monster Arena Rank 3: Item 2": Info(2486, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_3_2
+    "[Ibis] Monster Arena Rank 3: Item 3": Info(2487, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_3_3
+    "[Ibis] Monster Arena Rank 4: Item 1": Info(2488, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_4_1
+    "[Ibis] Monster Arena Rank 4: Item 2": Info(2489, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_4_2
+    "[Ibis] Monster Arena Rank 4: Item 3": Info(2490, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA), #BATTLEROAD_REWARD_4_3
+    "[Manoza] Monster Arena Rank 5: Item 1": Info(2491, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_5_1
+    "[Manoza] Monster Arena Rank 5: Item 2": Info(2492, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_5_2
+    "[Manoza] Monster Arena Rank 5: Item 3": Info(2493, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_5_3
+    "[Manoza] Monster Arena Rank 6: Item 1": Info(2494, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_6_1
+    "[Manoza] Monster Arena Rank 6: Item 2": Info(2495, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_6_2
+    "[Manoza] Monster Arena Rank 6: Item 3": Info(2496, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_6_3
+    "[Manoza] Monster Arena Rank 6: Item 4": Info(2497, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_6_4
+    "[Manoza] Monster Arena Rank 7: Item 1": Info(2498, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_7_1
+    "[Manoza] Monster Arena Rank 7: Item 2": Info(2499, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_7_2
+    "[Manoza] Monster Arena Rank 7: Item 3": Info(2500, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_7_3
+    "[Manoza] Monster Arena Rank 7: Item 4": Info(2501, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA), #BATTLEROAD_REWARD_7_4
+    "[Cantlin] Monster Arena Rank 8: Item 1": Info(2502, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_8_1
+    "[Cantlin] Monster Arena Rank 8: Item 2": Info(2503, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_8_2
+    "[Cantlin] Monster Arena Rank 8: Item 3": Info(2504, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_8_3
+    "[Cantlin] Monster Arena Rank 8: Item 4": Info(2505, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_8_4
+    "[Cantlin] Monster Arena Rank 9: Item 1": Info(2506, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_9_1
+    "[Cantlin] Monster Arena Rank 9: Item 2": Info(2507, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_9_2
+    "[Cantlin] Monster Arena Rank 9: Item 3": Info(2508, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA), #BATTLEROAD_REWARD_9_3
+    "[Jipang] Monster Arena Rank 10: Item 1": Info(2509, rules.CAN_ACCESS_ZOMA & rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA), #BATTLEROAD_REWARD_10_1
+    "[Jipang] Monster Arena Rank 10: Item 2": Info(2510, rules.CAN_ACCESS_ZOMA & rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA), #BATTLEROAD_REWARD_10_2
+    "[Jipang] Monster Arena Rank 11: Item 1": Info(2511, rules.CAN_ACCESS_ZOMA & rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA), #BATTLEROAD_REWARD_11_1
+    "[Jipang] Monster Arena Rank 11: Item 2": Info(2512, rules.CAN_ACCESS_ZOMA & rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA), #BATTLEROAD_REWARD_11_2
+    "[Jipang] Monster Arena Rank 11: Item 3": Info(2513, rules.CAN_ACCESS_ZOMA & rules.HAS_ULTIMATE_KEY & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA), #BATTLEROAD_REWARD_11_3
+    "[Romaria] Monster Arena: Reward for recruiting 10 Monsters: Item 1": Info(2514, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_10_1
+    "[Ibis] Monster Arena: Reward for recruiting 30 Monsters: Item 1": Info(2515, rules.HAS_SHIP | rules.HAS_BIRD | rules.HAS_ULTIMATE_KEY | (rules.HAS_ROYAL_MISSIVE & rules.HAS_MAGIC_KEY & rules.HAS_RAS_MIRROR), type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_30_1
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 1": Info(2516, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_1
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 2": Info(2517, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_2
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 3": Info(2518, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_3
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 4": Info(2519, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_4
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 5": Info(2520, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_5
+    "[Ibis] Monster Arena: Reward for recruiting 50 Monsters: Item 6": Info(2521, rules.HAS_SHIP | rules.HAS_BIRD, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_50_6
+    "[Cantlin] Monster Arena: Reward for recruiting 100 Monsters: Item 1": Info(2522, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_100_1
+    "[Cantlin] Monster Arena: Reward for recruiting 100 Monsters: Item 2": Info(2523, rules.HAS_SHIP & rules.HAS_BIRD & rules.HAS_SPHERE_OF_LIGHT & rules.HAS_RAS_MIRROR & (rules.HAS_ULTIMATE_KEY | (rules.HAS_THIEF_KEY & (rules.HAS_FADING_JENNY | rules.HAS_BOATMANS_BONE))), type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_100_2
+    "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 1": Info(2524, rules.CAN_ACCESS_GRAND_DRAGON & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_121_1
+    "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 2": Info(2525, rules.CAN_ACCESS_GRAND_DRAGON & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_121_2
+    "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 3": Info(2526, rules.CAN_ACCESS_GRAND_DRAGON & rules.HAS_RAS_MIRROR & rules.HAS_FADING_JENNY & rules.HAS_BOATMANS_BONE & rules.HAS_MOUNTAINCLEAVER, type=Type.ARENA_FULL), #BATTLEROAD_RECRUIT_121_3
 }

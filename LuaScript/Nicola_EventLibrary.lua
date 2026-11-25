@@ -725,6 +725,7 @@ function WaitBattleRoadInfoUI()
 end
 
 function CmdCallBattleRoadZooUI()
+  AP.Log("CmdCallBattleRoadZooUI")
   CallBattleRoadZooUI()
   _retry(SYS_WaitBattleRoadZooUI)
 end

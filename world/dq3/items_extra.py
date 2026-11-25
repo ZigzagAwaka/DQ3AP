@@ -139,4 +139,26 @@ EXTRA_ITEMS: dict[str, Info] = {
     "782 Gold": Info(522, type=Type.SHINY), #GOLD_782
     "657 Gold": Info(525, type=Type.SHINY), #GOLD_657
     "426 Gold": Info(527, type=Type.SHINY), #GOLD_426
+    # ARENA EXCLUSIVE ITEMS GENERATED FROM THE FILLER LIST
+    "x3 Strong Medicine": Info(538, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_STRONG_MEDICINE
+    "x3 Magic Waters": Info(539, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_MAGIC_WATER
+    "x3 Seeds of Strength": Info(540, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_STRENGTH
+    "x3 Seeds of Stamina": Info(541, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_RESILIENCE
+    "x3 Musks": Info(542, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_POUCH_OF_MUSK
+    "x2 Oomph Powders": Info(543, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_OOMPH_POWDER
+    "x3 Seeds of Defence": Info(544, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_PROTECTION
+    "x3 Seeds of Magic": Info(545, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_MAGIC
+    "x3 Dieamends": Info(546, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_DIEAMEND
+    "x2 Prayer Rings": Info(547, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_PRAYER_RING
+    "x3 Seeds of Agility": Info(548, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_AGILITY
+    "x3 Seeds of Wisdom": Info(549, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_WISDOM
+    "x3 Seeds of Luck": Info(550, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_SEED_OF_LUCK
+    "x3 Elfin Elixir": Info(551, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_ELFIN_ELIXIR
+    "x3 Yggdrasil Leaves": Info(552, type=Type.ARENA), #MULTIPLE_3_ITEM_USE_ITEM_YGGDRASIL_LEAF
+    "x5 Magic Waters": Info(557, type=Type.ARENA), #MULTIPLE_5_ITEM_USE_ITEM_MAGIC_WATER
+    "x2 Seeds of Strength": Info(558, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_STRENGTH
+    "x2 Seeds of Defence": Info(559, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_PROTECTION
+    "x2 Seeds of Stamina": Info(560, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_RESILIENCE
+    "x2 Seeds of Wisdom": Info(561, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_WISDOM
+    "x2 Seeds of Agility": Info(562, type=Type.ARENA), #MULTIPLE_2_ITEM_USE_ITEM_SEED_OF_AGILITY
 }
