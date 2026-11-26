@@ -24,7 +24,15 @@ class TestVictoryZoma(DQ3TestBase):
                 "[Lozamii] Hidden Ground near the telescope in right house",
                 "[Jipang] Pot near stairs in Monster Arena",
                 "[Jipang] Barrel on the back right side of the Monster Arena",
-                "[Theddon] Hidden Ground on the cross in the bottom right area"}:
+                "[Theddon] Hidden Ground on the cross in the bottom right area",
+                "[Jipang] Monster Arena Rank 10: Item 1",
+                "[Jipang] Monster Arena Rank 10: Item 2",
+                "[Jipang] Monster Arena Rank 11: Item 1",
+                "[Jipang] Monster Arena Rank 11: Item 2",
+                "[Jipang] Monster Arena Rank 11: Item 3",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 1",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 2",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 3"}:
                 self.assertTrue(location.progress_type == LocationProgressType.EXCLUDED)
 
             else:
@@ -57,6 +65,14 @@ class TestVictoryBaramos(DQ3TestBase):
                 "[Jipang] Pot near stairs in Monster Arena",
                 "[Jipang] Barrel on the back right side of the Monster Arena",
                 "[Theddon] Hidden Ground on the cross in the bottom right area",
+                "[Jipang] Monster Arena Rank 10: Item 1",
+                "[Jipang] Monster Arena Rank 10: Item 2",
+                "[Jipang] Monster Arena Rank 11: Item 1",
+                "[Jipang] Monster Arena Rank 11: Item 2",
+                "[Jipang] Monster Arena Rank 11: Item 3",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 1",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 2",
+                "[Jipang] Monster Arena: Reward for recruiting 121 Monsters: Item 3",
                 "[Portoga] Gift from woman in the bottom right area after defeating Baramos",
                 "[Reeve] Second gift from Old Man in top right house after talking to the man in Quagmire Cave",
                 "[Asham] Gift from Theather manager after talking to the girl in Damdara's Inn",
