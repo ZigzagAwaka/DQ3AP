@@ -191,7 +191,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     # SOUTHERN MOUNTAINS
     "Southern Mountains Overworld": [
         Connect("Wayfarer's Shrine"),
-        Connect("Theddon"),
+        Connect("Theddon", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Mt. Necrogond", rules.HAS_SHIP | rules.HAS_BIRD),
         Connect("Maw of the Necrogond", (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD),
         Connect("Necrogond Shrine", (rules.HAS_SHIP & rules.HAS_MOUNTAINCLEAVER) | rules.HAS_BIRD),
@@ -200,6 +200,7 @@ ALL_REGIONS: dict[str, list[Connect]] = {
     ],
     "Wayfarer's Shrine": [
         Connect("Wayfarer's Inn", rules.HAS_ULTIMATE_KEY),
+        Connect("Southern Mountains Overworld"),
     ],
     "Theddon": [],
     "Mt. Necrogond": [],

@@ -1119,10 +1119,10 @@ ALL_LOCATIONS: dict[str, Info] = {
     # ----- Southern Mountains Overworld -----
     "[Southern Mountains Overworld] Secret Spot south-east of Wayfarer's Shrine: Barrel": Info(1007), #SEARCH_GranDragon_SecretForest_08_BARREL_0
     "[Southern Mountains Overworld] Secret Spot south-east of Wayfarer's Shrine: Sack": Info(1008), #SEARCH_GranDragon_SecretForest_08_SACK_0
-    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 1": Info(1009), #SEARCH_GranDragon_SecretForest_09_POT_0
-    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 2": Info(1010), #SEARCH_GranDragon_SecretForest_09_POT_1
-    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Hidden Ground on the top left corner at the right of rocks": Info(1011), #SEARCH_GranDragon_SecretMountain_06_GROUND_0
-    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Barrel": Info(1012), #SEARCH_GranDragon_SecretMountain_06_BARREL_0
+    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 1": Info(1009, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_09_POT_0
+    "[Southern Mountains Overworld] Secret Spot west of Theddon: Pot 2": Info(1010, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_09_POT_1
+    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Hidden Ground on the top left corner at the right of rocks": Info(1011, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_06_GROUND_0
+    "[Southern Mountains Overworld] Secret Spot south-east of Theddon: Barrel": Info(1012, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretMountain_06_BARREL_0
     "[Southern Mountains Overworld] Secret Spot on a small coast east of Theddon: Pot": Info(1013, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_11_POT_0
     "[Southern Mountains Overworld] Secret Spot on a small coast east of Theddon: Sack": Info(1014, rules.HAS_SHIP | rules.HAS_BIRD), #SEARCH_GranDragon_SecretPlain_11_SACK_0
     "[Southern Mountains Overworld] Secret Spot in the mountain east of Maw of the Necrogond: Chest 1": Info(1015, rules.HAS_BIRD), #SEARCH_GranDragon_SecretForest_13_TREASURE_NORMAL_0
