@@ -770,7 +770,6 @@ function CmdCallBattleRoadEntryUIForResult()
   if not is_vanilla and #quantities > 0 then
     AP.PostCallArena(quantities, (arena_rewards_sanity ~= nil and (arena_rewards_sanity == 2 or arena_rewards_sanity == 4)))
   end
-  AP.GiveItemsIfAvailable(nil, nil, nil, false) -- ShouldAutoSave is false since an auto save is already done for BattleRoad results
   -- AP end
 end
 
