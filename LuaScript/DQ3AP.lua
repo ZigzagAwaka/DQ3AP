@@ -416,6 +416,7 @@ function AP.GiveItemsIfAvailable(ObjectId, TreasureId, DeathLinkReloadMap, Shoul
   end
 end
 
+-- Trigger a forced death event animation
 function AP.TriggerDeathlink(ShouldReloadMap)
   SetActionInputMode(INPUT_MODE_GAME_EVENT, true)
   CloseMessage()

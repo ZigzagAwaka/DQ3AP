@@ -4,7 +4,7 @@ Dragon Quest III HD-2D Remake implementation for the [Archipelago multiworld ran
 
 ## Setup Guide
 
-1. If you plan to host a room, make sure you have [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) 0.6.7+ installed
+1. If you plan to host a room, make sure you have the latest release of [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) installed
 2. Download the latest version of [DQ3AP](https://github.com/ZigzagAwaka/DQ3AP/releases)
 3. Place `Game-WindowsNoEditor_P_DQ3AP.pak` in `Game/Content/Paks` in the game folder
 4. Place `DQ3AP.asi`, `dsound.dll`, `libAPCpp.dll`, `libstdc++-6.dll`, `libgcc_s_seh-1.dll` and `libwinpthread-1.dll` in `Game/Binaries/Win64` in the game folder, next to the executable
@@ -45,6 +45,7 @@ You have multiple options to set the goal of the game, among these:
 - Defeat **Baramos**, for shorter games
 - Find all **mini medals**, then defeat **Zoma**
 - Find all **mini medals**, then defeat the **Grand Dragon**
+- Find all **mini medals**, without Alefgard locations
 
 ### What versions of the game are supported ?
 
@@ -52,11 +53,11 @@ The only supported version is the Steam/PC release of `Dragon Quest III HD-2D Re
 
 ### Which items can be in another player's world ?
 
-All obtainable items (equipments, keys, usable items, ...) can be placed in other players' worlds. In short, items in containers, given by NPCs, found in shiny spots and sold in shops are all randomized.
+All obtainable items (equipments, keys, usable items, ...) can be placed in other players' worlds. In short, items in containers, given by NPCs, found in shiny spots, sold in shops, obtained as rewards for trading mini medals and obtained as rewards in the Monster Arena are all randomized.
 
 Some "in game events" are also treated as items for Archipelago such as getting the Ship, Ramia and traps, this means those can also be obtained like items if they are randomized.
 
-Overworld maps, medals rewards, arena rewards and enemy drops are not randomized but some of these may be changed in the future.
+Overworld maps and enemy drops are not randomized for now.
 
 ### What does another world's item look like in the game ?
 
@@ -77,7 +78,7 @@ The game will cache the received items then give them all to the player when one
 - The player checks a container that gives an Archipelago check (chests, barrels, pots, ...)
 - The player talks to the Inn keeper of any village with any dialogue options: Stay Overnight, Rest Awhile or Cancel
 - The player talks to a Priest of any location by loading a save file from the title screen
-- The player uses some specific field spells/abilities
+- The player uses some specific field spells/abilities (such as Peep)
 
 Once items are obtained, the game will display the item's sprite with a message to show what's been received.
 
@@ -101,7 +102,7 @@ If you check a location then turn off the game without saving (or reloading a pr
 
 If you receive an item then turn off the game without saving (or reloading a previous save) then the item will be lost (use Archipelago server admin commands to get it back).
 
-Loading the latest auto save could also prevent you from losing items as those are being performed automatically when you receive an item, so you can also reload the latest auto save if you need it.
+Loading the latest auto save could also prevent you from losing items as those are being performed automatically when you receive an item, so you can also reload the latest auto save if you ever need it.
 
 ### Is there a location tracker available ?
 

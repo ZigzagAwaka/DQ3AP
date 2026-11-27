@@ -2,15 +2,17 @@
 
 Other than every modifications related to the Archipelago server, DQ3AP also edits some parts of the game to improve the gameplay or logic in order to create a more interesting randomized experience. Here is the list of those modifications.
 
-- Some story scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues.
+- Some story scenes have been edited to no longer require a specific story flag to play, to allow for a more interesting progression for Archipelago. This has the effect of some scenes playing when they shouldn't or scenes not playing at all to avoid story flags issues. Here's 2 specific examples but more scenes have been edited similarly.
+
+    - The start of the Black Pepper side quest is no longer tied to having the Royal Missive in your inventory, as this item is only required in Nordy's Grotto. Moreover, the reward of the quest has been moved to being given by the merchant in Baharata instead of the one in Alltrades Abbey.
+
+    - The guard in the basement of the Romarian Outpost will now leave after talking to him when having acquired the Magic Key, the Ship is no longer required to make him move. The cat in Olivia's Promontary is not removed but you can warp to the entrance from the other side of the door if you ever went there from the teleportal.
 
 - All Keys items are registered as Progressive Keys to allow for an interesting logic. You need x1 Progressive Key to get the Thief's Key, x2 Progressive Key for the Magic Key and finally x3 Progressive Key for the Ultimate Key.
 
 - Merchantburg's locations (containers and shops) are fully excluded from the logic except those available in the final stage of the town. This means that the Yellow Orb check is excluded but the Yellow Orb is still randomized. Checking the Yellow Orb at it's vanilla location will give you some gold instead.
 
 - Kol's first item shop is excluded from the logic as this one can be permanently missed when the shop is replaced by the second item shop after progressing the blacksmith quest.
-
-- The final reward from the Black Pepper side quest has been moved to being given by the merchant in Baharata instead of the one in Alltrades Abbey, to avoid some story flags issues. Checking the merchant in Alltrades Abbey will give you a random filler item instead.
 
 - By default, completing the east trial in the Temple of Trials will also autocomplete the west and south trials as those are not really interesting to complete for a randomized game, but this is configurable depending on your options.
 
@@ -68,4 +70,4 @@ This array simply lists what item is needed to unlock what parts of the game.
 | Sunstone | Required to get 1 item from Sanctum's Priest |
 | Rainbow Drop | Allows the rainbow bridge to spawn to get access to Zoma's Citadel |
 | Gringham Whip | Required in the Temple of Trials |
-| All Mini Medals | May be required depending of the selected victory goal option |
+| All Mini Medals | May be required depending on the selected victory goal option |
