@@ -35,6 +35,9 @@ In Dragon Quest III HD-2D Remake, all obtainable items (usable items, equipment,
 
 Options to choose which locations are randomized, excluded or vanilla are available for those who want to configure some things before playing.
 
+With the default options, seeds will generate around 1039 checks but as postgame locations are excluded by default the real number is more close to 979 mandatory checks. Seeds that excludes Alefgard will be around 824 mandatory checks. And seeds that excludes some containers will be even shorter, such as somewhere around 156 with every containers excluded except chests.
+The checks amount will be bigger when enabling specific sanity options, for example with every possible options enabled it can go as high as 2441.
+
 ### What is the goal of the game when randomized ?
 
 You have multiple options to set the goal of the game, among these:
