@@ -674,9 +674,16 @@ function WaitMedalTradeUI()
 end
 
 function CmdCallMedalRewardUI()
-  AP.CheckLocation("MEDAL_TRADE") -- AP : this sends hints for items placed on medals rewards
+  -- AP: sends hints for items placed on medals rewards
+  local medal_rewards_sanity = AP.GetOption("medal_rewards_sanity")
+  local is_vanilla = medal_rewards_sanity ~= nil and medal_rewards_sanity == 0
+  if not is_vanilla then
+    AP.CheckLocation("MEDAL_TRADE")
+  end
+  -- AP end
   CallMedalRewardUI()
   _retry(SYS_WaitMedalRewardUI)
+  AP.GiveItemsIfAvailable() -- AP
 end
 
 function WaitMedalRewardUI()
@@ -749,7 +756,13 @@ function WaitBattleRoadZooUI()
 end
 
 function CmdCallBattleRoadEntryUI(BattleRoadEntryId)
-  AP.CheckLocation(BattleRoadEntryId) -- AP : this sends hints for items placed on arena rewards
+  -- AP: sends hints for items placed on arena rewards
+  local arena_rewards_sanity = AP.GetOption("arena_rewards_sanity")
+  local is_vanilla = arena_rewards_sanity ~= nil and arena_rewards_sanity == 0
+  if not is_vanilla then
+    AP.CheckLocation(BattleRoadEntryId)
+  end
+  -- AP end
   CallBattleRoadEntryUI(BattleRoadEntryId)
   _retry(SYS_WaitBattleRoadEntryUI)
 end
