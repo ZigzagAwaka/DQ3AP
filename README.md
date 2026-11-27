@@ -111,6 +111,8 @@ Loading the latest auto save could also prevent you from losing items as those a
 
 For this, you can use [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker). Just make sure you have correctly installed the apworld file before using this tracker.
 
+If the Monster Arena sanity option is enabled, you may need a guide listing where every friendly monsters is located and what is needed to access them. In this case you can check [this](https://docs.google.com/spreadsheets/d/18Ha_gwWw1AIt7JfBpmHKLs3QPCDGcY74n75hPEspz8g/edit?usp=sharing).
+
 ### What about other mods compatibility ?
 
 Most other mods should be compatible, but if you want to learn more about this please check [this document here](https://github.com/ZigzagAwaka/DQ3AP/blob/main/ModsCompatibility.md) describing mods compatibility in details. This document also lists some other mods you can install to have a better experience at playing the game with Archipelago.
